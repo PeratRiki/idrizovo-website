@@ -846,7 +846,16 @@
         </div>
     </footer>
 
-    <!-- za hamburger menito na maliot ekran -->
+    <!-- scroll to top kopce -->
+    <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+        style="display:none; position:fixed; bottom:28px; right:28px; z-index:999; width:52px; height:52px; border-radius:50%; background:#2b5a9e; border:none; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,0.25); align-items:center; justify-content:center; transition:opacity 0.3s;">
+        <svg width="24" height="24" fill="none" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <!-- za hamburger menito na maliot ekran i scroll to top kopceto -->
     <script>
         const btn = document.getElementById('hamburger-btn');
         const menu = document.getElementById('mobile-menu');
@@ -857,6 +866,16 @@
         menu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => menu.classList.remove('open'));
         });
+
+        // scroll to top
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollBtn.style.display = 'flex';
+                } else {
+                    scrollBtn.style.display = 'none';
+                }
+            });
     </script>
 </body>
 
