@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="mk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,94 +9,855 @@
     <script src="https://kit.fontawesome.com/32438cfe82.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ── MOBILE HAMBURGER ── */
+        #mobile-menu {
+            display: none;
+        }
+
+        #mobile-menu.open {
+            display: block;
+        }
+
+        @media (max-width: 767px) {
+
+            /* top bar: stack vertically, smaller text */
+            .topbar-wrap {
+                flex-direction: column;
+                gap: 6px;
+                align-items: flex-start;
+                font-size: 10px;
+            }
+
+            .topbar-wrap .topbar-left,
+            .topbar-wrap .topbar-right {
+                flex-direction: column;
+                gap: 4px;
+                width: 100%;
+                border: none !important;
+                padding: 0 !important;
+            }
+
+            /* hero: shorter on mobile */
+            .hero-section {
+                height: 420px !important;
+            }
+
+            .hero-section h1 {
+                font-size: 3rem !important;
+            }
+
+            .hero-section p {
+                font-size: 1rem !important;
+            }
+
+            /* hide scroll-to-top btn on mobile (overlaps content) */
+            .scroll-top-btn {
+                display: none !important;
+            }
+
+            /* e-vesnik: single column image smaller */
+            .vesnik-img {
+                min-height: 240px !important;
+            }
+
+            /* resources section: single col already handled by md: but ensure gap */
+            .resources-grid {
+                gap: 24px;
+            }
+
+            /* bottom two boxes: full width stack */
+            .bottom-boxes {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .bottom-boxes a {
+                width: 100% !important;
+            }
+
+            /* footer: tighter */
+            .footer-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 20px;
+            }
+        }
     </style>
 </head>
+
 <body class="bg-gray-50 text-gray-900">
 
+    <!-- tel, mail, adresa -->
     <div class="bg-sky-600 text-white text-xs py-3 border-b border-white/20">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center font-light">
-        
-        <div class="w-full md:w-1/2 flex justify-between items-center md:pr-10 md:border-r md:border-dashed md:border-blue-300/50 py-2 md:py-0">
-            <span class="flex items-center gap-2 hover:text-gray-200 transition cursor-pointer">
-                <i class="fa-solid fa-phone text-blue-200"></i> 02 25 80 312
-            </span>
-            <span class="flex items-center gap-2 hover:text-gray-200 transition cursor-pointer">
-                <i class="fa-regular fa-envelope text-blue-200"></i> kpuidrizovo@kpuidrizovo.gov.mk
-            </span>
+        <div class="max-w-7xl mx-auto px-6 hidden md:flex topbar-wrap flex-col md:flex-row items-center font-light">
+
+            <div
+                class="topbar-left w-full md:w-1/2 flex justify-between items-center md:pr-10 md:border-r md:border-dashed md:border-blue-300/50 py-2 md:py-0">
+                <span class="flex items-center gap-2 hover:text-gray-200 transition cursor-pointer">
+                    <i class="fa-solid fa-phone text-blue-200"></i> 02 25 80 312
+                </span>
+                <span class="flex items-center gap-2 hover:text-gray-200 transition cursor-pointer">
+                    <i class="fa-regular fa-envelope text-blue-200"></i>
+                    <span class="hidden sm:inline">kpuidrizovo@kpuidrizovo.gov.mk</span>
+                    <span class="sm:hidden">Email</span>
+                </span>
+            </div>
+
+            <div class="topbar-right w-full md:w-1/2 flex justify-between items-center md:pl-10 py-2 md:py-0">
+                <span class="flex items-center gap-2 hover:text-gray-200 transition cursor-pointer">
+                    <i class="fa-solid fa-location-dot text-blue-200"></i>
+                    <span class="hidden sm:inline">ул.1 колонија Идризово бр.4А</span>
+                    <span class="sm:hidden">Идризово бр.4А</span>
+                </span>
+                <button class="hover:text-gray-200 transition cursor-pointer">
+                    <i class="fa-solid fa-globe text-lg"></i>
+                </button>
+            </div>
         </div>
-        
-        <div class="w-full md:w-1/2 flex justify-between items-center md:pl-10 py-2 md:py-0">
-            <span class="flex items-center gap-2 hover:text-gray-200 transition cursor-pointer">
-                <i class="fa-solid fa-location-dot text-blue-200"></i> ул.1 колонија Идризово бр.4А
-            </span>
-            <button class="hover:text-gray-200 transition cursor-pointer">
-                <i class="fa-solid fa-globe text-lg"></i>
+    </div>
+
+    <!-- navbarot -->
+    <nav class="bg-sky-600 text-white px-4 md:px-20 py-4 flex justify-between items-center shadow-md relative">
+        <div class="flex items-center space-x-4 md:space-x-8">
+            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                <img src="./images/logo.png" />
+            </div>
+
+            <!-- Desktop menu -->
+            <ul class="hidden md:flex space-x-6 font-medium">
+                <li class="border-b-2 border-white"><a href="#">Дома</a></li>
+                <li>
+                    <a href="#"
+                        class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500">За
+                        нас</a>
+                </li>
+                <li class="flex items-center cursor-pointer group">
+                    <a href="#"
+                        class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 group-hover:before:w-full before:bg-white before:transition-all before:duration-500">Новости
+                        и соопштенија</a>
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </li>
+                <li>
+                    <a href="#"
+                        class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500">Изработки</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500">Контакт</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="flex items-center space-x-2 md:space-x-4">
+            <button class="p-2 hidden md:block">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </button>
+            <button
+                class="bg-sky-950 text-white px-4 md:px-6 py-2 rounded-md font-bold hover:bg-black transition text-sm md:text-base hidden md:block">Закажи
+                посета</button>
+
+            <!-- Hamburger button (mobile only) -->
+            <button id="hamburger-btn" class="md:hidden p-2 rounded hover:bg-sky-700 transition" aria-label="Мени">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="hamburger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
             </button>
         </div>
 
-    </div>
-</div>
-
-    <nav class="bg-sky-600 text-white px-4 md:px-20 py-4 flex justify-between items-center shadow-md">
-        <div class="flex items-center space-x-8">
-            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                <img src="./images/logo.png"/>
-            </div>
-            
-            <ul class="hidden md:flex space-x-6 font-medium">
-    <li class="border-b-2 border-white"><a href="#">Дома</a></li>
-    
-    <li>
-        <a href="#" class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500">За нас</a>
-    </li>
-    
-    <li class="flex items-center cursor-pointer group">
-        <a href="#" class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 group-hover:before:w-full before:bg-white before:transition-all before:duration-500">Новости и соопштенија</a>
-        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-    </li>
-    
-    <li>
-        <a href="#" class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500">Изработки</a>
-    </li>
-    
-    <li>
-        <a href="#" class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500">Контакт</a>
-    </li>
-</ul>
-        </div>
-
-        <div class="flex items-center space-x-4">
-            <button class="p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
-            <button class="bg-sky-950 text-white px-6 py-2 rounded-md font-bold hover:bg-black transition">Закажи посета</button>
+        <!-- Mobile dropdown menu -->
+        <div id="mobile-menu" class="absolute top-full left-0 right-0 bg-sky-700 z-50 shadow-lg">
+            <ul class="flex flex-col font-medium text-sm">
+                <li class="border-b border-sky-600">
+                    <a href="#" class="block px-6 py-3 hover:bg-sky-600 transition">Дома</a>
+                </li>
+                <li class="border-b border-sky-600">
+                    <a href="#" class="block px-6 py-3 hover:bg-sky-600 transition">За нас</a>
+                </li>
+                <li class="border-b border-sky-600">
+                    <a href="#" class="block px-6 py-3 hover:bg-sky-600 transition">Новости и соопштенија</a>
+                </li>
+                <li class="border-b border-sky-600">
+                    <a href="#" class="block px-6 py-3 hover:bg-sky-600 transition">Изработки</a>
+                </li>
+                <li class="border-b border-sky-600">
+                    <a href="#" class="block px-6 py-3 hover:bg-sky-600 transition">Контакт</a>
+                </li>
+                <li class="px-6 py-3">
+                    <button
+                        class="bg-sky-950 text-white px-5 py-2 rounded-md font-bold hover:bg-black transition w-full">Закажи
+                        посета</button>
+                </li>
+            </ul>
         </div>
     </nav>
 
-    <section class="relative h-[600px] flex items-center overflow-hidden">
+    <section class="hero-section relative h-[600px] flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img src="./images/homebg.png" alt="Building" class="w-full h-full object-cover">
         </div>
 
         <div class="container mx-auto px-4 md:px-20 z-10">
-            <div class="max-w-2xl p-8 rounded-lg">
-                <h1 class="text-6xl md:text-7xl font-extrabold text-[#1e3a8a] leading-tight">
+            <div class="max-w-2xl p-6 md:p-8 rounded-lg">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-[#1e3a8a] leading-tight">
                     КПУ<br>ИДРИЗОВО
                 </h1>
-                <p class="text-xl font-bold text-gray-800 mt-4 mb-8">
+                <p class="text-base md:text-xl font-bold text-gray-800 mt-4 mb-8">
                     со отворено одделение Велес
                 </p>
-                <a href="#" class="bg-[#3b71ca] text-white px-8 py-3 rounded-md font-bold text-lg hover:bg-[#2b5a9e] transition shadow-lg inline-block">
+                <a href="#"
+                    class="bg-[#3b71ca] text-white px-6 md:px-8 py-3 rounded-md font-bold text-base md:text-lg hover:bg-[#2b5a9e] transition shadow-lg inline-block">
                     Повеќе за нас
                 </a>
             </div>
         </div>
 
-        <div class="absolute bottom-10 right-10">
+        <div class="scroll-top-btn absolute bottom-10 right-10">
             <button class="bg-[#2b5a9e] text-white p-4 rounded-full shadow-2xl hover:bg-[#1e3a8a]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18">
+                    </path>
+                </svg>
             </button>
         </div>
     </section>
 
+    <!-- aktivnosti -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a]">Активности</h2>
+                <a href="#"
+                    class="bg-[#315b96] hover:bg-blue-800 text-white px-4 md:px-6 py-2.5 rounded-md text-xs md:text-sm font-medium transition shadow-sm">
+                    Прочитај повеќе
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <div class="relative h-[320px] md:h-[380px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
+                    <img src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Натпревар во шах"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col justify-end">
+                        <h3 class="text-white text-xl font-bold mb-3 underline decoration-2 underline-offset-4">
+                            Натпревар во шах</h3>
+                        <p class="text-gray-200 text-sm leading-relaxed">
+                            Шаховски натпревар што поттикнува фокус, стратешко размислување и позитивна интеракција меѓу
+                            учесниците во рамките на поправната средина.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative h-[320px] md:h-[380px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
+                    <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Везење"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col justify-end">
+                        <h3 class="text-white text-xl font-bold mb-3 underline decoration-2 underline-offset-4">Везење
+                        </h3>
+                        <p class="text-gray-200 text-sm leading-relaxed">Везот ги подобрува креативноста, фокусот и
+                            фините моторни вештини.</p>
+                    </div>
+                </div>
+
+                <div class="relative h-[320px] md:h-[380px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
+                    <img src="https://cdn.shopify.com/s/files/1/0583/8992/1999/files/image_fx_wood_carving_sculpture_tool_600x600.jpg?v=1720015115"
+                        alt="Резба"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col justify-end">
+                        <h3 class="text-white text-xl font-bold mb-3 underline decoration-2 underline-offset-4">Резба
+                        </h3>
+                        <p class="text-gray-200 text-sm leading-relaxed">Рачно изработени резби создадени со грижа,
+                            вештина и претворајќи ги едноставните материјали во значајни уметнички дела.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="flex justify-center items-center gap-4 mt-10">
+                <button class="w-10 h-3.5 bg-[#0f172a] rounded-full transition-all" aria-label="Slide 1"></button>
+                <button class="w-3.5 h-3.5 border border-gray-400 rounded-full hover:bg-gray-200 transition-all"
+                    aria-label="Slide 2"></button>
+                <button class="w-3.5 h-3.5 border border-gray-400 rounded-full hover:bg-gray-200 transition-all"
+                    aria-label="Slide 3"></button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- e vesnik -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a]">Е-весник</h2>
+                <a href="#"
+                    class="bg-[#315b96] hover:bg-blue-800 text-white px-4 md:px-6 py-2.5 rounded-md text-xs md:text-sm font-medium transition shadow-sm flex items-center gap-2">
+                    Превземи Е-весник
+                </a>
+            </div>
+
+            <div class="flex flex-row bg-white shadow-2xl rounded-sm overflow-hidden max-w-5xl mx-auto">
+
+                <div class="vesnik-img w-1/2 relative bg-black min-h-[200px] md:min-h-[500px]">
+                    <img src="https://images.unsplash.com/photo-1518049362265-f5b249d01f18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Typewriter" class="absolute inset-0 w-full h-full object-cover grayscale opacity-70">
+                    <div class="absolute top-0 bottom-0 left-2 md:left-6 w-4 md:w-12 bg-red-600"></div>
+                    <div
+                        class="absolute top-8 md:top-16 left-1/2 -translate-x-1/2 bg-gray-100 px-3 md:px-8 py-1 md:py-2 border border-gray-300 shadow-md whitespace-nowrap">
+                        <h3 class="text-2xl md:text-5xl font-serif font-bold italic tracking-widest text-black">ИСКРА
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="w-1/2 p-3 md:p-10 text-[9px] md:text-xs text-gray-800 relative overflow-hidden">
+                    <p class="mb-8 text-justify leading-relaxed">
+                        Осуденичкиот весник „Искра" е периодично списание и е изготвуван од страна на вработени во
+                        затворските установи, во соработка со лица кои издржуваат затворска казна во нашата држава.
+                        Весникот е наменет за осудените лица и веруваме дека ќе стане активен двигател на процесот на
+                        ресоцијализација.
+                    </p>
+
+                    <div class="mb-4 md:mb-8 relative pr-14 md:pr-28">
+                        <h4 class="font-bold mb-1 text-black">Автор и уредник:</h4>
+                        <p class="mb-2">М-р Александар Ковилоски (сектор за ресоцијализација во КПД Идризово)</p>
+
+                        <div class="absolute right-1 md:right-4 top-0 w-10 md:w-20 flex flex-col gap-1">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+                                alt="Profile" class="w-full h-8 md:h-16 object-cover border border-gray-300">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+                                alt="Profile" class="w-full h-8 md:h-16 object-cover border border-gray-300">
+                        </div>
+
+                        <div class="absolute right-0 top-0 bottom-0 w-1 bg-red-600"></div>
+                    </div>
+
+                    <div class="relative pl-6">
+                        <div class="absolute left-0 top-0 bottom-0 w-4 bg-red-600"></div>
+
+                        <h4 class="font-bold mb-1 text-black">В. Д. директор на КПД Идризово:</h4>
+                        <p class="mb-4">М-р Зоран Јовановски</p>
+
+                        <h4 class="font-bold mb-1 text-black">Својот придонес во овој број го дадоа:</h4>
+                        <ul class="space-y-1 mb-6 text-gray-700">
+                            <li>Ф. (осудено лице во женскиот дел од КПД Идризово)</li>
+                            <li>Осуденички од женскиот дел на КПД Идризово</li>
+                            <li>С.Н. (осудено лице во КПД Идризово)</li>
+                            <li>М.М. (осудено лице во КПД Идризово)</li>
+                            <li>Д.Т. (осудено лице во КПД Идризово)</li>
+                            <li>Ч.Д. (осудено лице во КПД Идризово)</li>
+                        </ul>
+
+                        <h4 class="font-bold mb-1 text-black">Техничка обработка:</h4>
+                        <p>Александар Ковилоски (сектор за ресоцијализација во КПД Идризово)</p>
+                    </div>
+
+                    <p class="text-right font-bold text-[10px] mt-10 text-black">
+                        Првиот број од весникот излезе во 2019 година.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- novosti i soopstenija -->
+    <section class="py-16 bg-gradient-to-br from-[#c8dcf0] via-[#85a8d0] to-[#517bb2]">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a]">Новости и соопштенија</h2>
+                <a href="#"
+                    class="bg-[#315b96] hover:bg-blue-800 text-white px-4 md:px-6 py-2.5 rounded-md text-xs md:text-sm font-medium transition shadow-sm">
+                    Прочитај повеќе
+                </a>
+            </div>
+
+            <div class="mb-14">
+                <h3 class="text-center text-white text-xl font-medium mb-8">Нови соопштенија</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div
+                        class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-6 flex flex-col h-full shadow-sm hover:bg-white/30 transition-all duration-300">
+                        <a href="#"
+                            class="text-white font-bold text-sm uppercase underline decoration-2 underline-offset-4 mb-4 hover:text-blue-100 transition leading-snug">
+                            ИНТЕРЕН ОГЛАС за пополнување на работно место со унапредување на административен службеник
+                        </a>
+                        <p class="text-white/90 text-xs leading-relaxed mb-6 flex-grow text-justify">
+                            Врз основа на член 30 став 1 алинеја 2 став 3 и став 5, член 48 и член 49 од Законот за
+                            административни службеници („Службен весник на Република Македонија" бр. 27/14, 199/14,
+                            48/15, 154/15, 5/16, 142/16, и 11/18)..
+                        </p>
+                        <a href="#"
+                            class="bg-[#0f172a] hover:bg-gray-800 text-white text-xs font-medium px-5 py-2.5 rounded self-start transition shadow-md">
+                            Види повеќе
+                        </a>
+                    </div>
+                    <div
+                        class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-6 flex flex-col h-full shadow-sm hover:bg-white/30 transition-all duration-300">
+                        <a href="#"
+                            class="text-white font-bold text-sm uppercase underline decoration-2 underline-offset-4 mb-4 hover:text-blue-100 transition leading-snug">
+                            Одлука за избор на кандидати за унапредување на административни службеници
+                        </a>
+                        <p class="text-white/90 text-xs leading-relaxed mb-6 flex-grow text-justify">
+                            Врз основа на чл. 52 ст.1 од Законот за Административни службеници(Сл.весник на Република
+                            Македонија" бр. 27/14, 199/14, 48/15, 154/15, 5/16, 80/16, 127/16,142/16 2/17, 16/17, 11/18
+                            i 275/19 )..
+                        </p>
+                        <a href="#"
+                            class="bg-[#0f172a] hover:bg-gray-800 text-white text-xs font-medium px-5 py-2.5 rounded self-start transition shadow-md">
+                            Види повеќе
+                        </a>
+                    </div>
+                    <div
+                        class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-6 flex flex-col h-full shadow-sm hover:bg-white/30 transition-all duration-300">
+                        <a href="#"
+                            class="text-white font-bold text-sm uppercase underline decoration-2 underline-offset-4 mb-4 hover:text-blue-100 transition leading-snug">
+                            Предлог на одлука за избор на кандидати за унапредување на административни службеници
+                        </a>
+                        <p class="text-white/90 text-xs leading-relaxed mb-6 flex-grow text-justify">
+                            Врз основа на чл.52 ст.1 од Законот за Административни службеници(Сл.весник на Република
+                            Македонија" бр. 7/14, 199/14, 48/15, 154/15, 5/16, 80/16, 127/16,142/16 2/17, 16/17, 11/18 i
+                            275/19 )..
+                        </p>
+                        <a href="#"
+                            class="bg-[#0f172a] hover:bg-gray-800 text-white text-xs font-medium px-5 py-2.5 rounded self-start transition shadow-md">
+                            Види повеќе
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-center text-white text-xl font-medium mb-8">Постари соопштенија</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div
+                        class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-6 flex flex-col h-full shadow-sm hover:bg-white/30 transition-all duration-300">
+                        <a href="#"
+                            class="text-white font-bold text-sm uppercase underline decoration-2 underline-offset-4 mb-4 hover:text-blue-100 transition leading-snug">
+                            ИНТЕРЕН ОГЛАС за пополнување на работни места со унапредување на административни службеници
+                        </a>
+                        <p class="text-white/90 text-xs leading-relaxed mb-6 flex-grow text-justify">
+                            Врз основа на член 30 став 1 алинеја 2 став 3 и став 5, член 48 и член 49 од Законот за
+                            административни службеници („Службен весник на Република Македонија" бр. 27/14, 199/14,
+                            48/15, 154/15, 5/16, 142/16, и 11/18)..
+                        </p>
+                        <a href="#"
+                            class="bg-[#0f172a] hover:bg-gray-800 text-white text-xs font-medium px-5 py-2.5 rounded self-start transition shadow-md">
+                            Види повеќе
+                        </a>
+                    </div>
+                    <div
+                        class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-6 flex flex-col h-full shadow-sm hover:bg-white/30 transition-all duration-300">
+                        <a href="#"
+                            class="text-white font-bold text-sm uppercase underline decoration-2 underline-offset-4 mb-4 hover:text-blue-100 transition leading-snug">
+                            ИНТЕРЕН ОГЛАС за пополнување на работни места со унапредување на припадници на затворска
+                            полиција
+                        </a>
+                        <p class="text-white/90 text-xs leading-relaxed mb-6 flex-grow text-justify">
+                            Врз основа на член 67 став 1 алинеја 2 од Законот за извршување на санкции („Службен весник
+                            на Република Македонија" бр. 99/19 и 220/19), чл.2 од Правилникот за формата и содржината на
+                            интерниот...
+                        </p>
+                        <a href="#"
+                            class="bg-[#0f172a] hover:bg-gray-800 text-white text-xs font-medium px-5 py-2.5 rounded self-start transition shadow-md">
+                            Види повеќе
+                        </a>
+                    </div>
+                    <div
+                        class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-6 flex flex-col h-full shadow-sm hover:bg-white/30 transition-all duration-300">
+                        <a href="#"
+                            class="text-white font-bold text-sm uppercase underline decoration-2 underline-offset-4 mb-4 hover:text-blue-100 transition leading-snug">
+                            Рок за поднесување пријави по Јавниот оглас за вработување на неопределено време на
+                            припадници на затворска полиција бр.1/2025 објавен на 01.08.2025 година
+                        </a>
+                        <p class="text-white/90 text-xs leading-relaxed mb-6 flex-grow text-justify">
+                            Пријавите заедно со документите по Јавниот оглас за вработување на неопределено време на
+                            2025 година...
+                        </p>
+                        <a href="#"
+                            class="bg-[#0f172a] hover:bg-gray-800 text-white text-xs font-medium px-5 py-2.5 rounded self-start transition shadow-md">
+                            Види повеќе
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- racni izrabotki -->
+    <section class="py-16 bg-gradient-to-b from-blue-50/50 to-white">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a]">Рачни изработки</h2>
+                <a href="#"
+                    class="bg-[#315b96] hover:bg-blue-800 text-white px-4 md:px-6 py-2.5 rounded-md text-xs md:text-sm font-medium transition shadow-sm">
+                    Прочитај повеќе
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
+                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Tote Bags"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div
+                        class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
+                        <h3 class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4">Lorem
+                            Ipsum</h3>
+                        <p class="text-gray-200 text-xs leading-relaxed text-justify">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
+                    <img src="https://i.pinimg.com/originals/e2/d4/ea/e2d4ea50e776bebda5ac5bf283900b88.jpg" alt="Apron"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div
+                        class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
+                        <h3 class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4">Lorem
+                            Ipsum</h3>
+                        <p class="text-gray-200 text-xs leading-relaxed text-justify">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
+                    <img src="https://www.agiftofwood.com/images/Group_1.JPG" alt="Shirt"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div
+                        class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
+                        <h3 class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4">Lorem
+                            Ipsum</h3>
+                        <p class="text-gray-200 text-xs leading-relaxed text-justify">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- galerija -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a] mb-10">Галерија</h2>
+
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-4">
+
+                <div
+                    class="relative h-[160px] md:h-[220px] rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Рачни изработки"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div
+                        class="absolute bottom-0 left-0 w-full h-1/3 bg-black/50 backdrop-blur-md flex items-center justify-center">
+                        <h3 class="text-white text-xs md:text-sm font-bold tracking-wide uppercase">Рачни изработки</h3>
+                    </div>
+                </div>
+
+                <div
+                    class="relative h-[160px] md:h-[220px] rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Активности"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div
+                        class="absolute bottom-0 left-0 w-full h-1/3 bg-black/50 backdrop-blur-md flex items-center justify-center">
+                        <h3 class="text-white text-xs md:text-sm font-bold tracking-wide uppercase">Активности</h3>
+                    </div>
+                </div>
+
+                <div
+                    class="relative h-[160px] md:h-[220px] rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Настани"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div
+                        class="absolute bottom-0 left-0 w-full h-1/3 bg-black/50 backdrop-blur-md flex items-center justify-center">
+                        <h3 class="text-white text-xs md:text-sm font-bold tracking-wide uppercase">Настани</h3>
+                    </div>
+                </div>
+
+                <div
+                    class="relative h-[160px] md:h-[220px] rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1555656736-d8bb3093fcba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Установа"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div
+                        class="absolute bottom-0 left-0 w-full h-1/3 bg-black/50 backdrop-blur-md flex items-center justify-center">
+                        <h3 class="text-white text-xs md:text-sm font-bold tracking-wide uppercase">Установа</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
+
+                <div
+                    class="relative h-[120px] md:h-[280px] rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Gallery image 1"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div
+                    class="relative h-[120px] md:h-[280px] rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Gallery image 2"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div
+                    class="relative h-[120px] md:h-[280px] rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Gallery image 3"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div
+                    class="relative h-[120px] md:h-[280px] rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Gallery image 4"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div
+                    class="relative h-[120px] md:h-[280px] rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Gallery image 5"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div
+                    class="relative h-[120px] md:h-[280px] rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Gallery image 6"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- resursi delot -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="resources-grid grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 lg:gap-12">
+
+                <div class="flex flex-col items-center">
+                    <div class="h-36 md:h-48 mb-6 flex items-end justify-center w-full">
+                        <img src="./images/regulativa.png" alt="Регулатива Илустрација"
+                            class="max-h-full object-contain opacity-80 hover:-translate-y-2 transition-transform duration-300">
+                    </div>
+                    <div class="bg-[#6a8bce] w-full rounded-2xl p-8 text-center text-white shadow-md flex-grow">
+                        <h3 class="text-lg font-bold uppercase tracking-wider mb-6">Регулатива</h3>
+                        <ul class="space-y-3 text-xs md:text-sm font-semibold uppercase tracking-wide">
+                            <li><a href="#"
+                                    class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition">Закони</a>
+                            </li>
+                            <li><a href="#"
+                                    class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition">Правилници</a>
+                            </li>
+                            <li><a href="#"
+                                    class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition">Упатство
+                                    и протоколи</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="h-36 md:h-48 mb-6 flex items-end justify-center w-full">
+                        <img src="./images/resursi.png" alt="Ресурси Илустрација"
+                            class="max-h-full object-contain opacity-80 hover:-translate-y-2 transition-transform duration-300">
+                    </div>
+                    <div class="bg-[#6a8bce] w-full rounded-2xl p-8 text-center text-white shadow-md flex-grow">
+                        <h3 class="text-lg font-bold uppercase tracking-wider mb-6">Ресурси</h3>
+                        <ul class="space-y-3 text-xs md:text-sm font-semibold uppercase tracking-wide">
+                            <li><a href="#"
+                                    class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition">Јавни
+                                    набавки</a></li>
+                            <li><a href="#"
+                                    class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition">Буџет</a>
+                            </li>
+                            <li><a href="#"
+                                    class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition">Извештаи</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="h-36 md:h-48 mb-6 flex items-end justify-center w-full">
+                        <img src="./images/odnosi.png" alt="Односи со јавноста Илустрација"
+                            class="max-h-full object-contain opacity-80 hover:-translate-y-2 transition-transform duration-300">
+                    </div>
+                    <div class="bg-[#6a8bce] w-full rounded-2xl p-8 text-center text-white shadow-md flex-grow">
+                        <h3 class="text-lg font-bold uppercase tracking-wider mb-6">Односи со јавноста</h3>
+                        <ul class="space-y-3 text-xs md:text-sm font-semibold uppercase tracking-wide">
+                            <li><a href="#"
+                                    class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition">Информации
+                                    од јавен карактер</a></li>
+                            <li><a href="#"
+                                    class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition">Огласи</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- dvete kocki na krajot -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-6 bottom-boxes flex flex-col md:flex-row justify-center items-stretch gap-6">
+
+            <a href="tel:022580312"
+                class="bg-[#0f172a] hover:bg-slate-800 text-white rounded-xl px-6 md:px-8 py-6 flex justify-between items-center w-full md:w-[450px] shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                <span class="font-bold text-sm md:text-base">Пријави корупција</span>
+                <span class="font-bold text-sm md:text-base tracking-wide">02 25 80 312</span>
+            </a>
+
+            <a href="#"
+                class="bg-[#0f172a] hover:bg-slate-800 text-white rounded-xl px-6 md:px-8 py-6 flex items-center w-full md:w-[450px] shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                <span class="font-bold text-sm md:text-base leading-snug">
+                    Годишен план за спречување на<br />
+                    корупција
+                </span>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- footerot -->
+    <footer class="bg-[#315b96] py-12 border-t border-blue-800/30">
+
+        <!-- MOBILE footer (< md) -->
+        <div class="md:hidden flex flex-col items-center text-center text-white px-6 gap-5">
+            <img src="./images/logo.png" alt="Кпу Идризово Лого"
+                class="h-16 w-auto brightness-0 invert opacity-90 mb-2">
+
+            <a href="#" class="hover:text-blue-200 transition-colors text-sm">Дома</a>
+
+            <a href="#" class="hover:text-blue-200 transition-colors text-sm">За нас</a>
+            <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100">Историја</a>
+            <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100">Визија</a>
+            <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100">Мисија</a>
+            <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100">Активности</a>
+
+            <a href="#" class="hover:text-blue-200 transition-colors text-sm">Изработки</a>
+
+            <a href="#" class="hover:text-blue-200 transition-colors text-sm">Контакт</a>
+
+            <div class="flex items-center gap-3 text-blue-100 text-sm">
+                <i class="fa-solid fa-phone text-blue-200"></i>
+                <span>02 25 80 312</span>
+            </div>
+            <div class="flex items-center gap-3 text-blue-100 text-sm">
+                <i class="fa-regular fa-envelope text-blue-200"></i>
+                <span>kpuidrizovo@kpuidrizovo.gov.mk</span>
+            </div>
+            <div class="flex items-center gap-3 text-blue-100 text-sm">
+                <i class="fa-solid fa-location-dot text-blue-200"></i>
+                <span>ул.1 колонија Идризово бр.4A</span>
+            </div>
+
+            <a href="#"
+                class="mt-4 bg-[#0f172a] hover:bg-slate-800 text-white font-bold py-3 px-10 rounded-lg transition shadow-md">
+                Закажи посета
+            </a>
+        </div>
+
+        <!-- DESKTOP footer (>= md) -->
+        <div
+            class="hidden md:flex max-w-7xl mx-auto px-6 flex-col lg:flex-row justify-center items-start gap-10 lg:gap-16">
+
+            <div class="flex-shrink-0 mb-4 lg:mb-0">
+                <img src="./images/logo.png" alt="Кпу Идризово Лого" class="h-20 w-auto brightness-0 invert opacity-90">
+            </div>
+
+            <div class="grid grid-cols-5 gap-8 text-white text-sm w-full">
+
+                <div class="flex flex-col space-y-4">
+                    <a href="#" class="hover:text-blue-200 transition-colors">Дома</a>
+                </div>
+
+                <div class="flex flex-col space-y-4">
+                    <a href="#" class="hover:text-blue-200 transition-colors">За нас</a>
+                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100">Историја</a>
+                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100">Визија</a>
+                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100">Мисија</a>
+                </div>
+
+                <div class="flex flex-col space-y-4">
+                    <a href="#" class="hover:text-blue-200 transition-colors">Новости и соопштенија</a>
+                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100">Активности</a>
+                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100">Соопштенија</a>
+                </div>
+
+                <div class="flex flex-col space-y-4">
+                    <a href="#" class="hover:text-blue-200 transition-colors">Изработки</a>
+                </div>
+
+                <div class="flex flex-col space-y-4">
+                    <a href="#" class="hover:text-blue-200 transition-colors mb-1">Контакт</a>
+                    <div class="flex items-center space-x-3 text-blue-100">
+                        <i class="fa-solid fa-phone text-blue-200"></i>
+                        <span>02 25 80 312</span>
+                    </div>
+                    <div class="flex items-start space-x-3 text-blue-100">
+                        <i class="fa-regular fa-envelope text-blue-200 mt-0.5"></i>
+                        <span class="break-all">kpuidrizovo@kpuidrizovo.gov.mk</span>
+                    </div>
+                    <div class="flex items-center space-x-3 text-blue-100">
+                        <i class="fa-solid fa-location-dot text-blue-200"></i>
+                        <span>ул.1 колонија Идризово бр.4A</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="flex-shrink-0 mt-4 lg:mt-0 w-full lg:w-auto">
+                <a href="#"
+                    class="inline-block bg-[#0f172a] hover:bg-slate-800 text-white font-medium py-3 px-8 rounded-lg transition shadow-md whitespace-nowrap w-full lg:w-auto text-center">
+                    Закажи посета
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- za hamburger menito na maliot ekran -->
+    <script>
+        const btn = document.getElementById('hamburger-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('open');
+        });
+        // Close menu when a link is clicked
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => menu.classList.remove('open'));
+        });
+    </script>
 </body>
+
 </html>
