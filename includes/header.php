@@ -99,10 +99,10 @@
         </div>
         
         <div class="topbar-right w-full md:w-1/2 flex justify-center md:justify-end items-center gap-4 md:gap-6 md:pl-10">
-            <span class="hidden md:flex items-center gap-2 hover:text-gray-200 transition cursor-pointer">
-                <i class="fa-solid fa-location-dot text-blue-200"></i>
-                <span>ул.1 колонија Идризово бр.4А</span>
-            </span>
+           <a href="https://maps.google.com/?q=КПУ+Идризово" target="_blank" rel="noopener noreferrer" class="hidden md:flex items-center gap-2 hover:text-gray-200 transition cursor-pointer">
+    <i class="fa-solid fa-location-dot text-blue-200"></i>
+    <span>ул.1 колонија Идризово бр.4А</span>
+</a>
 
             <div class="relative flex items-center justify-center">
                 
@@ -155,31 +155,35 @@
                 <img src="./images/logo.png" />
             </div>
             <ul class="hidden md:flex space-x-6 font-medium">
-                <li class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-50 font-bold"><a href="#" data-mk="Почетна" data-sq="Kreu" data-en="Home">Почетна</a>
+                <li class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-full hover:before:w-full before:bg-white before:transition-all before:duration-500 font-bold"><a href="#" data-mk="Почетна" data-sq="Kreu" data-en="Home">Почетна</a>
                 </li>
                 <li><a href="#"
                         class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500"
                         data-mk="За нас" data-sq="Rreth nesh" data-en="About us">За нас</a></li>
                 <li class="relative flex items-center cursor-pointer">
+                    
                     <button id="novosti-btn" onclick="toggleNovosti(event)"
-                        class="flex items-center gap-x-1 px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500">
+                        class="flex items-center gap-x-1 px-2 py-1 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500 focus:outline-none">
                         <span data-mk="Новости и соопштенија" data-sq="Lajme dhe njoftime"
                             data-en="News and announcements">Новости и соопштенија</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
+                        <svg class="w-4 h-4 transition-transform duration-200" id="novosti-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
-                    <div id="novosti-dropdown"
-                        class="absolute top-full left-0 mt-3 w-52 bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden z-50"
+                
+                   <div id="novosti-dropdown"
+                        class="absolute top-full left-0 mt-3 w-full bg-sky-600 rounded-lg shadow-xl overflow-hidden z-50 border border-blue-900"
                         style="display:none;">
+                        
                         <a href="#"
-                            class="block px-5 py-3 text-gray-800 text-sm font-medium hover:bg-sky-50 hover:text-sky-700 transition border-b border-gray-100"
+                            class="block px-4 py-3 text-white text-sm font-medium hover:bg-[#0f172a] transition border-b border-white/30 text-center"
                             data-mk="Активности" data-sq="Aktivitete" data-en="Activities">Активности</a>
+                            
                         <a href="#"
-                            class="block px-5 py-3 text-gray-800 text-sm font-medium hover:bg-sky-50 hover:text-sky-700 transition"
+                            class="block px-4 py-3 text-white text-sm font-medium hover:bg-[#0f172a] transition text-center"
                             data-mk="Соопштенија" data-sq="Njoftime" data-en="Announcements">Соопштенија</a>
                     </div>
+                
                 </li>
                 <li><a href="#"
                         class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500"
