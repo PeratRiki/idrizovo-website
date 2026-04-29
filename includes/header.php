@@ -224,8 +224,7 @@
                         data-mk="Изработки" data-sq="Punime" data-en="Crafts">Изработки</a></li>
                 <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
                         data-mk="Контакт" data-sq="Kontakt" data-en="Contact">Контакт</a></li>
-                <li class="px-6 py-3"><button
-                        class="bg-sky-950 text-white px-5 py-2 rounded-md font-bold hover:bg-black transition w-full"
+                <li class="px-6 py-3"><button class="bg-sky-950 text-white px-5 py-2 rounded-md font-bold hover:bg-black transition w-full"
                         data-mk="Закажи посета" data-sq="Cakto vizitë" data-en="Book a visit">Закажи посета</button>
                 </li>
             </ul>
