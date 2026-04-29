@@ -1,234 +1,19 @@
-<!DOCTYPE html>
-<html lang="mk">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>КПУ Идризово</title>
-    <link href="./src/output.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/32438cfe82.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        #mobile-menu {
-            display: none;
-        }
-
-        #mobile-menu.open {
-            display: block;
-        }
-
-        #lang-dropdown {
-            display: none;
-        }
-
-        #lang-dropdown.open {
-            display: block;
-        }
-
-        @media (max-width: 767px) {
-            .topbar-wrap {
-                flex-direction: column;
-                gap: 6px;
-                align-items: flex-start;
-                font-size: 10px;
-            }
-
-            .topbar-wrap .topbar-left,
-            .topbar-wrap .topbar-right {
-                flex-direction: column;
-                gap: 4px;
-                width: 100%;
-                border: none !important;
-                padding: 0 !important;
-            }
-
-            .hero-section {
-                height: 420px !important;
-            }
-
-            .hero-section h1 {
-                font-size: 3rem !important;
-            }
-
-            .hero-section p {
-                font-size: 1rem !important;
-            }
-
-            .scroll-top-btn {
-                display: none !important;
-            }
-
-            .vesnik-img {
-                min-height: 200px !important;
-            }
-
-            .resources-grid {
-                gap: 24px;
-            }
-
-            .bottom-boxes {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .bottom-boxes a {
-                width: 100% !important;
-            }
-        }
-    </style>
-</head>
+<?php require_once 'includes/header.php'; ?>
 
 <body class="bg-gray-50 text-gray-900">
-
-    <!-- TOP BAR -->
-    <div class="bg-sky-600 text-white text-xs py-3 border-b border-white/20">
-        <div class="max-w-7xl mx-auto px-6 md:flex topbar-wrap hidden md:flex-row items-center font-light">
-            <div
-                class="topbar-left w-full md:w-1/2 flex justify-between items-center md:pr-10 md:border-r md:border-dashed md:border-blue-300/50 py-2 md:py-0">
-                <span class="flex items-center gap-2 hover:text-gray-200 transition cursor-pointer">
-                    <i class="fa-solid fa-phone text-blue-200"></i> 02 25 80 312
-                </span>
-                <span class="flex items-center gap-2 hover:text-gray-200 transition cursor-pointer">
-                    <i class="fa-regular fa-envelope text-blue-200"></i>
-                    <span class="hidden sm:inline">kpuidrizovo@kpuidrizovo.gov.mk</span>
-                    <span class="sm:hidden">Email</span>
-                </span>
-            </div>
-            <div class="topbar-right w-full md:w-1/2 flex justify-between items-center md:pl-10 py-2 md:py-0">
-                <span class="flex items-center gap-2 hover:text-gray-200 transition cursor-pointer">
-                    <i class="fa-solid fa-location-dot text-blue-200"></i>
-                    <span class="hidden sm:inline" data-mk="ул.1 колонија Идризово бр.4А"
-                        data-sq="rr.1 kolonia Idrizovë nr.4А" data-en="st.1 Idrizovo Colony no.4A">ул.1 колонија
-                        Идризово бр.4А</span>
-                    <span class="sm:hidden" data-mk="Идризово бр.4А" data-sq="Idrizovë nr.4А"
-                        data-en="Idrizovo no.4A">Идризово бр.4А</span>
-                </span>
-                <!-- GLOBE + DROPDOWN -->
-                <div class="relative">
-                    <button id="lang-btn"
-                        class="hover:text-gray-200 transition cursor-pointer flex items-center gap-1.5 px-2 py-1 rounded hover:bg-sky-700">
-                        <i class="fa-solid fa-globe text-lg"></i>
-                        <span id="lang-label" class="text-xs font-bold tracking-wide">МК</span>
-                        <i class="fa-solid fa-chevron-down text-[10px]"></i>
-                    </button>
-                    <div id="lang-dropdown"
-                        class="cursor-pointer absolute right-0 top-full mt-2 bg-white rounded-xl shadow-2xl overflow-hidden z-20 w-36 border border-gray-100">
-                        <button onclick="setLang('mk')"
-                            class="cursor-pointer w-full text-left px-4 py-3 text-gray-800 text-sm font-medium hover:bg-sky-50 flex items-center gap-3 transition">
-                            <span class="text-base">🇲🇰</span> Македонски
-                        </button>
-                        <div class="border-t border-gray-100"></div>
-                        <button onclick="setLang('sq')"
-                            class="cursor-pointer w-full text-left px-4 py-3 text-gray-800 text-sm font-medium hover:bg-sky-50 flex items-center gap-3 transition">
-                            <span class="text-base">🇦🇱</span> Shqip
-                        </button>
-                        <div class="border-t border-gray-100"></div>
-                        <button onclick="setLang('en')"
-                            class="cursor-pointer w-full text-left px-4 py-3 text-gray-800 text-sm font-medium hover:bg-sky-50 flex items-center gap-3 transition">
-                            <span class="text-base">🇬🇧</span> English
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- NAVBAR -->
-    <nav class="bg-sky-600 text-white px-4 md:px-20 py-4 flex justify-between items-center shadow-md relative">
-        <div class="flex items-center space-x-4 md:space-x-8">
-            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                <img src="./images/logo.png" />
-            </div>
-            <ul class="hidden md:flex space-x-6 font-medium">
-                <li class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-50 font-bold"><a href="#" data-mk="Дома" data-sq="Kreu" data-en="Home">Дома</a>
-                </li>
-                <li><a href="#"
-                        class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500"
-                        data-mk="За нас" data-sq="Rreth nesh" data-en="About us">За нас</a></li>
-                <li class="relative flex items-center cursor-pointer">
-                    <button id="novosti-btn" onclick="toggleNovosti(event)"
-                        class="flex items-center gap-x-1 px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500">
-                        <span data-mk="Новости и соопштенија" data-sq="Lajme dhe njoftime"
-                            data-en="News and announcements">Новости и соопштенија</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                        </svg>
-                    </button>
-                    <div id="novosti-dropdown"
-                        class="absolute top-full left-0 mt-3 w-52 bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden z-50"
-                        style="display:none;">
-                        <a href="#"
-                            class="block px-5 py-3 text-gray-800 text-sm font-medium hover:bg-sky-50 hover:text-sky-700 transition border-b border-gray-100"
-                            data-mk="Активности" data-sq="Aktivitete" data-en="Activities">Активности</a>
-                        <a href="#"
-                            class="block px-5 py-3 text-gray-800 text-sm font-medium hover:bg-sky-50 hover:text-sky-700 transition"
-                            data-mk="Соопштенија" data-sq="Njoftime" data-en="Announcements">Соопштенија</a>
-                    </div>
-                </li>
-                <li><a href="#"
-                        class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500"
-                        data-mk="Изработки" data-sq="Punime" data-en="Crafts">Изработки</a></li>
-                <li><a href="#"
-                        class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500"
-                        data-mk="Контакт" data-sq="Kontakt" data-en="Contact">Контакт</a></li>
-            </ul>
-        </div>
-        <div class="flex items-center space-x-2 md:space-x-4">
-            <button class="p-2 hidden md:block">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-            </button>
-            <button
-                class="bg-sky-950 text-white px-4 md:px-6 py-2 rounded-md font-bold hover:bg-black transition text-sm md:text-base hidden md:block"
-                data-mk="Закажи посета" data-sq="Cakto vizitë" data-en="Book a visit">Закажи посета</button>
-            <button id="hamburger-btn" class="md:hidden p-2 rounded hover:bg-sky-700 transition">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                    </path>
-                </svg>
-            </button>
-        </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="absolute top-full left-0 right-0 bg-sky-700 z-50 shadow-lg">
-            <ul class="flex flex-col font-medium text-sm">
-                <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
-                        data-mk="Дома" data-sq="Kreu" data-en="Home">Дома</a></li>
-                <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
-                        data-mk="За нас" data-sq="Rreth nesh" data-en="About us">За нас</a></li>
-                <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
-                        data-mk="Новости и соопштенија" data-sq="Lajme dhe njoftime"
-                        data-en="News and announcements">Новости и соопштенија</a></li>
-                <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
-                        data-mk="Изработки" data-sq="Punime" data-en="Crafts">Изработки</a></li>
-                <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
-                        data-mk="Контакт" data-sq="Kontakt" data-en="Contact">Контакт</a></li>
-                <li class="px-6 py-3"><button
-                        class="bg-sky-950 text-white px-5 py-2 rounded-md font-bold hover:bg-black transition w-full"
-                        data-mk="Закажи посета" data-sq="Cakto vizitë" data-en="Book a visit">Закажи посета</button>
-                </li>
-            </ul>
-        </div>
-    </nav>
 
     <!-- HERO -->
     <section class="hero-section relative h-[600px] flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0"><img src="./images/homebg.png" alt="Building"
                 class="w-full h-full object-cover"></div>
         <div class="container mx-auto px-4 md:px-20 z-10">
-            <div class="max-w-2xl p-6 md:p-8 rounded-lg">
+            <div class="max-w-2xl p-3 md:p-8 rounded-lg">
                 <h1 class="text-5xl md:text-7xl font-extrabold text-[#1e3a8a] leading-tight">КПУ<br>ИДРИЗОВО</h1>
-                <p class="text-base md:text-xl font-bold text-gray-800 mt-4 mb-8" data-mk="со отворено одделение Велес"
+                <p class="text-base md:text-xl font-bold text-gray-800 mt-3 mb-8" data-mk="со отворено одделение Велес"
                     data-sq="me degën e hapur Veles" data-en="with open department Veles">со отворено одделение Велес
                 </p>
                 <a href="#"
-                    class="bg-[#3b71ca] text-white px-6 md:px-8 py-3 rounded-md font-bold text-base md:text-lg hover:bg-[#2b5a9e] transition shadow-lg inline-block"
+                    class="bg-[#3b71ca] mt-10 text-white px-6 md:px-8 py-3 rounded-md font-bold text-base md:text-lg hover:bg-[#2b5a9e] transition shadow-lg inline-block"
                     data-mk="Повеќе за нас" data-sq="Më shumë rreth nesh" data-en="More about us">Повеќе за нас</a>
             </div>
         </div>
@@ -245,12 +30,11 @@
     <!-- AKTIVNOSTI -->
     <section class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-center mb-10">
-                <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a]" data-mk="Активности" data-sq="Aktivitete"
-                    data-en="Activities">Активности</h2>
-                <a href="#"
-                    class="bg-[#315b96] hover:bg-blue-800 text-white px-4 md:px-6 py-2.5 rounded-md text-xs md:text-sm font-medium transition shadow-sm"
-                    data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">Прочитај повеќе</a>
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a]" data-mk="Активности" data-sq="Aktivitete" data-en="Activities">Активности</h2>
+                 <a href="#"
+       class="bg-[#315b96] hover:bg-blue-800 text-white px-4 py-3 rounded-md text-xl md:text-2xl font-bold transition shadow-sm flex items-center justify-center w-full md:flex-1 md:ml-10"
+       data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">Прочитај повеќе</a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="relative h-[320px] md:h-[380px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
@@ -402,7 +186,6 @@
             </div>
         </div>
     </section>
-
     <!-- NOVOSTI -->
     <section class="py-16 bg-gradient-to-br from-[#c8dcf0] via-[#85a8d0] to-[#517bb2]">
         <div class="max-w-7xl mx-auto px-6">
@@ -543,12 +326,12 @@
     <!-- RACNI IZRABOTKI -->
     <section class="py-16 bg-gradient-to-b from-blue-50/50 to-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-center mb-10">
-                <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a]" data-mk="Рачни изработки"
-                    data-sq="Punime me dorë" data-en="Handmade crafts">Рачни изработки</h2>
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-6 mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a]" data-mk="Рачни изработки" data-sq="Punime me dorë" data-en="Handmade crafts">Рачни изработки</h2>
+                
                 <a href="#"
-                    class="bg-[#315b96] hover:bg-blue-800 text-white px-4 md:px-6 py-2.5 rounded-md text-xs md:text-sm font-medium transition shadow-sm"
-                    data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">Прочитај повеќе</a>
+                   class="bg-[#315b96] hover:bg-blue-800 text-white px-5 py-4 rounded-md text-xl md:text-2xl font-bold transition shadow-sm flex items-center justify-center w-full md:flex-1 md:ml-10"
+                   data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">Прочитај повеќе</a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
@@ -772,161 +555,9 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-[#315b96] py-12 border-t border-blue-800/30">
-        <!-- MOBILE -->
-        <div class="md:hidden flex flex-col items-center text-center text-white px-6 gap-5">
-            <img src="./images/logo.png" alt="КПУ Идризово" class="h-16 w-auto brightness-0 invert opacity-90 mb-2">
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm" data-mk="Дома" data-sq="Kreu"
-                data-en="Home">Дома</a>
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm" data-mk="За нас" data-sq="Rreth nesh"
-                data-en="About us">За нас</a>
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Историја"
-                data-sq="Historia" data-en="History">Историја</a>
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Визија"
-                data-sq="Vizioni" data-en="Vision">Визија</a>
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Мисија"
-                data-sq="Misioni" data-en="Mission">Мисија</a>
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Активности"
-                data-sq="Aktivitete" data-en="Activities">Активности</a>
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm" data-mk="Изработки" data-sq="Punime"
-                data-en="Crafts">Изработки</a>
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm" data-mk="Контакт" data-sq="Kontakt"
-                data-en="Contact">Контакт</a>
-            <div class="flex items-center gap-3 text-blue-100 text-sm"><i
-                    class="fa-solid fa-phone text-blue-200"></i><span>02 25 80 312</span></div>
-            <div class="flex items-center gap-3 text-blue-100 text-sm"><i
-                    class="fa-regular fa-envelope text-blue-200"></i><span>kpuidrizovo@kpuidrizovo.gov.mk</span></div>
-            <div class="flex items-center gap-3 text-blue-100 text-sm"><i
-                    class="fa-solid fa-location-dot text-blue-200"></i><span data-mk="ул.1 колонија Идризово бр.4A"
-                    data-sq="rr.1 kolonia Idrizovë nr.4A" data-en="st.1 Idrizovo Colony no.4A">ул.1 колонија Идризово
-                    бр.4A</span></div>
-            <a href="#"
-                class="mt-4 bg-[#0f172a] hover:bg-slate-800 text-white font-bold py-3 px-10 rounded-lg transition shadow-md"
-                data-mk="Закажи посета" data-sq="Cakto vizitë" data-en="Book a visit">Закажи посета</a>
-        </div>
-        <!-- DESKTOP -->
-        <div
-            class="hidden md:flex max-w-7xl mx-auto px-6 flex-col lg:flex-row justify-center items-start gap-10 lg:gap-16">
-            <div class="flex-shrink-0 mb-4 lg:mb-0"><img src="./images/logo.png" alt="КПУ Идризово"
-                    class="h-20 w-auto brightness-0 invert opacity-90"></div>
-            <div class="grid grid-cols-5 gap-8 text-white text-sm w-full">
-                <div class="flex flex-col space-y-4"><a href="#" class="hover:text-blue-200 transition-colors"
-                        data-mk="Дома" data-sq="Kreu" data-en="Home">Дома</a></div>
-                <div class="flex flex-col space-y-4">
-                    <a href="#" class="hover:text-blue-200 transition-colors" data-mk="За нас" data-sq="Rreth nesh"
-                        data-en="About us">За нас</a>
-                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100" data-mk="Историја"
-                        data-sq="Historia" data-en="History">Историја</a>
-                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100" data-mk="Визија"
-                        data-sq="Vizioni" data-en="Vision">Визија</a>
-                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100" data-mk="Мисија"
-                        data-sq="Misioni" data-en="Mission">Мисија</a>
-                </div>
-                <div class="flex flex-col space-y-4">
-                    <a href="#" class="hover:text-blue-200 transition-colors" data-mk="Новости и соопштенија"
-                        data-sq="Lajme dhe njoftime" data-en="News and announcements">Новости и соопштенија</a>
-                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100" data-mk="Активности"
-                        data-sq="Aktivitete" data-en="Activities">Активности</a>
-                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100" data-mk="Соопштенија"
-                        data-sq="Njoftime" data-en="Announcements">Соопштенија</a>
-                </div>
-                <div class="flex flex-col space-y-4"><a href="#" class="hover:text-blue-200 transition-colors"
-                        data-mk="Изработки" data-sq="Punime" data-en="Crafts">Изработки</a></div>
-                <div class="flex flex-col space-y-4">
-                    <a href="#" class="hover:text-blue-200 transition-colors mb-1" data-mk="Контакт" data-sq="Kontakt"
-                        data-en="Contact">Контакт</a>
-                    <div class="flex items-center space-x-3 text-blue-100"><i
-                            class="fa-solid fa-phone text-blue-200"></i><span>02 25 80 312</span></div>
-                    <div class="flex items-start space-x-3 text-blue-100"><i
-                            class="fa-regular fa-envelope text-blue-200 mt-0.5"></i><span
-                            class="break-all">kpuidrizovo@kpuidrizovo.gov.mk</span></div>
-                    <div class="flex items-center space-x-3 text-blue-100"><i
-                            class="fa-solid fa-location-dot text-blue-200"></i><span
-                            data-mk="ул.1 колонија Идризово бр.4A" data-sq="rr.1 kolonia Idrizovë nr.4A"
-                            data-en="st.1 Idrizovo Colony no.4A">ул.1 колонија Идризово бр.4A</span></div>
-                </div>
-            </div>
-            <div class="flex-shrink-0 mt-4 lg:mt-0 w-full lg:w-auto">
-                <a href="#"
-                    class="inline-block bg-[#0f172a] hover:bg-slate-800 text-white font-medium py-3 px-8 rounded-lg transition shadow-md whitespace-nowrap w-full lg:w-auto text-center"
-                    data-mk="Закажи посета" data-sq="Cakto vizitë" data-en="Book a visit">Закажи посета</a>
-            </div>
-        </div>
-    </footer>
+    
 
-    <!-- SCROLL TO TOP -->
-    <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})"
-        style="display:none;position:fixed;bottom:28px;right:28px;z-index:999;width:52px;height:52px;border-radius:50%;background:#2b5a9e;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.25);align-items:center;justify-content:center;">
-        <svg width="24" height="24" fill="none" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"
-            stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
-        </svg>
-    </button>
-
-    <script>
-        // HAMBURGER
-        document.getElementById('hamburger-btn').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('open');
-        });
-        document.getElementById('mobile-menu').querySelectorAll('a').forEach(l =>
-            l.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'))
-        );
-
-        // SCROLL TO TOP
-        const scrollBtn = document.getElementById('scrollTopBtn');
-        window.addEventListener('scroll', () => {
-            scrollBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
-        });
-
-        // NOVOSTI DROPDOWN
-        function toggleNovosti(e) {
-            e.stopPropagation();
-            const dd = document.getElementById('novosti-dropdown');
-            const isOpen = dd.style.display === 'block';
-            // close all dropdowns first
-            document.getElementById('lang-dropdown').classList.remove('open');
-            dd.style.display = isOpen ? 'none' : 'block';
-        }
-        document.addEventListener('click', () => {
-            const dd = document.getElementById('novosti-dropdown');
-            if (dd) dd.style.display = 'none';
-        });
-
-        // LANG DROPDOWN
-        const langBtn = document.getElementById('lang-btn');
-        const langDropdown = document.getElementById('lang-dropdown');
-        langBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langDropdown.classList.toggle('open');
-        });
-        document.addEventListener('click', () => langDropdown.classList.remove('open'));
-
-        // LANGUAGE SWITCHER
-        const langLabels = { mk: 'МК', sq: 'SQ', en: 'EN' };
-
-        function setLang(lang) {
-            localStorage.setItem('kpu-lang', lang);
-            document.getElementById('lang-label').textContent = langLabels[lang];
-            document.documentElement.lang = lang;
-
-            document.querySelectorAll('[data-mk]').forEach(el => {
-                const val = el.dataset[lang];
-                if (!val) return;
-                if (el.tagName === 'INPUT') {
-                    el.value = val;
-                } else {
-                    el.textContent = val;
-                }
-            });
-
-            langDropdown.classList.remove('open');
-        }
-
-        // Apply saved language on load
-        const saved = localStorage.getItem('kpu-lang') || 'mk';
-        if (saved !== 'mk') setLang(saved);
-    </script>
+    <?php require_once 'includes/footer.php'; ?>
+    <script src="./script.js"></script>
 </body>
-
 </html>
