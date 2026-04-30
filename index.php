@@ -29,13 +29,12 @@
 
     <!-- AKTIVNOSTI -->
     <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-10">
-                <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a]" data-mk="Активности" data-sq="Aktivitete" data-en="Activities">Активности</h2>
-                 <a href="#"
-       class="bg-[#315b96] hover:bg-blue-800 text-white px-4 py-3 rounded-md text-xl md:text-2xl font-bold transition shadow-sm flex items-center justify-center w-full md:flex-1 md:ml-10"
-       data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">Прочитај повеќе</a>
+            <div class="flex flex-col px-4 md:flex-row justify-between md:items-center gap-4 mb-10 max-w-7xl mx-auto md:w-full">
+                <h2 class="text-3xl  md:text-4xl font-bold text-[#0f172a]" data-mk="Активности" data-sq="Aktivitete" data-en="Activities">Активности</h2>
+                    <a href="#" class="bg-[#3b71ca] self-start hover:bg-[#2b5a9e] text-white px-6 md:px-8 py-3 rounded-md text-base md:text-lg font-bold transition shadow-lg flex items-center gap-2 w-fit" data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">
+                Прочитај повеќе </a>
             </div>
+        </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="relative h-[320px] md:h-[380px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
                     <img src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
