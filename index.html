@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Новости</title>
+  <link href="./src/output.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gradient-to-b from-[#e6effa] via-[#7ea4db] to-[#4f78b8] text-white font-sans">
+
+<div class="fixed top-4 right-6 flex gap-2 z-50">
+  <button onclick="setLanguage('mk')" class="lang-btn">MK</button>
+  <button onclick="setLanguage('sq')" class="lang-btn">AL</button>
+  <button onclick="setLanguage('en')" class="lang-btn">EN</button>
+</div>
+
+<section class="hero">
+  <img src="./../ChatGPT Image Apr 30, 2026, 04_55_18 PM.png" alt="Новости" class="hero-img">
+</section>
+
+<main class="w-[86%] max-w-[1200px] mx-auto pt-24 pb-20">
+
+  <section class="mb-20">
+    <h2 data-key="new" class="section-title"></h2>
+
+    <div class="news-grid">
+      <article class="card card-wide">
+        <h3 data-key="n1" class="card-title"></h3>
+        <p data-key="n1t" class="card-text"></p>
+        <a href="article.html?id=1" data-key="more" class="btn"></a>
+      </article>
+
+      <article class="card card-tall">
+        <h3 data-key="n2" class="card-title"></h3>
+        <p data-key="n2t" class="card-text"></p>
+        <a href="article.html?id=2" data-key="more" class="btn"></a>
+      </article>
+
+      <article class="card card-tall">
+        <h3 data-key="n3" class="card-title"></h3>
+        <p data-key="n3t" class="card-text"></p>
+        <a href="article.html?id=3" data-key="more" class="btn"></a>
+      </article>
+
+      <article class="card">
+        <h3 data-key="n4" class="card-title"></h3>
+        <p data-key="n4t" class="card-text"></p>
+        <a href="article.html?id=4" data-key="more" class="btn"></a>
+      </article>
+
+      <article class="card">
+        <h3 data-key="n5" class="card-title"></h3>
+        <p data-key="n5t" class="card-text"></p>
+        <a href="article.html?id=5" data-key="more" class="btn"></a>
+      </article>
+
+      <article class="card card-wide">
+        <h3 data-key="n6" class="card-title"></h3>
+        <p data-key="n6t" class="card-text"></p>
+        <a href="article.html?id=6" data-key="more" class="btn"></a>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2 data-key="old" class="section-title"></h2>
+
+    <div class="news-grid">
+      <article class="card card-tall">
+        <h3 data-key="o1" class="card-title"></h3>
+        <p data-key="o1t" class="card-text"></p>
+        <a href="article.html?id=7" data-key="more" class="btn"></a>
+      </article>
+
+      <article class="card card-tall">
+        <h3 data-key="o2" class="card-title"></h3>
+        <p data-key="o2t" class="card-text"></p>
+        <a href="article.html?id=8" data-key="more" class="btn"></a>
+      </article>
+
+      <article class="card card-wide">
+        <h3 data-key="o3" class="card-title"></h3>
+        <p data-key="o3t" class="card-text"></p>
+        <a href="article.html?id=9" data-key="more" class="btn"></a>
+      </article>
+
+      <article class="card card-wide">
+        <h3 data-key="o4" class="card-title"></h3>
+        <p data-key="o4t" class="card-text"></p>
+        <a href="article.html?id=10" data-key="more" class="btn"></a>
+      </article>
+
+      <article class="card card-tall">
+        <h3 data-key="o5" class="card-title"></h3>
+        <p data-key="o5t" class="card-text"></p>
+        <a href="article.html?id=11" data-key="more" class="btn"></a>
+      </article>
+
+      <article class="card card-tall">
+        <h3 data-key="o6" class="card-title"></h3>
+        <p data-key="o6t" class="card-text"></p>
+        <a href="article.html?id=12" data-key="more" class="btn"></a>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
