@@ -30,11 +30,9 @@
     <!-- AKTIVNOSTI -->
     <section class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-10">
-                <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a]" data-mk="Активности" data-sq="Aktivitete" data-en="Activities">Активности</h2>
-                <a href="#"
-                    class="bg-[#315b96] hover:bg-blue-800 text-white px-4 md:px-6 py-2.5 rounded-md text-xs md:text-sm font-medium transition shadow-sm flex items-center gap-2"
-                    data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">Прочитај повеќе</a>
+            <div class="flex flex-col px-4 md:flex-row justify-between md:items-center gap-4 mb-10 md:w-full">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#0f172a]" data-mk="Активности" data-sq="Aktivitete" data-en="Activities">Активности</h2>
+                <a href="#" class="bg-[#3b71ca] self-start hover:bg-[#2b5a9e] text-white px-6 md:px-8 py-3 rounded-md text-base md:text-lg font-bold transition shadow-lg flex items-center gap-2 w-fit" data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">Прочитај повеќе</a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="relative h-[320px] md:h-[380px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
