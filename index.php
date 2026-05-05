@@ -32,9 +32,9 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-10">
                 <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a]" data-mk="Активности" data-sq="Aktivitete" data-en="Activities">Активности</h2>
-                 <a href="#"
-       class="bg-[#315b96] hover:bg-blue-800 text-white px-4 py-3 rounded-md text-xl md:text-2xl font-bold transition shadow-sm flex items-center justify-center w-full md:flex-1 md:ml-10"
-       data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">Прочитај повеќе</a>
+                <a href="#"
+                    class="bg-[#315b96] hover:bg-blue-800 text-white px-4 md:px-6 py-2.5 rounded-md text-xs md:text-sm font-medium transition shadow-sm flex items-center gap-2"
+                    data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">Прочитај повеќе</a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="relative h-[320px] md:h-[380px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
@@ -328,10 +328,10 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-6 mb-10">
                 <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a]" data-mk="Рачни изработки" data-sq="Punime me dorë" data-en="Handmade crafts">Рачни изработки</h2>
-                
+
                 <a href="#"
-                   class="bg-[#315b96] hover:bg-blue-800 text-white px-5 py-4 rounded-md text-xl md:text-2xl font-bold transition shadow-sm flex items-center justify-center w-full md:flex-1 md:ml-10"
-                   data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">Прочитај повеќе</a>
+                    class="bg-[#315b96] hover:bg-blue-800 text-white px-5 py-4 rounded-md text-xl md:text-2xl font-bold transition shadow-sm flex items-center justify-center w-full md:flex-1 md:ml-10"
+                    data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">Прочитај повеќе</a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
@@ -555,9 +555,10 @@
         </div>
     </section>
 
-    
+
 
     <?php require_once 'includes/footer.php'; ?>
     <script src="./script.js"></script>
 </body>
+
 </html>
