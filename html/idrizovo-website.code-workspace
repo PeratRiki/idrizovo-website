@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../../repos/idrizovo-website"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Idrizovo"
+	}
+}
