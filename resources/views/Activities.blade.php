@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Активности</title>
-    <link rel="stylesheet" href="output.css">
-    
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 <body>
     <header>
@@ -187,7 +187,7 @@
     </header>
   <section class="relative h-[500px] md:h-[700px] w-full overflow-hidden font-sans">
     <img 
-      src="../images/aktivnosti-bg.png" 
+      src="/images/aktivnosti-bg.png" 
       alt="Basketball background" 
       class="absolute inset-0 h-full w-full object-cover"
     />
@@ -227,7 +227,7 @@
     <div class="grid grid-cols-1 gap-6 md:grid-cols-4">
       
       <div class="group relative overflow-hidden rounded-3xl bg-slate-200 md:col-span-2 md:row-span-2 h-[400px] md:h-[600px]">
-        <img src="../images/chess-activity.jpg" alt="Шах" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        <img src="/images/chess-activity.jpg" alt="Шах" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 md:p-8 flex flex-col justify-end">
           <h3 class="mb-2 text-xl md:text-2xl font-bold text-white">Натпревар во шах</h3>
           <p class="mb-4 text-gray-200 text-sm max-w-sm">
@@ -238,7 +238,7 @@
       </div>
 
       <div class="group relative h-[250px] md:h-[290px] overflow-hidden rounded-3xl bg-slate-200">
-        <img src="../images/welding.jpg" alt="Заварување" class="h-full w-full object-cover" />
+        <img src="/images/welding.jpg" alt="Заварување" class="h-full w-full object-cover" />
         <div class="absolute inset-0 bg-black/50 p-6 flex flex-col justify-end">
           <h3 class="text-lg font-bold text-white">Заварување</h3>
           <p class="text-xs text-gray-300 mb-3">Активности за заварување каде што учесниците учат безбедно...</p>
@@ -247,7 +247,7 @@
       </div>
 
       <div class="group relative h-[250px] md:h-[290px] overflow-hidden rounded-3xl bg-slate-200">
-        <img src="../images/wood-carving.jpg" alt="Резба" class="h-full w-full object-cover" />
+        <img src="/images/wood-carving.jpg" alt="Резба" class="h-full w-full object-cover" />
         <div class="absolute inset-0 bg-black/50 p-6 flex flex-col justify-end">
           <h3 class="text-lg font-bold text-white">Резба</h3>
           <p class="text-xs text-gray-300 mb-3">Рачно изработени резби создадени со грижа...</p>
@@ -256,7 +256,7 @@
       </div>
 
       <div class="group relative h-[250px] md:h-[290px] overflow-hidden rounded-3xl bg-slate-200">
-        <img src="../images/carpentry.jpg" alt="Столарија" class="h-full w-full object-cover" />
+        <img src="/images/carpentry.jpg" alt="Столарија" class="h-full w-full object-cover" />
         <div class="absolute inset-0 bg-black/50 p-6 flex flex-col justify-end">
           <h3 class="text-lg font-bold text-white">Столарија</h3>
           <p class="text-xs text-gray-300 mb-3">Занает на работа со дрво за создавање...</p>
@@ -265,7 +265,7 @@
       </div>
 
       <div class="group relative h-[250px] md:h-[290px] overflow-hidden rounded-3xl bg-slate-200">
-        <img src="../images/electricity.jpg" alt="Електрика" class="h-full w-full object-cover" />
+        <img src="/images/electricity.jpg" alt="Електрика" class="h-full w-full object-cover" />
         <div class="absolute inset-0 bg-black/50 p-6 flex flex-col justify-end">
           <h3 class="text-lg font-bold text-white">Електрика</h3>
           <p class="text-xs text-gray-300 mb-3">Учење и извршување електрични задачи...</p>
@@ -282,7 +282,7 @@
       
       <div class="grid grid-cols-1 gap-6 md:col-span-2 sm:grid-cols-2">
         <div class="group relative h-[250px] overflow-hidden rounded-3xl bg-gray-100">
-          <img src="../images/vezenje.avif" class="h-full w-full object-cover" />
+          <img src="/images/vezenje.avif" class="h-full w-full object-cover" />
           <div class="absolute inset-0 bg-black/40 p-6 flex flex-col justify-end">
             <h3 class="text-lg font-bold text-white">Везење</h3>
             <p class="text-[10px] text-gray-200 mb-2">Везот ги подобрува креативноста...</p>
@@ -291,7 +291,7 @@
         </div>
 
         <div class="group relative h-[250px] overflow-hidden rounded-3xl bg-gray-100">
-          <img src="../images/painting.jpg" class="h-full w-full object-cover" />
+          <img src="/images/painting.jpg" class="h-full w-full object-cover" />
           <div class="absolute inset-0 bg-black/40 p-6 flex flex-col justify-end">
             <h3 class="text-lg font-bold text-white">Цртање</h3>
             <p class="text-[10px] text-gray-200 mb-2">Активности за цртање...</p>
@@ -300,7 +300,7 @@
         </div>
 
         <div class="group relative h-[250px] overflow-hidden rounded-3xl bg-gray-100">
-          <img src="../images/sewing.jpg" class="h-full w-full object-cover" />
+          <img src="/images/sewing.jpg" class="h-full w-full object-cover" />
           <div class="absolute inset-0 bg-black/40 p-6 flex flex-col justify-end">
             <h3 class="text-lg font-bold text-white">Шиење</h3>
             <p class="text-[10px] text-gray-200 mb-2">Активности за шиење...</p>
@@ -309,7 +309,7 @@
         </div>
 
         <div class="group relative h-[250px] overflow-hidden rounded-3xl bg-gray-100">
-          <img src="../images/painting-art.png" class="h-full w-full object-cover" />
+          <img src="/images/painting-art.png" class="h-full w-full object-cover" />
           <div class="absolute inset-0 bg-black/40 p-6 flex flex-col justify-end">
             <h3 class="text-lg font-bold text-white">Сликање</h3>
             <p class="text-[10px] text-gray-200 mb-2">Создавање уметнички дела...</p>
@@ -319,7 +319,7 @@
       </div>
 
       <div class="group relative overflow-hidden rounded-3xl bg-gray-200 md:col-span-2 h-[400px] md:h-auto md:min-h-[524px]">
-        <img src="../images/sport2.jpg" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        <img src="/images/sport2.jpg" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-8 md:p-10 flex flex-col justify-end">
           <h3 class="mb-3 text-2xl md:text-3xl font-bold text-white">Спорт</h3>
           <p class="mb-6 max-w-md text-sm text-gray-200">
@@ -429,6 +429,5 @@
   </div>
 
 </footer>
-<script src="./script.js"></script>
 </body>
 </html>

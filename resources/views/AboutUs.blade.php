@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>КПУ Идризово</title>
-    <link href="../src/output.css" rel="stylesheet" type = "text/css">
-    <script src="https://kit.fontawesome.com/32438cfe82.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -778,22 +776,5 @@
     </div>
 
     </footer>
-
-    <script src="./script.js"></script>
-    <script>
-    // Extend setLang to also swap input/textarea placeholders on this page
-    document.addEventListener('DOMContentLoaded', function () {
-        const _orig = window.setLang;
-        window.setLang = function (lang) {
-            if (typeof _orig === 'function') _orig(lang);
-            document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(function (el) {
-                el.placeholder = el.getAttribute('data-placeholder-' + lang);
-            });
-        };
-        // Apply saved language on load
-        const saved = localStorage.getItem('lang');
-        if (saved && saved !== 'mk') window.setLang(saved);
-    });
-    </script>
 </body>
 </html>

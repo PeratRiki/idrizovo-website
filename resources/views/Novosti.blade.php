@@ -4,9 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Новости и соопштенија – КПУ Идризово</title>
-  <link href="./src/output.css" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/32438cfe82.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
   <style>
     body { font-family: 'Inter', sans-serif; }
     #mobile-menu { display: none; }
@@ -113,7 +111,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <img src="./src/ChatGPT Image Apr 30, 2026, 04_55_18 PM.png" alt="Новости" class="hero-img">
+  <img src="/images/ChatGPT Image Apr 30, 2026, 04_55_18 PM.png" alt="Новости" class="hero-img">
 </section>
 
 <!-- CONTENT -->
