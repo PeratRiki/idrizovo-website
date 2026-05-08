@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Вест</title>
-  <link href="./src/output.css" rel="stylesheet">
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-gradient-to-b from-[#e6effa] via-[#7ea4db] to-[#4f78b8] text-white font-sans min-h-screen">

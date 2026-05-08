@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
     <title>Резба од дрво</title>
-    <script src="https://kit.fontawesome.com/aba845d803.js" crossorigin="anonymous"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-gradient-to-b from-blue-100 to-blue-300 min-h-screen p-4 flex flex-col items-center">
@@ -56,7 +55,7 @@
 
         <div class="bg-white/40 backdrop-blur-sm rounded-[1.5rem] overflow-hidden shadow-sm border border-white/20 flex flex-col">
             <div class="h-40 overflow-hidden">
-                <img src="./rezba3.jpg" alt="Proizvod" class="w-full h-full object-cover">
+                <img src="/images/rezba3.jpg" alt="Proizvod" class="w-full h-full object-cover">
             </div>
             
             <div class="p-4 space-y-2 flex-grow">
@@ -73,7 +72,7 @@
 
         <div class="bg-white/40 backdrop-blur-sm rounded-[1.5rem] overflow-hidden shadow-sm border border-white/20 flex flex-col">
             <div class="h-40 overflow-hidden">
-                <img src="./rezba4.jpg" alt="Proizvod" class="w-full h-full object-cover">
+                <img src="/images/rezba4.jpg" alt="Proizvod" class="w-full h-full object-cover">
             </div>
             <div class="p-4 space-y-2 flex-grow">
                 <h2 class="text-white font-bold text-sm">Lorem Ipsum</h2>
@@ -88,7 +87,7 @@
 
         <div class="bg-white/40 backdrop-blur-sm rounded-[1.5rem] overflow-hidden shadow-sm border border-white/20 flex flex-col">
             <div class="h-40 overflow-hidden">
-                <img src="./rezba2.jpg" alt="Proizvod" class="w-full h-full object-cover">
+                <img src="/images/rezba2.jpg" alt="Proizvod" class="w-full h-full object-cover">
             </div>
             
             <div class="p-4 space-y-2 flex-grow">
@@ -105,7 +104,7 @@
 
         <div class="bg-white/40 backdrop-blur-sm rounded-[1.5rem] overflow-hidden shadow-sm border border-white/20 flex flex-col">
             <div class="h-40 overflow-hidden">
-                <img src="./rezba1.jpg" alt="Proizvod" class="w-full h-full object-cover">
+                <img src="/images/rezba1.jpg" alt="Proizvod" class="w-full h-full object-cover">
             </div>
             <div class="p-4 space-y-2 flex-grow">
                 <h2 class="text-white font-bold text-sm">Lorem Ipsum</h2>

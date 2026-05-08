@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>КПУ Идризово</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/aba845d803.js" crossorigin="anonymous"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body id="racni-izrabotki" class="overflow-x-hidden">
 
 
-    <div class="bg-[url(./home.jpg)] h-screen bg-cover bg-center relative">
+    <div class="bg-[url(/images/home.jpg)] h-screen bg-cover bg-center relative">
         <div class="absolute inset-0 bg-black/30"></div>
         <h1 class="absolute top-1/4 left-10 md:top-40 md:left-40 text-5xl md:text-6xl font-bold text-white">Рачни</h1>
         <h1 class="absolute top-[35%] left-10 md:top-56 md:left-40 text-5xl md:text-6xl font-bold text-white">Изработки
@@ -48,13 +47,13 @@
 
     <div class="flex flex-col md:flex-row justify-between items-center my-16 md:m-28 px-5 gap-10">
         <div class="flex flex-row gap-2 w-full md:w-1/2 h-[300px] md:h-[450px]">
-            <div class="flex-[3] overflow-hidden rounded-2xl"><img src="./torba2.jpg" class="w-full h-full object-cover"
+            <div class="flex-[3] overflow-hidden rounded-2xl"><img src="/images/torba2.jpg" class="w-full h-full object-cover"
                     alt="Main"></div>
-            <div class="flex-1 overflow-hidden rounded-2xl"><img src="./mala.jpg" class="w-full h-full object-cover"
+            <div class="flex-1 overflow-hidden rounded-2xl"><img src="/images/mala.jpg" class="w-full h-full object-cover"
                     alt="Detail 1"></div>
-            <div class="flex-1 overflow-hidden rounded-2xl"><img src="./kosula.jpg" class="w-full h-full object-cover"
+            <div class="flex-1 overflow-hidden rounded-2xl"><img src="/images/kosula.jpg" class="w-full h-full object-cover"
                     alt="Detail 2"></div>
-            <div class="flex-1 overflow-hidden rounded-2xl"><img src="./srce1.jpg" class="w-full h-full object-cover"
+            <div class="flex-1 overflow-hidden rounded-2xl"><img src="/images/srce1.jpg" class="w-full h-full object-cover"
                     alt="Detail 2"></div>
         </div>
         <div class="w-full md:w-1/2 md:ml-16">
@@ -90,26 +89,26 @@
                     class="bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-800 transition">Види повеќе</a></div>
         </div>
         <div class="w-full md:w-1/2 flex flex-row gap-2 h-[300px] md:h-[400px]">
-            <div class="flex-1 overflow-hidden rounded-lg"><img src="rezba4.jpg" class="w-full h-full object-cover">
+            <div class="flex-1 overflow-hidden rounded-lg"><img src="/images/rezba4.jpg" class="w-full h-full object-cover">
             </div>
-            <div class="flex-1 overflow-hidden rounded-lg"><img src="rezba3.jpg" class="w-full h-full object-cover">
+            <div class="flex-1 overflow-hidden rounded-lg"><img src="/images/rezba3.jpg" class="w-full h-full object-cover">
             </div>
-            <div class="flex-1 overflow-hidden rounded-lg"><img src="rezba2.jpg" class="w-full h-full object-cover">
+            <div class="flex-1 overflow-hidden rounded-lg"><img src="/images/rezba2.jpg" class="w-full h-full object-cover">
             </div>
-            <div class="flex-[3] overflow-hidden rounded-2xl"><img src="rezba1.jpg" class="w-full h-full object-cover">
+            <div class="flex-[3] overflow-hidden rounded-2xl"><img src="/images/rezba1.jpg" class="w-full h-full object-cover">
             </div>
         </div>
     </div>
 
     <div class="flex flex-col md:flex-row justify-between items-center my-16 md:m-28 px-5 gap-10">
         <div class="flex flex-row gap-2 w-full md:w-1/2 h-[300px] md:h-[450px]">
-            <div class="flex-[3] overflow-hidden rounded-2xl"><img src="./boja1.jpg" class="w-full h-full object-cover">
+            <div class="flex-[3] overflow-hidden rounded-2xl"><img src="/images/boja1.jpg" class="w-full h-full object-cover">
             </div>
-            <div class="flex-1 overflow-hidden rounded-2xl"><img src="./boja2.jpg" class="w-full h-full object-cover">
+            <div class="flex-1 overflow-hidden rounded-2xl"><img src="/images/boja2.jpg" class="w-full h-full object-cover">
             </div>
-            <div class="flex-1 overflow-hidden rounded-2xl"><img src="./boja3.jpg" class="w-full h-full object-cover">
+            <div class="flex-1 overflow-hidden rounded-2xl"><img src="/images/boja3.jpg" class="w-full h-full object-cover">
             </div>
-            <div class="flex-1 overflow-hidden rounded-2xl"><img src="./boja4.jpg" class="w-full h-full object-cover">
+            <div class="flex-1 overflow-hidden rounded-2xl"><img src="/images/boja4.jpg" class="w-full h-full object-cover">
             </div>
         </div>
         <div class="w-full md:w-1/2 md:ml-16">
@@ -144,16 +143,16 @@
                     class="bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-800 transition">Види повеќе</a></div>
         </div>
         <div class="w-full md:w-1/2 flex flex-row gap-2 h-[300px] md:h-[400px]">
-            <div class="flex-1 overflow-hidden rounded-lg"><img src="./grnicarstvo1.jpg"
+            <div class="flex-1 overflow-hidden rounded-lg"><img src="/images/grnicarstvo1.jpg"
                     class="w-full h-full object-cover">
             </div>
-            <div class="flex-1 overflow-hidden rounded-lg"><img src="./grnicarstvo2.jpg"
+            <div class="flex-1 overflow-hidden rounded-lg"><img src="/images/grnicarstvo2.jpg"
                     class="w-full h-full object-cover">
             </div>
-            <div class="flex-1 overflow-hidden rounded-lg"><img src="./grnicarstvo3.jpg"
+            <div class="flex-1 overflow-hidden rounded-lg"><img src="/images/grnicarstvo3.jpg"
                     class="w-full h-full object-cover">
             </div>
-            <div class="flex-[3] overflow-hidden rounded-2xl"><img src="./grnicarstvo4.jpg"
+            <div class="flex-[3] overflow-hidden rounded-2xl"><img src="/images/grnicarstvo4.jpg"
                     class="w-full h-full object-cover">
             </div>
         </div>

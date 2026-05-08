@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/output.css">
-    <script src="https://kit.fontawesome.com/32438cfe82.js" crossorigin="anonymous"></script>
     <title>КПУ Идризово</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-gray-50 text-gray-900">
