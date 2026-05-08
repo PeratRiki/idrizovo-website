@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/AboutUs', function () {
+    
     return view('AboutUs');
 });
 
