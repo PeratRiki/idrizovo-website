@@ -94,15 +94,15 @@
         <nav class="bg-[#315b96] text-white px-4 md:px-20 py-4 flex justify-between items-center shadow-md relative">
             <div class="flex items-center space-x-4 md:space-x-8">
                 <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <img src="./images/logo.png" />
+                    <img src="{{ asset('images/logo.png') }}" />
                 </div>
                 <ul class="hidden md:flex items-center space-x-6 font-medium">
                     <li
                         class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-full hover:before:w-full before:bg-white before:transition-all before:duration-500 font-bold">
-                        <a href="#" data-mk="Почетна" data-sq="Kreu" data-en="Home">Почетна</a>
+                        <a href="{{ url('/') }}" data-mk="Почетна" data-sq="Kreu" data-en="Home">Почетна</a>
                     </li>
                     <li>
-                        <a href="./aboutUs.html"
+                        <a href="{{ url('/AboutUs') }}"
                             class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500"
                             data-mk="За нас" data-sq="Rreth nesh" data-en="About us">За нас</a>
                     </li>
@@ -121,21 +121,21 @@
                         <!-- FIX: changed style="display:none" to class="hidden" so JS can toggle it -->
                         <div id="novosti-dropdown"
                             class="hidden absolute top-full left-0 mt-3 w-48 bg-sky-600 rounded-lg shadow-xl overflow-hidden z-50 border border-blue-900">
-                            <a href="./aktivnosti.html"
+                            <a href="{{ url('/Activities') }}"
                                 class="block px-4 py-3 text-white text-sm font-medium hover:bg-[#0f172a] transition border-b border-white/30 text-center"
                                 data-mk="Активности" data-sq="Aktivitete" data-en="Activities">Активности</a>
-                            <a href="#"
+                            <a href="{{ url('/Novosti') }}"
                                 class="block px-4 py-3 text-white text-sm font-medium hover:bg-[#0f172a] transition text-center"
                                 data-mk="Соопштенија" data-sq="Njoftime" data-en="Announcements">Соопштенија</a>
                         </div>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ url('/Handmade') }}"
                             class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500"
                             data-mk="Изработки" data-sq="Punime" data-en="Crafts">Изработки</a>
                     </li>
                     <li>
-                        <a href="./kontakt.html"
+                        <a href="{{ url('/Contact') }}"
                             class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500"
                             data-mk="Контакт" data-sq="Kontakt" data-en="Contact">Контакт</a>
                     </li>
@@ -173,16 +173,16 @@
             <!-- Mobile menu starts hidden, JS toggles 'hidden' class -->
             <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-sky-700 z-50 shadow-lg">
                 <ul class="flex flex-col font-medium text-sm">
-                    <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
+                    <li class="border-b border-sky-600"><a href="{{ url('/') }}" class="block px-6 py-3 hover:bg-sky-600 transition"
                             data-mk="Почетна" data-sq="Kreu" data-en="Home">Почетна</a></li>
-                    <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
+                    <li class="border-b border-sky-600"><a href="{{ url('/AboutUs') }}" class="block px-6 py-3 hover:bg-sky-600 transition"
                             data-mk="За нас" data-sq="Rreth nesh" data-en="About us">За нас</a></li>
-                    <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
+                    <li class="border-b border-sky-600"><a href="{{ url('/Novosti') }}" class="block px-6 py-3 hover:bg-sky-600 transition"
                             data-mk="Новости и соопштенија" data-sq="Lajme dhe njoftime"
                             data-en="News and announcements">Новости и соопштенија</a></li>
-                    <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
+                    <li class="border-b border-sky-600"><a href="{{ url('/Handmade') }}" class="block px-6 py-3 hover:bg-sky-600 transition"
                             data-mk="Изработки" data-sq="Punime" data-en="Crafts">Изработки</a></li>
-                    <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
+                    <li class="border-b border-sky-600"><a href="{{ url('/Contact') }}" class="block px-6 py-3 hover:bg-sky-600 transition"
                             data-mk="Контакт" data-sq="Kontakt" data-en="Contact">Контакт</a></li>
                     <li class="px-6 py-3"><button
                             class="bg-sky-950 text-white px-5 py-2 rounded-md font-bold hover:bg-black transition w-full"
@@ -194,7 +194,7 @@
     </header>    
     <!-- HERO -->
     <section class="hero-section relative h-[600px] flex items-center overflow-hidden">
-        <div class="absolute inset-0 z-0"><img src="./images/homebg.png" alt="Building"
+        <div class="absolute inset-0 z-0"><img src="{{ asset('images/homebg.png') }}" alt="Building"
                 class="w-full h-full object-cover"></div>
         <div class="container mx-auto px-4 md:px-20 z-10">
             <div class="max-w-2xl p-3 md:p-8 rounded-lg">
@@ -202,7 +202,7 @@
                 <p class="text-base md:text-xl font-bold text-gray-800 mt-3 mb-8" data-mk="со отворено одделение Велес"
                     data-sq="me degën e hapur Veles" data-en="with open department Veles">со отворено одделение Велес
                 </p>
-                <a href="#"
+                <a href="{{ url('/AboutUs') }}"
                     class="bg-[#3b71ca] mt-10 text-white px-6 md:px-8 py-3 rounded-md font-bold text-base md:text-lg hover:bg-[#2b5a9e] transition shadow-lg inline-block"
                     data-mk="Повеќе за нас" data-sq="Më shumë rreth nesh" data-en="More about us">Повеќе за нас</a>
             </div>
@@ -215,13 +215,13 @@
             <div class="flex flex-col px-4 md:flex-row justify-between md:items-center gap-4 mb-10 md:w-full">
                 <h2 class="text-3xl md:text-4xl font-bold text-[#0f172a]" data-mk="Активности" data-sq="Aktivitete"
                     data-en="Activities">Активности</h2>
-                <a href="#"
+                <a href="{{ url('/Activities') }}"
                     class="bg-[#3b71ca] self-start hover:bg-[#2b5a9e] text-white px-6 md:px-8 py-3 rounded-md text-base md:text-lg font-bold transition shadow-lg flex items-center gap-2 w-fit"
                     data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">Прочитај повеќе</a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="relative h-[320px] md:h-[380px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
-                    <img src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    <img src="{{ asset('images/sport.jpg') }}"
                         alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
@@ -238,7 +238,7 @@
                     </div>
                 </div>
                 <div class="relative h-[320px] md:h-[380px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
-                    <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    <img src="{{ asset('images/шиење.jpg') }}"
                         alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
@@ -253,7 +253,7 @@
                     </div>
                 </div>
                 <div class="relative h-[320px] md:h-[380px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
-                    <img src="https://cdn.shopify.com/s/files/1/0583/8992/1999/files/image_fx_wood_carving_sculpture_tool_600x600.jpg?v=1720015115"
+                    <img src="{{ asset('images/rezba1.jpg') }}"
                         alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
@@ -375,7 +375,7 @@
             <div class="flex justify-between items-center mb-12">
                 <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a]" data-mk="Новости и соопштенија"
                     data-sq="Lajme dhe njoftime" data-en="News and announcements">Новости и соопштенија</h2>
-                <a href="#"
+                <a href="{{ url('/Novosti') }}"
                     class="bg-[#315b96] hover:bg-blue-800 text-white px-4 md:px-6 py-2.5 rounded-md text-xs md:text-sm font-medium transition shadow-sm"
                     data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">Прочитај повеќе</a>
             </div>
@@ -509,13 +509,13 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-[#0f172a]" data-mk="Рачни изработки"
                     data-sq="Punime me dorë" data-en="Handmade crafts">Рачни изработки</h2>
 
-                <a href="#"
+                <a href="{{ url('/Handmade') }}"
                     class="bg-[#315b96] hover:bg-blue-800 text-white px-5 py-4 rounded-md text-xl md:text-2xl font-bold transition shadow-sm flex items-center justify-center w-full md:flex-1 md:ml-10"
                     data-mk="Прочитај повеќе" data-sq="Lexo më shumë" data-en="Read more">Прочитај повеќе</a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
-                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    <img src="{{ asset('images/torba1.jpg') }}"
                         alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     <div
@@ -527,7 +527,7 @@
                     </div>
                 </div>
                 <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
-                    <img src="https://i.pinimg.com/originals/e2/d4/ea/e2d4ea50e776bebda5ac5bf283900b88.jpg" alt=""
+                    <img src="{{ asset('images/pernica.jpg') }}" alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     <div
                         class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
@@ -538,7 +538,7 @@
                     </div>
                 </div>
                 <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
-                    <img src="https://www.agiftofwood.com/images/Group_1.JPG" alt=""
+                    <img src="{{ asset('images/roba.jpg') }}" alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     <div
                         class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
@@ -560,7 +560,7 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-4">
                 <div
                     class="relative h-[160px] md:h-[220px] rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/image1.jpeg') }}"
                         alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     <div
@@ -572,7 +572,7 @@
                 </div>
                 <div
                     class="relative h-[160px] md:h-[220px] rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/image2.jpeg') }}"
                         alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     <div
@@ -583,7 +583,7 @@
                 </div>
                 <div
                     class="relative h-[160px] md:h-[220px] rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/image3.jpeg') }}"
                         alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     <div
@@ -594,7 +594,7 @@
                 </div>
                 <div
                     class="relative h-[160px] md:h-[220px] rounded-2xl md:rounded-3xl overflow-hidden group cursor-pointer shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1555656736-d8bb3093fcba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    <img src="{{ asset('images/image4.jpeg') }}"
                         alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     <div
@@ -607,37 +607,37 @@
             <div class="grid grid-cols-3 md:grid-cols-6 gap-3 md:gap-4">
                 <div
                     class="relative h-[120px] md:h-[280px] rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <img src="{{ asset('images/image5.jpeg') }}"
                         alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 </div>
                 <div
                     class="relative h-[120px] md:h-[280px] rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <img src="{{ asset('images/image6.jpeg') }}"
                         alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 </div>
                 <div
                     class="relative h-[120px] md:h-[280px] rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <img src="{{ asset('images/image7.jpeg') }}"
                         alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 </div>
                 <div
                     class="relative h-[120px] md:h-[280px] rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <img src="{{ asset('images/image8.jpeg') }}"
                         alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 </div>
                 <div
                     class="relative h-[120px] md:h-[280px] rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <img src="{{ asset('images/image9.jpeg') }}"
                         alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 </div>
                 <div
                     class="relative h-[120px] md:h-[280px] rounded-xl md:rounded-2xl overflow-hidden group cursor-pointer shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1597348989645-46b190ce4918?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    <img src="{{ asset('images/image10.jpeg') }}"
                         alt=""
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 </div>
@@ -651,7 +651,7 @@
             <div class="resources-grid grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 lg:gap-12">
                 <div class="flex flex-col items-center">
                     <div class="h-36 md:h-48 mb-6 flex items-end justify-center w-full">
-                        <img src="./images/regulativa.png" alt=""
+                        <img src="{{ asset('images/regulativa.png') }}" alt=""
                             class="max-h-full object-contain opacity-80 hover:-translate-y-2 transition-transform duration-300">
                     </div>
                     <div class="bg-[#6a8bce] w-full rounded-2xl p-8 text-center text-white shadow-md flex-grow">
@@ -673,7 +673,7 @@
                 </div>
                 <div class="flex flex-col items-center">
                     <div class="h-36 md:h-48 mb-6 flex items-end justify-center w-full">
-                        <img src="./images/resursi.png" alt=""
+                        <img src="{{ asset('images/resursi.png') }}" alt=""
                             class="max-h-full object-contain opacity-80 hover:-translate-y-2 transition-transform duration-300">
                     </div>
                     <div class="bg-[#6a8bce] w-full rounded-2xl p-8 text-center text-white shadow-md flex-grow">
@@ -695,7 +695,7 @@
                 </div>
                 <div class="flex flex-col items-center">
                     <div class="h-36 md:h-48 mb-6 flex items-end justify-center w-full">
-                        <img src="./images/odnosi.png" alt=""
+                        <img src="{{ asset('images/odnosi.png') }}" alt=""
                             class="max-h-full object-contain opacity-80 hover:-translate-y-2 transition-transform duration-300">
                     </div>
                     <div class="bg-[#6a8bce] w-full rounded-2xl p-8 text-center text-white shadow-md flex-grow">
@@ -740,22 +740,22 @@
         <!-- MOBILE -->
         <div
             class="md:hidden mx-4 mb-4 bg-[#315b96] rounded-3xl flex flex-col items-center text-center text-white px-6 py-8 gap-3 shadow-xl">
-            <img src="./images/logo.png" alt="КПУ Идризово" class="h-16 w-auto brightness-0 invert opacity-90 mb-2">
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm" data-mk="Дома" data-sq="Kreu"
+            <img src="{{ asset('images/logo.png') }}" alt="КПУ Идризово" class="h-16 w-auto brightness-0 invert opacity-90 mb-2">
+            <a href="{{ url('/') }}" class="hover:text-blue-200 transition-colors text-sm" data-mk="Дома" data-sq="Kreu"
                 data-en="Home">Дома</a>
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm" data-mk="За нас" data-sq="Rreth nesh"
+            <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors text-sm" data-mk="За нас" data-sq="Rreth nesh"
                 data-en="About us">За нас</a>
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Историја"
+            <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Историја"
                 data-sq="Historia" data-en="History">Историја</a>
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Визија"
+            <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Визија"
                 data-sq="Vizioni" data-en="Vision">Визија</a>
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Мисија"
+            <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Мисија"
                 data-sq="Misioni" data-en="Mission">Мисија</a>
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Активности"
+            <a href="{{ url('/Activities') }}" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Активности"
                 data-sq="Aktivitete" data-en="Activities">Активности</a>
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm" data-mk="Изработки" data-sq="Punime"
+            <a href="{{ url('/Handmade') }}" class="hover:text-blue-200 transition-colors text-sm" data-mk="Изработки" data-sq="Punime"
                 data-en="Crafts">Изработки</a>
-            <a href="#" class="hover:text-blue-200 transition-colors text-sm" data-mk="Контакт" data-sq="Kontakt"
+            <a href="{{ url('/Contact') }}" class="hover:text-blue-200 transition-colors text-sm" data-mk="Контакт" data-sq="Kontakt"
                 data-en="Contact">Контакт</a>
             <div class="flex items-center gap-3 text-blue-100 text-sm"><i
                     class="fa-solid fa-phone text-blue-200"></i><span>02 25 80 312</span></div>
@@ -775,39 +775,39 @@
             <div class="max-w-7xl mx-auto px-6 flex justify-between items-center gap-6 lg:gap-10">
 
                 <div class="flex-shrink-0">
-                    <img src="./images/logo.png" alt="КПУ Идризово"
+                    <img src="{{ asset('images/logo.png') }}" alt="КПУ Идризово"
                         class="w-20 h-20 md:w-24 md:h-24 object-contain brightness-0 invert opacity-90">
                 </div>
 
                 <div class="flex-grow flex justify-center gap-8 lg:gap-14 text-white text-sm items-start">
                     <div class="flex flex-col space-y-2.5">
-                        <a href="#" class="hover:text-blue-200 transition-colors" data-mk="Дома" data-sq="Kreu"
+                        <a href="{{ url('/') }}" class="hover:text-blue-200 transition-colors" data-mk="Дома" data-sq="Kreu"
                             data-en="Home">Дома</a>
                     </div>
                     <div class="flex flex-col space-y-3">
-                        <a href="#" class="hover:text-blue-200 transition-colors" data-mk="За нас" data-sq="Rreth nesh"
+                        <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors" data-mk="За нас" data-sq="Rreth nesh"
                             data-en="About us">За нас</a>
-                        <a href="#" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
+                        <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
                             data-mk="Историја" data-sq="Historia" data-en="History">Историја</a>
-                        <a href="#" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
+                        <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
                             data-mk="Визија" data-sq="Vizioni" data-en="Vision">Визија</a>
-                        <a href="#" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
+                        <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
                             data-mk="Мисија" data-sq="Misioni" data-en="Mission">Мисија</a>
                     </div>
                     <div class="flex flex-col space-y-3">
-                        <a href="#" class="hover:text-blue-200 transition-colors" data-mk="Новости и соопштенија"
+                        <a href="{{ url('/Novosti') }}" class="hover:text-blue-200 transition-colors" data-mk="Новости и соопштенија"
                             data-sq="Lajme dhe njoftime" data-en="News and announcements">Новости и соопштенија</a>
-                        <a href="#" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
+                        <a href="{{ url('/Activities') }}" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
                             data-mk="Активности" data-sq="Aktivitete" data-en="Activities">Активности</a>
-                        <a href="#" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
+                        <a href="{{ url('/Novosti') }}" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
                             data-mk="Соопштенија" data-sq="Njoftime" data-en="Announcements">Соопштенија</a>
                     </div>
                     <div class="flex flex-col space-y-3">
-                        <a href="#" class="hover:text-blue-200 transition-colors" data-mk="Изработки" data-sq="Punime"
+                        <a href="{{ url('/Handmade') }}" class="hover:text-blue-200 transition-colors" data-mk="Изработки" data-sq="Punime"
                             data-en="Crafts">Изработки</a>
                     </div>
                     <div class="flex flex-col space-y-3">
-                        <a href="#" class="hover:text-blue-200 transition-colors" data-mk="Контакт" data-sq="Kontakt"
+                        <a href="{{ url('/Contact') }}" class="hover:text-blue-200 transition-colors" data-mk="Контакт" data-sq="Kontakt"
                             data-en="Contact">Контакт</a>
                         <div class="flex items-center space-x-2 text-blue-100/80 text-xs">
                             <i class="fa-solid fa-phone"></i><span>02 25 80 312</span>

@@ -239,12 +239,12 @@
     <nav class="bg-[#315b96] text-white px-4 md:px-20 py-4 flex justify-between items-center shadow-md relative">
         <div class="flex items-center space-x-4 md:space-x-8">
             <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                <img src="./images/logo.png" />
+                <img src="{{ asset('images/logo.png') }}" />
             </div>
             <ul class="hidden md:flex space-x-6 font-medium">
-                <li class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-full hover:before:w-full before:bg-white before:transition-all before:duration-500 font-bold"><a href="#" data-mk="Почетна" data-sq="Kreu" data-en="Home">Почетна</a>
+                <li class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-full hover:before:w-full before:bg-white before:transition-all before:duration-500 font-bold"><a href="{{ url('/') }}" data-mk="Почетна" data-sq="Kreu" data-en="Home">Почетна</a>
                 </li>
-                <li><a href="#"
+                <li><a href="{{ url('/AboutUs') }}"
                         class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500"
                         data-mk="За нас" data-sq="Rreth nesh" data-en="About us">За нас</a></li>
                 <li class="relative flex items-center cursor-pointer">
@@ -262,20 +262,20 @@
                         class="absolute top-full left-0 mt-3 w-full bg-sky-600 rounded-lg shadow-xl overflow-hidden z-50 border border-blue-900"
                         style="display:none;">
                         
-                        <a href="#"
+                        <a href="{{ url('/Activities') }}"
                             class="block px-4 py-3 text-white text-sm font-medium hover:bg-[#0f172a] transition border-b border-white/30 text-center"
                             data-mk="Активности" data-sq="Aktivitete" data-en="Activities">Активности</a>
-                            
-                        <a href="#"
+
+                        <a href="{{ url('/Novosti') }}"
                             class="block px-4 py-3 text-white text-sm font-medium hover:bg-[#0f172a] transition text-center"
                             data-mk="Соопштенија" data-sq="Njoftime" data-en="Announcements">Соопштенија</a>
                     </div>
                 
                 </li>
-                <li><a href="#"
+                <li><a href="{{ url('/Handmade') }}"
                         class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500"
                         data-mk="Изработки" data-sq="Punime" data-en="Crafts">Изработки</a></li>
-                <li><a href="#"
+                <li><a href="{{ url('/Contact') }}"
                         class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500"
                         data-mk="Контакт" data-sq="Kontakt" data-en="Contact">Контакт</a></li>
             </ul>
@@ -300,16 +300,16 @@
         <!-- Mobile menu -->
         <div id="mobile-menu" class="absolute top-full left-0 right-0 bg-sky-700 z-50 shadow-lg">
             <ul class="flex flex-col font-medium text-sm">
-                <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
+                <li class="border-b border-sky-600"><a href="{{ url('/') }}" class="block px-6 py-3 hover:bg-sky-600 transition"
                         data-mk="Почетна" data-sq="Kreu" data-en="Home">Почетна</a></li>
-                <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
+                <li class="border-b border-sky-600"><a href="{{ url('/AboutUs') }}" class="block px-6 py-3 hover:bg-sky-600 transition"
                         data-mk="За нас" data-sq="Rreth nesh" data-en="About us">За нас</a></li>
-                <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
+                <li class="border-b border-sky-600"><a href="{{ url('/Novosti') }}" class="block px-6 py-3 hover:bg-sky-600 transition"
                         data-mk="Новости и соопштенија" data-sq="Lajme dhe njoftime"
                         data-en="News and announcements">Новости и соопштенија</a></li>
-                <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
+                <li class="border-b border-sky-600"><a href="{{ url('/Handmade') }}" class="block px-6 py-3 hover:bg-sky-600 transition"
                         data-mk="Изработки" data-sq="Punime" data-en="Crafts">Изработки</a></li>
-                <li class="border-b border-sky-600"><a href="#" class="block px-6 py-3 hover:bg-sky-600 transition"
+                <li class="border-b border-sky-600"><a href="{{ url('/Contact') }}" class="block px-6 py-3 hover:bg-sky-600 transition"
                         data-mk="Контакт" data-sq="Kontakt" data-en="Contact">Контакт</a></li>
                 <li class="px-6 py-3"><button class="bg-sky-950 text-white px-6 py-3 rounded-md font-bold hover:bg-black transition w-full"
                         data-mk="Закажи посета" data-sq="Cakto vizitë" data-en="Book a visit">Закажи посета</button>
@@ -323,9 +323,9 @@
 
     <!-- Background Image -->
     <div class="absolute inset-0">
-        <img 
-            src="../img/Messenger_creation_1ADAC9BC-9BF5-494E-B7B5-AC6B7B26CBF1.jpeg" 
-            alt="Hero" 
+        <img
+            src="{{ asset('images/Messenger_creation_1ADAC9BC-9BF5-494E-B7B5-AC6B7B26CBF1.jpeg') }}"
+            alt="Hero"
             class="w-full h-full object-cover brightness-110"
         />
     </div>
@@ -379,9 +379,9 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
                 
                 <div class="w-full order-2 lg:order-1">
-                    <img 
-                        src="../img/Messenger_creation_B317B5D7-CA3E-4593-A061-699FE4B79381.jpeg" 
-                        alt="Историја" 
+                    <img
+                        src="{{ asset('images/Messenger_creation_B317B5D7-CA3E-4593-A061-699FE4B79381.jpeg') }}"
+                        alt="Историја"
                         class="rounded-2xl md:rounded-[3rem] w-full h-auto object-cover grayscale shadow-sm"
                     >
                 </div>
@@ -419,10 +419,10 @@
                 
                 <div class="text-center group">
                     <div class="relative rounded-2xl md:rounded-[2.5rem] overflow-hidden bg-gradient-to-b from-[#6b96d3] to-[#2b5292] aspect-[4/3] mb-4 md:mb-6">
-                        <img 
-                            src="director.png" 
-                            alt="Директор" 
-                            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-auto object-contain"
+                        <img
+                            src="{{ asset('images/Messenger_creation_6F31227D-9604-426B-8046-C10830AC0462.jpeg') }}"
+                            alt="Директор"
+                            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-auto object-cover"
                         >
                     </div>
                     <h3 class="text-lg md:text-xl font-bold text-[#101e3d]">М-р. Зоран Јовановски</h3>
@@ -605,7 +605,6 @@
                 
                 <div class="flex flex-col items-center">
                     <div class="sector-icon-placeholder">
-                        <img src="../icons/solving a mental health problem.png" alt="Icon" class="w-32 md:w-44 h-auto object-contain">
                     </div>
                     <div class="bg-[#7195d1]/40 backdrop-blur-md text-white rounded-xl md:rounded-[2.5rem] p-4 md:p-8 w-full min-h-[200px] md:min-h-[220px] shadow-lg border border-white/20">
                         <h3 class="text-[13px] md:text-[15px] font-black uppercase tracking-wider mb-3 md:mb-5 leading-tight" data-mk="Сектор за ресоцијализација" data-sq="Sektori i riintegrimit" data-en="Rehabilitation Sector">Сектор за ресоцијализација</h3>
@@ -619,7 +618,6 @@
 
                 <div class="flex flex-col items-center">
                     <div class="sector-icon-placeholder">
-                        <img src="../icons/searching for a file in a folder.png" alt="Icon" class="w-32 md:w-44 h-auto object-contain">
                     </div>
                     <div class="bg-[#7195d1]/40 backdrop-blur-md text-white rounded-xl md:rounded-[2.5rem] p-4 md:p-8 w-full min-h-[200px] md:min-h-[220px] shadow-lg border border-white/20">
                         <h3 class="text-[13px] md:text-[15px] font-black uppercase tracking-wider mb-3 md:mb-5 leading-tight" data-mk="Сектор за општи-правни работи и јавни набавки" data-sq="Sektori për punë të përgjithshme ligjore dhe prokurimit publik" data-en="General Legal Affairs and Public Procurement Sector">Сектор за општи-правни работи и јавни набавки</h3>
@@ -632,7 +630,6 @@
 
                 <div class="flex flex-col items-center">
                     <div class="sector-icon-placeholder">
-                        <img src="../icons/standardized test as method of assessment.png" alt="Icon" class="w-32 md:w-44 h-auto object-contain">
                     </div>
                     <div class="bg-[#7195d1]/40 backdrop-blur-md text-white rounded-xl md:rounded-[2.5rem] p-4 md:p-8 w-full min-h-[200px] md:min-h-[220px] shadow-lg border border-white/20">
                         <h3 class="text-[13px] md:text-[15px] font-black uppercase tracking-wider mb-3 md:mb-5 leading-tight" data-mk="Сектор за финансиски прашања" data-sq="Sektori për çështje financiare" data-en="Financial Affairs Sector">Сектор за финансиски прашања</h3>
@@ -645,7 +642,6 @@
 
                 <div class="flex flex-col items-center">
                     <div class="sector-icon-placeholder">
-                        <img src="../icons/Project management, team work and idea generation.png" alt="Icon" class="w-32 md:w-44 h-auto object-contain">
                     </div>
                     <div class="bg-[#7195d1]/20 backdrop-blur-md text-white rounded-xl md:rounded-[2.5rem] p-4 md:p-8 w-full min-h-[160px] md:min-h-[160px] flex items-center justify-center text-center shadow-lg border border-white/20">
                         <h3 class="text-[13px] md:text-[15px] font-black uppercase tracking-wider leading-tight" data-mk="Одделение за управување со човечки ресурси" data-sq="Departamenti për menaxhimin e burimeve njerëzore" data-en="Human Resources Management Department">Одделение за управување со човечки ресурси</h3>
@@ -654,7 +650,6 @@
 
                 <div class="flex flex-col items-center">
                     <div class="sector-icon-placeholder">
-                        <img src="../icons/Money saving with bank building, banknotes and dollar coins.png" alt="Icon" class="w-32 md:w-44 h-auto object-contain">
                     </div>
                     <div class="bg-[#7195d1]/20 backdrop-blur-md text-white rounded-xl md:rounded-[2.5rem] p-4 md:p-8 w-full min-h-[160px] md:min-h-[160px] flex items-center justify-center text-center shadow-lg border border-white/20">
                         <h3 class="text-[13px] md:text-[15px] font-black uppercase tracking-wider leading-tight" data-mk="Отворено одделение Велес" data-sq="Degë e hapur në Veles" data-en="Open Section Veles">Отворено одделение Велес</h3>
@@ -663,7 +658,6 @@
 
                 <div class="flex flex-col items-center">
                     <div class="sector-icon-placeholder">
-                        <img src="../icons/Server hardware for data storage and processing.png" alt="Icon" class="w-32 md:w-44 h-auto object-contain">
                     </div>
                     <div class="bg-[#7195d1]/20 backdrop-blur-md text-white rounded-xl md:rounded-[2.5rem] p-4 md:p-8 w-full min-h-[160px] md:min-h-[160px] flex items-center justify-center text-center shadow-lg border border-white/20">
                         <h3 class="text-[13px] md:text-[15px] font-black uppercase tracking-wider leading-tight" data-mk="Сект  р на затворска полиција" data-sq="Sektori i policisë burgjake" data-en="Prison Police Sector">Сектор на затворска полиција</h3>
@@ -682,22 +676,22 @@
     <!-- MOBILE -->
     <div
         class="md:hidden mx-4 mb-4 bg-[#315b96] rounded-3xl flex flex-col items-center text-center text-white px-6 py-8 gap-3 shadow-xl">
-        <img src="./images/logo.png" alt="КПУ Идризово" class="h-16 w-auto brightness-0 invert opacity-90 mb-2">
-        <a href="#" class="hover:text-blue-200 transition-colors text-sm" data-mk="Дома" data-sq="Kreu"
+        <img src="{{ asset('images/logo.png') }}" alt="КПУ Идризово" class="h-16 w-auto brightness-0 invert opacity-90 mb-2">
+        <a href="{{ url('/') }}" class="hover:text-blue-200 transition-colors text-sm" data-mk="Дома" data-sq="Kreu"
             data-en="Home">Дома</a>
-        <a href="#" class="hover:text-blue-200 transition-colors text-sm" data-mk="За нас" data-sq="Rreth nesh"
+        <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors text-sm" data-mk="За нас" data-sq="Rreth nesh"
             data-en="About us">За нас</a>
-        <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Историја"
+        <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Историја"
             data-sq="Historia" data-en="History">Историја</a>
-        <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Визија"
+        <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Визија"
             data-sq="Vizioni" data-en="Vision">Визија</a>
-        <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Мисија"
+        <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Мисија"
             data-sq="Misioni" data-en="Mission">Мисија</a>
-        <a href="#" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Активности"
+        <a href="{{ url('/Activities') }}" class="hover:text-blue-200 transition-colors text-sm text-blue-100" data-mk="Активности"
             data-sq="Aktivitete" data-en="Activities">Активности</a>
-        <a href="#" class="hover:text-blue-200 transition-colors text-sm" data-mk="Изработки" data-sq="Punime"
+        <a href="{{ url('/Handmade') }}" class="hover:text-blue-200 transition-colors text-sm" data-mk="Изработки" data-sq="Punime"
             data-en="Crafts">Изработки</a>
-        <a href="#" class="hover:text-blue-200 transition-colors text-sm" data-mk="Контакт" data-sq="Kontakt"
+        <a href="{{ url('/Contact') }}" class="hover:text-blue-200 transition-colors text-sm" data-mk="Контакт" data-sq="Kontakt"
             data-en="Contact">Контакт</a>
         <div class="flex items-center gap-3 text-blue-100 text-sm"><i
                 class="fa-solid fa-phone text-blue-200"></i><span>02 25 80 312</span></div>
@@ -717,39 +711,39 @@
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center gap-6 lg:gap-10">
 
             <div class="flex-shrink-0">
-                <img src="./images/logo.png" alt="КПУ Идризово"
+                <img src="{{ asset('images/logo.png') }}" alt="КПУ Идризово"
                     class="w-20 h-20 md:w-24 md:h-24 object-contain brightness-0 invert opacity-90">
             </div>
 
             <div class="flex-grow flex justify-center gap-8 lg:gap-14 text-white text-sm items-start">
                 <div class="flex flex-col space-y-2.5">
-                    <a href="#" class="hover:text-blue-200 transition-colors" data-mk="Дома" data-sq="Kreu"
+                    <a href="{{ url('/') }}" class="hover:text-blue-200 transition-colors" data-mk="Дома" data-sq="Kreu"
                         data-en="Home">Дома</a>
                 </div>
                 <div class="flex flex-col space-y-3">
-                    <a href="#" class="hover:text-blue-200 transition-colors" data-mk="За нас" data-sq="Rreth nesh"
+                    <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors" data-mk="За нас" data-sq="Rreth nesh"
                         data-en="About us">За нас</a>
-                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
+                    <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
                         data-mk="Историја" data-sq="Historia" data-en="History">Историја</a>
-                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs" data-mk="Визија"
+                    <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs" data-mk="Визија"
                         data-sq="Vizioni" data-en="Vision">Визија</a>
-                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs" data-mk="Мисија"
+                    <a href="{{ url('/AboutUs') }}" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs" data-mk="Мисија"
                         data-sq="Misioni" data-en="Mission">Мисија</a>
                 </div>
                 <div class="flex flex-col space-y-3">
-                    <a href="#" class="hover:text-blue-200 transition-colors" data-mk="Новости и соопштенија"
+                    <a href="{{ url('/Novosti') }}" class="hover:text-blue-200 transition-colors" data-mk="Новости и соопштенија"
                         data-sq="Lajme dhe njoftime" data-en="News and announcements">Новости и соопштенија</a>
-                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
+                    <a href="{{ url('/Activities') }}" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
                         data-mk="Активности" data-sq="Aktivitete" data-en="Activities">Активности</a>
-                    <a href="#" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
+                    <a href="{{ url('/Novosti') }}" class="hover:text-blue-200 transition-colors text-blue-100/80 text-xs"
                         data-mk="Соопштенија" data-sq="Njoftime" data-en="Announcements">Соопштенија</a>
                 </div>
                 <div class="flex flex-col space-y-3">
-                    <a href="#" class="hover:text-blue-200 transition-colors" data-mk="Изработки" data-sq="Punime"
+                    <a href="{{ url('/Handmade') }}" class="hover:text-blue-200 transition-colors" data-mk="Изработки" data-sq="Punime"
                         data-en="Crafts">Изработки</a>
                 </div>
                 <div class="flex flex-col space-y-3">
-                    <a href="#" class="hover:text-blue-200 transition-colors" data-mk="Контакт" data-sq="Kontakt"
+                    <a href="{{ url('/Contact') }}" class="hover:text-blue-200 transition-colors" data-mk="Контакт" data-sq="Kontakt"
                         data-en="Contact">Контакт</a>
                     <div class="flex items-center space-x-2 text-blue-100/80 text-xs">
                         <i class="fa-solid fa-phone"></i><span>02 25 80 312</span>
