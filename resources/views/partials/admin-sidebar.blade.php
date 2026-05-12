@@ -1,115 +1,51 @@
-<aside class="hidden lg:flex lg:w-72 lg:flex-col bg-slate-950 text-slate-100 shadow-2xl">
-    <div class="flex items-center gap-3 border-b border-slate-800 px-6 py-6">
-        <div class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-[#c9b07d] font-semibold text-slate-950">
-            ID
-        </div>
-        <div>
-            <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Admin Panel</p>
-            <h2 class="text-xl font-semibold text-white">Idrizovo</h2>
+<aside class="w-64 bg-[#0a0a0b] border-r border-white/5 flex flex-col h-screen fixed left-0 top-0 z-50">
+    {{-- Branding --}}
+    <div class="p-6">
+        <div class="flex items-center gap-3 px-2">
+            <div class="h-9 w-9 rounded-xl bg-gradient-to-tr from-[#c9b07d] to-[#e8d6c2] flex items-center justify-center text-slate-950 font-bold shadow-lg shadow-[#c9b07d]/20">
+                ID
+            </div>
+            <span class="text-white font-bold tracking-tight text-lg">Idrizovo<span class="text-[#c9b07d]">.</span></span>
         </div>
     </div>
 
-    <nav class="flex-1 overflow-y-auto px-4 py-6">
-        @php
-            $navItems = [
-                ['label' => 'Homepage', 'path' => '/', 'route' => 'homepage.index', 'icon' => 'M3 12l9-9 9 9M4 10v10h6V14h4v6h6V10'],
-                ['label' => 'Activities', 'path' => '/Activities', 'route' => 'activities.index', 'icon' => 'M4 6h16M4 12h10m-8 6h4'],
-                ['label' => 'About Us', 'path' => '/AboutUs', 'route' => 'about.index', 'icon' => 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-7 8a7 7 0 0 1 14 0'],
-                ['label' => 'Article', 'path' => '/Article', 'route' => 'article.index', 'icon' => 'M5 7h14M5 12h14M5 17h10'],
-                ['label' => 'Color', 'path' => '/Color', 'route' => 'color.index', 'icon' => 'M7 21a4 4 0 0 1-4-4V5h4l3 3 3-3h4v12a4 4 0 0 1-4 4H7z'],
-                ['label' => 'Contact', 'path' => '/Contact', 'route' => 'contact.index', 'icon' => 'M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z'],
-                ['label' => 'Grncarstvo', 'path' => '/Grncarstvo', 'route' => 'grncarstvo.index', 'icon' => 'M5 12h14M12 5v14'],
-                ['label' => 'Handmade', 'path' => '/Handmade', 'route' => 'handmade.index', 'icon' => 'M12 4l8 8-8 8-8-8 8-8z'],
-                ['label' => 'Iglaikonec', 'path' => '/Iglaikonec', 'route' => 'iglaikonec.index', 'icon' => 'M6 6l12 12M18 6L6 18'],
-                ['label' => 'Novosti', 'path' => '/Novosti', 'route' => 'novosti.index', 'icon' => 'M4 6h16M4 10h10M4 14h12M4 18h8'],
-                ['label' => 'Rezba', 'path' => '/Rezba', 'route' => 'rezba.index', 'icon' => 'M5 12h14M12 5v14'],
-            ];
-        @endphp
+    {{-- Navigation --}}
+    <nav class="flex-1 px-4 space-y-1.5 mt-4 overflow-y-auto">
+        <p class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold px-4 mb-4 opacity-50">Management</p>
+        
+        {{-- Insights / Dashboard --}}
+        <a href="/admin" class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 group {{ Request::is('admin') ? 'bg-[#c9b07d]/10 text-[#c9b07d]' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
+            <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+            <span class="text-sm font-semibold">Insights</span>
+        </a>
 
-        <ul class="space-y-1">
-            @foreach($navItems as $item)
-                @php
-                    $link = Route::has($item['route']) ? route($item['route']) : url($item['path']);
-                    $active = request()->is(ltrim($item['path'], '/').'*') || request()->routeIs($item['route']);
-                @endphp
-                <li>
-                    <a href="{{ $link }}"
-                       class="group flex items-center gap-3 rounded-3xl px-4 py-3 text-sm font-semibold transition duration-200 {{ $active ? 'bg-[#e8d6c2] text-slate-950 shadow-lg' : 'text-slate-300 hover:bg-white/10 hover:text-white' }}">
-                        <span class="flex h-9 w-9 items-center justify-center rounded-2xl bg-white/5 text-slate-200 transition group-hover:bg-white/15">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5">
-                                <path d="{{ $item['icon'] }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </span>
-                        <span>{{ $item['label'] }}</span>
-                    </a>
-                </li>
-            @endforeach
-        </ul>
+        {{-- Traffic / Посети --}}
+        <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all group">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            <span class="text-sm font-semibold">Traffic Metrics</span>
+        </a>
+
+        {{-- Communications / Пораки --}}
+        <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all group">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+            <span class="text-sm font-semibold">Communications</span>
+        </a>
+
+        {{-- System Audit / Лозинки --}}
+        <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all group">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 00-2 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+            <span class="text-sm font-semibold">System Audit</span>
+        </a>
     </nav>
 
-    <div class="border-t border-slate-800 px-6 py-4">
-        <div class="rounded-2xl bg-slate-900 p-4 text-sm text-slate-300">
-            <p class="font-semibold text-white">Idrizovo Admin</p>
-            <p class="mt-1 text-xs text-slate-400">КПУ Идризово — Управна Плоча</p>
-        </div>
+    {{-- Bottom Logout --}}
+    <div class="p-4 border-t border-white/5 bg-[#0a0a0b]">
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-500/10 transition-all duration-300 group">
+                <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+                <span class="text-sm font-bold tracking-wide">Secure Logout</span>
+            </button>
+        </form>
     </div>
 </aside>
-
-{{-- MOBILE SIDEBAR --}}
-<div id="mobile-sidebar-overlay"
-     class="pointer-events-none fixed inset-0 z-40 bg-slate-950/80 opacity-0 transition-opacity duration-300 lg:hidden"></div>
-
-<div id="mobile-sidebar"
-     class="fixed inset-y-0 left-0 z-50 w-72 -translate-x-full overflow-y-auto bg-slate-950 px-4 py-6 shadow-2xl transition-transform duration-300 lg:hidden">
-    <div class="flex items-center justify-between gap-3 px-2 mb-6">
-        <div class="inline-flex h-11 w-11 items-center justify-center rounded-3xl bg-[#c9b07d] font-semibold text-slate-950">
-            ID
-        </div>
-        <button type="button" id="mobile-close-button"
-                class="inline-flex h-11 w-11 items-center justify-center rounded-3xl bg-slate-900 text-slate-200 transition hover:bg-slate-800">
-            <svg viewBox="0 0 24 24" class="h-5 w-5">
-                <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-            </svg>
-        </button>
-    </div>
-
-    <nav class="space-y-1">
-        @foreach($navItems as $item)
-            @php
-                $link = Route::has($item['route']) ? route($item['route']) : url($item['path']);
-            @endphp
-            <a href="{{ $link }}"
-               class="group flex items-center gap-3 rounded-3xl px-4 py-3 text-sm font-semibold text-slate-300 transition hover:bg-white/10 hover:text-white">
-                <span class="flex h-9 w-9 items-center justify-center rounded-2xl bg-white/5">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5">
-                        <path d="{{ $item['icon'] }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </span>
-                <span>{{ $item['label'] }}</span>
-            </a>
-        @endforeach
-    </nav>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const menuBtn = document.getElementById('mobile-menu-button');
-        const closeBtn = document.getElementById('mobile-close-button');
-        const sidebar = document.getElementById('mobile-sidebar');
-        const overlay = document.getElementById('mobile-sidebar-overlay');
-
-        function openSidebar() {
-            sidebar.classList.add('translate-x-0');
-            overlay.classList.add('opacity-100', 'pointer-events-auto');
-        }
-
-        function closeSidebar() {
-            sidebar.classList.remove('translate-x-0');
-            overlay.classList.remove('opacity-100', 'pointer-events-auto');
-        }
-
-        if (menuBtn) menuBtn.addEventListener('click', openSidebar);
-        if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
-        if (overlay) overlay.addEventListener('click', closeSidebar);
-    });
-</script>
