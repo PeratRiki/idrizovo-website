@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="ml-64 p-8 space-y-8 animate-in fade-in duration-700">
+<div class="p-8 space-y-8">
     <div>
         <h1 class="text-4xl font-black text-white tracking-tight">Системски Логови</h1>
         <p class="text-slate-500 mt-2 font-medium">Технички записи за активноста на серверот и апликацијата.</p>

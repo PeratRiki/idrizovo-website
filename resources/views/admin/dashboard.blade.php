@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="ml-64 p-8 space-y-8 animate-in fade-in duration-700">
+<div class="p-8 space-y-8">
     {{-- Header --}}
     <div class="flex items-end justify-between">
         <div>
@@ -36,7 +36,7 @@
                 <span class="text-[10px] font-bold px-2 py-0.5 rounded-lg bg-white/5 text-slate-400">{{ $card['trend'] }}</span>
             </div>
             <div class="mt-6 h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                <div class="h-full bg-[{{ $card['color'] }}] w-2/3 opacity-50 group-hover:opacity-100 transition-opacity" style="background-color: {{ $card['color'] }}"></div>
+                <div class="h-full w-2/3 opacity-50 group-hover:opacity-100 transition-opacity" style="background-color: {{ $card['color'] }}"></div>
             </div>
         </div>
         @endforeach
