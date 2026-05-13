@@ -2,27 +2,29 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\AnalyticsController;
-use App\Http\Controllers\Admin\MessagesController; // Со „s“ како што ти е фајлот
-use App\Http\Controllers\Admin\LogController;
+use App\Http\Controllers\Admin\Admin\DashboardController;
+use App\Http\Controllers\Admin\Admin\AnalyticsController;
+use App\Http\Controllers\Admin\Admin\MessagesController; // Со „s“ како што ти е фајлот
+use App\Http\Controllers\Admin\Admin\LogController;
+use App\Http\Controllers\Admin\Admin\VisitRequestController;
 
 /*
 |--------------------------------------------------------------------------
 | Frontend Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () { return view('Homepage'); })->name('homepage.index');
-Route::get('/AboutUs', function () { return view('AboutUs'); })->name('about.index');
-Route::get('/Contact', function () { return view('Contact'); })->name('contact.index');
-Route::get('/Article', function () { return view('Article'); })->name('article.index');
-Route::get('/Activities', function () { return view('Activities'); })->name('activities.index');
-Route::get('/Handmade', function () { return view('Handmade'); })->name('handmade.index');
-Route::get('/Color', function () { return view('Color'); })->name('color.index');
-Route::get('/Grncarstvo', function () { return view('Grncarstvo'); })->name('grncarstvo.index');
-Route::get('/Iglaikonec', function () { return view('Iglaikonec'); })->name('iglaikonec.index');
-Route::get('/Rezba', function () { return view('Rezba'); })->name('rezba.index');
-Route::get('/Novosti', function () { return view('Novosti'); })->name('novosti.index');
+Route::get('/', function () { return view('views.Homepage'); })->name('homepage.index');
+Route::get('/AboutUs', function () { return view('views.AboutUs'); })->name('about.index');
+Route::get('/Contact', function () { return view('views.Contact'); })->name('contact.index');
+Route::get('/Article', function () { return view('views.Article'); })->name('article.index');
+Route::get('/Activities', function () { return view('views.Activities'); })->name('activities.index');
+Route::get('/Handmade', function () { return view('views.Handmade'); })->name('handmade.index');
+Route::get('/Color', function () { return view('views.Color'); })->name('color.index');
+Route::get('/Grncarstvo', function () { return view('views.Grncarstvo'); })->name('grncarstvo.index');
+Route::get('/Iglaikonec', function () { return view('views.Iglaikonec'); })->name('iglaikonec.index');
+Route::get('/Rezba', function () { return view('views.Rezba'); })->name('rezba.index');
+Route::get('/Novosti', function () { return view('views.Novosti'); })->name('novosti.index');
+Route::get('/visits', [VisitRequestController::class, 'index'])->name('visits.index');
 
 /*
 |--------------------------------------------------------------------------

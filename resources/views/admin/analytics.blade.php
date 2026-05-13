@@ -1,14 +1,150 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="p-8 space-y-8">
+<div class="p-6 space-y-6" style="background:#f0f4fa; min-height:100vh;">
+
+    {{-- Header --}}
     <div>
-        <h1 class="text-4xl font-black text-white tracking-tight">Аналитика</h1>
-        <p class="text-slate-500 mt-2 font-medium">Статистика и преглед на посетите на веб-страницата.</p>
+        <h1 style="font-size:2rem; font-weight:800; color:#1a2e4a; letter-spacing:-0.5px;">Аналитика</h1>
+        <p style="color:#5a7299; font-size:0.875rem; margin-top:4px;">Статистика и преглед на активностите во КПУ Идризово.</p>
     </div>
-    <div class="bg-[#111113] border border-white/5 rounded-[2.5rem] p-12 text-center">
-        <h3 class="text-xl font-bold text-white">Графиконите се подготвуваат</h3>
-        <p class="text-slate-500 mt-2">Тука наскоро ќе имате детален преглед на сообраќајот.</p>
+
+    {{-- Top Stats --}}
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        @php
+            $stats = [
+                ['icon'=>'👥','label'=>'Вкупно затвореници','val'=>$totalPrisoners ?? '247','color'=>'#1d6fa5','bg'=>'#e6f1fb'],
+                ['icon'=>'📅','label'=>'Посети овој месец','val'=>$visitsThisMonth ?? '38','color'=>'#b45309','bg'=>'#fef3c7'],
+                ['icon'=>'✅','label'=>'Одобрени посети','val'=>$approvedVisits ?? '31','color'=>'#065f46','bg'=>'#d1fae5'],
+                ['icon'=>'❌','label'=>'Одбиени посети','val'=>$rejectedVisits ?? '7','color'=>'#991b1b','bg'=>'#fee2e2'],
+            ];
+        @endphp
+        @foreach($stats as $s)
+        <div style="background:#fff; border:1px solid #d1dff0; border-radius:16px; padding:20px;">
+            <div style="background:{{ $s['bg'] }}; color:{{ $s['color'] }}; width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.25rem; margin-bottom:14px;">{{ $s['icon'] }}</div>
+            <p style="font-size:0.7rem; font-weight:700; color:#5a7299; text-transform:uppercase; letter-spacing:0.08em;">{{ $s['label'] }}</p>
+            <p style="font-size:2rem; font-weight:800; color:#1a2e4a; line-height:1; margin-top:4px;">{{ $s['val'] }}</p>
+        </div>
+        @endforeach
+    </div>
+
+    {{-- Charts Row --}}
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        {{-- Visits per Month Bar Chart --}}
+        <div style="background:#fff; border:1px solid #d1dff0; border-radius:20px; padding:24px;">
+            <h2 style="font-size:1rem; font-weight:700; color:#1a2e4a; margin-bottom:20px;">📊 Посети по месец</h2>
+            @php
+                $months = ['Јан','Фев','Мар','Апр','Мај','Јун','Јул','Авг','Сеп','Окт','Ное','Дек'];
+                $visitsData = $monthlyVisits ?? [12, 18, 14, 22, 30, 28, 35, 31, 27, 38, 24, 20];
+                $maxVal = max($visitsData);
+            @endphp
+            <div style="display:flex; align-items:flex-end; gap:6px; height:160px;">
+                @foreach($visitsData as $i => $val)
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%;">
+                    <div style="flex:1; display:flex; align-items:flex-end; width:100%;">
+                        <div style="width:100%; background:#1d6fa5; border-radius:6px 6px 0 0; height:{{ round(($val / $maxVal) * 100) }}%; min-height:4px; opacity:{{ $i == count($visitsData)-1 ? '1' : '0.5' }};"></div>
+                    </div>
+                    <span style="font-size:0.6rem; color:#5a7299;">{{ $months[$i] }}</span>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        {{-- Visit Status Breakdown --}}
+        <div style="background:#fff; border:1px solid #d1dff0; border-radius:20px; padding:24px;">
+            <h2 style="font-size:1rem; font-weight:700; color:#1a2e4a; margin-bottom:20px;">📋 Статус на барањата</h2>
+            @php
+                $approved = $approvedVisits ?? 31;
+                $rejected = $rejectedVisits ?? 7;
+                $pending  = $pendingVisits ?? 12;
+                $total    = $approved + $rejected + $pending;
+                $rows = [
+                    ['label'=>'Одобрени','val'=>$approved,'color'=>'#22c55e','bg'=>'#d1fae5','tc'=>'#065f46'],
+                    ['label'=>'На чекање','val'=>$pending,'color'=>'#f59e0b','bg'=>'#fef3c7','tc'=>'#92400e'],
+                    ['label'=>'Одбиени','val'=>$rejected,'color'=>'#ef4444','bg'=>'#fee2e2','tc'=>'#991b1b'],
+                ];
+            @endphp
+            <div style="display:flex; flex-direction:column; gap:14px;">
+                @foreach($rows as $r)
+                @php $pct = $total > 0 ? round($r['val'] / $total * 100) : 0; @endphp
+                <div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+                        <span style="font-size:0.85rem; font-weight:600; color:#1a2e4a;">{{ $r['label'] }}</span>
+                        <span style="font-size:0.75rem; font-weight:700; padding:2px 10px; border-radius:20px; background:{{ $r['bg'] }}; color:{{ $r['tc'] }};">{{ $r['val'] }} ({{ $pct }}%)</span>
+                    </div>
+                    <div style="background:#f0f4fa; border-radius:99px; height:8px; overflow:hidden;">
+                        <div style="height:100%; width:{{ $pct }}%; background:{{ $r['color'] }}; border-radius:99px; transition:width 1s ease;"></div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
+            <div style="margin-top:20px; padding-top:16px; border-top:1px solid #e8f0fb; display:flex; justify-content:space-between;">
+                <span style="font-size:0.8rem; color:#5a7299;">Вкупно барања</span>
+                <span style="font-size:0.8rem; font-weight:700; color:#1a2e4a;">{{ $total }}</span>
+            </div>
+        </div>
+    </div>
+
+    {{-- Bottom Row --}}
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        {{-- Most Visited Prisoners --}}
+        <div class="lg:col-span-2" style="background:#fff; border:1px solid #d1dff0; border-radius:20px; overflow:hidden;">
+            <div style="padding:20px 24px; border-bottom:1px solid #e8f0fb;">
+                <h2 style="font-size:1rem; font-weight:700; color:#1a2e4a;">👤 Најпосетувани затвореници</h2>
+            </div>
+            <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+                <thead>
+                    <tr style="background:#f5f8ff;">
+                        <th style="padding:10px 20px; text-align:left; color:#5a7299; font-size:0.7rem; text-transform:uppercase; font-weight:700;">#</th>
+                        <th style="padding:10px 20px; text-align:left; color:#5a7299; font-size:0.7rem; text-transform:uppercase; font-weight:700;">Затвореник</th>
+                        <th style="padding:10px 20px; text-align:left; color:#5a7299; font-size:0.7rem; text-transform:uppercase; font-weight:700;">Посети</th>
+                        <th style="padding:10px 20px; text-align:left; color:#5a7299; font-size:0.7rem; text-transform:uppercase; font-weight:700;">Последна посета</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($topVisited ?? [] as $i => $p)
+                    <tr style="border-top:1px solid #f0f4fa;">
+                        <td style="padding:12px 20px; color:#5a7299; font-weight:700;">{{ $i + 1 }}</td>
+                        <td style="padding:12px 20px; color:#1a2e4a; font-weight:600;">{{ $p->name }}</td>
+                        <td style="padding:12px 20px;">
+                            <span style="background:#e6f1fb; color:#1d6fa5; font-weight:700; font-size:0.75rem; padding:3px 10px; border-radius:20px;">{{ $p->visits_count }}</span>
+                        </td>
+                        <td style="padding:12px 20px; color:#5a7299;">{{ \Carbon\Carbon::parse($p->last_visit)->format('d.m.Y') }}</td>
+                    </tr>
+                    @empty
+                    <tr><td colspan="4" style="padding:32px; text-align:center; color:#5a7299; font-style:italic;">Нема доволно податоци за приказ.</td></tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
+        {{-- Quick Summary Card --}}
+        <div style="background:#1d6fa5; border-radius:20px; padding:24px; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+                <h2 style="font-size:1rem; font-weight:700; color:#fff; margin-bottom:6px;">📈 Месечен резиме</h2>
+                <p style="font-size:0.8rem; color:rgba(255,255,255,0.65);">{{ now()->translatedFormat('F Y') }}</p>
+            </div>
+            <div style="margin-top:24px; display:flex; flex-direction:column; gap:14px;">
+                @php
+                    $summary = [
+                        ['label'=>'Просечно посети/ден','val'=> $avgPerDay ?? '1.3'],
+                        ['label'=>'Посетители оваа недела','val'=> $weeklyVisitors ?? '9'],
+                        ['label'=>'Нови барања денес','val'=> $todayRequests ?? '3'],
+                        ['label'=>'% одобрување','val'=> ($total > 0 ? round($approved/$total*100) : 0).'%'],
+                    ];
+                @endphp
+                @foreach($summary as $s)
+                <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.12); border-radius:12px; padding:12px 16px;">
+                    <span style="font-size:0.8rem; color:rgba(255,255,255,0.8);">{{ $s['label'] }}</span>
+                    <span style="font-size:1rem; font-weight:800; color:#fff;">{{ $s['val'] }}</span>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
     </div>
 </div>
 @endsection
