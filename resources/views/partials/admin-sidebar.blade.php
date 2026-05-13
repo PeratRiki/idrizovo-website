@@ -1,115 +1,65 @@
-<aside class="hidden lg:flex lg:w-72 lg:flex-col bg-slate-950 text-slate-100 shadow-2xl">
-    <div class="flex items-center gap-3 border-b border-slate-800 px-6 py-6">
-        <div class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-[#c9b07d] font-semibold text-slate-950">
-            ID
-        </div>
-        <div>
-            <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Admin Panel</p>
-            <h2 class="text-xl font-semibold text-white">Idrizovo</h2>
+<aside class="w-64 bg-[#0a0a0b] border-r border-white/5 flex flex-col h-screen fixed left-0 top-0 z-50">
+    <div class="p-6">
+        <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-xl bg-[#c9b07d] flex items-center justify-center text-black font-bold shadow-lg shadow-[#c9b07d]/20 flex-shrink-0">
+                ID
+            </div>
+            <span class="text-white font-bold text-xl tracking-tight">Idrizovo<span class="text-[#c9b07d]">.</span></span>
         </div>
     </div>
 
-    <nav class="flex-1 overflow-y-auto px-4 py-6">
-        @php
-            $navItems = [
-                ['label' => 'Homepage', 'path' => '/', 'route' => 'homepage.index', 'icon' => 'M3 12l9-9 9 9M4 10v10h6V14h4v6h6V10'],
-                ['label' => 'Activities', 'path' => '/Activities', 'route' => 'activities.index', 'icon' => 'M4 6h16M4 12h10m-8 6h4'],
-                ['label' => 'About Us', 'path' => '/AboutUs', 'route' => 'about.index', 'icon' => 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-7 8a7 7 0 0 1 14 0'],
-                ['label' => 'Article', 'path' => '/Article', 'route' => 'article.index', 'icon' => 'M5 7h14M5 12h14M5 17h10'],
-                ['label' => 'Color', 'path' => '/Color', 'route' => 'color.index', 'icon' => 'M7 21a4 4 0 0 1-4-4V5h4l3 3 3-3h4v12a4 4 0 0 1-4 4H7z'],
-                ['label' => 'Contact', 'path' => '/Contact', 'route' => 'contact.index', 'icon' => 'M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z'],
-                ['label' => 'Grncarstvo', 'path' => '/Grncarstvo', 'route' => 'grncarstvo.index', 'icon' => 'M5 12h14M12 5v14'],
-                ['label' => 'Handmade', 'path' => '/Handmade', 'route' => 'handmade.index', 'icon' => 'M12 4l8 8-8 8-8-8 8-8z'],
-                ['label' => 'Iglaikonec', 'path' => '/Iglaikonec', 'route' => 'iglaikonec.index', 'icon' => 'M6 6l12 12M18 6L6 18'],
-                ['label' => 'Novosti', 'path' => '/Novosti', 'route' => 'novosti.index', 'icon' => 'M4 6h16M4 10h10M4 14h12M4 18h8'],
-                ['label' => 'Rezba', 'path' => '/Rezba', 'route' => 'rezba.index', 'icon' => 'M5 12h14M12 5v14'],
-            ];
-        @endphp
+    <nav class="flex-1 px-4 space-y-1.5 mt-4 overflow-y-auto">
+        <p class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold px-4 mb-4 opacity-50">Мени</p>
+        
+        {{-- Контролен Центар --}}
+        <a href="{{ route('admin.dashboard') }}" 
+           class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 {{ Request::routeIs('admin.dashboard') ? 'bg-[#c9b07d]/10 text-[#c9b07d]' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
+            <div class="w-5 h-5 flex-shrink-0 flex items-center justify-center">
+                <svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
+            <span class="text-sm font-bold">Контролен Центар</span>
+        </a>
 
-        <ul class="space-y-1">
-            @foreach($navItems as $item)
-                @php
-                    $link = Route::has($item['route']) ? route($item['route']) : url($item['path']);
-                    $active = request()->is(ltrim($item['path'], '/').'*') || request()->routeIs($item['route']);
-                @endphp
-                <li>
-                    <a href="{{ $link }}"
-                       class="group flex items-center gap-3 rounded-3xl px-4 py-3 text-sm font-semibold transition duration-200 {{ $active ? 'bg-[#e8d6c2] text-slate-950 shadow-lg' : 'text-slate-300 hover:bg-white/10 hover:text-white' }}">
-                        <span class="flex h-9 w-9 items-center justify-center rounded-2xl bg-white/5 text-slate-200 transition group-hover:bg-white/15">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5">
-                                <path d="{{ $item['icon'] }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </span>
-                        <span>{{ $item['label'] }}</span>
-                    </a>
-                </li>
-            @endforeach
-        </ul>
+        {{-- Аналитика --}}
+        <a href="{{ route('admin.analytics') }}" 
+           class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 {{ Request::routeIs('admin.analytics') ? 'bg-[#c9b07d]/10 text-[#c9b07d]' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
+            <div class="w-5 h-5 flex-shrink-0 flex items-center justify-center">
+                <svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
+            <span class="text-sm font-bold">Аналитика</span>
+        </a>
+
+        {{-- Пораки --}}
+        <a href="{{ route('admin.messages') }}" 
+           class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 {{ Request::routeIs('admin.messages') ? 'bg-[#c9b07d]/10 text-[#c9b07d]' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
+            <div class="w-5 h-5 flex-shrink-0 flex items-center justify-center">
+                <svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
+            <span class="text-sm font-bold">Пораки</span>
+        </a>
+
+        <div class="pt-6">
+            <p class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold px-4 mb-4 opacity-50">Систем</p>
+            
+            <a href="{{ route('admin.security') }}" class="flex items-center gap-3 px-4 py-2 text-xs font-bold transition-all {{ Request::routeIs('admin.security') ? 'text-[#c9b07d]' : 'text-slate-500 hover:text-white' }}">
+                <span class="w-1 h-1 rounded-full bg-current"></span>
+                БЕЗБЕДНОСНИ ЛОГОВИ
+            </a>
+
+            <a href="{{ route('admin.system') }}" class="flex items-center gap-3 px-4 py-2 text-xs font-bold transition-all {{ Request::routeIs('admin.system') ? 'text-[#c9b07d]' : 'text-slate-500 hover:text-white' }}">
+                <span class="w-1 h-1 rounded-full bg-current"></span>
+                СИСТЕМСКИ ЛОГОВИ
+            </a>
+        </div>
     </nav>
 
-    <div class="border-t border-slate-800 px-6 py-4">
-        <div class="rounded-2xl bg-slate-900 p-4 text-sm text-slate-300">
-            <p class="font-semibold text-white">Idrizovo Admin</p>
-            <p class="mt-1 text-xs text-slate-400">КПУ Идризово — Управна Плоча</p>
-        </div>
+    <div class="p-6 border-t border-white/5">
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-red-500/5 text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 font-bold text-sm">
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                Одјави се
+            </button>
+        </form>
     </div>
 </aside>
-
-{{-- MOBILE SIDEBAR --}}
-<div id="mobile-sidebar-overlay"
-     class="pointer-events-none fixed inset-0 z-40 bg-slate-950/80 opacity-0 transition-opacity duration-300 lg:hidden"></div>
-
-<div id="mobile-sidebar"
-     class="fixed inset-y-0 left-0 z-50 w-72 -translate-x-full overflow-y-auto bg-slate-950 px-4 py-6 shadow-2xl transition-transform duration-300 lg:hidden">
-    <div class="flex items-center justify-between gap-3 px-2 mb-6">
-        <div class="inline-flex h-11 w-11 items-center justify-center rounded-3xl bg-[#c9b07d] font-semibold text-slate-950">
-            ID
-        </div>
-        <button type="button" id="mobile-close-button"
-                class="inline-flex h-11 w-11 items-center justify-center rounded-3xl bg-slate-900 text-slate-200 transition hover:bg-slate-800">
-            <svg viewBox="0 0 24 24" class="h-5 w-5">
-                <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-            </svg>
-        </button>
-    </div>
-
-    <nav class="space-y-1">
-        @foreach($navItems as $item)
-            @php
-                $link = Route::has($item['route']) ? route($item['route']) : url($item['path']);
-            @endphp
-            <a href="{{ $link }}"
-               class="group flex items-center gap-3 rounded-3xl px-4 py-3 text-sm font-semibold text-slate-300 transition hover:bg-white/10 hover:text-white">
-                <span class="flex h-9 w-9 items-center justify-center rounded-2xl bg-white/5">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5">
-                        <path d="{{ $item['icon'] }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </span>
-                <span>{{ $item['label'] }}</span>
-            </a>
-        @endforeach
-    </nav>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const menuBtn = document.getElementById('mobile-menu-button');
-        const closeBtn = document.getElementById('mobile-close-button');
-        const sidebar = document.getElementById('mobile-sidebar');
-        const overlay = document.getElementById('mobile-sidebar-overlay');
-
-        function openSidebar() {
-            sidebar.classList.add('translate-x-0');
-            overlay.classList.add('opacity-100', 'pointer-events-auto');
-        }
-
-        function closeSidebar() {
-            sidebar.classList.remove('translate-x-0');
-            overlay.classList.remove('opacity-100', 'pointer-events-auto');
-        }
-
-        if (menuBtn) menuBtn.addEventListener('click', openSidebar);
-        if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
-        if (overlay) overlay.addEventListener('click', closeSidebar);
-    });
-</script>

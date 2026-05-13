@@ -1,5 +1,4 @@
-@extends('layouts.admin')
-@section('content')
+
 
 
 <!DOCTYPE html>
@@ -776,5 +775,3 @@
     </footer>
 </body>
 </html>
-
-@endsection

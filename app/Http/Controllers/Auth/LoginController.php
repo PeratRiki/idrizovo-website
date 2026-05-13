@@ -20,20 +20,34 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        // Ова е за проверка со фиксни податоци (admin / admin123)
+        // Проверка со твоите фиксни податоци
         if ($request->username === 'admin' && $request->password === 'admin123') {
-            // Рачно најавување на првиот корисник од базата (осигурај се дека имаш барем еден во 'users' табелата)
             $user = \App\Models\User::first();
-            Auth::login($user);
-            return redirect()->intended('/admin');
+            
+            if ($user) {
+                Auth::login($user);
+                // Регенерирање на сесијата по успешно најавување (заштита од Session Fixation)
+                $request->session()->regenerate();
+                return redirect()->intended('/admin');
+            }
         }
 
         return back()->withErrors(['username' => 'Погрешно корисничко име или лозинка.']);
     }
 
-    public function logout()
+    /**
+     * Професионален Logout метод
+     */
+    public function logout(Request $request)
     {
         Auth::logout();
+
+        // 1. Ја поништува сесијата на корисникот
+        $request->session()->invalidate();
+
+        // 2. Го регенерира CSRF токенот (превенција од напади)
+        $request->session()->regenerateToken();
+
         return redirect('/admin/login');
     }
 }
