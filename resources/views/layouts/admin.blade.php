@@ -3,32 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idrizovo - Admin Panel</title>
+    <title>Админ Панел | Idrizovo</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .bg-beige-gradient { background: linear-gradient(135deg, #f5f1ed 0%, #e8d6c2 100%); }
-        .gold-accent { color: #c9b07d; }
+        /* Дефинираме фиксна ширина за да нема поместување */
+        :root {
+            --sidebar-width: 256px;
+        }
+
+        body {
+            background-color: #050505;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Sidebar-от е фиксиран и не зафаќа простор во протокот */
+        .admin-sidebar {
+            width: var(--sidebar-width);
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            z-index: 50;
+        }
+
+        /* Главниот дел е турнат точно колку што е широк Sidebar-от */
+        .main-wrapper {
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-area {
+            padding: 2rem;
+            flex: 1;
+        }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-200">
+<body class="text-white antialiased">
 
-    <div class="flex h-screen overflow-hidden">
-        {{-- SIDEBAR --}}
+    <div class="admin-sidebar">
         @include('partials.admin-sidebar')
+    </div>
 
-        <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-            {{-- TOPBAR --}}
-            @include('partials.admin-topbar')
+    <div class="main-wrapper">
+        
+        @include('partials.admin-topbar')
 
-            {{-- MAIN CONTENT --}}
-            <main class="p-4 md:p-8">
-                <div class="mx-auto max-w-[1400px]">
-                    @yield('content')
-                </div>
-            </main>
-        </div>
+        <main class="content-area">
+            @yield('content')
+        </main>
+        
     </div>
 
 </body>

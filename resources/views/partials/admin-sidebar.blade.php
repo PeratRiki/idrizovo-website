@@ -1,50 +1,64 @@
 <aside class="w-64 bg-[#0a0a0b] border-r border-white/5 flex flex-col h-screen fixed left-0 top-0 z-50">
-    {{-- Branding --}}
     <div class="p-6">
-        <div class="flex items-center gap-3 px-2">
-            <div class="h-9 w-9 rounded-xl bg-gradient-to-tr from-[#c9b07d] to-[#e8d6c2] flex items-center justify-center text-slate-950 font-bold shadow-lg shadow-[#c9b07d]/20">
+        <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-xl bg-[#c9b07d] flex items-center justify-center text-black font-bold shadow-lg shadow-[#c9b07d]/20 flex-shrink-0">
                 ID
             </div>
-            <span class="text-white font-bold tracking-tight text-lg">Idrizovo<span class="text-[#c9b07d]">.</span></span>
+            <span class="text-white font-bold text-xl tracking-tight">Idrizovo<span class="text-[#c9b07d]">.</span></span>
         </div>
     </div>
 
-    {{-- Navigation --}}
     <nav class="flex-1 px-4 space-y-1.5 mt-4 overflow-y-auto">
-        <p class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold px-4 mb-4 opacity-50">Management</p>
+        <p class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold px-4 mb-4 opacity-50">Мени</p>
         
-        {{-- Insights / Dashboard --}}
-        <a href="/admin" class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 group {{ Request::is('admin') ? 'bg-[#c9b07d]/10 text-[#c9b07d]' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
-            <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-            <span class="text-sm font-semibold">Insights</span>
+        {{-- Контролен Центар --}}
+        <a href="{{ route('admin.dashboard') }}" 
+           class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 {{ Request::routeIs('admin.dashboard') ? 'bg-[#c9b07d]/10 text-[#c9b07d]' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
+            <div class="w-5 h-5 flex-shrink-0 flex items-center justify-center">
+                <svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
+            <span class="text-sm font-bold">Контролен Центар</span>
         </a>
 
-        {{-- Traffic / Посети --}}
-        <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all group">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-            <span class="text-sm font-semibold">Traffic Metrics</span>
+        {{-- Аналитика --}}
+        <a href="{{ route('admin.analytics') }}" 
+           class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 {{ Request::routeIs('admin.analytics') ? 'bg-[#c9b07d]/10 text-[#c9b07d]' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
+            <div class="w-5 h-5 flex-shrink-0 flex items-center justify-center">
+                <svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
+            <span class="text-sm font-bold">Аналитика</span>
         </a>
 
-        {{-- Communications / Пораки --}}
-        <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all group">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
-            <span class="text-sm font-semibold">Communications</span>
+        {{-- Пораки --}}
+        <a href="{{ route('admin.messages') }}" 
+           class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 {{ Request::routeIs('admin.messages') ? 'bg-[#c9b07d]/10 text-[#c9b07d]' : 'text-slate-400 hover:bg-white/5 hover:text-white' }}">
+            <div class="w-5 h-5 flex-shrink-0 flex items-center justify-center">
+                <svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
+            <span class="text-sm font-bold">Пораки</span>
         </a>
 
-        {{-- System Audit / Лозинки --}}
-        <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all group">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 00-2 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-            <span class="text-sm font-semibold">System Audit</span>
-        </a>
+        <div class="pt-6">
+            <p class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold px-4 mb-4 opacity-50">Систем</p>
+            
+            <a href="{{ route('admin.security') }}" class="flex items-center gap-3 px-4 py-2 text-xs font-bold transition-all {{ Request::routeIs('admin.security') ? 'text-[#c9b07d]' : 'text-slate-500 hover:text-white' }}">
+                <span class="w-1 h-1 rounded-full bg-current"></span>
+                БЕЗБЕДНОСНИ ЛОГОВИ
+            </a>
+
+            <a href="{{ route('admin.system') }}" class="flex items-center gap-3 px-4 py-2 text-xs font-bold transition-all {{ Request::routeIs('admin.system') ? 'text-[#c9b07d]' : 'text-slate-500 hover:text-white' }}">
+                <span class="w-1 h-1 rounded-full bg-current"></span>
+                СИСТЕМСКИ ЛОГОВИ
+            </a>
+        </div>
     </nav>
 
-    {{-- Bottom Logout --}}
-    <div class="p-4 border-t border-white/5 bg-[#0a0a0b]">
+    <div class="p-6 border-t border-white/5">
         <form action="{{ route('logout') }}" method="POST">
             @csrf
-            <button type="submit" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-500/10 transition-all duration-300 group">
-                <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
-                <span class="text-sm font-bold tracking-wide">Secure Logout</span>
+            <button type="submit" class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-red-500/5 text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 font-bold text-sm">
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                Одјави се
             </button>
         </form>
     </div>
