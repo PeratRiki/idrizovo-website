@@ -1,3 +1,8 @@
+@extends('layouts.admin')
+@section('content')
+
+
+
 <!DOCTYPE html>
 <html lang="mk">
 
@@ -7,7 +12,6 @@
     <title>Уметност со игла и конец</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-
 <body class="bg-gradient-to-b from-blue-100 to-blue-300 min-h-screen p-4 flex flex-col items-center">
 
     <div class="w-full max-w-2xl mb-6 flex items-center gap-3">
@@ -122,3 +126,5 @@
 </body>
 
 </html>
+
+@endsection

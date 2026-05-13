@@ -1,3 +1,7 @@
+@extends('layouts.admin')
+@section('content')
+
+
 <!DOCTYPE html>
 <html lang="mk">
 <head>
@@ -257,3 +261,5 @@
 <script src="./script.js"></script>
 </body>
 </html>
+
+@endsection

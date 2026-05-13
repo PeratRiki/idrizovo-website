@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.admin')
+@section('content')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>КПУ Идризово</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<body class="bg-gray-50 text-gray-900">
     <header>
         <!-- TOP BAR -->
         <div class="bg-[#315b96] text-white text-xs py-2 md:py-3 border-b border-white/20">
@@ -328,7 +320,7 @@
                             В. Д. директор на КПД Идризово:</h4>
                         <p class="mb-4">М-р Зоран Јовановски</p>
                         <h4 class="font-bold mb-1 text-black" data-mk="Својот придонес во овој број го дадоа:"
-                            data-sq="Kontribuuan në këtë numër:" data-en="Contributors to this issue:">Својот придонес
+                            data-sq="Kontribuuan në këtë numër:" data-en="Contributors to this issue:">Svojот придонес
                             во овој број го дадоа:</h4>
                         <ul class="space-y-1 mb-6 text-gray-700">
                             <li data-mk="Ф. (осудено лице во женскиот дел од КПД Идризово)"
@@ -835,6 +827,5 @@
 
     </footer>
     <script src="./script.js"></script>
-</body>
 
-</html>
+@endsection
