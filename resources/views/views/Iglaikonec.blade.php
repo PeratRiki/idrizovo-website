@@ -1,3 +1,8 @@
+
+@extends('layouts.app')
+@section('title', 'Игла и конец')
+@section('content')
+
 <!DOCTYPE html>
 <html lang="mk">
  
@@ -152,3 +157,4 @@
  
 </html>
 
+@endsection

@@ -7,6 +7,9 @@ use App\Http\Controllers\Admin\Admin\AnalyticsController;
 use App\Http\Controllers\Admin\Admin\MessagesController;
 use App\Http\Controllers\Admin\Admin\LogController;
 use App\Http\Controllers\Admin\Admin\VisitRequestController;
+use App\Http\Controllers\Admin\Admin\HandmadeController;
+use App\Models\HandmadeItem;
+use App\Models\HandmadeQuote;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +21,11 @@ Route::get('/AboutUs', function () { return view('views.AboutUs'); })->name('abo
 Route::get('/Contact', function () { return view('views.Contact'); })->name('contact.index');
 Route::get('/Article', function () { return view('views.Article'); })->name('article.index');
 Route::get('/Activities', function () { return view('views.Activities'); })->name('activities.index');
-Route::get('/Handmade', function () { return view('views.Handmade'); })->name('handmade.index');
+Route::get('/Handmade', function () {
+    $items  = HandmadeItem::active()->get();
+    $quotes = HandmadeQuote::active()->get();
+    return view('views.Handmade', compact('items', 'quotes'));
+})->name('handmade.index');
 Route::get('/Color', function () { return view('views.Color'); })->name('color.index');
 Route::get('/Grncarstvo', function () { return view('views.Grncarstvo'); })->name('grncarstvo.index');
 Route::get('/Iglaikonec', function () { return view('views.Iglaikonec'); })->name('iglaikonec.index');
@@ -62,6 +69,22 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::patch('/visits/{visit}/reject', [VisitRequestController::class, 'reject'])->name('admin.visits.reject');
     Route::patch('/visits/{visit}/status', [VisitRequestController::class, 'updateStatus'])->name('admin.visits.status');
     Route::patch('/messages/{message}/read', [MessagesController::class, 'markAsRead'])->name('admin.messages.read');
+
+    // Рачни изработки — CRUD
+    Route::resource('handmade', HandmadeController::class)
+        ->parameters(['handmade' => 'handmadeItem'])
+        ->names([
+            'index'   => 'admin.handmade.index',
+            'create'  => 'admin.handmade.create',
+            'store'   => 'admin.handmade.store',
+            'edit'    => 'admin.handmade.edit',
+            'update'  => 'admin.handmade.update',
+            'destroy' => 'admin.handmade.destroy',
+        ]);
+
+    // Цитати за рачни изработки
+    Route::post('/handmade-quotes', [HandmadeController::class, 'storeQuote'])->name('admin.handmade.storeQuote');
+    Route::delete('/handmade-quotes/{handmadeQuote}', [HandmadeController::class, 'destroyQuote'])->name('admin.handmade.destroyQuote');
 
     // Останати админ страници
     Route::get('/aboutus', function () { return view('AboutUs'); });

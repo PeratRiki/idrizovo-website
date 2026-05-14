@@ -13,7 +13,6 @@
         .sidebar-link:hover { background: rgba(255,255,255,0.15); transform: translateX(4px); }
         .sidebar-link.active { background: rgba(255,255,255,0.2); border-left: 3px solid white; }
 
-        /* Sidebar скриен на мобилен по дефолт */
         #sidebar {
             position: fixed;
             left: 0; top: 0;
@@ -27,7 +26,6 @@
             transform: translateX(0);
         }
 
-        /* На десктоп секогаш видлив */
         @media (min-width: 768px) {
             #sidebar {
                 transform: translateX(0) !important;
@@ -37,7 +35,6 @@
             .main-content { margin-left: 256px; }
         }
 
-        /* На мобилен без margin */
         @media (max-width: 767px) {
             .main-content { margin-left: 0; }
         }
@@ -110,6 +107,14 @@
                 @endif
             </a>
 
+            {{-- ═══ НОВА ЛИНИЈА: Рачни изработки ═══ --}}
+            <a href="{{ route('admin.handmade.index') }}"
+               class="sidebar-link {{ request()->routeIs('admin.handmade*') ? 'active' : '' }}"
+               style="display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; color:rgba(255,255,255,0.9); text-decoration:none; font-size:0.875rem; font-weight:500;">
+                <svg style="width:16px;height:16px;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                Рачни изработки
+            </a>
+
             <p style="color:rgba(255,255,255,0.45); font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; padding:12px 12px 6px;">Систем</p>
 
             <a href="{{ route('admin.analytics') }}"
@@ -160,7 +165,6 @@
         {{-- Top Bar --}}
         <header style="background:#fff; border-bottom:1px solid #d1dff0; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:30; box-shadow:0 1px 4px rgba(49,91,150,0.06);">
             <div style="display:flex; align-items:center; gap:14px;">
-                {{-- Hamburger (само мобилен) --}}
                 <button id="hamburger" onclick="openSidebar()"
                     style="background:none; border:none; cursor:pointer; padding:4px; display:flex; flex-direction:column; gap:5px;">
                     <span style="display:block; width:22px; height:2px; background:#315b96; border-radius:2px;"></span>
