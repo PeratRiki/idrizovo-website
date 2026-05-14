@@ -1,6 +1,8 @@
+
 @extends('layouts.app')
-@section('title', 'Грнчарство')
+@section('title', 'Игла и конец')
 @section('content')
+
 <!DOCTYPE html>
 <html lang="mk">
  
@@ -8,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Грнчарство: Обликување на надежта</title>
+    <title>Уметност со игла и конец</title>
     <script src="https://kit.fontawesome.com/aba845d803.js" crossorigin="anonymous"></script>
 </head>
  
@@ -16,7 +18,7 @@
  
     <div class="w-full max-w-2xl mb-6 flex items-center gap-3">
       <a href="./index.html"><i class="fa-solid fa-chevron-left text-3xl text-gray-700 hover:text-black"></i></a>
-        <h1 class="text-3xl font-bold text-slate-800 uppercase tracking-tight">Грнчарство: Обликување на надежта</h1>
+        <h1 class="text-3xl font-bold text-slate-800 uppercase tracking-tight">Уметност со игла и конец</h1>
     </div>
  
     <div class="w-full max-w-2xl grid grid-cols-2 gap-4 md:gap-6">
@@ -24,7 +26,7 @@
         <div
             class="bg-white/40 backdrop-blur-sm rounded-[1.5rem] overflow-hidden shadow-sm border border-white/20 flex flex-col">
             <div class="h-40 overflow-hidden">
-                <img src="./grnicarstvo1.jpg" alt="Proizvod" class="w-full h-full object-cover">
+                <img src="./torba1.jpg" alt="Proizvod" class="w-full h-full object-cover">
             </div>
  
             <div class="p-4 space-y-2 flex-grow">
@@ -43,7 +45,7 @@
         <div
             class="bg-white/40 backdrop-blur-sm rounded-[1.5rem] overflow-hidden shadow-sm border border-white/20 flex flex-col">
             <div class="h-40 overflow-hidden">
-                <img src="./grnicarstvo2.jpg" alt="Proizvod" class="w-full h-full object-cover">
+                <img src="./torba2.jpg" alt="Proizvod" class="w-full h-full object-cover">
             </div>
             <div class="p-4 space-y-2 flex-grow">
                 <h2 class="text-white font-bold text-sm">Lorem Ipsum</h2>
@@ -59,7 +61,7 @@
  
         <div class="bg-white/40 backdrop-blur-sm rounded-[1.5rem] overflow-hidden shadow-sm border border-white/20 flex flex-col">
             <div class="h-40 overflow-hidden">
-                <img src="./grnicarstvo3.jpg" alt="Proizvod" class="w-full h-full object-cover">
+                <img src="./kosula.jpg" alt="Proizvod" class="w-full h-full object-cover">
             </div>
             
             <div class="p-4 space-y-2 flex-grow">
@@ -76,7 +78,7 @@
  
         <div class="bg-white/40 backdrop-blur-sm rounded-[1.5rem] overflow-hidden shadow-sm border border-white/20 flex flex-col">
             <div class="h-40 overflow-hidden">
-                <img src="./grnicarstvo4.jpg" alt="Proizvod" class="w-full h-full object-cover">
+                <img src="./mala.jpg" alt="Proizvod" class="w-full h-full object-cover">
             </div>
             <div class="p-4 space-y-2 flex-grow">
                 <h2 class="text-white font-bold text-sm">Lorem Ipsum</h2>
@@ -91,7 +93,7 @@
  
         <div class="bg-white/40 backdrop-blur-sm rounded-[1.5rem] overflow-hidden shadow-sm border border-white/20 flex flex-col">
             <div class="h-40 overflow-hidden">
-                <img src="./grnicarstvo2.jpg" alt="Proizvod" class="w-full h-full object-cover">
+                <img src="./pernica.jpg" alt="Proizvod" class="w-full h-full object-cover">
             </div>
             
             <div class="p-4 space-y-2 flex-grow">
@@ -108,7 +110,7 @@
  
         <div class="bg-white/40 backdrop-blur-sm rounded-[1.5rem] overflow-hidden shadow-sm border border-white/20 flex flex-col">
             <div class="h-40 overflow-hidden">
-                <img src="./grnicarstvo1.jpg" alt="Proizvod" class="w-full h-full object-cover">
+                <img src="./srce1.jpg" alt="Proizvod" class="w-full h-full object-cover">
             </div>
             <div class="p-4 space-y-2 flex-grow">
                 <h2 class="text-white font-bold text-sm">Lorem Ipsum</h2>
@@ -154,4 +156,5 @@
 </body>
  
 </html>
+
 @endsection
