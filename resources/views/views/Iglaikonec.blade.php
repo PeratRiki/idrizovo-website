@@ -1,15 +1,6 @@
-
-
-
-
-<!DOCTYPE html>
-<html lang="mk">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Уметност со игла и конец</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+@extends('layouts.app')
+@section('title', 'Уметност со игла и конец')
+@section('content')
 </head>
 <body class="bg-gradient-to-b from-blue-100 to-blue-300 min-h-screen p-4 flex flex-col items-center">
 
@@ -122,8 +113,5 @@
 
     </div>
 
-</body>
-
-</html>
-
+@endsection
 

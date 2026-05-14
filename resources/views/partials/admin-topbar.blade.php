@@ -57,7 +57,7 @@
                     {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
                 </div>
 
-                <div class="text-left">
+                <div class="text-left hidden sm:block">
                     <p class="text-sm font-semibold text-[#1a2e4a]">
                         {{ auth()->user()->name ?? 'Admin' }}
                     </p>
