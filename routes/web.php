@@ -24,8 +24,7 @@ Route::get('/Grncarstvo', function () { return view('views.Grncarstvo'); })->nam
 Route::get('/Iglaikonec', function () { return view('views.Iglaikonec'); })->name('iglaikonec.index');
 Route::get('/Rezba', function () { return view('views.Rezba'); })->name('rezba.index');
 Route::get('/Novosti', function () { return view('views.Novosti'); })->name('novosti.index');
-Route::get('/zakazi-poseta', function () {return view('appointments');})->name('appointments.index');
-
+Route::get('/zakazi-poseta', function () { return view('views.Appointments'); })->name('appointments.index');
 
 /*
 |--------------------------------------------------------------------------
