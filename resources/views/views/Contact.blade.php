@@ -1,31 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Контакт')
 @section('content')
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        #mobile-menu {
-            display: none;
-        }
-
-        #mobile-menu.open {
-            display: block;
-        }
-
-        #lang-dropdown {
-            display: none;
-        }
-
-        #lang-dropdown.open {
-            display: block;
-        }
-    </style>
-</head>
-
-<body>
 
     <!-- CONTACT SECTION -->
     <div id="kontakti"
@@ -70,8 +45,7 @@
                         data-en="Monday - Friday: 08:00 - 16:00">Понеделник - Петок: 08:00 - 16:00</p>
                     <p data-mk="Сабота: 08:00 - 13:00" data-sq="E shtunë: 08:00 - 13:00"
                         data-en="Saturday: 08:00 - 13:00">Сабота: 08:00 - 13:00</p>
-                    <p data-mk="Недела: Затворено" data-sq="E diel: Mbyllur" data-en="Sunday: Closed">Недела: Затворено
-                    </p>
+                    <p data-mk="Недела: Затворено" data-sq="E diel: Mbyllur" data-en="Sunday: Closed">Недела: Затворено</p>
                     <p data-mk="Државни празници: Затворено" data-sq="Festat shtetërore: Mbyllur"
                         data-en="Public holidays: Closed">Државни празници: Затворено</p>
                 </div>
@@ -151,9 +125,7 @@
                         8:30-18:00
                     </span>
                     <div class="mt-auto">
-                        <button
-                            class="bg-[#0E1B2F] text-white text-sm font-bold py-2.5 px-8 rounded-lg hover:bg-gray-800 transition">02
-                            25 80365</button>
+                        <button class="bg-[#0E1B2F] text-white text-sm font-bold py-2.5 px-8 rounded-lg hover:bg-gray-800 transition">02 25 80365</button>
                     </div>
                 </div>
 
@@ -167,8 +139,7 @@
                         Пополнете го онлајн формуларот за закажување посета и ќе ве контактираме за потврда.
                     </p>
                     <div class="mt-auto">
-                        <button
-                            class="bg-[#0b132b] text-white text-sm font-bold py-2.5 px-6 rounded-lg hover:bg-gray-800 transition"
+                        <button class="bg-[#0b132b] text-white text-sm font-bold py-2.5 px-6 rounded-lg hover:bg-gray-800 transition"
                             data-mk="Кликни за календар" data-sq="Kliko për kalendar"
                             data-en="Click for calendar">Кликни за календар</button>
                     </div>
@@ -184,12 +155,9 @@
                     <p class="text-sm font-medium mb-3" data-mk="Сабота и недела" data-sq="E shtunë dhe e diel"
                         data-en="Saturday and Sunday">Сабота и недела</p>
                     <div class="space-y-1.5 text-xs">
-                        <p data-mk="1 Група: 08:30-09:30" data-sq="1 Grup: 08:30-09:30" data-en="1 Group: 08:30-09:30">1
-                            Група: 08:30-09:30</p>
-                        <p data-mk="2 Група: 10:30-11:30" data-sq="2 Grup: 10:30-11:30" data-en="2 Group: 10:30-11:30">2
-                            Група: 10:30-11:30</p>
-                        <p data-mk="3 Група: 12:30-13:30" data-sq="3 Grup: 12:30-13:30" data-en="3 Group: 12:30-13:30">3
-                            Група: 12:30-13:30</p>
+                        <p data-mk="1 Група: 08:30-09:30" data-sq="1 Grup: 08:30-09:30" data-en="1 Group: 08:30-09:30">1 Група: 08:30-09:30</p>
+                        <p data-mk="2 Група: 10:30-11:30" data-sq="2 Grup: 10:30-11:30" data-en="2 Group: 10:30-11:30">2 Група: 10:30-11:30</p>
+                        <p data-mk="3 Група: 12:30-13:30" data-sq="3 Grup: 12:30-13:30" data-en="3 Group: 12:30-13:30">3 Група: 12:30-13:30</p>
                     </div>
                 </div>
 
@@ -210,16 +178,5 @@
             </div>
         </div>
     </section>
-
-    <!-- Scroll to top -->
-    <div class="fixed bottom-10 right-10 z-50">
-        <button onclick="window.scrollTo({top:0,behavior:'smooth'})"
-            class="bg-[#2b5a9e] text-white p-4 rounded-full shadow-2xl hover:bg-[#1e3a8a] transition">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18">
-                </path>
-            </svg>
-        </button>
-    </div>
 
 @endsection

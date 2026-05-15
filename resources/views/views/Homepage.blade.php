@@ -1,28 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Homepage')
 @section('content')
-    <title>КПУ Идризово</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        #mobile-menu { display: none; }
-        #mobile-menu.open { display: block; }
-        #lang-dropdown { display: none; }
-        #lang-dropdown.open { display: block; }
-        @media (max-width: 767px) {
-            .hero-section { height: 420px !important; }
-            .hero-section h1 { font-size: 3rem !important; }
-            .hero-section p { font-size: 1rem !important; }
-            .scroll-top-btn { display: none !important; }
-            .vesnik-img { min-height: 200px !important; }
-            .resources-grid { gap: 24px; }
-            .bottom-boxes { flex-direction: column; align-items: stretch; }
-            .bottom-boxes a { width: 100% !important; }
-        }
-    </style>
-</head>
-<body class="bg-gray-50 text-gray-900">
+
     <!-- HERO -->
     <section class="hero-section relative h-[600px] flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0"><img src="{{ asset('images/homebg.png') }}" alt="Building" class="w-full h-full object-cover"></div>
