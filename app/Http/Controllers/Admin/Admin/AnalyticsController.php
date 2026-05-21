@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class AnalyticsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (auth()->check() && auth()->user()->email === 'vospituvac@idrizovo.com') {
+                abort(403);
+            }
+            return $next($request);
+        });
+    }
     public function index()
 {
     $topVisited = \App\Models\VisitRequest::select('prisoner_name')

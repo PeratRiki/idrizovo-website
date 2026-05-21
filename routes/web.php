@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Admin\VisitRequestController;
 use App\Http\Controllers\Admin\Admin\HandmadeController;
 use App\Models\HandmadeItem;
 use App\Models\HandmadeQuote;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,7 +89,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     // Останати админ страници
     Route::get('/aboutus', function () { return view('AboutUs'); });
-    Route::get('/activities', function () { return view('Activities'); });
-    Route::get('/article', function () { return view('Article'); });
+    Route::get('/activities', function () { return view('Activities'); })->name('admin.activities');
+    Route::get('/article', function () { return view('Article'); })->name('admin.article');
     Route::get('/color', function () { return view('Color'); });
 });
