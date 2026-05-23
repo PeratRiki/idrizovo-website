@@ -8,8 +8,12 @@ use App\Http\Controllers\Admin\Admin\MessagesController;
 use App\Http\Controllers\Admin\Admin\LogController;
 use App\Http\Controllers\Admin\Admin\VisitRequestController;
 use App\Http\Controllers\Admin\Admin\HandmadeController;
+use App\Http\Controllers\Admin\Admin\NovostiController;
+use App\Http\Controllers\Admin\Admin\AktivnostiController;
 use App\Models\HandmadeItem;
 use App\Models\HandmadeQuote;
+use App\Models\Novost;
+use App\Models\Aktivnost;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +24,10 @@ Route::get('/', function () { return view('views.Homepage'); })->name('homepage.
 Route::get('/AboutUs', function () { return view('views.AboutUs'); })->name('about.index');
 Route::get('/Contact', function () { return view('views.Contact'); })->name('contact.index');
 Route::get('/Article', function () { return view('views.Article'); })->name('article.index');
-Route::get('/Activities', function () { return view('views.Activities'); })->name('activities.index');
+Route::get('/Activities', function () {
+    $aktivnosti = Aktivnost::active()->orderBy('sort_order')->get();
+    return view('views.Activities', compact('aktivnosti'));
+})->name('activities.index');
 Route::get('/Handmade', function () {
     $items  = HandmadeItem::active()->get();
     $quotes = HandmadeQuote::active()->get();
@@ -30,7 +37,10 @@ Route::get('/Color', function () { return view('views.Color'); })->name('color.i
 Route::get('/Grncarstvo', function () { return view('views.Grncarstvo'); })->name('grncarstvo.index');
 Route::get('/Iglaikonec', function () { return view('views.Iglaikonec'); })->name('iglaikonec.index');
 Route::get('/Rezba', function () { return view('views.Rezba'); })->name('rezba.index');
-Route::get('/Novosti', function () { return view('views.Novosti'); })->name('novosti.index');
+Route::get('/Novosti', function () {
+    $novosti = Novost::active()->get();
+    return view('views.Novosti', compact('novosti'));
+})->name('novosti.index');
 Route::get('/zakazi-poseta', function () { return view('views.Appointments'); })->name('appointments.index');
 
 /*
@@ -86,9 +96,30 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/handmade-quotes', [HandmadeController::class, 'storeQuote'])->name('admin.handmade.storeQuote');
     Route::delete('/handmade-quotes/{handmadeQuote}', [HandmadeController::class, 'destroyQuote'])->name('admin.handmade.destroyQuote');
 
+    // Новости — CRUD
+    Route::resource('novosti', NovostiController::class)
+        ->names([
+            'index'   => 'admin.novosti.index',
+            'create'  => 'admin.novosti.create',
+            'store'   => 'admin.novosti.store',
+            'edit'    => 'admin.novosti.edit',
+            'update'  => 'admin.novosti.update',
+            'destroy' => 'admin.novosti.destroy',
+        ]);
+
+    // Активности — CRUD
+    Route::resource('aktivnosti', AktivnostiController::class)
+        ->names([
+            'index'   => 'admin.aktivnosti.index',
+            'create'  => 'admin.aktivnosti.create',
+            'store'   => 'admin.aktivnosti.store',
+            'edit'    => 'admin.aktivnosti.edit',
+            'update'  => 'admin.aktivnosti.update',
+            'destroy' => 'admin.aktivnosti.destroy',
+        ]);
+
     // Останати админ страници
     Route::get('/aboutus', function () { return view('AboutUs'); });
-    Route::get('/activities', function () { return view('Activities'); });
     Route::get('/article', function () { return view('Article'); });
     Route::get('/color', function () { return view('Color'); });
 });
