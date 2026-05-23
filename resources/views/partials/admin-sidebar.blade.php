@@ -49,6 +49,10 @@
         </div>
     </div>
 
+    @php
+        $isVospituvac = auth()->check() && auth()->user()->email === 'vospituvac@idrizovo.com';
+    @endphp
+
     <nav class="flex-1 px-4 space-y-1 mt-4 overflow-y-auto">
 
         <p class="text-[10px] uppercase tracking-[0.2em] text-[#5a7299] font-bold px-4 mb-4">Главно</p>
@@ -64,6 +68,7 @@
             <span class="text-sm font-bold">Контролен Центар</span>
         </a>
 
+        @unless($isVospituvac)
         {{-- Барања за посети --}}
         <a href="{{ route('admin.visits') }}" onclick="closeSidebar()"
            class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
@@ -85,6 +90,7 @@
             </svg>
             <span class="text-sm font-bold">Пораки</span>
         </a>
+        @endunless
 
         <div class="pt-4">
             <p class="text-[10px] uppercase tracking-[0.2em] text-[#5a7299] font-bold px-4 mb-4">Содржина</p>
@@ -123,6 +129,7 @@
             </a>
         </div>
 
+        @unless($isVospituvac)
         <div class="pt-4">
             <p class="text-[10px] uppercase tracking-[0.2em] text-[#5a7299] font-bold px-4 mb-4">Систем</p>
 
@@ -147,6 +154,7 @@
                 СИСТЕМСКИ ЛОГОВИ
             </a>
         </div>
+        @endunless
 
     </nav>
 
