@@ -120,6 +120,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     // Останати админ страници
     Route::get('/aboutus', function () { return view('AboutUs'); });
-    Route::get('/article', function () { return view('Article'); });
+    Route::get('/activities', function () { return view('Activities'); })->name('admin.activities');
+    Route::get('/article', function () { return view('Article'); })->name('admin.article');
     Route::get('/color', function () { return view('Color'); });
 });

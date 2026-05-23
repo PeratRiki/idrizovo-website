@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class VisitRequestController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (auth()->check() && auth()->user()->email === 'vospituvac@idrizovo.com') {
+                abort(403);
+            }
+            return $next($request);
+        });
+    }
     public function index()
     {
         $visitRequests = VisitRequest::latest()->get();
