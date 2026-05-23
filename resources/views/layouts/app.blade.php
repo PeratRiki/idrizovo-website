@@ -56,27 +56,18 @@
 
         function setLang(lang) {
             localStorage.setItem('lang', lang);
-            applyLang(lang);
-            document.getElementById('lang-dropdown').classList.add('hidden');
             document.getElementById('lang-label').textContent = langLabels[lang];
+            document.getElementById('lang-dropdown').classList.add('hidden');
+            applyLang(lang);
         }
 
         function applyLang(lang) {
-            // ── Текстови со data-mk ──
             document.querySelectorAll('[data-mk]').forEach(function(el) {
+                if (el.id === 'lang-label') return;
                 const text = el.getAttribute('data-' + lang) || el.getAttribute('data-mk');
-                if (el.childNodes.length === 1 && el.childNodes[0].nodeType === 3) {
-                    el.textContent = text;
-                } else {
-                    el.childNodes.forEach(function(node) {
-                        if (node.nodeType === 3 && node.textContent.trim() !== '') {
-                            node.textContent = text;
-                        }
-                    });
-                }
+                el.innerHTML = text;
             });
 
-            // ── Placeholder атрибути (Contact форма) ──
             document.querySelectorAll('[data-placeholder-mk]').forEach(function(el) {
                 const placeholder = el.getAttribute('data-placeholder-' + lang)
                     || el.getAttribute('data-placeholder-mk');
