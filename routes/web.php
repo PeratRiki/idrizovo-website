@@ -60,8 +60,8 @@ Route::post('/visits', [VisitRequestController::class, 'store'])->name('visits.s
 */
 Route::middleware(['auth'])->prefix('admin')->group(function () {
 
-    // Главна табла — редиректира на homepage
-    Route::get('/', function () { return redirect('/'); })->name('admin.dashboard');
+    // Главна табла
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     // Аналитика
     Route::get('/analytics', [AnalyticsController::class, 'index'])->name('admin.analytics');
@@ -73,7 +73,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/security-logs', [LogController::class, 'security'])->name('admin.security');
     Route::get('/system-logs', [LogController::class, 'system'])->name('admin.system');
 
-    // Барања за посети — ADMIN страна
+    // Барања за посети
     Route::get('/visits', [VisitRequestController::class, 'index'])->name('admin.visits');
     Route::patch('/visits/{visit}/approve', [VisitRequestController::class, 'approve'])->name('admin.visits.approve');
     Route::patch('/visits/{visit}/reject', [VisitRequestController::class, 'reject'])->name('admin.visits.reject');
