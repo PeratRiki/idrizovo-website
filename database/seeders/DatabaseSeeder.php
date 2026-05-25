@@ -12,12 +12,19 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Admin корисник
+        // Воспитувач корисник
         User::insert([
+            [
+                'name'       => 'Vospituvac',
+                'email'      => 'vospituvac@idrizovo.com',
+                'password'   => Hash::make('Vospituvac2026!'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
             [
                 'name'       => 'Admin',
                 'email'      => 'admin@admin.com',
-                'password'   => Hash::make('password123'),
+                'password'   => Hash::make('AdminPassword123!'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

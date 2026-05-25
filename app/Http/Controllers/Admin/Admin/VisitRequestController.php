@@ -10,6 +10,10 @@ class VisitRequestController extends Controller
 {
     public function index()
     {
+        if (auth()->user()->email === 'vospituvac@idrizovo.com') {
+            abort(403);
+        }
+
         $visitRequests = VisitRequest::latest()->get();
         return view('admin.visit-request', compact('visitRequests'));
     }

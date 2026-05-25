@@ -36,8 +36,8 @@
                 <div style="display:flex; flex-direction:column; gap:18px;">
 
                     <div>
-                        <label style="display:block; font-size:0.8rem; font-weight:700; color:#1a2e4a; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.05em;">Корисничко име</label>
-                        <input type="text" name="username" required autocomplete="username"
+                        <label style="display:block; font-size:0.8rem; font-weight:700; color:#1a2e4a; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.05em;">Е-пошта</label>
+                        <input type="email" name="email" required autocomplete="email"
                             class="login-input"
                             style="width:100%; background:#f5f8ff; border:1.5px solid #d1dff0; border-radius:12px; padding:14px 16px; font-size:0.95rem; color:#1a2e4a; outline:none; transition:border-color 0.2s;"
                             onfocus="this.style.borderColor='#1d6fa5'; this.style.background='#fff';"

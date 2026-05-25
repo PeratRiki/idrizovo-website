@@ -9,6 +9,10 @@ class MessagesController extends Controller
 {
     public function index()
     {
+        if (auth()->user()->email === 'vospituvac@idrizovo.com') {
+            abort(403);
+        }
+
         $messages = ContactMessage::latest()->get();
         return view('admin.messages', compact('messages'));
     }

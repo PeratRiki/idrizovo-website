@@ -16,21 +16,23 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'username' => ['required'],
+            'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if ($request->username === 'admin') {
-            $user = \App\Models\User::first();
-            
-            if ($user && \Hash::check($request->password, $user->password)) {
-                Auth::login($user);
-                $request->session()->regenerate();
-                return redirect()->intended('/admin');
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            $role = Auth::user()->role;
+
+            if ($role === 'vospituvac') {
+                return redirect('/');
             }
+
+            return redirect('/admin');
         }
 
-        return back()->withErrors(['username' => 'Погрешно корисничко име или лозинка.']);
+        return back()->withErrors(['email' => 'Погрешен е-поштенски адрес или лозинка.']);
     }
 
     public function logout(Request $request)

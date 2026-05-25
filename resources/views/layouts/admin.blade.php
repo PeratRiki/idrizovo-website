@@ -53,10 +53,8 @@
 </head>
 <body style="background:#f0f4fa; min-height:100vh;">
 
-    {{-- OVERLAY (мобилен) --}}
     <div id="sidebar-overlay" onclick="closeSidebar()"></div>
 
-    {{-- SIDEBAR --}}
     <aside id="sidebar" style="background:#315b96; display:flex; flex-direction:column;">
 
         <div style="padding:24px 20px; border-bottom:1px solid rgba(255,255,255,0.15);">
@@ -69,8 +67,12 @@
             </div>
         </div>
 
-        {{-- Nav --}}
         <nav style="flex:1; padding:16px 12px; display:flex; flex-direction:column; gap:2px; overflow-y:auto;">
+
+            @php
+                $isVospituvac = auth()->check() && auth()->user()->email === 'vospituvac@idrizovo.com';
+                $currentUser = auth()->user();
+            @endphp
 
             <p style="color:rgba(255,255,255,0.45); font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; padding:8px 12px 6px;">Главно</p>
 
@@ -81,6 +83,7 @@
                 Контролен Центар
             </a>
 
+            @unless($isVospituvac)
             <a href="{{ route('admin.visits') }}"
                class="sidebar-link {{ request()->routeIs('admin.visits*') ? 'active' : '' }}"
                style="display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; color:rgba(255,255,255,0.9); text-decoration:none; font-size:0.875rem; font-weight:500;">
@@ -106,8 +109,10 @@
                     <span style="margin-left:auto; background:#f59e0b; color:#1a2e4a; font-size:0.6rem; font-weight:700; padding:2px 7px; border-radius:20px;">{{ $unreadMessages }}</span>
                 @endif
             </a>
+            @endunless
 
-            {{-- ═══ НОВА ЛИНИЈА: Рачни изработки ═══ --}}
+            <p style="color:rgba(255,255,255,0.45); font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; padding:12px 12px 6px;">Содржина</p>
+
             <a href="{{ route('admin.handmade.index') }}"
                class="sidebar-link {{ request()->routeIs('admin.handmade*') ? 'active' : '' }}"
                style="display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; color:rgba(255,255,255,0.9); text-decoration:none; font-size:0.875rem; font-weight:500;">
@@ -115,6 +120,21 @@
                 Рачни изработки
             </a>
 
+            <a href="{{ route('admin.novosti.index') }}"
+               class="sidebar-link {{ request()->routeIs('admin.novosti*') ? 'active' : '' }}"
+               style="display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; color:rgba(255,255,255,0.9); text-decoration:none; font-size:0.875rem; font-weight:500;">
+                <svg style="width:16px;height:16px;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                Новости
+            </a>
+
+            <a href="{{ route('admin.aktivnosti.index') }}"
+               class="sidebar-link {{ request()->routeIs('admin.aktivnosti*') ? 'active' : '' }}"
+               style="display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; color:rgba(255,255,255,0.9); text-decoration:none; font-size:0.875rem; font-weight:500;">
+                <svg style="width:16px;height:16px;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                Активности
+            </a>
+
+            @unless($isVospituvac)
             <p style="color:rgba(255,255,255,0.45); font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; padding:12px 12px 6px;">Систем</p>
 
             <a href="{{ route('admin.analytics') }}"
@@ -137,15 +157,16 @@
                 <svg style="width:16px;height:16px;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                 Системски Логови
             </a>
+            @endunless
+
         </nav>
 
-        {{-- User + Logout --}}
         <div style="padding:16px 12px; border-top:1px solid rgba(255,255,255,0.15);">
             <div style="display:flex; align-items:center; gap:10px; padding:8px 12px; margin-bottom:6px;">
-                <div style="width:32px; height:32px; border-radius:10px; background:rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.75rem; font-weight:700; flex-shrink:0;">A</div>
+                <div style="width:32px; height:32px; border-radius:10px; background:rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.75rem; font-weight:700; flex-shrink:0;">{{ strtoupper(substr(auth()->user()?->name ?? 'A', 0, 1)) }}</div>
                 <div>
-                    <p style="color:#fff; font-size:0.8rem; font-weight:700; margin:0;">Admin</p>
-                    <p style="color:rgba(255,255,255,0.5); font-size:0.65rem; margin:0;">Администратор</p>
+                    <p style="color:#fff; font-size:0.8rem; font-weight:700; margin:0;">{{ auth()->user()?->name ?? 'Admin' }}</p>
+                    <p style="color:rgba(255,255,255,0.5); font-size:0.65rem; margin:0;">{{ auth()->user()?->email === 'vospituvac@idrizovo.com' ? 'Воспитувач' : 'Администратор' }}</p>
                 </div>
             </div>
             <form action="{{ route('logout') }}" method="POST">
@@ -159,10 +180,8 @@
         </div>
     </aside>
 
-    {{-- MAIN CONTENT --}}
     <div class="main-content" style="min-height:100vh; display:flex; flex-direction:column;">
 
-        {{-- Top Bar --}}
         <header style="background:#fff; border-bottom:1px solid #d1dff0; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:30; box-shadow:0 1px 4px rgba(49,91,150,0.06);">
             <div style="display:flex; align-items:center; gap:14px;">
                 <button id="hamburger" onclick="openSidebar()"
@@ -173,7 +192,7 @@
                 </button>
                 <div>
                     <p style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; color:#315b96; font-weight:700; margin:0;">КПУ Идризово</p>
-                    <p style="font-size:0.8rem; font-weight:600; color:#1a2e4a; margin:0;">Добредојдовте, Admin</p>
+                    <p style="font-size:0.8rem; font-weight:600; color:#1a2e4a; margin:0;">Добредојдовте, {{ auth()->user()?->name ?? 'Admin' }}</p>
                 </div>
             </div>
             <div style="display:flex; align-items:center; gap:10px;">
@@ -185,7 +204,6 @@
             </div>
         </header>
 
-        {{-- Flash messages --}}
         @if(session('success'))
             <div style="margin:20px 24px 0; background:#f0fdf4; border:1px solid #bbf7d0; color:#166534; padding:12px 18px; border-radius:14px; font-size:0.875rem; font-weight:500;">
                 ✓ {{ session('success') }}
@@ -197,7 +215,6 @@
             </div>
         @endif
 
-        {{-- Page Content --}}
         <main style="flex:1;">
             @yield('content')
         </main>
