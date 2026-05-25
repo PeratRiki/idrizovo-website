@@ -70,10 +70,10 @@
         <nav style="flex:1; padding:16px 12px; display:flex; flex-direction:column; gap:2px; overflow-y:auto;">
 
             @php
-                $isVospituvac = auth()->check() && auth()->user()->email === 'vospituvac@idrizovo.com';
-                $currentUser = auth()->user();
+                $isVospituvac = auth()->check() && auth()->user()->role === 'vospituvac';
             @endphp
 
+            @unless($isVospituvac)
             <p style="color:rgba(255,255,255,0.45); font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; padding:8px 12px 6px;">Главно</p>
 
             <a href="{{ route('admin.dashboard') }}"
@@ -83,7 +83,6 @@
                 Контролен Центар
             </a>
 
-            @unless($isVospituvac)
             <a href="{{ route('admin.visits') }}"
                class="sidebar-link {{ request()->routeIs('admin.visits*') ? 'active' : '' }}"
                style="display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; color:rgba(255,255,255,0.9); text-decoration:none; font-size:0.875rem; font-weight:500;">
@@ -166,7 +165,12 @@
                 <div style="width:32px; height:32px; border-radius:10px; background:rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.75rem; font-weight:700; flex-shrink:0;">{{ strtoupper(substr(auth()->user()?->name ?? 'A', 0, 1)) }}</div>
                 <div>
                     <p style="color:#fff; font-size:0.8rem; font-weight:700; margin:0;">{{ auth()->user()?->name ?? 'Admin' }}</p>
-                    <p style="color:rgba(255,255,255,0.5); font-size:0.65rem; margin:0;">{{ auth()->user()?->email === 'vospituvac@idrizovo.com' ? 'Воспитувач' : 'Администратор' }}</p>
+                    <p style="color:rgba(255,255,255,0.5); font-size:0.65rem; margin:0;">
+                        @if(auth()->user()?->role === 'vospituvac') Воспитувач
+                        @elseif(auth()->user()?->role === 'email_reader') Мејл читач
+                        @else Администратор
+                        @endif
+                    </p>
                 </div>
             </div>
             <form action="{{ route('logout') }}" method="POST">

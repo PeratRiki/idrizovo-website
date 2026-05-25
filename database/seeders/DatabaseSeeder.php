@@ -12,12 +12,12 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Воспитувач корисник
         User::insert([
             [
                 'name'       => 'Vospituvac',
                 'email'      => 'vospituvac@idrizovo.com',
                 'password'   => Hash::make('Vospituvac2026!'),
+                'role'       => 'vospituvac',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -25,12 +25,20 @@ class DatabaseSeeder extends Seeder
                 'name'       => 'Admin',
                 'email'      => 'admin@admin.com',
                 'password'   => Hash::make('AdminPassword123!'),
+                'role'       => 'admin',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name'       => 'Email Reader',
+                'email'      => 'email@idrizovo.com',
+                'password'   => Hash::make('EmailReader2026!'),
+                'role'       => 'email_reader',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
         ]);
 
-        // Примери за барања за посети
         VisitRequest::insert([
             [
                 'visitor_name'   => 'Марија Петровска',
@@ -84,12 +92,13 @@ class DatabaseSeeder extends Seeder
             ],
         ]);
 
-        // Примери за пораки
         ContactMessage::insert([
             [
                 'name'       => 'Ана Блажевска',
                 'email'      => 'ana@gmail.com',
+                'subject'    => 'Информации за посета',
                 'message'    => 'Сакам да дознаам повеќе информации за постапката за посета.',
+                'priority'   => 'urgent',
                 'is_read'    => false,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -97,7 +106,9 @@ class DatabaseSeeder extends Seeder
             [
                 'name'       => 'Петар Костовски',
                 'email'      => 'petar@gmail.com',
+                'subject'    => 'Работилници за рачни изработки',
                 'message'    => 'Кога се одржуваат работилниците за рачни изработки?',
+                'priority'   => 'normal',
                 'is_read'    => false,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -105,7 +116,29 @@ class DatabaseSeeder extends Seeder
             [
                 'name'       => 'Ирена Спасовска',
                 'email'      => 'irena@yahoo.com',
+                'subject'    => 'Онлајн купување на производи',
                 'message'    => 'Дали можам да купам производи онлајн?',
+                'priority'   => 'low',
+                'is_read'    => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name'       => 'Горан Стојановски',
+                'email'      => 'goran.s@gmail.com',
+                'subject'    => 'Барање за посета — итно',
+                'message'    => 'Потребна ми е итна посета на мојот брат кој се наоѓа во установата.',
+                'priority'   => 'urgent',
+                'is_read'    => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name'       => 'Марија Николовска',
+                'email'      => 'marija.n@gmail.com',
+                'subject'    => 'Општи информации',
+                'message'    => 'Би сакала да добијам општи информации за установата.',
+                'priority'   => 'normal',
                 'is_read'    => true,
                 'created_at' => now(),
                 'updated_at' => now(),

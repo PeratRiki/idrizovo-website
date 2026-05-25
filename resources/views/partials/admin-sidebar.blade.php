@@ -50,7 +50,7 @@
     </div>
 
     @php
-        $isVospituvac = auth()->check() && auth()->user()->email === 'vospituvac@idrizovo.com';
+        $isVospituvac = auth()->check() && auth()->user()->role === 'vospituvac';
     @endphp
 
     <nav class="flex-1 px-4 space-y-1 mt-4 overflow-y-auto">
@@ -58,7 +58,6 @@
         @unless($isVospituvac)
         <p class="text-[10px] uppercase tracking-[0.2em] text-[#5a7299] font-bold px-4 mb-4">Главно</p>
 
-        {{-- Контролен Центар --}}
         <a href="{{ route('admin.dashboard') }}" onclick="closeSidebar()"
            class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
            {{ Request::routeIs('admin.dashboard') ? 'bg-[#e6f1fb] text-[#1d6fa5]' : 'text-[#5a7299] hover:bg-[#f5f8ff] hover:text-[#1a2e4a]' }}">
@@ -69,7 +68,6 @@
             <span class="text-sm font-bold">Контролен Центар</span>
         </a>
 
-        {{-- Барања за посети --}}
         <a href="{{ route('admin.visits') }}" onclick="closeSidebar()"
            class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
            {{ Request::routeIs('admin.visits') ? 'bg-[#e6f1fb] text-[#1d6fa5]' : 'text-[#5a7299] hover:bg-[#f5f8ff] hover:text-[#1a2e4a]' }}">
@@ -80,7 +78,6 @@
             <span class="text-sm font-bold">Барања за посети</span>
         </a>
 
-        {{-- Пораки --}}
         <a href="{{ route('admin.messages') }}" onclick="closeSidebar()"
            class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
            {{ Request::routeIs('admin.messages') ? 'bg-[#e6f1fb] text-[#1d6fa5]' : 'text-[#5a7299] hover:bg-[#f5f8ff] hover:text-[#1a2e4a]' }}">
@@ -95,7 +92,6 @@
         <div class="pt-4">
             <p class="text-[10px] uppercase tracking-[0.2em] text-[#5a7299] font-bold px-4 mb-4">Содржина</p>
 
-            {{-- Рачни изработки --}}
             <a href="{{ route('admin.handmade.index') }}" onclick="closeSidebar()"
                class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
                {{ Request::routeIs('admin.handmade.*') ? 'bg-[#e6f1fb] text-[#1d6fa5]' : 'text-[#5a7299] hover:bg-[#f5f8ff] hover:text-[#1a2e4a]' }}">
@@ -106,7 +102,6 @@
                 <span class="text-sm font-bold">Рачни изработки</span>
             </a>
 
-            {{-- Новости --}}
             <a href="{{ route('admin.novosti.index') }}" onclick="closeSidebar()"
                class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
                {{ Request::routeIs('admin.novosti.*') ? 'bg-[#e6f1fb] text-[#1d6fa5]' : 'text-[#5a7299] hover:bg-[#f5f8ff] hover:text-[#1a2e4a]' }}">
@@ -117,7 +112,6 @@
                 <span class="text-sm font-bold">Новости</span>
             </a>
 
-            {{-- Активности --}}
             <a href="{{ route('admin.aktivnosti.index') }}" onclick="closeSidebar()"
                class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
                {{ Request::routeIs('admin.aktivnosti.*') ? 'bg-[#e6f1fb] text-[#1d6fa5]' : 'text-[#5a7299] hover:bg-[#f5f8ff] hover:text-[#1a2e4a]' }}">
@@ -159,6 +153,18 @@
     </nav>
 
     <div class="p-6 border-t border-[#e8f0fb]">
+        <div style="display:flex; align-items:center; gap:10px; padding:8px 12px; margin-bottom:8px;">
+            <div style="width:32px; height:32px; border-radius:10px; background:#e6f1fb; display:flex; align-items:center; justify-content:center; color:#1d6fa5; font-size:0.75rem; font-weight:700; flex-shrink:0;">{{ strtoupper(substr(auth()->user()?->name ?? 'A', 0, 1)) }}</div>
+            <div>
+                <p style="color:#1a2e4a; font-size:0.8rem; font-weight:700; margin:0;">{{ auth()->user()?->name ?? 'Admin' }}</p>
+                <p style="color:#5a7299; font-size:0.65rem; margin:0;">
+                    @if(auth()->user()?->role === 'vospituvac') Воспитувач
+                    @elseif(auth()->user()?->role === 'email_reader') Мејл читач
+                    @else Администратор
+                    @endif
+                </p>
+            </div>
+        </div>
         <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button type="submit"

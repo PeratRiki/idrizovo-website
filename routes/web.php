@@ -68,6 +68,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     // Пораки
     Route::get('/messages', [MessagesController::class, 'index'])->name('admin.messages');
+    Route::post('/messages', [MessagesController::class, 'store'])->name('admin.messages.store');
+    Route::post('/messages/send', [MessagesController::class, 'send'])->name('admin.messages.send'); // ДОДАДЕНО
+    Route::patch('/messages/{message}/read', [MessagesController::class, 'markAsRead'])->name('admin.messages.read');
+    Route::post('/messages/{message}/reply', [MessagesController::class, 'reply'])->name('admin.messages.reply');
+    Route::delete('/messages/{message}', [MessagesController::class, 'destroy'])->name('admin.messages.destroy');
 
     // Логови
     Route::get('/security-logs', [LogController::class, 'security'])->name('admin.security');
@@ -78,7 +83,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::patch('/visits/{visit}/approve', [VisitRequestController::class, 'approve'])->name('admin.visits.approve');
     Route::patch('/visits/{visit}/reject', [VisitRequestController::class, 'reject'])->name('admin.visits.reject');
     Route::patch('/visits/{visit}/status', [VisitRequestController::class, 'updateStatus'])->name('admin.visits.status');
-    Route::patch('/messages/{message}/read', [MessagesController::class, 'markAsRead'])->name('admin.messages.read');
 
     // Рачни изработки — CRUD
     Route::resource('handmade', HandmadeController::class)

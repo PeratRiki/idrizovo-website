@@ -26,7 +26,11 @@ class LoginController extends Controller
             $role = Auth::user()->role;
 
             if ($role === 'vospituvac') {
-                return redirect('/');
+                return redirect('/admin/aktivnosti');
+            }
+
+            if ($role === 'email_reader') {
+                return redirect('/admin/messages');
             }
 
             return redirect('/admin');
