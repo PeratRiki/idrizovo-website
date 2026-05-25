@@ -22,7 +22,14 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/admin');
+
+            $role = Auth::user()->role;
+
+            if ($role === 'vospituvac') {
+                return redirect('/');
+            }
+
+            return redirect('/admin');
         }
 
         return back()->withErrors(['email' => 'Погрешен е-поштенски адрес или лозинка.']);

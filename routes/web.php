@@ -60,8 +60,8 @@ Route::post('/visits', [VisitRequestController::class, 'store'])->name('visits.s
 */
 Route::middleware(['auth'])->prefix('admin')->group(function () {
 
-    // Главна табла
-    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+    // Главна табла — редиректира на homepage
+    Route::get('/', function () { return redirect('/'); })->name('admin.dashboard');
 
     // Аналитика
     Route::get('/analytics', [AnalyticsController::class, 'index'])->name('admin.analytics');

@@ -55,6 +55,7 @@
 
     <nav class="flex-1 px-4 space-y-1 mt-4 overflow-y-auto">
 
+        @unless($isVospituvac)
         <p class="text-[10px] uppercase tracking-[0.2em] text-[#5a7299] font-bold px-4 mb-4">Главно</p>
 
         {{-- Контролен Центар --}}
@@ -68,7 +69,6 @@
             <span class="text-sm font-bold">Контролен Центар</span>
         </a>
 
-        @unless($isVospituvac)
         {{-- Барања за посети --}}
         <a href="{{ route('admin.visits') }}" onclick="closeSidebar()"
            class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200
