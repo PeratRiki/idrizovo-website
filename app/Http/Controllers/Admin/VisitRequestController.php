@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\VisitRequest;
@@ -15,7 +15,7 @@ class VisitRequestController extends Controller
 
     public function index()
     {
-        if (auth()->user()->email === 'vospituvac@idrizovo.com') {
+        if (auth()->user()->role === 'vospituvac') {
             abort(403);
         }
 
@@ -33,12 +33,28 @@ class VisitRequestController extends Controller
             'requested_date'      => 'required|date',
             'visit_count'         => 'required|integer|min:1|max:10',
             'notification_method' => 'required|in:sms,email,none',
+            'visitor_type'        => 'nullable|in:semejstvo,prijatel',
         ]);
 
-        if (empty($data['visitor_email']) && empty($data['phone'])) {
-            return response()->json([
-                'errors' => ['visitor_contact' => ['Потребно е да внесите телефон или email за потврда.']],
-            ], 422);
+        // Само кога notify е sms или email бараме контакт
+        if ($data['notification_method'] !== 'none') {
+            if (empty($data['visitor_email']) && empty($data['phone'])) {
+                return response()->json([
+                    'errors' => ['visitor_contact' => ['Потребно е да внесите телефон или email за потврда.']],
+                ], 422);
+            }
+
+            if ($data['notification_method'] === 'sms' && empty($data['phone'])) {
+                return response()->json([
+                    'errors' => ['phone' => ['За SMS потврда мора да внесете мобилен број.']],
+                ], 422);
+            }
+
+            if ($data['notification_method'] === 'email' && empty($data['visitor_email'])) {
+                return response()->json([
+                    'errors' => ['visitor_email' => ['За email потврда мора да внесете email адреса.']],
+                ], 422);
+            }
         }
 
         $requestedDate = Carbon::parse($data['requested_date'])->startOfDay();
@@ -48,22 +64,10 @@ class VisitRequestController extends Controller
             ], 422);
         }
 
-        if ($data['notification_method'] === 'sms' && empty($data['phone'])) {
-            return response()->json([
-                'errors' => ['phone' => ['За SMS потврда мора да внесете мобилен број.']],
-            ], 422);
-        }
-
-        if ($data['notification_method'] === 'email' && empty($data['visitor_email'])) {
-            return response()->json([
-                'errors' => ['visitor_email' => ['За email потврда мора да внесете email адреса.']],
-            ], 422);
-        }
-
         $monthlyVisits = $this->visitorMonthlyCount($data);
         if ($monthlyVisits >= self::MAX_MONTHLY_VISITS) {
             return response()->json([
-                'errors' => ['monthly_limit' => ["Можете да закажете најмногу " . self::MAX_MONTHLY_VISITS . " посети во месецот."]],
+                'errors' => ['monthly_limit' => ['Можете да закажете најмногу ' . self::MAX_MONTHLY_VISITS . ' посети во месецот.']],
             ], 422);
         }
 
@@ -80,6 +84,7 @@ class VisitRequestController extends Controller
             'status'              => $status,
             'visit_count'         => $data['visit_count'],
             'notification_method' => $data['notification_method'],
+            'visitor_type'        => $data['visitor_type'] ?? null,
             'confirmation_code'   => $this->generateConfirmationCode(),
         ]);
 

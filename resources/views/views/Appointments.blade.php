@@ -366,6 +366,45 @@
           </div>
         </div>
       </div>
+
+      <!-- ДОДАДЕНО: Тип на посетител (од Document 1) -->
+      <div class="mt-4">
+        <label class="form-label">
+          <span
+            data-mk="Тип на посетител"
+            data-sq="Lloji i vizitorit"
+            data-en="Visitor Type">Тип на посетител</span>
+          <span class="req">*</span>
+        </label>
+        <div class="radio-group mt-1" id="tipGroup">
+          <label class="radio-option" id="ro-semejstvo">
+            <input type="radio" name="tipPosetitel" value="semejstvo" onchange="selectTip(this)"/>
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span
+              data-mk="Семејство"
+              data-sq="Familje"
+              data-en="Family">Семејство</span>
+          </label>
+          <label class="radio-option" id="ro-prijatel">
+            <input type="radio" name="tipPosetitel" value="prijatel" onchange="selectTip(this)"/>
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span
+              data-mk="Пријател"
+              data-sq="Mik"
+              data-en="Friend">Пријател</span>
+          </label>
+        </div>
+        <div
+          class="error-msg"
+          id="err-tip"
+          data-mk="Одберете тип на посетител."
+          data-sq="Zgjidhni llojin e vizitorit."
+          data-en="Please select a visitor type.">
+          Одберете тип на посетител.
+        </div>
+      </div>
+      <!-- КРАЈ: Тип на посетител -->
+
       <p
         class="text-xs text-gray-400 mt-3"
         data-mk="* Не е задолжително да внесете и email и број — доволен е еден или ниту еден."
@@ -751,11 +790,11 @@ let bookingData = {};
 
 const TIMES = ['08:00','09:00','10:00','11:00','13:00','14:00','15:00','16:00'];
 
-// ── Translations for JS-generated strings ──────────────────────────────────
 const T = {
   mk: {
     days: ['Недела','Понеделник','Вторник','Среда','Четврток','Петок','Сабота'],
     summaryVisitor:   'Посетител:',
+    summaryVisitorType: 'Тип на посетител:',
     summaryDate:      'Датум:',
     summaryTime:      'Час:',
     summaryPersons:   'Број на лица:',
@@ -777,10 +816,14 @@ const T = {
     errZat1:          'Внесете го бројот на затвореникот.',
     errZat2:          'Броевите не се совпаѓаат.',
     errNotify:        'Одберете начин за потврда.',
+    errTip:           'Одберете тип на посетител.',
+    tipSemejstvo:     'Семејство',
+    tipPrijatel:      'Пријател',
   },
   sq: {
     days: ['E diel','E hënë','E martë','E mërkurë','E enjte','E premte','E shtunë'],
     summaryVisitor:   'Vizitori:',
+    summaryVisitorType: 'Lloji i vizitorit:',
     summaryDate:      'Data:',
     summaryTime:      'Ora:',
     summaryPersons:   'Numri i personave:',
@@ -802,10 +845,14 @@ const T = {
     errZat1:          'Vendosni numrin e të burgosurit.',
     errZat2:          'Numrat nuk përputhen.',
     errNotify:        'Zgjidhni një mënyrë konfirmimi.',
+    errTip:           'Zgjidhni llojin e vizitorit.',
+    tipSemejstvo:     'Familje',
+    tipPrijatel:      'Mik',
   },
   en: {
     days: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
     summaryVisitor:   'Visitor:',
+    summaryVisitorType: 'Visitor Type:',
     summaryDate:      'Date:',
     summaryTime:      'Time:',
     summaryPersons:   'Number of persons:',
@@ -827,13 +874,15 @@ const T = {
     errZat1:          'Please enter the prisoner number.',
     errZat2:          'The numbers do not match.',
     errNotify:        'Please select a confirmation method.',
+    errTip:           'Please select a visitor type.',
+    tipSemejstvo:     'Family',
+    tipPrijatel:      'Friend',
   }
 };
 
 const VISITS_ENDPOINT = '{{ route('visits.store') }}';
 const CSRF_TOKEN = '{{ csrf_token() }}';
 
-// Returns current language (defaults to mk)
 function getLang() {
   return localStorage.getItem('lang') || 'mk';
 }
@@ -843,11 +892,9 @@ function t(key) {
   return (T[lang] && T[lang][key]) ? T[lang][key] : T['mk'][key];
 }
 
-// ── Placeholder switching (extend setLang to also update placeholders) ──────
 const _origSetLang = window.setLang;
 window.setLang = function(lang) {
   if (_origSetLang) _origSetLang(lang);
-  // Update all data-placeholder-{lang} inputs
   document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(function(el) {
     el.placeholder = el.getAttribute('data-placeholder-' + lang);
   });
@@ -885,6 +932,12 @@ function selectNotify(radio){
   radio.closest('.radio-option').classList.add('selected');
 }
 
+// ДОДАДЕНО: selectTip функција
+function selectTip(radio){
+  document.querySelectorAll('#tipGroup .radio-option').forEach(el => el.classList.remove('selected'));
+  radio.closest('.radio-option').classList.add('selected');
+}
+
 function setErr(id, show, msg){
   const el = document.getElementById('err-'+id);
   if(!el) return;
@@ -911,9 +964,20 @@ async function submitForm(){
   const zat1    = document.getElementById('zatvorenik1').value.trim();
   const zat2    = document.getElementById('zatvorenik2').value.trim();
   const notify  = document.querySelector('input[name=notify]:checked');
+  const tip     = document.querySelector('input[name=tipPosetitel]:checked'); // ДОДАДЕНО
 
   if(!ime){ setErr('ime', true, t('errRequired')); ok=false; } else clearErr('ime');
   if(!prezime){ setErr('prezime', true, t('errRequired')); ok=false; } else clearErr('prezime');
+
+  // ДОДАДЕНО: валидација за тип на посетител
+  const tipEl = document.getElementById('err-tip');
+  if(!tip){
+    tipEl.textContent = t('errTip');
+    tipEl.classList.add('show');
+    ok=false;
+  } else {
+    tipEl.classList.remove('show');
+  }
 
   if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
     setErr('email', true, t('errEmail')); ok=false;
@@ -954,6 +1018,7 @@ async function submitForm(){
     requested_date: datum,
     visit_count: visitCount,
     notification_method: notify.value,
+    visitor_type: tip.value, // ДОДАДЕНО
   };
 
   let response;
@@ -1005,9 +1070,12 @@ async function submitForm(){
   }
   document.getElementById('displayCode').textContent = bookingCode;
 
+  // ДОДАДЕНО: tipLabel за summary
+  const tipLabel = tip.value === 'semejstvo' ? t('tipSemejstvo') : t('tipPrijatel');
   const dayName = t('days')[new Date(datum).getDay()];
   document.getElementById('summaryBox').innerHTML = `
     <div class="flex justify-between"><span class="text-gray-500">${t('summaryVisitor')}</span><strong>${ime} ${prezime}</strong></div>
+    <div class="flex justify-between"><span class="text-gray-500">${t('summaryVisitorType')}</span><strong>${tipLabel}</strong></div>
     <div class="flex justify-between"><span class="text-gray-500">${t('summaryDate')}</span><strong>${dayName}, ${datum}</strong></div>
     <div class="flex justify-between"><span class="text-gray-500">${t('summaryTime')}</span><strong>${cas}h</strong></div>
     <div class="flex justify-between"><span class="text-gray-500">${t('summaryPersons')}</span><strong>${visitCount}</strong></div>
