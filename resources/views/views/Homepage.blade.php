@@ -261,7 +261,7 @@
                 {{-- Картичка 1: Административен службеник --}}
                 <div class="relative bg-slate-900 rounded-[24px] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 h-[380px] group border border-white/10 flex flex-col justify-end">
                     <div class="absolute inset-0 w-full h-full z-0">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-80">
+                        <img src="https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&q=80&w=900" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-80">
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/90 to-transparent z-10 pointer-events-none"></div>
                     <div class="relative z-20 p-6 flex flex-col justify-end w-full">
@@ -306,7 +306,7 @@
                 {{-- Картичка 3: Предлог одлука --}}
                 <div class="relative bg-slate-900 rounded-[24px] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 h-[380px] group border border-white/10 flex flex-col justify-end">
                     <div class="absolute inset-0 w-full h-full z-0">
-                        <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-80">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=900" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-80">
                     </div>
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/90 to-transparent z-10 pointer-events-none"></div>
                     <div class="relative z-20 p-6 flex flex-col justify-end w-full">
