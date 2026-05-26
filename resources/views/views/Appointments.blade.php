@@ -356,6 +356,14 @@
             data-placeholder-sq="+389 7X XXX XXX (fakultative)"
             data-placeholder-en="+389 7X XXX XXX (optional)"
             maxlength="20"/>
+          <div
+            class="error-msg"
+            id="err-mobilen"
+            data-mk="Внесете валиден мобилен број."
+            data-sq="Vendosni një numër celular të vlefshëm."
+            data-en="Please enter a valid mobile number.">
+            Внесете валиден мобилен број.
+          </div>
         </div>
       </div>
       <p
@@ -758,6 +766,7 @@ const T = {
     codeNoteSms:      'На број: {0} — по одобрување од администраторот.',
     codeNoteEmail:    'На: {0} — по одобрување од администраторот.',
     codeNotePage:     'Кодот е потребен за откажување на посетата.',
+    waitingMessage:   'Датумот е полн, вашето барање е ставено на листа на чекање.',
     alertSms:         'За SMS потврда треба да внесете мобилен број.',
     alertEmail:       'За email потврда треба да внесете email адреса.',
     alertCancel48:    'Откажувањето не е возможно — помалку од 48 часа до посетата.',
@@ -782,6 +791,7 @@ const T = {
     codeNoteSms:      'Në numrin: {0} — pas miratimit nga administratori.',
     codeNoteEmail:    'Në: {0} — pas miratimit nga administratori.',
     codeNotePage:     'Kodi nevojitet për anulimin e vizitës.',
+    waitingMessage:   'Data është e plotë, kërkesa juaj u vendos në listën e pritjes.',
     alertSms:         'Për konfirmim me SMS duhet të vendosni numrin e celularit.',
     alertEmail:       'Për konfirmim me email duhet të vendosni adresën email.',
     alertCancel48:    'Anulimi nuk është i mundur — më pak se 48 orë deri në vizitë.',
@@ -806,6 +816,7 @@ const T = {
     codeNoteSms:      'To number: {0} — after approval by the administrator.',
     codeNoteEmail:    'To: {0} — after approval by the administrator.',
     codeNotePage:     'The code is required for cancelling the visit.',
+    waitingMessage:   'The date is full, your request has been placed on the waiting list.',
     alertSms:         'For SMS confirmation you must enter a mobile number.',
     alertEmail:       'For email confirmation you must enter an email address.',
     alertCancel48:    'Cancellation is not possible — less than 48 hours until the visit.',
@@ -818,6 +829,9 @@ const T = {
     errNotify:        'Please select a confirmation method.',
   }
 };
+
+const VISITS_ENDPOINT = '{{ route('visits.store') }}';
+const CSRF_TOKEN = '{{ csrf_token() }}';
 
 // Returns current language (defaults to mk)
 function getLang() {
@@ -885,7 +899,7 @@ function genCode(){
   return String(Math.floor(100000 + Math.random()*900000));
 }
 
-function submitForm(){
+async function submitForm(){
   let ok = true;
 
   const ime     = document.getElementById('ime').value.trim();
@@ -932,8 +946,47 @@ function submitForm(){
 
   if(!ok) return;
 
-  bookingCode = genCode();
-  bookingData = { ime, prezime, email, mobilen, datum, cas, visitCount, zat1, notify: notify.value };
+  const payload = {
+    visitor_name: ime + ' ' + prezime,
+    visitor_email: email || null,
+    phone: mobilen || null,
+    prisoner_name: zat1,
+    requested_date: datum,
+    visit_count: visitCount,
+    notification_method: notify.value,
+  };
+
+  let response;
+  try {
+    response = await fetch(VISITS_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': CSRF_TOKEN,
+      },
+      body: JSON.stringify(payload),
+    });
+  } catch (error) {
+    alert('Се случи грешка при испраќање. Ве молиме обидете се повторно.');
+    return;
+  }
+
+  const data = await response.json();
+  if (!response.ok) {
+    if (data.errors) {
+      if (data.errors.visitor_contact) { alert(data.errors.visitor_contact[0]); }
+      if (data.errors.phone) { setErr('mobilen', true, data.errors.phone[0]); }
+      if (data.errors.visitor_email) { setErr('email', true, data.errors.visitor_email[0]); }
+      if (data.errors.requested_date) { setErr('datum', true, data.errors.requested_date[0]); }
+      if (data.errors.monthly_limit) { alert(data.errors.monthly_limit[0]); }
+    } else {
+      alert('Се случи грешка при испраќање. Ве молиме обидете се повторно.');
+    }
+    return;
+  }
+
+  bookingCode = data.code;
+  bookingData = { ...payload, cas, notify: notify.value };
 
   document.getElementById('mainForm').style.display = 'none';
   document.getElementById('successScreen').style.display = 'block';
@@ -942,13 +995,13 @@ function submitForm(){
   const note = document.getElementById('codeNote');
   if(notify.value==='sms'){
     lbl.textContent  = t('codeLabelSms');
-    note.textContent = t('codeNoteSms').replace('{0}', mobilen);
+    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : '') + t('codeNoteSms').replace('{0}', mobilen);
   } else if(notify.value==='email'){
     lbl.textContent  = t('codeLabelEmail');
-    note.textContent = t('codeNoteEmail').replace('{0}', email);
+    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : '') + t('codeNoteEmail').replace('{0}', email);
   } else {
     lbl.textContent  = t('codeLabelPage');
-    note.textContent = t('codeNotePage');
+    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : '') + t('codeNotePage');
   }
   document.getElementById('displayCode').textContent = bookingCode;
 
@@ -963,7 +1016,7 @@ function submitForm(){
 }
 
 function openCancelOverlay(){
-  const d    = new Date(bookingData.datum);
+  const d    = new Date(bookingData.requested_date);
   const now  = new Date();
   const diff = (d - now) / (1000*60*60);
   if(diff < 48){
@@ -985,10 +1038,8 @@ function confirmCancel(){
   const name = document.getElementById('cancelName').value.trim();
   const code = document.getElementById('cancelCode').value.trim();
   let ok = true;
-
-  const fullName = `${bookingData.ime} ${bookingData.prezime}`;
-  if(name.toLowerCase() !== fullName.toLowerCase()){
-    document.getElementById('err-cancelName').textContent = t('errRequired');
+  const fullName = (bookingData.visitor_name || ((bookingData.ime || '') + ' ' + (bookingData.prezime || ''))).trim();
+  if(!fullName || name.toLowerCase() !== fullName.toLowerCase()){
     document.getElementById('err-cancelName').classList.add('show');
     document.getElementById('cancelName').classList.add('error');
     ok=false;
