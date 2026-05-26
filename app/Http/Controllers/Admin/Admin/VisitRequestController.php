@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class VisitRequestController extends Controller
 {
-    private const MAX_DAILY_VISITS = 15;
+    public const MAX_DAILY_VISITS = 5;
     private const MAX_MONTHLY_VISITS = 2;
     private const CAPACITY_STATUSES = ['pending', 'approved'];
 
@@ -31,6 +31,7 @@ class VisitRequestController extends Controller
             'phone'               => 'nullable|string|max:30',
             'prisoner_name'       => 'required|string|max:120',
             'requested_date'      => 'required|date',
+            'requested_time'      => 'required|string',
             'visit_count'         => 'required|integer|min:1|max:10',
             'notification_method' => 'required|in:sms,email,none',
         ]);
@@ -67,7 +68,8 @@ class VisitRequestController extends Controller
             ], 422);
         }
 
-        $reservedCount = $this->dateVisitCount($data['requested_date']);
+        // Count reservations for the specific slot (date + time)
+        $reservedCount = $this->slotVisitCount($data['requested_date'], $data['requested_time']);
         $status = $reservedCount >= self::MAX_DAILY_VISITS ? 'waiting' : 'pending';
 
         $visit = VisitRequest::create([
@@ -77,6 +79,7 @@ class VisitRequestController extends Controller
             'prisoner_name'       => $data['prisoner_name'],
             'request_date'        => now(),
             'requested_date'      => $data['requested_date'],
+            'requested_time'      => $data['requested_time'] ?? null,
             'status'              => $status,
             'visit_count'         => $data['visit_count'],
             'notification_method' => $data['notification_method'],
@@ -149,6 +152,28 @@ class VisitRequestController extends Controller
         return VisitRequest::where('requested_date', $requestedDate)
             ->whereIn('status', self::CAPACITY_STATUSES)
             ->count();
+    }
+
+    protected function slotVisitCount(string $requestedDate, string $requestedTime): int
+    {
+        return VisitRequest::where('requested_date', $requestedDate)
+            ->where('requested_time', $requestedTime)
+            ->whereIn('status', self::CAPACITY_STATUSES)
+            ->count();
+    }
+
+    /**
+     * Return availability counts per slot for a given date.
+     */
+    public function availability(Request $request)
+    {
+        $date = $request->query('date');
+        $slots = ['08:00','09:00','10:00','11:00','13:00','14:00','15:00','16:00'];
+        $res = [];
+        foreach ($slots as $s) {
+            $res[$s] = $this->slotVisitCount($date, $s);
+        }
+        return response()->json($res);
     }
 
     protected function promoteWaitingRequests(string $requestedDate): void
