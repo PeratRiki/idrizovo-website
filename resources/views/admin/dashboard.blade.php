@@ -47,6 +47,13 @@
         </div>
     </div>
 
+    {{-- Dashboard Tabs --}}
+    <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:24px;">
+        <a href="{{ route('admin.handmade.index') }}" style="background:#fff; border:1px solid #d1dff0; color:#1a2e4a; text-decoration:none; font-weight:700; padding:14px 20px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.03);">Рачни изработки</a>
+        <a href="{{ route('admin.activities') }}" style="background:#fff; border:1px solid #d1dff0; color:#1a2e4a; text-decoration:none; font-weight:700; padding:14px 20px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.03);">Активности</a>
+        <a href="{{ route('admin.article') }}" style="background:#fff; border:1px solid #d1dff0; color:#1a2e4a; text-decoration:none; font-weight:700; padding:14px 20px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.03);">Статии</a>
+    </div>
+
     {{-- Stats Grid --}}
     <div class="dash-grid-4">
         @php

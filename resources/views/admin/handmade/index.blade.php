@@ -84,7 +84,6 @@
         </div>
         <div style="padding:24px; display:flex; flex-direction:column; gap:16px;">
 
-            {{-- Add Quote Form --}}
             <form method="POST" action="{{ route('admin.handmade.storeQuote') }}"
                   style="background:#f5f8ff; border:1px solid #d1dff0; border-radius:14px; padding:18px; display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end;">
                 @csrf
@@ -104,7 +103,6 @@
                 </button>
             </form>
 
-            {{-- Quotes List --}}
             @forelse($quotes as $q)
             <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; background:#f5f8ff; border:1px solid #d1dff0; border-radius:12px; padding:14px 18px;">
                 <p style="color:#1a2e4a; font-size:0.875rem; flex:1;">„{{ $q->quote }}"</p>

@@ -221,8 +221,22 @@
         <svg width="24" height="24" fill="none" stroke="#fff" stroke-width="2.2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
       </div>
       <div>
-        <div class="text-xs font-semibold uppercase tracking-widest" style="color:#2563eb">Управа за извршување санкции</div>
-        <h1 class="text-xl font-bold leading-tight" style="color:#1a3a6b;font-family:'Source Serif 4',serif">Закажување посета во затвор</h1>
+        <div
+          class="text-xs font-semibold uppercase tracking-widest"
+          style="color:#2563eb"
+          data-mk="Управа за извршување санкции"
+          data-sq="Drejtoria e Ekzekutimit të Sanksioneve"
+          data-en="Sanctions Execution Directorate">
+          Управа за извршување санкции
+        </div>
+        <h1
+          class="text-xl font-bold leading-tight"
+          style="color:#1a3a6b;font-family:'Source Serif 4',serif"
+          data-mk="Закажување посета во затвор"
+          data-sq="Rezervim vizite në burg"
+          data-en="Schedule a Prison Visit">
+          Закажување посета во затвор
+        </h1>
       </div>
     </div>
 
@@ -231,65 +245,242 @@
       <span id="dot1" class="step-dot active"></span>
       <span id="dot2" class="step-dot"></span>
       <span id="dot3" class="step-dot"></span>
-      <span class="text-xs text-gray-400 ml-1" id="stepLabel">Чекор 1 од 3</span>
+      <span
+        class="text-xs text-gray-400 ml-1"
+        id="stepLabel"
+        data-mk="Чекор 1 од 3"
+        data-sq="Hapi 1 nga 3"
+        data-en="Step 1 of 3">
+        Чекор 1 од 3
+      </span>
     </div>
 
     <!-- STEP 1 — Посетител -->
     <div id="step1" class="card p-6 mb-4">
       <div class="section-title">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-        Податоци за посетителот
+        <span
+          data-mk="Податоци за посетителот"
+          data-sq="Të dhënat e vizitorit"
+          data-en="Visitor Details">
+          Податоци за посетителот
+        </span>
       </div>
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label class="form-label">Име <span class="req">*</span></label>
-          <input id="ime" class="form-input" placeholder="Вашето име" maxlength="60"/>
-          <div class="error-msg" id="err-ime">Полето е задолжително.</div>
+          <label class="form-label">
+            <span
+              data-mk="Име"
+              data-sq="Emri"
+              data-en="First Name">Име</span>
+            <span class="req">*</span>
+          </label>
+          <input
+            id="ime"
+            class="form-input"
+            placeholder="Вашето име"
+            data-placeholder-mk="Вашето име"
+            data-placeholder-sq="Emri juaj"
+            data-placeholder-en="Your first name"
+            maxlength="60"/>
+          <div
+            class="error-msg"
+            id="err-ime"
+            data-mk="Полето е задолжително."
+            data-sq="Fusha është e detyrueshme."
+            data-en="This field is required.">
+            Полето е задолжително.
+          </div>
         </div>
         <div>
-          <label class="form-label">Презиме <span class="req">*</span></label>
-          <input id="prezime" class="form-input" placeholder="Вашето презиме" maxlength="60"/>
-          <div class="error-msg" id="err-prezime">Полето е задолжително.</div>
+          <label class="form-label">
+            <span
+              data-mk="Презиме"
+              data-sq="Mbiemri"
+              data-en="Last Name">Презиме</span>
+            <span class="req">*</span>
+          </label>
+          <input
+            id="prezime"
+            class="form-input"
+            placeholder="Вашето презиме"
+            data-placeholder-mk="Вашето презиме"
+            data-placeholder-sq="Mbiemri juaj"
+            data-placeholder-en="Your last name"
+            maxlength="60"/>
+          <div
+            class="error-msg"
+            id="err-prezime"
+            data-mk="Полето е задолжително."
+            data-sq="Fusha është e detyrueshme."
+            data-en="This field is required.">
+            Полето е задолжително.
+          </div>
         </div>
         <div>
-          <label class="form-label">Email адреса</label>
-          <input id="email" type="email" class="form-input" placeholder="пример@mail.com (незадолжително)"/>
-          <div class="error-msg" id="err-email">Внесете валидна email адреса.</div>
+          <label class="form-label">
+            <span
+              data-mk="Email адреса"
+              data-sq="Adresa email"
+              data-en="Email Address">Email адреса</span>
+          </label>
+          <input
+            id="email"
+            type="email"
+            class="form-input"
+            placeholder="пример@mail.com (незадолжително)"
+            data-placeholder-mk="пример@mail.com (незадолжително)"
+            data-placeholder-sq="shembull@mail.com (fakultative)"
+            data-placeholder-en="example@mail.com (optional)"/>
+          <div
+            class="error-msg"
+            id="err-email"
+            data-mk="Внесете валидна email адреса."
+            data-sq="Vendosni një adresë email të vlefshme."
+            data-en="Please enter a valid email address.">
+            Внесете валидна email адреса.
+          </div>
         </div>
         <div>
-          <label class="form-label">Мобилен број</label>
-          <input id="mobilen" class="form-input" placeholder="+389 7X XXX XXX (незадолжително)" maxlength="20"/>
+          <label class="form-label">
+            <span
+              data-mk="Мобилен број"
+              data-sq="Numri i celularit"
+              data-en="Mobile Number">Мобилен број</span>
+          </label>
+          <input
+            id="mobilen"
+            class="form-input"
+            placeholder="+389 7X XXX XXX (незадолжително)"
+            data-placeholder-mk="+389 7X XXX XXX (незадолжително)"
+            data-placeholder-sq="+389 7X XXX XXX (fakultative)"
+            data-placeholder-en="+389 7X XXX XXX (optional)"
+            maxlength="20"/>
+          <div
+            class="error-msg"
+            id="err-mobilen"
+            data-mk="Внесете валиден мобилен број."
+            data-sq="Vendosni një numër celular të vlefshëm."
+            data-en="Please enter a valid mobile number.">
+            Внесете валиден мобилен број.
+          </div>
         </div>
       </div>
-      <p class="text-xs text-gray-400 mt-3">* Не е задолжително да внесете и email и број — доволен е еден или ниту еден.</p>
+
+      <!-- ДОДАДЕНО: Тип на посетител (од Document 1) -->
+      <div class="mt-4">
+        <label class="form-label">
+          <span
+            data-mk="Тип на посетител"
+            data-sq="Lloji i vizitorit"
+            data-en="Visitor Type">Тип на посетител</span>
+          <span class="req">*</span>
+        </label>
+        <div class="radio-group mt-1" id="tipGroup">
+          <label class="radio-option" id="ro-semejstvo">
+            <input type="radio" name="tipPosetitel" value="semejstvo" onchange="selectTip(this)"/>
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span
+              data-mk="Семејство"
+              data-sq="Familje"
+              data-en="Family">Семејство</span>
+          </label>
+          <label class="radio-option" id="ro-prijatel">
+            <input type="radio" name="tipPosetitel" value="prijatel" onchange="selectTip(this)"/>
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            <span
+              data-mk="Пријател"
+              data-sq="Mik"
+              data-en="Friend">Пријател</span>
+          </label>
+        </div>
+        <div
+          class="error-msg"
+          id="err-tip"
+          data-mk="Одберете тип на посетител."
+          data-sq="Zgjidhni llojin e vizitorit."
+          data-en="Please select a visitor type.">
+          Одберете тип на посетител.
+        </div>
+      </div>
+      <!-- КРАЈ: Тип на посетител -->
+
+      <p
+        class="text-xs text-gray-400 mt-3"
+        data-mk="* Не е задолжително да внесете и email и број — доволен е еден или ниту еден."
+        data-sq="* Nuk është e detyrueshme të vendosni edhe email edhe numër — mjafton njëri ose asnjëri."
+        data-en="* It is not required to enter both email and number — one or neither is sufficient.">
+        * Не е задолжително да внесете и email и број — доволен е еден или ниту еден.
+      </p>
     </div>
 
     <!-- STEP 2 — Термин -->
     <div id="step2" class="card p-6 mb-4">
       <div class="section-title">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        Термин и број на посетители
+        <span
+          data-mk="Термин и број на посетители"
+          data-sq="Orari dhe numri i vizitorëve"
+          data-en="Appointment & Number of Visitors">
+          Термин и број на посетители
+        </span>
       </div>
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label class="form-label">Датум на посета <span class="req">*</span></label>
+          <label class="form-label">
+            <span
+              data-mk="Датум на посета"
+              data-sq="Data e vizitës"
+              data-en="Visit Date">Датум на посета</span>
+            <span class="req">*</span>
+          </label>
           <input id="datum" type="date" class="form-input"/>
-          <div class="error-msg" id="err-datum">Одберете датум (мин. 2 дена однапред).</div>
+          <div
+            class="error-msg"
+            id="err-datum"
+            data-mk="Одберете датум (мин. 2 дена однапред)."
+            data-sq="Zgjidhni një datë (min. 2 ditë përpara)."
+            data-en="Select a date (min. 2 days in advance).">
+            Одберете датум (мин. 2 дена однапред).
+          </div>
         </div>
         <div>
-          <label class="form-label">Час на посета <span class="req">*</span></label>
+          <label class="form-label">
+            <span
+              data-mk="Час на посета"
+              data-sq="Ora e vizitës"
+              data-en="Visit Time">Час на посета</span>
+            <span class="req">*</span>
+          </label>
           <div class="time-grid" id="timeGrid"></div>
           <input type="hidden" id="cas"/>
-          <div class="error-msg" id="err-cas">Одберете час.</div>
+          <div
+            class="error-msg"
+            id="err-cas"
+            data-mk="Одберете час."
+            data-sq="Zgjidhni një orë."
+            data-en="Please select a time.">
+            Одберете час.
+          </div>
         </div>
       </div>
       <div class="mt-4">
-        <label class="form-label">Број на посетители <span class="req">*</span></label>
+        <label class="form-label">
+          <span
+            data-mk="Број на посетители"
+            data-sq="Numri i vizitorëve"
+            data-en="Number of Visitors">Број на посетители</span>
+          <span class="req">*</span>
+        </label>
         <div class="count-ctrl">
           <button type="button" class="count-btn" onclick="changeCount(-1)">−</button>
           <div class="count-val" id="countVal">1</div>
           <button type="button" class="count-btn" onclick="changeCount(1)">+</button>
-          <span class="text-sm text-gray-400 ml-1">лица</span>
+          <span
+            class="text-sm text-gray-400 ml-1"
+            data-mk="лица"
+            data-sq="persona"
+            data-en="persons">лица</span>
         </div>
       </div>
     </div>
@@ -298,40 +489,108 @@
     <div id="step3" class="card p-6 mb-4">
       <div class="section-title">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg>
-        Податоци за затвореникот
+        <span
+          data-mk="Податоци за затвореникот"
+          data-sq="Të dhënat e të burgosurit"
+          data-en="Prisoner Details">
+          Податоци за затвореникот
+        </span>
       </div>
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label class="form-label">Регистарски број на затвореник <span class="req">*</span></label>
-          <input id="zatvorenik1" class="form-input" placeholder="пр. 2024-00123" maxlength="30"/>
-          <div class="error-msg" id="err-zat1">Внесете го бројот на затвореникот.</div>
+          <label class="form-label">
+            <span
+              data-mk="Регистарски број на затвореник"
+              data-sq="Numri regjistrar i të burgosurit"
+              data-en="Prisoner Registration Number">Регистарски број на затвореник</span>
+            <span class="req">*</span>
+          </label>
+          <input
+            id="zatvorenik1"
+            class="form-input"
+            placeholder="пр. 2024-00123"
+            data-placeholder-mk="пр. 2024-00123"
+            data-placeholder-sq="p.sh. 2024-00123"
+            data-placeholder-en="e.g. 2024-00123"
+            maxlength="30"/>
+          <div
+            class="error-msg"
+            id="err-zat1"
+            data-mk="Внесете го бројот на затвореникот."
+            data-sq="Vendosni numrin e të burgosurit."
+            data-en="Please enter the prisoner number.">
+            Внесете го бројот на затвореникот.
+          </div>
         </div>
         <div>
-          <label class="form-label">Потврди го бројот повторно <span class="req">*</span></label>
-          <input id="zatvorenik2" class="form-input" placeholder="пр. 2024-00123" maxlength="30"/>
-          <div class="error-msg" id="err-zat2">Броевите не се совпаѓаат.</div>
+          <label class="form-label">
+            <span
+              data-mk="Потврди го бројот повторно"
+              data-sq="Konfirmo numrin përsëri"
+              data-en="Confirm the Number Again">Потврди го бројот повторно</span>
+            <span class="req">*</span>
+          </label>
+          <input
+            id="zatvorenik2"
+            class="form-input"
+            placeholder="пр. 2024-00123"
+            data-placeholder-mk="пр. 2024-00123"
+            data-placeholder-sq="p.sh. 2024-00123"
+            data-placeholder-en="e.g. 2024-00123"
+            maxlength="30"/>
+          <div
+            class="error-msg"
+            id="err-zat2"
+            data-mk="Броевите не се совпаѓаат."
+            data-sq="Numrat nuk përputhen."
+            data-en="The numbers do not match.">
+            Броевите не се совпаѓаат.
+          </div>
         </div>
       </div>
       <div class="mt-5">
-        <label class="form-label">Како сакате да добиете потврда? <span class="req">*</span></label>
+        <label class="form-label">
+          <span
+            data-mk="Како сакате да добиете потврда?"
+            data-sq="Si dëshironi të merrni konfirmimin?"
+            data-en="How would you like to receive confirmation?">Како сакате да добиете потврда?</span>
+          <span class="req">*</span>
+        </label>
         <div class="radio-group mt-1" id="notifyGroup">
           <label class="radio-option" id="ro-sms">
             <input type="radio" name="notify" value="sms" onchange="selectNotify(this)"/>
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
-            SMS на мобилен
+            <span
+              data-mk="SMS на мобилен"
+              data-sq="SMS në celular"
+              data-en="SMS to mobile">SMS на мобилен</span>
           </label>
           <label class="radio-option" id="ro-email">
             <input type="radio" name="notify" value="email" onchange="selectNotify(this)"/>
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-            Email
+            <span
+              data-mk="Email"
+              data-sq="Email"
+              data-en="Email">Email</span>
           </label>
           <label class="radio-option" id="ro-none">
             <input type="radio" name="notify" value="none" onchange="selectNotify(this)"/>
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
-            Кодот на страната
+            <span
+              data-mk="Кодот на страната"
+              data-sq="Kodi në faqe"
+              data-en="Code on the page">Кодот на страната</span>
           </label>
         </div>
-        <div class="error-msg" id="err-notify" style="display:none">Одберете начин за потврда.</div>
+        <div
+          class="error-msg"
+          id="err-notify"
+          style="display:none"
+          data-mk="Одберете начин за потврда."
+          data-sq="Zgjidhni një mënyrë konfirmimi."
+          data-en="Please select a confirmation method.">
+          Одберете начин за потврда.
+        </div>
       </div>
     </div>
 
@@ -340,7 +599,12 @@
       <button type="button" class="btn-primary" onclick="submitForm()">
         <span class="flex items-center gap-2">
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
-          Испрати барање до администраторот
+          <span
+            data-mk="Испрати барање до администраторот"
+            data-sq="Dërgo kërkesë tek administratori"
+            data-en="Send Request to Administrator">
+            Испрати барање до администраторот
+          </span>
         </span>
       </button>
     </div>
@@ -352,11 +616,24 @@
       <div class="success-icon">
         <svg width="36" height="36" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
       </div>
-      <h2 class="text-2xl font-bold mb-2" style="color:#1a3a6b">Барањето е испратено!</h2>
-      <p class="text-gray-500 mb-5 text-sm">Администраторот ќе го разгледа барањето и ќе добиете потврда.</p>
+      <h2
+        class="text-2xl font-bold mb-2"
+        style="color:#1a3a6b"
+        data-mk="Барањето е испратено!"
+        data-sq="Kërkesa u dërgua!"
+        data-en="Request Submitted!">
+        Барањето е испратено!
+      </h2>
+      <p
+        class="text-gray-500 mb-5 text-sm"
+        data-mk="Администраторот ќе го разгледа барањето и ќе добиете потврда."
+        data-sq="Administratori do ta shqyrtojë kërkesën dhe do të merrni konfirmim."
+        data-en="The administrator will review the request and you will receive confirmation.">
+        Администраторот ќе го разгледа барањето и ќе добиете потврда.
+      </p>
 
       <div class="code-box mb-4">
-        <div class="text-xs font-semibold uppercase tracking-widest mb-1" style="color:#2563eb" id="codeLabel">Вашиот код за потврда</div>
+        <div class="text-xs font-semibold uppercase tracking-widest mb-1" style="color:#2563eb" id="codeLabel"></div>
         <div class="code-val" id="displayCode">——</div>
         <div class="text-xs text-gray-400 mt-2" id="codeNote"></div>
       </div>
@@ -366,10 +643,21 @@
       <button type="button" class="btn-danger w-full mt-2" onclick="openCancelOverlay()">
         <span class="flex items-center justify-center gap-2">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
-          Откажи ја посетата (48ч пред одење)
+          <span
+            data-mk="Откажи ја посетата (48ч пред одење)"
+            data-sq="Anulo vizitën (48h para nisjes)"
+            data-en="Cancel the Visit (48h before)">
+            Откажи ја посетата (48ч пред одење)
+          </span>
         </span>
       </button>
-      <p class="text-xs text-gray-400 mt-2">Откажувањето е возможно најдоцна 48 часа пред закажаниот термин.</p>
+      <p
+        class="text-xs text-gray-400 mt-2"
+        data-mk="Откажувањето е возможно најдоцна 48 часа пред закажаниот термин."
+        data-sq="Anulimi është i mundur deri në 48 orë para takimit të planifikuar."
+        data-en="Cancellation is possible up to 48 hours before the scheduled appointment.">
+        Откажувањето е возможно најдоцна 48 часа пред закажаниот термин.
+      </p>
     </div>
   </div>
 
@@ -380,24 +668,90 @@
         <div style="width:40px;height:40px;border-radius:9px;background:#fee2e2;display:flex;align-items:center;justify-content:center;flex-shrink:0">
           <svg width="22" height="22" fill="none" stroke="#dc2626" stroke-width="2.3" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
         </div>
-        <h3 class="text-lg font-bold" style="color:#1a3a6b;font-family:'Source Serif 4',serif">Потврди откажување</h3>
+        <h3
+          class="text-lg font-bold"
+          style="color:#1a3a6b;font-family:'Source Serif 4',serif"
+          data-mk="Потврди откажување"
+          data-sq="Konfirmo anulimin"
+          data-en="Confirm Cancellation">
+          Потврди откажување
+        </h3>
       </div>
-      <p class="text-sm text-gray-600 mb-4">За да ја откажете посетата, внесете го вашето целосно <strong>Име и Презиме</strong> и <strong>кодот</strong> кој го добивте.</p>
+      <p
+        class="text-sm text-gray-600 mb-4"
+        data-mk="За да ја откажете посетата, внесете го вашето целосно Име и Презиме и кодот кој го добивте."
+        data-sq="Për të anuluar vizitën, vendosni Emrin dhe Mbiemrin tuaj të plotë dhe kodin që keni marrë."
+        data-en="To cancel the visit, enter your full First and Last Name and the code you received.">
+        За да ја откажете посетата, внесете го вашето целосно <strong>Име и Презиме</strong> и <strong>кодот</strong> кој го добивте.
+      </p>
       <div class="space-y-3">
         <div>
-          <label class="form-label">Име и Презиме <span class="req">*</span></label>
-          <input id="cancelName" class="form-input" placeholder="пр. Марко Иванов"/>
-          <div class="error-msg" id="err-cancelName">Не се совпаѓа со резервираното ime/prezime.</div>
+          <label class="form-label">
+            <span
+              data-mk="Име и Презиме"
+              data-sq="Emri dhe Mbiemri"
+              data-en="First and Last Name">Име и Презиме</span>
+            <span class="req">*</span>
+          </label>
+          <input
+            id="cancelName"
+            class="form-input"
+            placeholder="пр. Марко Иванов"
+            data-placeholder-mk="пр. Марко Иванов"
+            data-placeholder-sq="p.sh. Marko Ivanov"
+            data-placeholder-en="e.g. Marko Ivanov"/>
+          <div
+            class="error-msg"
+            id="err-cancelName"
+            data-mk="Не се совпаѓа со резервираното ime/prezime."
+            data-sq="Nuk përputhet me emrin/mbiemrin e rezervuar."
+            data-en="Does not match the reserved first/last name.">
+            Не се совпаѓа со резервираното ime/prezime.
+          </div>
         </div>
         <div>
-          <label class="form-label">Код за потврда <span class="req">*</span></label>
-          <input id="cancelCode" class="form-input" placeholder="6-цифрен код" maxlength="6"/>
-          <div class="error-msg" id="err-cancelCode">Кодот не е точен.</div>
+          <label class="form-label">
+            <span
+              data-mk="Код за потврда"
+              data-sq="Kodi i konfirmimit"
+              data-en="Confirmation Code">Код за потврда</span>
+            <span class="req">*</span>
+          </label>
+          <input
+            id="cancelCode"
+            class="form-input"
+            placeholder="6-цифрен код"
+            data-placeholder-mk="6-цифрен код"
+            data-placeholder-sq="Kod 6-shifror"
+            data-placeholder-en="6-digit code"
+            maxlength="6"/>
+          <div
+            class="error-msg"
+            id="err-cancelCode"
+            data-mk="Кодот не е точен."
+            data-sq="Kodi nuk është i saktë."
+            data-en="The code is incorrect.">
+            Кодот не е точен.
+          </div>
         </div>
       </div>
       <div class="flex gap-3 mt-5">
-        <button type="button" class="btn-danger flex-1" onclick="confirmCancel()">Да, откажи ја</button>
-        <button type="button" class="btn-primary flex-1" onclick="closeCancelOverlay()">Назад</button>
+        <button type="button" class="btn-danger flex-1" onclick="confirmCancel()">
+          <span
+            data-mk="Да, откажи ја"
+            data-sq="Po, anulo"
+            data-en="Yes, cancel it">
+            Да, откажи ја
+          </span>
+        </button>
+        <button type="button" class="btn-primary flex-1" onclick="closeCancelOverlay()">
+          <span
+            data-mk="Назад"
+            data-sq="Prapa"
+            data-en="Back">
+            Назад
+          </span>
+        </button>
       </div>
     </div>
   </div>
@@ -408,8 +762,21 @@
       <div style="width:72px;height:72px;border-radius:50%;background:#fee2e2;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem">
         <svg width="38" height="38" fill="none" stroke="#dc2626" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
       </div>
-      <h2 class="text-2xl font-bold mb-2" style="color:#1a3a6b">Посетата е откажана</h2>
-      <p class="text-gray-500 text-sm">Вашата резервација е успешно откажана. Ако имате прашања, контактирајте ја управата на затворот.</p>
+      <h2
+        class="text-2xl font-bold mb-2"
+        style="color:#1a3a6b"
+        data-mk="Посетата е откажана"
+        data-sq="Vizita u anulua"
+        data-en="Visit Cancelled">
+        Посетата е откажана
+      </h2>
+      <p
+        class="text-gray-500 text-sm"
+        data-mk="Вашата резервација е успешно откажана. Ако имате прашања, контактирајте ја управата на затворот."
+        data-sq="Rezervimi juaj u anulua me sukses. Nëse keni pyetje, kontaktoni administratën e burgut."
+        data-en="Your reservation has been successfully cancelled. If you have questions, please contact the prison administration.">
+        Вашата резервација е успешно откажана. Ако имате прашања, контактирајте ја управата на затворот.
+      </p>
     </div>
   </div>
 
@@ -422,6 +789,116 @@ let bookingCode = '';
 let bookingData = {};
 
 const TIMES = ['08:00','09:00','10:00','11:00','13:00','14:00','15:00','16:00'];
+
+const T = {
+  mk: {
+    days: ['Недела','Понеделник','Вторник','Среда','Четврток','Петок','Сабота'],
+    summaryVisitor:   'Посетител:',
+    summaryVisitorType: 'Тип на посетител:',
+    summaryDate:      'Датум:',
+    summaryTime:      'Час:',
+    summaryPersons:   'Број на лица:',
+    summaryPrisoner:  'Затвореник бр.:',
+    codeLabelSms:     'Кодот ќе ви биде испратен преку SMS',
+    codeLabelEmail:   'Кодот ќе ви биде испратен на Email',
+    codeLabelPage:    'Вашиот код за потврда (зачувајте го!)',
+    codeNoteSms:      'На број: {0} — по одобрување од администраторот.',
+    codeNoteEmail:    'На: {0} — по одобрување од администраторот.',
+    codeNotePage:     'Кодот е потребен за откажување на посетата.',
+    waitingMessage:   'Датумот е полн, вашето барање е ставено на листа на чекање.',
+    alertSms:         'За SMS потврда треба да внесете мобилен број.',
+    alertEmail:       'За email потврда треба да внесете email адреса.',
+    alertCancel48:    'Откажувањето не е возможно — помалку од 48 часа до посетата.',
+    errRequired:      'Полето е задолжително.',
+    errEmail:         'Внесете валидна email адреса.',
+    errDate:          'Датумот мора да биде мин. 2 дена однапред.',
+    errTime:          'Одберете час.',
+    errZat1:          'Внесете го бројот на затвореникот.',
+    errZat2:          'Броевите не се совпаѓаат.',
+    errNotify:        'Одберете начин за потврда.',
+    errTip:           'Одберете тип на посетител.',
+    tipSemejstvo:     'Семејство',
+    tipPrijatel:      'Пријател',
+  },
+  sq: {
+    days: ['E diel','E hënë','E martë','E mërkurë','E enjte','E premte','E shtunë'],
+    summaryVisitor:   'Vizitori:',
+    summaryVisitorType: 'Lloji i vizitorit:',
+    summaryDate:      'Data:',
+    summaryTime:      'Ora:',
+    summaryPersons:   'Numri i personave:',
+    summaryPrisoner:  'Nr. i të burgosurit:',
+    codeLabelSms:     'Kodi do t\'ju dërgohet me SMS',
+    codeLabelEmail:   'Kodi do t\'ju dërgohet me Email',
+    codeLabelPage:    'Kodi juaj i konfirmimit (ruajeni!)',
+    codeNoteSms:      'Në numrin: {0} — pas miratimit nga administratori.',
+    codeNoteEmail:    'Në: {0} — pas miratimit nga administratori.',
+    codeNotePage:     'Kodi nevojitet për anulimin e vizitës.',
+    waitingMessage:   'Data është e plotë, kërkesa juaj u vendos në listën e pritjes.',
+    alertSms:         'Për konfirmim me SMS duhet të vendosni numrin e celularit.',
+    alertEmail:       'Për konfirmim me email duhet të vendosni adresën email.',
+    alertCancel48:    'Anulimi nuk është i mundur — më pak se 48 orë deri në vizitë.',
+    errRequired:      'Fusha është e detyrueshme.',
+    errEmail:         'Vendosni një adresë email të vlefshme.',
+    errDate:          'Data duhet të jetë min. 2 ditë përpara.',
+    errTime:          'Zgjidhni një orë.',
+    errZat1:          'Vendosni numrin e të burgosurit.',
+    errZat2:          'Numrat nuk përputhen.',
+    errNotify:        'Zgjidhni një mënyrë konfirmimi.',
+    errTip:           'Zgjidhni llojin e vizitorit.',
+    tipSemejstvo:     'Familje',
+    tipPrijatel:      'Mik',
+  },
+  en: {
+    days: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+    summaryVisitor:   'Visitor:',
+    summaryVisitorType: 'Visitor Type:',
+    summaryDate:      'Date:',
+    summaryTime:      'Time:',
+    summaryPersons:   'Number of persons:',
+    summaryPrisoner:  'Prisoner No.:',
+    codeLabelSms:     'The code will be sent to you via SMS',
+    codeLabelEmail:   'The code will be sent to you via Email',
+    codeLabelPage:    'Your confirmation code (save it!)',
+    codeNoteSms:      'To number: {0} — after approval by the administrator.',
+    codeNoteEmail:    'To: {0} — after approval by the administrator.',
+    codeNotePage:     'The code is required for cancelling the visit.',
+    waitingMessage:   'The date is full, your request has been placed on the waiting list.',
+    alertSms:         'For SMS confirmation you must enter a mobile number.',
+    alertEmail:       'For email confirmation you must enter an email address.',
+    alertCancel48:    'Cancellation is not possible — less than 48 hours until the visit.',
+    errRequired:      'This field is required.',
+    errEmail:         'Please enter a valid email address.',
+    errDate:          'The date must be at least 2 days in advance.',
+    errTime:          'Please select a time.',
+    errZat1:          'Please enter the prisoner number.',
+    errZat2:          'The numbers do not match.',
+    errNotify:        'Please select a confirmation method.',
+    errTip:           'Please select a visitor type.',
+    tipSemejstvo:     'Family',
+    tipPrijatel:      'Friend',
+  }
+};
+
+const VISITS_ENDPOINT = '{{ route('visits.store') }}';
+const CSRF_TOKEN = '{{ csrf_token() }}';
+
+function getLang() {
+  return localStorage.getItem('lang') || 'mk';
+}
+
+function t(key) {
+  const lang = getLang();
+  return (T[lang] && T[lang][key]) ? T[lang][key] : T['mk'][key];
+}
+
+const _origSetLang = window.setLang;
+window.setLang = function(lang) {
+  if (_origSetLang) _origSetLang(lang);
+  document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(function(el) {
+    el.placeholder = el.getAttribute('data-placeholder-' + lang);
+  });
+};
 
 (function init(){
   const timeGrid = document.getElementById('timeGrid');
@@ -436,13 +913,51 @@ const TIMES = ['08:00','09:00','10:00','11:00','13:00','14:00','15:00','16:00'];
   const minD = new Date();
   minD.setDate(minD.getDate() + 2);
   document.getElementById('datum').min = minD.toISOString().split('T')[0];
+  // fetch availability when date changes
+  document.getElementById('datum').addEventListener('change', function(){
+    fetchAvailability(this.value);
+  });
 })();
 
-function selectTime(t, btn){
-  selectedTime = t;
-  document.getElementById('cas').value = t;
+function selectTime(time, btn){
+  // ignore clicks on unavailable slots
+  if (!btn || btn.classList.contains('unavailable') || btn.disabled) return;
+  selectedTime = time;
+  document.getElementById('cas').value = time;
   document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
+}
+
+async function fetchAvailability(date){
+  if(!date) return;
+  try{
+    const res = await fetch('/visits/availability?date=' + encodeURIComponent(date));
+    if(!res.ok) return;
+    const data = await res.json();
+    document.querySelectorAll('.time-slot').forEach(b => {
+      const slot = b.textContent.trim().replace(/\s*✖\s*$/, '');
+      const count = data[slot] ?? 0;
+      const full = count >= {{ \App\Http\Controllers\Admin\Admin\VisitRequestController::MAX_DAILY_VISITS }};
+      b.disabled = full;
+      b.classList.toggle('unavailable', full);
+      // show an X marker when full
+      b.textContent = slot + (full ? ' ✖' : '');
+      b.setAttribute('aria-disabled', full ? 'true' : 'false');
+      if(full){
+        b.style.backgroundColor = '#f87171';
+        b.style.color = '#fff';
+        b.style.borderColor = '#f87171';
+        b.style.cursor = 'not-allowed';
+      } else {
+        b.style.backgroundColor = '';
+        b.style.color = '';
+        b.style.borderColor = '';
+        b.style.cursor = '';
+      }
+    });
+  }catch(e){
+    // ignore availability errors
+  }
 }
 
 function changeCount(d){
@@ -452,6 +967,12 @@ function changeCount(d){
 
 function selectNotify(radio){
   document.querySelectorAll('.radio-option').forEach(el => el.classList.remove('selected'));
+  radio.closest('.radio-option').classList.add('selected');
+}
+
+// ДОДАДЕНО: selectTip функција
+function selectTip(radio){
+  document.querySelectorAll('#tipGroup .radio-option').forEach(el => el.classList.remove('selected'));
   radio.closest('.radio-option').classList.add('selected');
 }
 
@@ -469,7 +990,7 @@ function genCode(){
   return String(Math.floor(100000 + Math.random()*900000));
 }
 
-function submitForm(){
+async function submitForm(){
   let ok = true;
 
   const ime     = document.getElementById('ime').value.trim();
@@ -481,42 +1002,95 @@ function submitForm(){
   const zat1    = document.getElementById('zatvorenik1').value.trim();
   const zat2    = document.getElementById('zatvorenik2').value.trim();
   const notify  = document.querySelector('input[name=notify]:checked');
+  const tip     = document.querySelector('input[name=tipPosetitel]:checked'); // ДОДАДЕНО
 
-  if(!ime){ setErr('ime', true, 'Полето е задолжително.'); ok=false; } else clearErr('ime');
-  if(!prezime){ setErr('prezime', true, 'Полето е задолжително.'); ok=false; } else clearErr('prezime');
+  if(!ime){ setErr('ime', true, t('errRequired')); ok=false; } else clearErr('ime');
+  if(!prezime){ setErr('prezime', true, t('errRequired')); ok=false; } else clearErr('prezime');
+
+  // ДОДАДЕНО: валидација за тип на посетител
+  const tipEl = document.getElementById('err-tip');
+  if(!tip){
+    tipEl.textContent = t('errTip');
+    tipEl.classList.add('show');
+    ok=false;
+  } else {
+    tipEl.classList.remove('show');
+  }
 
   if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-    setErr('email', true, 'Внесете валидна email адреса.'); ok=false;
+    setErr('email', true, t('errEmail')); ok=false;
   } else clearErr('email');
 
   if(!datum){
-    setErr('datum', true, 'Одберете датум.'); ok=false;
+    setErr('datum', true, t('errDate')); ok=false;
   } else {
     const sel = new Date(datum); const now = new Date();
     now.setHours(0,0,0,0); sel.setHours(0,0,0,0);
     const diff = (sel-now)/(1000*60*60*24);
-    if(diff < 2){ setErr('datum', true, 'Датумот мора да биде мин. 2 дена однапред.'); ok=false; }
+    if(diff < 2){ setErr('datum', true, t('errDate')); ok=false; }
     else clearErr('datum');
   }
 
-  if(!cas){ setErr('cas', true, 'Одберете час.'); ok=false; } else clearErr('cas');
-  if(!zat1){ setErr('zat1', true, 'Внесете го бројот на затвореникот.'); ok=false; } else clearErr('zat1');
-  if(!zat2 || zat2!==zat1){ setErr('zat2', true, 'Броевите не се совпаѓаат.'); ok=false; } else clearErr('zat2');
+  if(!cas){ setErr('cas', true, t('errTime')); ok=false; } else clearErr('cas');
+  if(!zat1){ setErr('zat1', true, t('errZat1')); ok=false; } else clearErr('zat1');
+  if(!zat2 || zat2!==zat1){ setErr('zat2', true, t('errZat2')); ok=false; } else clearErr('zat2');
 
   const notifyEl = document.getElementById('err-notify');
-  if(!notify){ notifyEl.style.display='block'; ok=false; } else { notifyEl.style.display='none'; }
+  if(!notify){ notifyEl.textContent = t('errNotify'); notifyEl.style.display='block'; ok=false; }
+  else { notifyEl.style.display='none'; }
 
   if(notify && notify.value==='sms' && !mobilen){
-    alert('За SMS потврда треба да внесете мобилен број.'); ok=false;
+    alert(t('alertSms')); ok=false;
   }
   if(notify && notify.value==='email' && !email){
-    alert('За email потврда треба да внесете email адреса.'); ok=false;
+    alert(t('alertEmail')); ok=false;
   }
 
   if(!ok) return;
 
-  bookingCode = genCode();
-  bookingData = { ime, prezime, email, mobilen, datum, cas, visitCount, zat1, notify: notify.value };
+  const payload = {
+    visitor_name: ime + ' ' + prezime,
+    visitor_email: email || null,
+    phone: mobilen || null,
+    prisoner_name: zat1,
+    requested_date: datum,
+    requested_time: cas,
+    visit_count: visitCount,
+    notification_method: notify.value,
+    visitor_type: tip.value, // ДОДАДЕНО
+  };
+
+  let response;
+  try {
+    response = await fetch(VISITS_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': CSRF_TOKEN,
+      },
+      body: JSON.stringify(payload),
+    });
+  } catch (error) {
+    alert('Се случи грешка при испраќање. Ве молиме обидете се повторно.');
+    return;
+  }
+
+  const data = await response.json();
+  if (!response.ok) {
+    if (data.errors) {
+      if (data.errors.visitor_contact) { alert(data.errors.visitor_contact[0]); }
+      if (data.errors.phone) { setErr('mobilen', true, data.errors.phone[0]); }
+      if (data.errors.visitor_email) { setErr('email', true, data.errors.visitor_email[0]); }
+      if (data.errors.requested_date) { setErr('datum', true, data.errors.requested_date[0]); }
+      if (data.errors.monthly_limit) { alert(data.errors.monthly_limit[0]); }
+    } else {
+      alert('Се случи грешка при испраќање. Ве молиме обидете се повторно.');
+    }
+    return;
+  }
+
+  bookingCode = data.code;
+  bookingData = { ...payload, cas, notify: notify.value };
 
   document.getElementById('mainForm').style.display = 'none';
   document.getElementById('successScreen').style.display = 'block';
@@ -524,34 +1098,36 @@ function submitForm(){
   const lbl  = document.getElementById('codeLabel');
   const note = document.getElementById('codeNote');
   if(notify.value==='sms'){
-    lbl.textContent  = 'Кодот ќе ви биде испратен преку SMS';
-    note.textContent = `На број: ${mobilen} — по одобрување од администраторот.`;
+    lbl.textContent  = t('codeLabelSms');
+    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : '') + t('codeNoteSms').replace('{0}', mobilen);
   } else if(notify.value==='email'){
-    lbl.textContent  = 'Кодот ќе ви биде испратен на Email';
-    note.textContent = `На: ${email} — по одобрување од администраторот.`;
+    lbl.textContent  = t('codeLabelEmail');
+    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : '') + t('codeNoteEmail').replace('{0}', email);
   } else {
-    lbl.textContent  = 'Вашиот код за потврда (зачувајте го!)';
-    note.textContent = 'Кодот е потребен за откажување на посетата.';
+    lbl.textContent  = t('codeLabelPage');
+    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : '') + t('codeNotePage');
   }
   document.getElementById('displayCode').textContent = bookingCode;
 
-  const days = ['Недела','Понеделник','Вторник','Среда','Четврток','Петок','Сабота'];
-  const dayName = days[new Date(datum).getDay()];
+  // ДОДАДЕНО: tipLabel за summary
+  const tipLabel = tip.value === 'semejstvo' ? t('tipSemejstvo') : t('tipPrijatel');
+  const dayName = t('days')[new Date(datum).getDay()];
   document.getElementById('summaryBox').innerHTML = `
-    <div class="flex justify-between"><span class="text-gray-500">Посетител:</span><strong>${ime} ${prezime}</strong></div>
-    <div class="flex justify-between"><span class="text-gray-500">Датум:</span><strong>${dayName}, ${datum}</strong></div>
-    <div class="flex justify-between"><span class="text-gray-500">Час:</span><strong>${cas}h</strong></div>
-    <div class="flex justify-between"><span class="text-gray-500">Број на лица:</span><strong>${visitCount}</strong></div>
-    <div class="flex justify-between"><span class="text-gray-500">Затвореник бр.:</span><strong>${zat1}</strong></div>
+    <div class="flex justify-between"><span class="text-gray-500">${t('summaryVisitor')}</span><strong>${ime} ${prezime}</strong></div>
+    <div class="flex justify-between"><span class="text-gray-500">${t('summaryVisitorType')}</span><strong>${tipLabel}</strong></div>
+    <div class="flex justify-between"><span class="text-gray-500">${t('summaryDate')}</span><strong>${dayName}, ${datum}</strong></div>
+    <div class="flex justify-between"><span class="text-gray-500">${t('summaryTime')}</span><strong>${cas}h</strong></div>
+    <div class="flex justify-between"><span class="text-gray-500">${t('summaryPersons')}</span><strong>${visitCount}</strong></div>
+    <div class="flex justify-between"><span class="text-gray-500">${t('summaryPrisoner')}</span><strong>${zat1}</strong></div>
   `;
 }
 
 function openCancelOverlay(){
-  const d    = new Date(bookingData.datum);
+  const d    = new Date(bookingData.requested_date);
   const now  = new Date();
   const diff = (d - now) / (1000*60*60);
   if(diff < 48){
-    alert('Откажувањето не е возможно — помалку од 48 часа до посетата.');
+    alert(t('alertCancel48'));
     return;
   }
   document.getElementById('cancelOverlay').classList.add('show');
@@ -569,9 +1145,8 @@ function confirmCancel(){
   const name = document.getElementById('cancelName').value.trim();
   const code = document.getElementById('cancelCode').value.trim();
   let ok = true;
-
-  const fullName = `${bookingData.ime} ${bookingData.prezime}`;
-  if(name.toLowerCase() !== fullName.toLowerCase()){
+  const fullName = (bookingData.visitor_name || ((bookingData.ime || '') + ' ' + (bookingData.prezime || ''))).trim();
+  if(!fullName || name.toLowerCase() !== fullName.toLowerCase()){
     document.getElementById('err-cancelName').classList.add('show');
     document.getElementById('cancelName').classList.add('error');
     ok=false;
@@ -581,6 +1156,7 @@ function confirmCancel(){
   }
 
   if(code !== bookingCode){
+    document.getElementById('err-cancelCode').textContent = t('errZat2');
     document.getElementById('err-cancelCode').classList.add('show');
     document.getElementById('cancelCode').classList.add('error');
     ok=false;
