@@ -913,13 +913,51 @@ window.setLang = function(lang) {
   const minD = new Date();
   minD.setDate(minD.getDate() + 2);
   document.getElementById('datum').min = minD.toISOString().split('T')[0];
+  // fetch availability when date changes
+  document.getElementById('datum').addEventListener('change', function(){
+    fetchAvailability(this.value);
+  });
 })();
 
 function selectTime(time, btn){
+  // ignore clicks on unavailable slots
+  if (!btn || btn.classList.contains('unavailable') || btn.disabled) return;
   selectedTime = time;
   document.getElementById('cas').value = time;
   document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
+}
+
+async function fetchAvailability(date){
+  if(!date) return;
+  try{
+    const res = await fetch('/visits/availability?date=' + encodeURIComponent(date));
+    if(!res.ok) return;
+    const data = await res.json();
+    document.querySelectorAll('.time-slot').forEach(b => {
+      const slot = b.textContent.trim().replace(/\s*✖\s*$/, '');
+      const count = data[slot] ?? 0;
+      const full = count >= {{ \App\Http\Controllers\Admin\Admin\VisitRequestController::MAX_DAILY_VISITS }};
+      b.disabled = full;
+      b.classList.toggle('unavailable', full);
+      // show an X marker when full
+      b.textContent = slot + (full ? ' ✖' : '');
+      b.setAttribute('aria-disabled', full ? 'true' : 'false');
+      if(full){
+        b.style.backgroundColor = '#f87171';
+        b.style.color = '#fff';
+        b.style.borderColor = '#f87171';
+        b.style.cursor = 'not-allowed';
+      } else {
+        b.style.backgroundColor = '';
+        b.style.color = '';
+        b.style.borderColor = '';
+        b.style.cursor = '';
+      }
+    });
+  }catch(e){
+    // ignore availability errors
+  }
 }
 
 function changeCount(d){
@@ -1016,6 +1054,7 @@ async function submitForm(){
     phone: mobilen || null,
     prisoner_name: zat1,
     requested_date: datum,
+    requested_time: cas,
     visit_count: visitCount,
     notification_method: notify.value,
     visitor_type: tip.value, // ДОДАДЕНО

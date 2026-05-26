@@ -52,6 +52,7 @@ Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('log
 Route::post('/admin/login', [LoginController::class, 'login'])->name('login.post');
 Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/visits', [VisitRequestController::class, 'store'])->name('visits.store');
+Route::get('/visits/availability', [VisitRequestController::class, 'availability'])->name('visits.availability');
 
 /*
 |--------------------------------------------------------------------------
