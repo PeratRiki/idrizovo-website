@@ -47,7 +47,7 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="relative h-[320px] md:h-[380px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
-                    <img src="{{ asset('images/sport.jpg') }}" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <img src="{{ asset('images/20260303-dali-lugjeto-shto-igraat-shah-se-popametni-od-drugite-m.jpg') }}" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col justify-end">
                         <h3
@@ -413,47 +413,84 @@
     </div>
 </section>
     <!-- RACNI IZRABOTKI -->
-    <section class="py-16 bg-gradient-to-b from-blue-50/50 to-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-6 mb-10">
-                <h2
-                    class="text-2xl md:text-3xl font-bold text-[#0f172a]"
-                    data-mk="Рачни изработки"
-                    data-sq="Punë dore"
-                    data-en="Handmade crafts"
-                >Рачни изработки</h2>
-                <a href="{{ url('/Handmade') }}"
-                    class="bg-[#315b96] hover:bg-blue-800 text-white px-5 py-4 rounded-md text-xl md:text-2xl font-bold transition shadow-sm flex items-center justify-center w-full md:flex-1 md:ml-10"
-                    data-mk="Прочитај повеќе"
-                    data-sq="Lexo më shumë"
-                    data-en="Read more"
-                >Прочитај повеќе</a>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
-                    <img src="{{ asset('images/torba1.jpg') }}" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
-                        <h3 class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4">Lorem Ipsum</h3>
-                        <p class="text-gray-200 text-xs leading-relaxed text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
-                </div>
-                <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
-                    <img src="{{ asset('images/pernica.jpg') }}" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
-                        <h3 class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4">Lorem Ipsum</h3>
-                        <p class="text-gray-200 text-xs leading-relaxed text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
-                </div>
-                <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
-                    <img src="{{ asset('images/roba.jpg') }}" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
-                        <h3 class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4">Lorem Ipsum</h3>
-                        <p class="text-gray-200 text-xs leading-relaxed text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
-                </div>
-            </div>
+<section class="py-16 bg-gradient-to-b from-blue-50/50 to-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-6 mb-10">
+            <h2
+                class="text-2xl md:text-3xl font-bold text-[#0f172a]"
+                data-mk="Рачни изработки"
+                data-sq="Punë dore"
+                data-en="Handmade crafts"
+            >Рачни изработки</h2>
+            <a href="{{ url('/Handmade') }}"
+                class="bg-[#315b96] hover:bg-blue-800 text-white px-5 py-4 rounded-md text-xl md:text-2xl font-bold transition shadow-sm flex items-center justify-center w-full md:flex-1 md:ml-10"
+                data-mk="Прочитај повеќе"
+                data-sq="Lexo më shumë"
+                data-en="Read more"
+            >Прочитај повеќе</a>
         </div>
-    </section>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            {{-- ТОРБИ --}}
+            <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
+                <img src="{{ asset('images/torba1.jpg') }}" alt="Рачно изработени торби" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
+                    <h3
+                        class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4"
+                        data-mk="Рачно изработени торби"
+                        data-sq="Çanta të punuara me dorë"
+                        data-en="Handmade bags"
+                    >Рачно изработени торби</h3>
+                    <p
+                        class="text-gray-200 text-xs leading-relaxed text-justify"
+                        data-mk="Секоја торба е уникатно дело изработено со трпение и вештина. Комбинацијата на бои и материјали ја прави секоја торба посебна."
+                        data-sq="Çdo çantë është një vepër unike e punuar me durim dhe aftësi. Kombinimi i ngjyrave dhe materialeve e bën çdo çantë të veçantë."
+                        data-en="Each bag is a unique piece crafted with patience and skill. The combination of colours and materials makes every bag special."
+                    >Секоја торба е уникатно дело изработено со трпение и вештина. Комбинацијата на бои и материјали ја прави секоја торба посебна.</p>
+                </div>
+            </div>
+
+            {{-- ПЕРНИЦИ --}}
+            <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
+                <img src="{{ asset('images/pernica.jpg') }}" alt="Везени перници" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
+                    <h3
+                        class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4"
+                        data-mk="Везени перници"
+                        data-sq="Jastëkë të qëndisur"
+                        data-en="Embroidered pillows"
+                    >Везени перници</h3>
+                    <p
+                        class="text-gray-200 text-xs leading-relaxed text-justify"
+                        data-mk="Рачно везени перници со традиционални македонски мотиви. Секој бод е израз на креативност и посветеност кон уметноста."
+                        data-sq="Jastëkë të qëndisur me dorë me motive tradicionale maqedonase. Çdo qepje është shprehje e kreativitetit dhe përkushtimit ndaj artit."
+                        data-en="Hand-embroidered pillows with traditional Macedonian motifs. Every stitch is an expression of creativity and dedication to craft."
+                    >Рачно везени перници со традиционални македонски мотиви. Секој бод е израз на креативност и посветеност кон уметноста.</p>
+                </div>
+            </div>
+
+            {{-- ОБЛЕКА --}}
+            <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
+                <img src="{{ asset('images/roba.jpg') }}" alt="Рачно шиена облека" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
+                    <h3
+                        class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4"
+                        data-mk="Рачно шиена облека"
+                        data-sq="Rroba të qepura me dorë"
+                        data-en="Hand-sewn clothing"
+                    >Рачно шиена облека</h3>
+                    <p
+                        class="text-gray-200 text-xs leading-relaxed text-justify"
+                        data-mk="Облека изработена со прецизност и внимание на деталите. Секој производ е резултат на часови посветена работа и развивање на вештини."
+                        data-sq="Rroba të punuara me precizitet dhe vëmendje ndaj detajeve. Çdo produkt është rezultat i orëve të punës së përkushtuar dhe zhvillimit të aftësive."
+                        data-en="Clothing crafted with precision and attention to detail. Each piece is the result of hours of dedicated work and skill development."
+                    >Облека изработена со прецизност и внимание на деталите. Секој производ е резултат на часови посветена работа и развивање на вештини.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     <!-- GALERIJA -->
     <section class="py-16 bg-white">
