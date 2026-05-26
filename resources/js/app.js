@@ -1,130 +1,104 @@
 import './bootstrap';
 
-// Language switching functionality
-window.setLang = function(lang) {
-    // Save language preference
+window.setLang = function (lang) {
     localStorage.setItem('lang', lang);
 
-    // Update all elements with data attributes
-    document.querySelectorAll('[data-' + lang + ']').forEach(function(el) {
-        // Update text content
-        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-            el.placeholder = el.getAttribute('data-' + lang);
-        } else {
-            el.textContent = el.getAttribute('data-' + lang);
-        }
+    document.querySelectorAll('[data-mk]').forEach(function (el) {
+        if (el.id === 'lang-label') return;
+        const text = el.getAttribute('data-' + lang) || el.getAttribute('data-mk');
+        el.innerHTML = text;
     });
 
-    // Update HTML lang attribute
+    document.querySelectorAll('[data-placeholder-mk]').forEach(function (el) {
+        const placeholder = el.getAttribute('data-placeholder-' + lang)
+            || el.getAttribute('data-placeholder-mk');
+        el.setAttribute('placeholder', placeholder);
+    });
+
     document.documentElement.lang = lang;
 
-    // Update language dropdown button text
-    const currentLangBtn = document.querySelector('#current-lang-btn');
-    if (currentLangBtn) {
-        const flagSrc = lang === 'en' ? 'https://flagcdn.com/w20/gb.png' :
-                       lang === 'sq' ? 'https://flagcdn.com/w20/al.png' :
-                       'https://flagcdn.com/w20/mk.png';
-        const langText = lang === 'en' ? 'English' :
-                        lang === 'sq' ? 'Albanian' : 'Македонски';
-
-        currentLangBtn.innerHTML = `
-            <img src="${flagSrc}" srcset="${flagSrc.replace('w20', 'w40')} 2x" width="20" alt="${langText} Flag">
-            ${langText}
-            <i class="fa-solid fa-chevron-down text-[10px]"></i>
-        `;
+    const langLabel = document.getElementById('lang-label');
+    if (langLabel) {
+        const labels = { mk: 'МК', sq: 'ALB', en: 'EN' };
+        langLabel.textContent = labels[lang] || 'МК';
     }
 
-    // Hide language dropdown
     const dropdown = document.getElementById('lang-dropdown');
-    if (dropdown) {
-        dropdown.classList.add('hidden');
-    }
+    if (dropdown) dropdown.classList.add('hidden');
 };
 
-// Mobile menu toggle functionality
-window.toggleMobileMenu = function() {
+window.toggleMobileMenu = function () {
     const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerBtn = document.getElementById('hamburger-btn');
     if (mobileMenu) {
-        mobileMenu.classList.toggle('hidden');
+        const isOpen = !mobileMenu.classList.toggle('hidden');
+        if (hamburgerBtn) {
+            hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+        }
     }
 };
 
-// Novosti dropdown toggle functionality
-window.toggleNovosti = function(event) {
-    event.preventDefault();
+window.toggleNovosti = function (event) {
+    event.stopPropagation();
     const dropdown = document.getElementById('novosti-dropdown');
     const icon = document.getElementById('novosti-icon');
-
-    if (dropdown && icon) {
-        const isVisible = dropdown.style.display !== 'none';
-        dropdown.style.display = isVisible ? 'none' : 'block';
-
-        // Rotate icon
-        icon.style.transform = isVisible ? 'rotate(0deg)' : 'rotate(180deg)';
+    if (dropdown) dropdown.classList.toggle('hidden');
+    if (icon) {
+        icon.style.transform = dropdown.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
     }
 };
 
-// Language dropdown toggle
-window.toggleLangDropdown = function() {
+window.toggleLangDropdown = function () {
     const dropdown = document.getElementById('lang-dropdown');
+    const langBtn = document.getElementById('lang-btn');
     if (dropdown) {
-        dropdown.classList.toggle('hidden');
+        const isOpen = !dropdown.classList.toggle('hidden');
+        if (langBtn) langBtn.setAttribute('aria-expanded', String(isOpen));
     }
 };
 
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Hamburger menu functionality
+document.addEventListener('DOMContentLoaded', function () {
+    // Hamburger
     const hamburgerBtn = document.getElementById('hamburger-btn');
-    if (hamburgerBtn) {
-        hamburgerBtn.addEventListener('click', toggleMobileMenu);
-    }
+    if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMobileMenu);
 
-    // Language dropdown functionality
-    const currentLangBtn = document.querySelector('#current-lang-btn');
-    if (currentLangBtn) {
-        currentLangBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            toggleLangDropdown();
-        });
-    }
+    // Lang dropdown
+    const langBtn = document.getElementById('lang-btn');
+    if (langBtn) langBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleLangDropdown();
+    });
 
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', function(e) {
+    // Close dropdowns on outside click
+    document.addEventListener('click', function (e) {
         const langDropdown = document.getElementById('lang-dropdown');
-        const currentLangBtn = document.querySelector('#current-lang-btn');
-
-        if (langDropdown && currentLangBtn && !currentLangBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+        const langBtn = document.getElementById('lang-btn');
+        if (langDropdown && langBtn && !langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
             langDropdown.classList.add('hidden');
+        }
+
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        if (mobileMenu && hamburgerBtn && !hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+            }
         }
 
         const novostiDropdown = document.getElementById('novosti-dropdown');
         const novostiBtn = document.getElementById('novosti-btn');
-
         if (novostiDropdown && novostiBtn && !novostiBtn.contains(e.target) && !novostiDropdown.contains(e.target)) {
-            novostiDropdown.style.display = 'none';
+            novostiDropdown.classList.add('hidden');
             const icon = document.getElementById('novosti-icon');
             if (icon) icon.style.transform = 'rotate(0deg)';
         }
     });
 
-    // Apply saved language on page load
-    const savedLang = localStorage.getItem('lang');
-    if (savedLang && savedLang !== 'mk') {
-        setLang(savedLang);
-    }
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
+    // Apply saved language on load
+    const saved = localStorage.getItem('lang') || 'mk';
+    const langLabel = document.getElementById('lang-label');
+    const labels = { mk: 'МК', sq: 'ALB', en: 'EN' };
+    if (langLabel) langLabel.textContent = labels[saved];
+    if (saved !== 'mk') window.setLang(saved);
 });
