@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class VisitRequestController extends Controller
 {
-    public const MAX_DAILY_VISITS = 5;
+    public const MAX_DAILY_VISITS = 15;
     private const MAX_MONTHLY_VISITS = 2;
     private const CAPACITY_STATUSES = ['pending', 'approved'];
 
