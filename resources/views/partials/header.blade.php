@@ -28,7 +28,7 @@
                     </div>
                     <!-- DESKTOP LANG -->
                     <div class="hidden md:block">
-                        <button id="lang-btn" class="hover:text-gray-200 transition cursor-pointer flex items-center gap-1.5 px-3 py-1.5 rounded hover:bg-sky-700">
+                        <button id="lang-btn" type="button" class="hover:text-gray-200 transition cursor-pointer flex items-center gap-1.5 px-3 py-1.5 rounded hover:bg-sky-700">
                             <i class="fa-solid fa-globe text-lg text-sm"></i>
                             <span id="lang-label" class="text-xs font-bold tracking-wide">МК</span>
                             <i class="fa-solid fa-chevron-down text-[10px]"></i>
@@ -108,7 +108,7 @@
                class="bg-sky-950 text-white px-4 md:px-6 py-2 rounded-md font-bold hover:bg-black transition text-sm md:text-base hidden md:block"
                data-mk="Закажи посета" data-sq="Cakto vizitë" data-en="Book a visit">Закажи посета</a>
 
-            <button id="hamburger-btn" class="md:hidden p-2 text-white focus:outline-none">
+            <button id="hamburger-btn" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="md:hidden p-2 text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
