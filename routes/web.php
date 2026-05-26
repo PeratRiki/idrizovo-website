@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\Admin\DashboardController;
 use App\Http\Controllers\Admin\Admin\AnalyticsController;
 use App\Http\Controllers\Admin\Admin\MessagesController;
 use App\Http\Controllers\Admin\Admin\LogController;
-use App\Http\Controllers\Admin\Admin\VisitRequestController;
+use App\Http\Controllers\Admin\VisitRequestController;
 use App\Http\Controllers\Admin\Admin\HandmadeController;
 use App\Http\Controllers\Admin\Admin\NovostiController;
 use App\Http\Controllers\Admin\Admin\AktivnostiController;
@@ -52,6 +52,7 @@ Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('log
 Route::post('/admin/login', [LoginController::class, 'login'])->name('login.post');
 Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/visits', [VisitRequestController::class, 'store'])->name('visits.store');
+Route::get('/visits/availability', [VisitRequestController::class, 'availability'])->name('visits.availability');
 
 /*
 |--------------------------------------------------------------------------
@@ -69,7 +70,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     // Пораки
     Route::get('/messages', [MessagesController::class, 'index'])->name('admin.messages');
     Route::post('/messages', [MessagesController::class, 'store'])->name('admin.messages.store');
-    Route::post('/messages/send', [MessagesController::class, 'send'])->name('admin.messages.send'); // ДОДАДЕНО
+    Route::post('/messages/send', [MessagesController::class, 'send'])->name('admin.messages.send');
     Route::patch('/messages/{message}/read', [MessagesController::class, 'markAsRead'])->name('admin.messages.read');
     Route::post('/messages/{message}/reply', [MessagesController::class, 'reply'])->name('admin.messages.reply');
     Route::delete('/messages/{message}', [MessagesController::class, 'destroy'])->name('admin.messages.destroy');

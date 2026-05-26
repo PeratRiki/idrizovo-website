@@ -8,7 +8,7 @@ class VisitRequest extends Model
 {
     protected $fillable = [
         'visitor_name', 'visitor_email', 'phone',
-        'prisoner_name', 'request_date', 'requested_date',
+        'prisoner_name', 'request_date', 'requested_date', 'requested_time',
         'status', 'visit_count', 'notification_method', 'confirmation_code',
     ];
 
