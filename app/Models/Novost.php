@@ -22,6 +22,11 @@ class Novost extends Model
         'is_active',
     ];
 
+    protected $casts = [
+        'published_at' => 'datetime',
+        'is_active'    => 'boolean',
+    ];
+
     public function scopeActive($query)
     {
         return $query->where('is_active', true);

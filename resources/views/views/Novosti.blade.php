@@ -14,10 +14,23 @@
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255,255,255,0.25);
         border-radius: 16px;
-        padding: 24px;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 0;
+    }
+    .card-body {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex: 1;
+    }
+    .card-img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
     }
     .card-title {
         font-size: 1.1rem;
@@ -52,12 +65,6 @@
         margin-bottom: 20px;
         letter-spacing: -0.5px;
     }
-    .hero-img {
-        width: 100%;
-        height: 320px;
-        object-fit: cover;
-        object-position: center;
-    }
     @media (max-width: 900px) {
         .news-grid { grid-template-columns: repeat(2, 1fr); }
         .card-wide { grid-column: span 2; }
@@ -65,221 +72,161 @@
     @media (max-width: 600px) {
         .news-grid { grid-template-columns: 1fr; }
         .card-wide { grid-column: span 1; }
+        .hero-section { height: 220px !important; margin-top: 70px !important; }
     }
-    @media (max-width: 600px) {
-    .hero-section {
-        height: 220px !important;
-        margin-top: 70px !important;
-    }
-}
 </style>
 
 <div class="min-h-screen" style="background: linear-gradient(to bottom, #e6effa, #7ea4db, #4f78b8);">
 
     {{-- Hero --}}
     <section class="hero-section" style="width:100vw; height:500px; overflow:hidden; margin:100px 0 0 0; padding:0; position:relative; left:50%; transform:translateX(-50%); box-shadow:0 8px 32px rgba(49,91,150,0.25);">
-    <img src="{{ asset('images/ChatGPT Image Apr 30, 2026, 04_55_18 PM.png') }}" alt="Новости" 
-         style="width:100%; height:100%; object-fit:cover; object-position:center; display:block; transition:transform 0.4s ease;"
-         onmouseover="this.style.transform='scale(1.03)'"
-         onmouseout="this.style.transform='scale(1)'">
-    <div style="position:absolute; inset:0; background:linear-gradient(to bottom, transparent 50%, rgba(49,91,150,0.4) 100%);"></div>
-</section>
+        <img src="{{ asset('images/ChatGPT Image Apr 30, 2026, 04_55_18 PM.png') }}" alt="Новости"
+             style="width:100%; height:100%; object-fit:cover; object-position:center; display:block; transition:transform 0.4s ease;"
+             onmouseover="this.style.transform='scale(1.03)'"
+             onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute; inset:0; background:linear-gradient(to bottom, transparent 50%, rgba(49,91,150,0.4) 100%);"></div>
+    </section>
 
-            <h2 class="section-title" style="margin-top:40px;"
-                data-mk="🗞️ Најнови новости"
-                data-sq="🗞️ Lajmet më të fundit"
-                data-en="🗞️ Latest News">🗞️ Најнови новости</h2>
-            <div class="news-grid">
+    <main style="max-width:1200px; margin:0 auto; padding:40px 24px;">
 
-                <article class="card card-wide">
-                    <h3 class="card-title"
-                        data-mk="Успешно завршена работилница за грнчарство"
-                        data-sq="Punëtoria e qeramikës përfundoi me sukses"
-                        data-en="Pottery Workshop Successfully Completed">Успешно завршена работилница за грнчарство</h3>
-                    <p class="card-text"
-                       data-mk="Во рамките на програмата за ресоцијализација, затворениците успешно ја завршија работилницата за грнчарство. Произведените предмети ќе бидат изложени на претстојната изложба."
-                       data-sq="Në kuadër të programit të risocializimit, të burgosurit e përfunduan me sukses punëtorinë e qeramikës. Objektet e prodhuara do të ekspozohen në ekspozitën e ardhshme."
-                       data-en="As part of the resocialization program, inmates successfully completed the pottery workshop. The produced items will be displayed at the upcoming exhibition.">Во рамките на програмата за ресоцијализација, затворениците успешно ја завршија работилницата за грнчарство. Произведените предмети ќе бидат изложени на претстојната изложба.</p>
-                    <a href="{{ route('article.index') }}" class="btn"
-                       data-mk="Прочитај повеќе →"
-                       data-sq="Lexo më shumë →"
-                       data-en="Read more →">Прочитај повеќе →</a>
-                </article>
+        {{-- Најнови новости од база --}}
+        <h2 class="section-title" style="margin-top:40px;">🗞️ Најнови новости</h2>
+        <div class="news-grid">
 
+            @foreach($novosti as $novost)
                 <article class="card">
-                    <h3 class="card-title"
-                        data-mk="Нова серија на рачни изработки"
-                        data-sq="Seri e re e punimeve me dorë"
-                        data-en="New Series of Handmade Crafts">Нова серија на рачни изработки</h3>
-                    <p class="card-text"
-                       data-mk="Затворениците создадоа нова колекција на рачно изработени производи кои ќе бидат достапни за јавноста."
-                       data-sq="Të burgosurit krijuan një koleksion të ri të produkteve të bëra me dorë, të cilat do të jenë të disponueshme për publikun."
-                       data-en="Inmates created a new collection of handmade products that will be available to the public.">Затворениците создадоа нова колекција на рачно изработени производи кои ќе бидат достапни за јавноста.</p>
-                    <a href="{{ route('article.index') }}" class="btn"
-                       data-mk="Прочитај повеќе →"
-                       data-sq="Lexo më shumë →"
-                       data-en="Read more →">Прочитај повеќе →</a>
+                    @if($novost->image_main)
+                        <img class="card-img" src="{{ asset('storage/' . $novost->image_main) }}" alt="{{ $novost->title }}">
+                    @else
+                        <img class="card-img" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&auto=format&fit=crop" alt="новост">
+                    @endif
+                    <div class="card-body">
+                        <h3 class="card-title">{{ $novost->title }}</h3>
+                        @if($novost->category)
+                            <span style="font-size:0.75rem; color:rgba(255,255,255,0.6);">{{ $novost->category }}</span>
+                        @endif
+                        <p class="card-text">{{ Str::limit($novost->description, 150) }}</p>
+                        <span style="font-size:0.75rem; color:rgba(255,255,255,0.5);">
+                            {{ $novost->published_at ? $novost->published_at->format('d.m.Y') : '' }}
+                        </span>
+                    </div>
                 </article>
+            @endforeach
 
-                <article class="card">
-                    <h3 class="card-title"
-                        data-mk="Изложба на уметнички дела"
-                        data-sq="Ekspozitë e veprave artistike"
-                        data-en="Exhibition of Artworks">Изложба на уметнички дела</h3>
-                    <p class="card-text"
-                       data-mk="КПУ Идризово организира изложба на сликарски и скулпторски дела изработени од затворениците во текот на годината."
-                       data-sq="KPU Idrizovë organizon një ekspozitë të veprave pikturale dhe skulpturale të krijuara nga të burgosurit gjatë vitit."
-                       data-en="KPU Idrizovo is organizing an exhibition of paintings and sculptures created by inmates throughout the year.">КПУ Идризово организира изложба на сликарски и скулпторски дела изработени од затворениците во текот на годината.</p>
-                    <a href="{{ route('article.index') }}" class="btn"
-                       data-mk="Прочитај повеќе →"
-                       data-sq="Lexo më shumë →"
-                       data-en="Read more →">Прочитај повеќе →</a>
-                </article>
+            {{-- Хардкодирани картички --}}
+            <article class="card card-wide">
+                <img class="card-img" src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&auto=format&fit=crop" alt="грнчарство" style="height:220px;">
+                <div class="card-body">
+                    <h3 class="card-title">Успешно завршена работилница за грнчарство</h3>
+                    <p class="card-text">Во рамките на програмата за ресоцијализација, затворениците успешно ја завршија работилницата за грнчарство. Произведените предмети ќе бидат изложени на претстојната изложба.</p>
+                    <a href="{{ route('article.index') }}" class="btn">Прочитај повеќе →</a>
+                </div>
+            </article>
 
-                <article class="card">
-                    <h3 class="card-title"
-                        data-mk="Програма за образование"
-                        data-sq="Program arsimor"
-                        data-en="Education Program">Програма за образование</h3>
-                    <p class="card-text"
-                       data-mk="Нова образовна програма за стекнување на основни дигитални вештини е воведена за затворениците."
-                       data-sq="Një program i ri arsimor për përvetësimin e aftësive bazë dixhitale është prezantuar për të burgosurit."
-                       data-en="A new educational program for acquiring basic digital skills has been introduced for inmates.">Нова образовна програма за стекнување на основни дигитални вештини е воведена за затворениците.</p>
-                    <a href="{{ route('article.index') }}" class="btn"
-                       data-mk="Прочитај повеќе →"
-                       data-sq="Lexo më shumë →"
-                       data-en="Read more →">Прочитај повеќе →</a>
-                </article>
+            <article class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=600&auto=format&fit=crop" alt="рачни изработки">
+                <div class="card-body">
+                    <h3 class="card-title">Нова серија на рачни изработки</h3>
+                    <p class="card-text">Затворениците создадоа нова колекција на рачно изработени производи кои ќе бидат достапни за јавноста.</p>
+                    <a href="{{ route('article.index') }}" class="btn">Прочитај повеќе →</a>
+                </div>
+            </article>
 
-                <article class="card">
-                    <h3 class="card-title"
-                        data-mk="Спортски натпревари"
-                        data-sq="Gara sportive"
-                        data-en="Sports Competitions">Спортски натпревари</h3>
-                    <p class="card-text"
-                       data-mk="Одржани се интерни спортски натпревари меѓу затворениците со цел промоција на тимска работа и здрав живот."
-                       data-sq="Janë mbajtur gara sportive të brendshme ndërmjet të burgosurve me qëllim promovimin e punës ekipore dhe jetesës së shëndetshme."
-                       data-en="Internal sports competitions were held among inmates to promote teamwork and a healthy lifestyle.">Одржани се интерни спортски натпревари меѓу затворениците со цел промоција на тимска работа и здрав живот.</p>
-                    <a href="{{ route('article.index') }}" class="btn"
-                       data-mk="Прочитај повеќе →"
-                       data-sq="Lexo më shumë →"
-                       data-en="Read more →">Прочитај повеќе →</a>
-                </article>
+            <article class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1531913764164-f85c52e6e654?w=600&auto=format&fit=crop" alt="изложба">
+                <div class="card-body">
+                    <h3 class="card-title">Изложба на уметнички дела</h3>
+                    <p class="card-text">КПУ Идризово организира изложба на сликарски и скулпторски дела изработени од затворениците во текот на годината.</p>
+                    <a href="{{ route('article.index') }}" class="btn">Прочитај повеќе →</a>
+                </div>
+            </article>
 
-                <article class="card card-wide">
-                    <h3 class="card-title"
-                        data-mk="Посета на претставници од Министерството за правда"
-                        data-sq="Vizitë e përfaqësuesve nga Ministria e Drejtësisë"
-                        data-en="Visit by Representatives from the Ministry of Justice">Посета на претставници од Министерството за правда</h3>
-                    <p class="card-text"
-                       data-mk="Претставници од Министерството за правда ја посетија КПУ Идризово и ги разгледаа програмите за ресоцијализација и работилниците за рачни изработки."
-                       data-sq="Përfaqësues nga Ministria e Drejtësisë vizituan KPU Idrizovë dhe shqyrtuan programet e risocializimit dhe punëtoritë e punimeve me dorë."
-                       data-en="Representatives from the Ministry of Justice visited KPU Idrizovo and reviewed the resocialization programs and handicraft workshops.">Претставници од Министерството за правда ја посетија КПУ Идризово и ги разгледаа програмите за ресоцијализација и работилниците за рачни изработки.</p>
-                    <a href="{{ route('article.index') }}" class="btn"
-                       data-mk="Прочитај повеќе →"
-                       data-sq="Lexo më shumë →"
-                       data-en="Read more →">Прочитај повеќе →</a>
-                </article>
+            <article class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&auto=format&fit=crop" alt="образование">
+                <div class="card-body">
+                    <h3 class="card-title">Програма за образование</h3>
+                    <p class="card-text">Нова образовна програма за стекнување на основни дигитални вештини е воведена за затворениците.</p>
+                    <a href="{{ route('article.index') }}" class="btn">Прочитај повеќе →</a>
+                </div>
+            </article>
 
-            </div>
-        </section>
+            <article class="card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&auto=format&fit=crop" alt="спорт">
+                <div class="card-body">
+                    <h3 class="card-title">Спортски натпревари</h3>
+                    <p class="card-text">Одржани се интерни спортски натпревари меѓу затворениците со цел промоција на тимска работа и здрав живот.</p>
+                    <a href="{{ route('article.index') }}" class="btn">Прочитај повеќе →</a>
+                </div>
+            </article>
+
+            <article class="card card-wide">
+                <img class="card-img" src="https://images.unsplash.com/photo-1541872705-1f73c6400ec9?w=800&auto=format&fit=crop" alt="министерство" style="height:220px;">
+                <div class="card-body">
+                    <h3 class="card-title">Посета на претставници од Министерството за правда</h3>
+                    <p class="card-text">Претставници од Министерството за правда ја посетија КПУ Идризово и ги разгледаа програмите за ресоцијализација и работилниците за рачни изработки.</p>
+                    <a href="{{ route('article.index') }}" class="btn">Прочитај повеќе →</a>
+                </div>
+            </article>
+
+        </div>
 
         {{-- Постари новости --}}
-        <section>
-            <h2 class="section-title"
-                data-mk="📁 Постари новости"
-                data-sq="📁 Lajme të vjetra"
-                data-en="📁 Older News">📁 Постари новости</h2>
+        <section style="margin-top:40px;">
+            <h2 class="section-title">📁 Постари новости</h2>
             <div class="news-grid">
 
                 <article class="card">
-                    <h3 class="card-title"
-                        data-mk="Работилница за резба од дрво"
-                        data-sq="Punëtori e gdhendjes në dru"
-                        data-en="Wood Carving Workshop">Работилница за резба од дрво</h3>
-                    <p class="card-text"
-                       data-mk="Затворениците учествуваа во специјализирана работилница за резба и обработка на дрво, создавајќи уникатни уметнички предмети."
-                       data-sq="Të burgosurit morën pjesë në një punëtori të specializuar të gdhendjes dhe përpunimit të drurit, duke krijuar objekte artistike unike."
-                       data-en="Inmates participated in a specialized workshop for wood carving and processing, creating unique artistic objects.">Затворениците учествуваа во специјализирана работилница за резба и обработка на дрво, создавајќи уникатни уметнички предмети.</p>
-                    <a href="{{ route('article.index') }}" class="btn"
-                       data-mk="Прочитај повеќе →"
-                       data-sq="Lexo më shumë →"
-                       data-en="Read more →">Прочитај повеќе →</a>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1504148455328-c376907d081c?w=600&auto=format&fit=crop" alt="резба">
+                    <div class="card-body">
+                        <h3 class="card-title">Работилница за резба од дрво</h3>
+                        <p class="card-text">Затворениците учествуваа во специјализирана работилница за резба и обработка на дрво, создавајќи уникатни уметнички предмети.</p>
+                        <a href="{{ route('article.index') }}" class="btn">Прочитај повеќе →</a>
+                    </div>
                 </article>
 
                 <article class="card">
-                    <h3 class="card-title"
-                        data-mk="Донација на рачни изработки"
-                        data-sq="Donacion i punimeve me dorë"
-                        data-en="Donation of Handmade Crafts">Донација на рачни изработки</h3>
-                    <p class="card-text"
-                       data-mk="Дел од приходите од продажба на рачни изработки беа донирани во локален детски дом."
-                       data-sq="Një pjesë e të ardhurave nga shitja e punimeve me dorë u donua në një shtëpi lokale për fëmijë."
-                       data-en="Part of the proceeds from the sale of handmade crafts were donated to a local children's home.">Дел од приходите од продажба на рачни изработки беа донирани во локален детски дом.</p>
-                    <a href="{{ route('article.index') }}" class="btn"
-                       data-mk="Прочитај повеќе →"
-                       data-sq="Lexo më shumë →"
-                       data-en="Read more →">Прочитај повеќе →</a>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&auto=format&fit=crop" alt="донација">
+                    <div class="card-body">
+                        <h3 class="card-title">Донација на рачни изработки</h3>
+                        <p class="card-text">Дел од приходите од продажба на рачни изработки беа донирани во локален детски дом.</p>
+                        <a href="{{ route('article.index') }}" class="btn">Прочитај повеќе →</a>
+                    </div>
                 </article>
 
                 <article class="card card-wide">
-                    <h3 class="card-title"
-                        data-mk="Психолошка поддршка за затворениците"
-                        data-sq="Mbështetje psikologjike për të burgosurit"
-                        data-en="Psychological Support for Inmates">Психолошка поддршка за затворениците</h3>
-                    <p class="card-text"
-                       data-mk="Во соработка со здравствени институции, воведена е редовна психолошка поддршка за затворениците со цел подобрување на нивната ментална благосостојба и подготовка за реинтеграција во општеството."
-                       data-sq="Në bashkëpunim me institucionet shëndetësore, është futur mbështetje e rregullt psikologjike për të burgosurit me qëllim të përmirësimit të mirëqenies së tyre mendore dhe përgatitjes për riintegrim në shoqëri."
-                       data-en="In cooperation with health institutions, regular psychological support has been introduced for inmates to improve their mental well-being and prepare for reintegration into society.">Во соработка со здравствени институции, воведена е редовна психолошка поддршка за затворениците со цел подобрување на нивната ментална благосостојба и подготовка за реинтеграција во општеството.</p>
-                    <a href="{{ route('article.index') }}" class="btn"
-                       data-mk="Прочитај повеќе →"
-                       data-sq="Lexo më shumë →"
-                       data-en="Read more →">Прочитај повеќе →</a>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=800&auto=format&fit=crop" alt="психологија" style="height:220px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Психолошка поддршка за затворениците</h3>
+                        <p class="card-text">Во соработка со здравствени институции, воведена е редовна психолошка поддршка за затворениците со цел подобрување на нивната ментална благосостојба.</p>
+                        <a href="{{ route('article.index') }}" class="btn">Прочитај повеќе →</a>
+                    </div>
                 </article>
 
                 <article class="card card-wide">
-                    <h3 class="card-title"
-                        data-mk="Меѓународна соработка за ресоцијализација"
-                        data-sq="Bashkëpunim ndërkombëtar për risocializim"
-                        data-en="International Cooperation for Resocialization">Меѓународна соработка за ресоцијализација</h3>
-                    <p class="card-text"
-                       data-mk="КПУ Идризово потпиша договор за соработка со европски пенитенцијарни институции за размена на искуства и добри практики во областа на ресоцијализацијата."
-                       data-sq="KPU Idrizovë nënshkroi një marrëveshje bashkëpunimi me institucione penale evropiane për shkëmbim përvojash dhe praktikash të mira në fushën e risocializimit."
-                       data-en="KPU Idrizovo signed a cooperation agreement with European penitentiary institutions for the exchange of experiences and best practices in the field of resocialization.">КПУ Идризово потпиша договор за соработка со европски пенитенцијарни институции за размена на искуства и добри практики во областа на ресоцијализацијата.</p>
-                    <a href="{{ route('article.index') }}" class="btn"
-                       data-mk="Прочитај повеќе →"
-                       data-sq="Lexo më shumë →"
-                       data-en="Read more →">Прочитај повеќе →</a>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1431440869543-efaf3388c585?w=800&auto=format&fit=crop" alt="меѓународна соработка" style="height:220px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Меѓународна соработка за ресоцијализација</h3>
+                        <p class="card-text">КПУ Идризово потпиша договор за соработка со европски пенитенцијарни институции за размена на искуства и добри практики.</p>
+                        <a href="{{ route('article.index') }}" class="btn">Прочитај повеќе →</a>
+                    </div>
                 </article>
 
                 <article class="card">
-                    <h3 class="card-title"
-                        data-mk="Курс за готвење"
-                        data-sq="Kurs gatimi"
-                        data-en="Cooking Course">Курс за готвење</h3>
-                    <p class="card-text"
-                       data-mk="Нов курс за кулинарски вештини е отворен за затворениците, помагајќи им да стекнат практични вештини за идно вработување."
-                       data-sq="Një kurs i ri për aftësi kulinare është hapur për të burgosurit, duke i ndihmuar ata të fitojnë aftësi praktike për punësim në të ardhmen."
-                       data-en="A new culinary skills course has been opened for inmates, helping them acquire practical skills for future employment.">Нов курс за кулинарски вештини е отворен за затворениците, помагајќи им да стекнат практични вештини за идно вработување.</p>
-                    <a href="{{ route('article.index') }}" class="btn"
-                       data-mk="Прочитај повеќе →"
-                       data-sq="Lexo më сhumë →"
-                       data-en="Read more →">Прочитај повеќе →</a>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=600&auto=format&fit=crop" alt="готвење">
+                    <div class="card-body">
+                        <h3 class="card-title">Курс за готвење</h3>
+                        <p class="card-text">Нов курс за кулинарски вештини е отворен за затворениците, помагајќи им да стекнат практични вештини за идно вработување.</p>
+                        <a href="{{ route('article.index') }}" class="btn">Прочитај повеќе →</a>
+                    </div>
                 </article>
 
                 <article class="card">
-                    <h3 class="card-title"
-                        data-mk="Зелена градина во затворот"
-                        data-sq="Kopshti i gjelbër në burg"
-                        data-en="Green Garden in the Prison">Зелена градина во затворот</h3>
-                    <p class="card-text"
-                       data-mk="Затворениците засадија зеленчукова градина во рамките на програмата за работна терапија и грижа за животната средина."
-                       data-sq="Të burgosurit mbollën një kopsht perimesh në kuadër të programit të terapisë me punë dhe kujdesit ndaj mjedisit."
-                       data-en="Inmates planted a vegetable garden as part of the work therapy program and environmental care.">Затворениците засадија зеленчукова градина во рамките на програмата за работна терапија и грижа за животната средина.</p>
-                    <a href="{{ route('article.index') }}" class="btn"
-                       data-mk="Прочитај повеќе →"
-                       data-sq="Lexo më shumë →"
-                       data-en="Read more →">Прочитај повеќе →</a>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&auto=format&fit=crop" alt="градина">
+                    <div class="card-body">
+                        <h3 class="card-title">Зелена градина во затворот</h3>
+                        <p class="card-text">Затворениците засадија зеленчукова градина во рамките на програмата за работна терапија и грижа за животната средина.</p>
+                        <a href="{{ route('article.index') }}" class="btn">Прочитај повеќе →</a>
+                    </div>
                 </article>
 
             </div>
