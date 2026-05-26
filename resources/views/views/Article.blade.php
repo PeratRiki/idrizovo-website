@@ -1,0 +1,65 @@
+@extends('layouts.app')
+@section('title', 'Новости и соопштенија')
+@section('content')
+</head>
+
+<body class="bg-gradient-to-b from-[#e6effa] via-[#7ea4db] to-[#4f78b8] text-white font-sans min-h-screen">
+  
+<!-- HERO IMAGE (ИСТА КАКО INDEX) -->
+<section class="w-full h-[300px] bg-white overflow-hidden">
+  <img src="./images/news-hero.png" alt="Новости" class="w-full h-full object-cover object-center">
+</section>
+
+<!-- ARTICLE -->
+<main class="w-[85%] max-w-[900px] mx-auto py-20">
+
+  <article class="bg-white/30 border border-white/40 backdrop-blur-md p-10 rounded-xl shadow-lg">
+
+    <h1 class="text-3xl font-extrabold underline mb-6">
+      Интерен оглас за пополнување на работно место
+    </h1>
+
+    <p class="text-sm mb-4 opacity-80">
+      Објавено на: 15.03.2026
+    </p>
+
+    <p class="text-lg leading-8 mb-6">
+      Врз основа на член 30 став 1 алинеја 2 и став 3 од Законот за административни службеници,
+      се објавува интерен оглас за пополнување на работно место со унапредување на административен службеник.
+    </p>
+
+    <p class="text-lg leading-8 mb-6">
+      Кандидатите треба да ги исполнуваат следните услови:
+    </p>
+
+    <ul class="list-disc pl-6 mb-6 text-lg leading-8">
+      <li>Да се вработени во институцијата</li>
+      <li>Да имаат најмалку 2 години работно искуство</li>
+      <li>Да имаат соодветно образование</li>
+    </ul>
+
+    <p class="text-lg leading-8 mb-10">
+      Рокот за пријавување изнесува 5 работни дена од денот на објавување на огласот.
+      Пријавите се доставуваат до архивата на институцијата.
+    </p>
+
+    <a href="novosti.html" class="inline-block bg-[#071a32] px-5 py-2 rounded font-bold hover:bg-[#17457d]">
+      ← Назад кон новости
+    </a>
+
+  </article>
+
+</main>
+
+</body>
+</html>
+      ← Назад кон новости
+    </a>
+
+  </article>
+
+</main>
+
+<script src="./script.js"></script>
+
+@endsection
