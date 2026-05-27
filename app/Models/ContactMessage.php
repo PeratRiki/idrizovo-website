@@ -16,4 +16,10 @@ class ContactMessage extends Model
         'subject',
         'priority',
     ];
+
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'replied_at' => 'datetime',
+    ];
 }
