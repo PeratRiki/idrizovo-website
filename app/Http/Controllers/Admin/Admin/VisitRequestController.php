@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+
+namespace App\Http\Controllers\Admin\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\VisitRequest;
 use Carbon\Carbon;
@@ -8,9 +9,9 @@ use Illuminate\Http\Request;
 
 class VisitRequestController extends Controller
 {
-    private const MAX_DAILY_VISITS = 2;
-    private const MAX_MONTHLY_VISITS = 2;
-    private const CAPACITY_STATUSES = ['pending', 'approved'];
+    public const MAX_DAILY_VISITS = 2;
+    public const MAX_MONTHLY_VISITS = 2;
+    public const CAPACITY_STATUSES = ['pending', 'approved'];
 
     public function index()
     {
@@ -206,3 +207,4 @@ class VisitRequestController extends Controller
         return str_pad((string) random_int(0, 999999), 6, '0', STR_PAD_LEFT);
     }
 }
+?>

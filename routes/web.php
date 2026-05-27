@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\Admin\DashboardController;
 use App\Http\Controllers\Admin\Admin\AnalyticsController;
 use App\Http\Controllers\Admin\Admin\MessagesController;
 use App\Http\Controllers\Admin\Admin\LogController;
-use App\Http\Controllers\Admin\VisitRequestController;
+use App\Http\Controllers\Admin\Admin\VisitRequestController;
 use App\Http\Controllers\Admin\Admin\HandmadeController;
 use App\Http\Controllers\Admin\Admin\NovostiController;
 use App\Http\Controllers\Admin\Admin\AktivnostiController;
