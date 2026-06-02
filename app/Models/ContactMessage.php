@@ -9,17 +9,16 @@ class ContactMessage extends Model
     protected $fillable = [
         'name',
         'email',
+        'subject',
         'message',
+        'priority',
         'is_read',
         'reply',
         'replied_at',
-        'subject',
-        'priority',
     ];
 
     protected $casts = [
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
+        'is_read'    => 'boolean',
         'replied_at' => 'datetime',
     ];
 }

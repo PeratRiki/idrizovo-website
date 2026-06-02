@@ -418,6 +418,7 @@
                 if ($msg->reply) $cls[] = 'replied';
             @endphp
             <div class="email-item {{ implode(' ', $cls) }}"
+                 data-id="{{ $msg->id }}"
                  data-read="{{ $msg->is_read ? '1' : '0' }}"
                  data-replied="{{ $msg->reply ? '1' : '0' }}"
                  data-priority="{{ $msg->priority }}"
@@ -476,7 +477,7 @@
         <div id="detailReplyExisting"></div>
     </div>
     <div class="detail-footer">
-        <form id="replyForm" method="POST">
+        <form id="replyForm" method="POST" onsubmit="submitReply(event)">
             @csrf
             <textarea class="reply-textarea" name="reply" id="replyTextarea" placeholder="Напишете одговор..."></textarea>
             <div class="footer-actions">
@@ -540,8 +541,10 @@
 
 <script>
 let markReadUrl = null;
+let currentMessageId = null;
 
 function openDetail(id, name, email, subject, message, date, reply, repliedAt, priority, color) {
+    currentMessageId = id;
     document.getElementById('detailSubject').textContent = subject;
     document.getElementById('detailName').textContent = name;
     document.getElementById('detailEmailAddr').textContent = email;
@@ -571,6 +574,33 @@ function openDetail(id, name, email, subject, message, date, reply, repliedAt, p
     document.getElementById('emailDetail').classList.add('open');
 }
 
+function appendReplyToDetail(reply, repliedAt) {
+    const replyExisting = document.getElementById('detailReplyExisting');
+    replyExisting.innerHTML = `
+        <div class="detail-reply-existing">
+            <div class="reply-label">Вашиот одговор</div>
+            <div class="reply-text">${reply}</div>
+            <div class="reply-date">${repliedAt}</div>
+        </div>`;
+}
+
+function updateMessageItemAnswered() {
+    if (!currentMessageId) return;
+    const item = document.querySelector(`.email-item[data-id="${currentMessageId}"]`);
+    if (!item) return;
+    item.dataset.replied = '1';
+    item.classList.add('replied');
+    const tags = item.querySelector('.email-tags');
+    if (tags) {
+        const repliedTag = document.createElement('span');
+        repliedTag.className = 'tag tag-replied';
+        repliedTag.textContent = '✓ Одговорено';
+        if (!item.querySelector('.tag-replied')) {
+            tags.appendChild(repliedTag);
+        }
+    }
+}
+
 function closeDetail() {
     document.getElementById('emailDetail').classList.remove('open');
 }
@@ -583,6 +613,55 @@ function markAsRead() {
     form.innerHTML = `<input type="hidden" name="_token" value="{{ csrf_token() }}"><input type="hidden" name="_method" value="PATCH">`;
     document.body.appendChild(form);
     form.submit();
+}
+
+async function submitReply(event) {
+    event.preventDefault();
+    const form = event.target;
+    const textarea = document.getElementById('replyTextarea');
+    const reply = textarea.value.trim();
+    if (!reply) {
+        alert('Внеси текст за одговор.');
+        return;
+    }
+
+    const token = form.querySelector('input[name="_token"]').value;
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': token,
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({ reply }),
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.message || 'Грешка при испраќање.');
+        }
+
+        appendReplyToDetail(data.reply, data.replied_at);
+        updateMessageItemAnswered();
+        textarea.value = '';
+        showToast(data.message || 'Одговорот е испратен.');
+    } catch (error) {
+        alert(error.message || 'Грешка при испраќање.');
+    }
+}
+
+function showToast(message) {
+    let toast = document.getElementById('toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast';
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+    }
+    toast.textContent = `✓ ${message}`;
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', 3000);
 }
 
 function openNewMail() {

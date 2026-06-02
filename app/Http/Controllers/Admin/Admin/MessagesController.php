@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminMessage;
 use App\Models\ContactMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MessagesController extends Controller
 {
@@ -34,6 +36,8 @@ class MessagesController extends Controller
             'priority' => 'in:urgent,normal,low',
         ]);
 
+        Mail::to($request->to)->send(new AdminMessage($request->subject, $request->message));
+
         ContactMessage::create([
             'name'     => auth()->user()->name,
             'email'    => $request->to,
@@ -46,7 +50,6 @@ class MessagesController extends Controller
         return back()->with('success', 'Мејлот е испратен успешно!');
     }
 
-    // Alias за route('admin.messages.send') — го повикува store()
     public function send(Request $request)
     {
         return $this->store($request);
@@ -64,13 +67,23 @@ class MessagesController extends Controller
             'reply' => 'required|string|min:5',
         ]);
 
+        Mail::to($message->email)->send(new AdminMessage('Re: ' . ($message->subject ?? 'Одговор'), $request->reply));
+
         $message->update([
+            'is_read'    => true,
             'reply'      => $request->reply,
             'replied_at' => now(),
-            'is_read'    => true,
         ]);
 
-        return back()->with('success', 'Одговорот е зачуван успешно!');
+        if ($request->expectsJson()) {
+            return response()->json([
+                'message'    => 'Одговорот е испратен успешно!',
+                'reply'      => $request->reply,
+                'replied_at' => now()->format('d.m.Y H:i'),
+            ]);
+        }
+
+        return back()->with('success', 'Одговорот е испратен успешно!');
     }
 
     public function destroy(ContactMessage $message)
