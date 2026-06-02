@@ -203,9 +203,29 @@
             padding: 18px; color: #c8d8ea; font-size: 0.9rem;
             line-height: 1.7; margin-bottom: 20px;
         }
-        .detail-reply-existing {
-            background: #0a2e1f; border: 1px solid #10b981;
-            border-radius: 12px; padding: 16px; margin-bottom: 20px;
+        .detail-conversation {
+            display: flex; flex-direction: column; gap: 8px;
+            margin-bottom: 20px;
+        }
+        .conversation-item {
+            display: flex; gap: 8px;
+            align-items: flex-end;
+        }
+        .conversation-item.admin { justify-content: flex-end; }
+        .conversation-item .bubble {
+            max-width: 80%; padding: 8px 12px; border-radius: 16px; line-height: 1.35;
+            font-size: 0.84rem; white-space: normal; display: inline-block;
+            word-break: break-word;
+        }
+        .conversation-item.sender .bubble {
+            background: #1e3450; color: #c8d8ea; border-top-left-radius: 4px;
+        }
+        .conversation-item.admin .bubble {
+            background: #0a2e1f; color: #d8f5e0; border-top-right-radius: 4px;
+        }
+        .conversation-item .bubble-meta {
+            display: block; margin-bottom: 4px; font-size: 0.66rem;
+            color: #94a3b8;
         }
         .reply-label { font-size: 0.7rem; font-weight: 700; color: #10b981; text-transform: uppercase; margin-bottom: 8px; }
         .reply-text { color: #c8d8ea; font-size: 0.88rem; line-height: 1.6; }
@@ -473,8 +493,7 @@
             </div>
             <div class="detail-date" id="detailDate"></div>
         </div>
-        <div class="detail-message" id="detailMessage"></div>
-        <div id="detailReplyExisting"></div>
+        <div class="detail-conversation" id="detailConversation"></div>
     </div>
     <div class="detail-footer">
         <form id="replyForm" method="POST" onsubmit="submitReply(event)">
@@ -549,39 +568,60 @@ function openDetail(id, name, email, subject, message, date, reply, repliedAt, p
     document.getElementById('detailName').textContent = name;
     document.getElementById('detailEmailAddr').textContent = email;
     document.getElementById('detailDate').textContent = date;
-    document.getElementById('detailMessage').textContent = message;
 
     const avatar = document.getElementById('detailAvatar');
     avatar.textContent = name.charAt(0).toUpperCase();
     avatar.style.background = color;
 
-    document.getElementById('replyTextarea').value = reply || '';
+    document.getElementById('replyTextarea').value = '';
     document.getElementById('replyForm').action = '/admin/messages/' + id + '/reply';
     markReadUrl = '/admin/messages/' + id + '/read';
 
-    const replyExisting = document.getElementById('detailReplyExisting');
-    if (reply) {
-        replyExisting.innerHTML = `
-            <div class="detail-reply-existing">
-                <div class="reply-label">Вашиот одговор</div>
-                <div class="reply-text">${reply}</div>
-                <div class="reply-date">${repliedAt}</div>
-            </div>`;
-    } else {
-        replyExisting.innerHTML = '';
-    }
+    document.getElementById('detailConversation').innerHTML = `
+        <div class="conversation-item sender">
+            <div class="bubble">
+                <span class="bubble-meta">${name} — ${date}</span>
+                ${message}
+            </div>
+        </div>`;
+
+    fetch(`/admin/messages/${id}/thread`)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.conversation) return;
+            renderConversation(data.conversation);
+        })
+        .catch(() => {
+            // keep the original message if thread load fails
+        });
 
     document.getElementById('emailDetail').classList.add('open');
 }
 
+function renderConversation(items) {
+    const conversation = document.getElementById('detailConversation');
+    conversation.innerHTML = items.map(item => {
+        const sideClass = item.sender === 'admin' ? 'admin' : 'sender';
+        const header = item.sender === 'admin' ? 'Ваш одговор' : `${item.name || 'Испраќач'} — ${item.created_at}`;
+        return `
+            <div class="conversation-item ${sideClass}">
+                <div class="bubble">
+                    <span class="bubble-meta">${header}</span>
+                    ${item.message}
+                </div>
+            </div>`;
+    }).join('');
+}
+
 function appendReplyToDetail(reply, repliedAt) {
-    const replyExisting = document.getElementById('detailReplyExisting');
-    replyExisting.innerHTML = `
-        <div class="detail-reply-existing">
-            <div class="reply-label">Вашиот одговор</div>
-            <div class="reply-text">${reply}</div>
-            <div class="reply-date">${repliedAt}</div>
-        </div>`;
+    const conversation = document.getElementById('detailConversation');
+    conversation.insertAdjacentHTML('beforeend', `
+        <div class="conversation-item admin">
+            <div class="bubble">
+                <span class="bubble-meta">Ваш одговор — ${repliedAt}</span>
+                ${reply}
+            </div>
+        </div>`);
 }
 
 function updateMessageItemAnswered() {

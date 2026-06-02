@@ -21,4 +21,9 @@ class ContactMessage extends Model
         'is_read'    => 'boolean',
         'replied_at' => 'datetime',
     ];
+
+    public function threads()
+    {
+        return $this->hasMany(ContactMessageThread::class)->orderBy('created_at');
+    }
 }

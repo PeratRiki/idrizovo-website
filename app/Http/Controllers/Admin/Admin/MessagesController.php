@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Admin;
 use App\Http\Controllers\Controller;
 use App\Mail\AdminMessage;
 use App\Models\ContactMessage;
+use App\Models\ContactMessageThread;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -18,7 +19,7 @@ class MessagesController extends Controller
             abort(403);
         }
 
-        $messages = ContactMessage::latest()->get();
+        $messages = ContactMessage::with('threads')->latest()->get();
 
         if (in_array($role, ['email_reader', 'vospituvac'])) {
             return view('admin.email-reader', compact('messages'));
@@ -69,21 +70,53 @@ class MessagesController extends Controller
 
         Mail::to($message->email)->send(new AdminMessage('Re: ' . ($message->subject ?? 'Одговор'), $request->reply));
 
-        $message->update([
-            'is_read'    => true,
-            'reply'      => $request->reply,
-            'replied_at' => now(),
+        $thread = ContactMessageThread::create([
+            'contact_message_id' => $message->id,
+            'sender'             => 'admin',
+            'message'            => $request->reply,
         ]);
+
+        $message->update(['is_read' => true]);
 
         if ($request->expectsJson()) {
             return response()->json([
                 'message'    => 'Одговорот е испратен успешно!',
-                'reply'      => $request->reply,
-                'replied_at' => now()->format('d.m.Y H:i'),
+                'reply'      => $thread->message,
+                'replied_at' => $thread->created_at->format('d.m.Y H:i'),
             ]);
         }
 
         return back()->with('success', 'Одговорот е испратен успешно!');
+    }
+
+    public function thread(ContactMessage $message)
+    {
+        $message->load('threads');
+
+        $conversation = [];
+        $conversation[] = [
+            'sender'     => 'sender',
+            'name'       => $message->name,
+            'email'      => $message->email,
+            'message'    => $message->message,
+            'created_at' => $message->created_at->format('d.m.Y H:i'),
+        ];
+
+        foreach ($message->threads as $thread) {
+            $conversation[] = [
+                'sender'     => $thread->sender,
+                'message'    => $thread->message,
+                'created_at' => $thread->created_at->format('d.m.Y H:i'),
+            ];
+        }
+
+        return response()->json([
+            'subject'      => $message->subject,
+            'name'         => $message->name,
+            'email'        => $message->email,
+            'created_at'   => $message->created_at->format('d.m.Y H:i'),
+            'conversation' => $conversation,
+        ]);
     }
 
     public function destroy(ContactMessage $message)

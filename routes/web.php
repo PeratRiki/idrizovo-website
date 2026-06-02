@@ -71,6 +71,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/messages', [MessagesController::class, 'index'])->name('admin.messages');
     Route::post('/messages', [MessagesController::class, 'store'])->name('admin.messages.store');
     Route::post('/messages/send', [MessagesController::class, 'send'])->name('admin.messages.send');
+    Route::get('/messages/{message}/thread', [MessagesController::class, 'thread'])->name('admin.messages.thread');
     Route::patch('/messages/{message}/read', [MessagesController::class, 'markAsRead'])->name('admin.messages.read');
     Route::post('/messages/{message}/reply', [MessagesController::class, 'reply'])->name('admin.messages.reply');
     Route::delete('/messages/{message}', [MessagesController::class, 'destroy'])->name('admin.messages.destroy');
