@@ -203,9 +203,29 @@
             padding: 18px; color: #c8d8ea; font-size: 0.9rem;
             line-height: 1.7; margin-bottom: 20px;
         }
-        .detail-reply-existing {
-            background: #0a2e1f; border: 1px solid #10b981;
-            border-radius: 12px; padding: 16px; margin-bottom: 20px;
+        .detail-conversation {
+            display: flex; flex-direction: column; gap: 8px;
+            margin-bottom: 20px;
+        }
+        .conversation-item {
+            display: flex; gap: 8px;
+            align-items: flex-end;
+        }
+        .conversation-item.admin { justify-content: flex-end; }
+        .conversation-item .bubble {
+            max-width: 80%; padding: 8px 12px; border-radius: 16px; line-height: 1.35;
+            font-size: 0.84rem; white-space: normal; display: inline-block;
+            word-break: break-word;
+        }
+        .conversation-item.sender .bubble {
+            background: #1e3450; color: #c8d8ea; border-top-left-radius: 4px;
+        }
+        .conversation-item.admin .bubble {
+            background: #0a2e1f; color: #d8f5e0; border-top-right-radius: 4px;
+        }
+        .conversation-item .bubble-meta {
+            display: block; margin-bottom: 4px; font-size: 0.66rem;
+            color: #94a3b8;
         }
         .reply-label { font-size: 0.7rem; font-weight: 700; color: #10b981; text-transform: uppercase; margin-bottom: 8px; }
         .reply-text { color: #c8d8ea; font-size: 0.88rem; line-height: 1.6; }
@@ -418,6 +438,7 @@
                 if ($msg->reply) $cls[] = 'replied';
             @endphp
             <div class="email-item {{ implode(' ', $cls) }}"
+                 data-id="{{ $msg->id }}"
                  data-read="{{ $msg->is_read ? '1' : '0' }}"
                  data-replied="{{ $msg->reply ? '1' : '0' }}"
                  data-priority="{{ $msg->priority }}"
@@ -472,11 +493,10 @@
             </div>
             <div class="detail-date" id="detailDate"></div>
         </div>
-        <div class="detail-message" id="detailMessage"></div>
-        <div id="detailReplyExisting"></div>
+        <div class="detail-conversation" id="detailConversation"></div>
     </div>
     <div class="detail-footer">
-        <form id="replyForm" method="POST">
+        <form id="replyForm" method="POST" onsubmit="submitReply(event)">
             @csrf
             <textarea class="reply-textarea" name="reply" id="replyTextarea" placeholder="Напишете одговор..."></textarea>
             <div class="footer-actions">
@@ -540,35 +560,85 @@
 
 <script>
 let markReadUrl = null;
+let currentMessageId = null;
 
 function openDetail(id, name, email, subject, message, date, reply, repliedAt, priority, color) {
+    currentMessageId = id;
     document.getElementById('detailSubject').textContent = subject;
     document.getElementById('detailName').textContent = name;
     document.getElementById('detailEmailAddr').textContent = email;
     document.getElementById('detailDate').textContent = date;
-    document.getElementById('detailMessage').textContent = message;
 
     const avatar = document.getElementById('detailAvatar');
     avatar.textContent = name.charAt(0).toUpperCase();
     avatar.style.background = color;
 
-    document.getElementById('replyTextarea').value = reply || '';
+    document.getElementById('replyTextarea').value = '';
     document.getElementById('replyForm').action = '/admin/messages/' + id + '/reply';
     markReadUrl = '/admin/messages/' + id + '/read';
 
-    const replyExisting = document.getElementById('detailReplyExisting');
-    if (reply) {
-        replyExisting.innerHTML = `
-            <div class="detail-reply-existing">
-                <div class="reply-label">Вашиот одговор</div>
-                <div class="reply-text">${reply}</div>
-                <div class="reply-date">${repliedAt}</div>
-            </div>`;
-    } else {
-        replyExisting.innerHTML = '';
-    }
+    document.getElementById('detailConversation').innerHTML = `
+        <div class="conversation-item sender">
+            <div class="bubble">
+                <span class="bubble-meta">${name} — ${date}</span>
+                ${message}
+            </div>
+        </div>`;
+
+    fetch(`/admin/messages/${id}/thread`)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.conversation) return;
+            renderConversation(data.conversation);
+        })
+        .catch(() => {
+            // keep the original message if thread load fails
+        });
 
     document.getElementById('emailDetail').classList.add('open');
+}
+
+function renderConversation(items) {
+    const conversation = document.getElementById('detailConversation');
+    conversation.innerHTML = items.map(item => {
+        const sideClass = item.sender === 'admin' ? 'admin' : 'sender';
+        const header = item.sender === 'admin' ? 'Ваш одговор' : `${item.name || 'Испраќач'} — ${item.created_at}`;
+        return `
+            <div class="conversation-item ${sideClass}">
+                <div class="bubble">
+                    <span class="bubble-meta">${header}</span>
+                    ${item.message}
+                </div>
+            </div>`;
+    }).join('');
+}
+
+function appendReplyToDetail(reply, repliedAt) {
+    const conversation = document.getElementById('detailConversation');
+    conversation.insertAdjacentHTML('beforeend', `
+        <div class="conversation-item admin">
+            <div class="bubble">
+                <span class="bubble-meta">Ваш одговор — ${repliedAt}</span>
+                ${reply}
+            </div>
+        </div>`);
+}
+
+function updateMessageItemAnswered() {
+    if (!currentMessageId) return;
+    const item = document.querySelector(`.email-item[data-id="${currentMessageId}"]`);
+    if (!item) return;
+    item.dataset.replied = '1';
+    item.classList.add('replied');
+    const tags = item.querySelector('.email-tags');
+    if (tags) {
+        const repliedTag = document.createElement('span');
+        repliedTag.className = 'tag tag-replied';
+        repliedTag.textContent = '✓ Одговорено';
+        if (!item.querySelector('.tag-replied')) {
+            tags.appendChild(repliedTag);
+        }
+    }
 }
 
 function closeDetail() {
@@ -583,6 +653,55 @@ function markAsRead() {
     form.innerHTML = `<input type="hidden" name="_token" value="{{ csrf_token() }}"><input type="hidden" name="_method" value="PATCH">`;
     document.body.appendChild(form);
     form.submit();
+}
+
+async function submitReply(event) {
+    event.preventDefault();
+    const form = event.target;
+    const textarea = document.getElementById('replyTextarea');
+    const reply = textarea.value.trim();
+    if (!reply) {
+        alert('Внеси текст за одговор.');
+        return;
+    }
+
+    const token = form.querySelector('input[name="_token"]').value;
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': token,
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({ reply }),
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.message || 'Грешка при испраќање.');
+        }
+
+        appendReplyToDetail(data.reply, data.replied_at);
+        updateMessageItemAnswered();
+        textarea.value = '';
+        showToast(data.message || 'Одговорот е испратен.');
+    } catch (error) {
+        alert(error.message || 'Грешка при испраќање.');
+    }
+}
+
+function showToast(message) {
+    let toast = document.getElementById('toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast';
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+    }
+    toast.textContent = `✓ ${message}`;
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', 3000);
 }
 
 function openNewMail() {

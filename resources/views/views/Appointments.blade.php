@@ -937,7 +937,7 @@ async function fetchAvailability(date){
     document.querySelectorAll('.time-slot').forEach(b => {
       const slot = b.textContent.trim().replace(/\s*✖\s*$/, '');
       const count = data[slot] ?? 0;
-      const full = count >= {{ \App\Http\Controllers\Admin\Admin\VisitRequestController::MAX_DAILY_VISITS }};
+      const full = count >= {{ \App\Http\Controllers\Admin\VisitRequestController::MAX_DAILY_VISITS }};
       b.disabled = full;
       b.classList.toggle('unavailable', full);
       // show an X marker when full

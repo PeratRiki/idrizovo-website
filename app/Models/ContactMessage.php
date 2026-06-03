@@ -9,11 +9,21 @@ class ContactMessage extends Model
     protected $fillable = [
         'name',
         'email',
+        'subject',
         'message',
+        'priority',
         'is_read',
         'reply',
         'replied_at',
-        'subject',
-        'priority',
     ];
+
+    protected $casts = [
+        'is_read'    => 'boolean',
+        'replied_at' => 'datetime',
+    ];
+
+    public function threads()
+    {
+        return $this->hasMany(ContactMessageThread::class)->orderBy('created_at');
+    }
 }
