@@ -47,7 +47,7 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="relative h-[320px] md:h-[380px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
-                    <img src="{{ asset('images/sport.jpg') }}" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <img src="{{ asset('images/20260303-dali-lugjeto-shto-igraat-shah-se-popametni-od-drugite-m.jpg') }}" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col justify-end">
                         <h3
@@ -229,208 +229,268 @@
         </div>
     </section>
 
-    <!-- NOVOSTI -->
-    <section class="py-16 bg-gradient-to-br from-[#c8dcf0] via-[#85a8d0] to-[#517bb2]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-center mb-12">
-                <h2
-                    class="text-2xl md:text-3xl font-bold text-[#0f172a]"
-                    data-mk="Новости и соопштенија"
-                    data-sq="Lajme dhe njoftime"
-                    data-en="News and announcements"
-                >Новости и соопштенија</h2>
-                <a href="{{ url('/Novosti') }}"
-                    class="bg-[#315b96] hover:bg-blue-800 text-white px-4 md:px-6 py-2.5 rounded-md text-xs md:text-sm font-medium transition shadow-sm"
-                    data-mk="Прочитај повеќе"
-                    data-sq="Lexo më shumë"
-                    data-en="Read more"
-                >Прочитај повеќе</a>
-            </div>
-            <div class="mb-14">
-                <h3
-                    class="text-center text-white text-xl font-medium mb-8"
-                    data-mk="Нови соопштенија"
-                    data-sq="Njoftime të reja"
-                    data-en="New announcements"
-                >Нови соопштенија</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-6 flex flex-col h-full shadow-sm hover:bg-white/30 transition-all duration-300">
-                        <a href="#"
-                            class="text-white font-bold text-sm uppercase underline decoration-2 underline-offset-4 mb-4 hover:text-blue-100 transition leading-snug"
-                            data-mk="ИНТЕРЕН ОГЛАС за пополнување на работно место со унапредување на административен службеник"
-                            data-sq="SHPALLJE E BRENDSHME për plotësimin e vendit të punës me avancimin e nëpunësit administrativ"
-                            data-en="INTERNAL NOTICE for filling a position by promotion of an administrative employee"
-                        >ИНТЕРЕН ОГЛАС за пополнување на работно место со унапредување на административен службеник</a>
-                        <p
-                            class="text-white/90 text-xs leading-relaxed mb-6 flex-grow text-justify"
-                            data-mk="Врз основа на член 30 став 1 алинеја 2 став 3 и став 5, член 48 и член 49 од Законот за административни службеници.."
-                            data-sq="Në bazë të nenit 30 paragrafi 1 pika 2 paragrafi 3 dhe paragrafi 5, neni 48 dhe neni 49 të Ligjit për nëpunësit administrativë.."
-                            data-en="Based on article 30 paragraph 1 subparagraph 2 paragraph 3 and paragraph 5, article 48 and article 49 of the Law on Administrative Employees.."
-                        >Врз основа на член 30 став 1 алинеја 2 став 3 и став 5, член 48 и член 49 од Законот за административни службеници..</p>
-                        <a href="#"
-                            class="bg-[#0f172a] hover:bg-gray-800 text-white text-xs font-medium px-5 py-2.5 rounded self-start transition shadow-md"
-                            data-mk="Види повеќе"
-                            data-sq="Shiko më shumë"
-                            data-en="See more"
-                        >Види повеќе</a>
-                    </div>
-                    <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-6 flex flex-col h-full shadow-sm hover:bg-white/30 transition-all duration-300">
-                        <a href="#"
-                            class="text-white font-bold text-sm uppercase underline decoration-2 underline-offset-4 mb-4 hover:text-blue-100 transition leading-snug"
-                            data-mk="Одлука за избор на кандидати за унапредување на административни службеници"
-                            data-sq="Vendim për zgjedhjen e kandidatëve për avancimin e nëpunësve administrativë"
-                            data-en="Decision on selection of candidates for promotion of administrative employees"
-                        >Одлука за избор на кандидати за унапредување на административни службеници</a>
-                        <p
-                            class="text-white/90 text-xs leading-relaxed mb-6 flex-grow text-justify"
-                            data-mk="Врз основа на чл. 52 ст.1 од Законот за Административни службеници.."
-                            data-sq="Në bazë të nenit 52 par.1 të Ligjit për Nëpunësit Administrativë.."
-                            data-en="Based on art. 52 par.1 of the Law on Administrative Employees.."
-                        >Врз основа на чл. 52 ст.1 од Законот за Административни службеници..</p>
-                        <a href="#"
-                            class="bg-[#0f172a] hover:bg-gray-800 text-white text-xs font-medium px-5 py-2.5 rounded self-start transition shadow-md"
-                            data-mk="Види повеќе"
-                            data-sq="Shiko më shumë"
-                            data-en="See more"
-                        >Види повеќе</a>
-                    </div>
-                    <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-6 flex flex-col h-full shadow-sm hover:bg-white/30 transition-all duration-300">
-                        <a href="#"
-                            class="text-white font-bold text-sm uppercase underline decoration-2 underline-offset-4 mb-4 hover:text-blue-100 transition leading-snug"
-                            data-mk="Предлог на одлука за избор на кандидати за унапредување на административни службеници"
-                            data-sq="Propozim vendimi për zgjedhjen e kandidatëve për avancimin e nëpunësve administrativë"
-                            data-en="Draft decision on selection of candidates for promotion of administrative employees"
-                        >Предлог на одлука за избор на кандидати за унапредување на административни службеници</a>
-                        <p
-                            class="text-white/90 text-xs leading-relaxed mb-6 flex-grow text-justify"
-                            data-mk="Врз основа на чл.52 ст.1 од Законот за Административни службеници.."
-                            data-sq="Në bazë të nenit 52 par.1 të Ligjit për Nëpunësit Administrativë.."
-                            data-en="Based on art.52 par.1 of the Law on Administrative Employees.."
-                        >Врз основа на чл.52 ст.1 од Законот за Административни службеници..</p>
-                        <a href="#"
-                            class="bg-[#0f172a] hover:bg-gray-800 text-white text-xs font-medium px-5 py-2.5 rounded self-start transition shadow-md"
-                            data-mk="Види повеќе"
-                            data-sq="Shiko më shumë"
-                            data-en="See more"
-                        >Види повеќе</a>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h3
-                    class="text-center text-white text-xl font-medium mb-8"
-                    data-mk="Постари соопштенија"
-                    data-sq="Njoftime të mëparshme"
-                    data-en="Older announcements"
-                >Постари соопштенија</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-6 flex flex-col h-full shadow-sm hover:bg-white/30 transition-all duration-300">
-                        <a href="#"
-                            class="text-white font-bold text-sm uppercase underline decoration-2 underline-offset-4 mb-4 hover:text-blue-100 transition leading-snug"
-                            data-mk="ИНТЕРЕН ОГЛАС за пополнување на работни места со унапредување на административни службеници"
-                            data-sq="SHPALLJE E BRENDSHME për plotësimin e vendeve të punës me avancimin e nëpunësve administrativë"
-                            data-en="INTERNAL NOTICE for filling positions by promotion of administrative employees"
-                        >ИНТЕРЕН ОГЛАС за пополнување на работни места со унапредување на административни службеници</a>
-                        <p
-                            class="text-white/90 text-xs leading-relaxed mb-6 flex-grow text-justify"
-                            data-mk="Врз основа на член 30 став 1 алинеја 2 став 3 и став 5, член 48 и член 49 од Законот за административни службеници.."
-                            data-sq="Në bazë të nenit 30 paragrafi 1 pika 2 paragrafi 3 dhe paragrafi 5, neni 48 dhe neni 49 të Ligjit për nëpunësit administrativë.."
-                            data-en="Based on article 30 paragraph 1 subparagraph 2 paragraph 3 and paragraph 5, article 48 and article 49 of the Law on Administrative Employees.."
-                        >Врз основа на член 30 став 1 алинеја 2 став 3 и став 5, член 48 и член 49 од Законот за административни службеници..</p>
-                        <a href="#"
-                            class="bg-[#0f172a] hover:bg-gray-800 text-white text-xs font-medium px-5 py-2.5 rounded self-start transition shadow-md"
-                            data-mk="Види повеќе"
-                            data-sq="Shiko më shumë"
-                            data-en="See more"
-                        >Види повеќе</a>
-                    </div>
-                    <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-6 flex flex-col h-full shadow-sm hover:bg-white/30 transition-all duration-300">
-                        <a href="#"
-                            class="text-white font-bold text-sm uppercase underline decoration-2 underline-offset-4 mb-4 hover:text-blue-100 transition leading-snug"
-                            data-mk="ИНТЕРЕН ОГЛАС за пополнување на работни места со унапредување на припадници на затворска полиција"
-                            data-sq="SHPALLJE E BRENDSHME për plotësimin e vendeve të punës me avancimin e anëtarëve të policisë burgu"
-                            data-en="INTERNAL NOTICE for filling positions by promotion of prison police members"
-                        >ИНТЕРЕН ОГЛАС за пополнување на работни места со унапредување на припадници на затворска полиција</a>
-                        <p
-                            class="text-white/90 text-xs leading-relaxed mb-6 flex-grow text-justify"
-                            data-mk="Врз основа на член 67 став 1 алинеја 2 од Законот за извршување на санкции.."
-                            data-sq="Në bazë të nenit 67 paragrafi 1 pika 2 të Ligjit për ekzekutimin e sanksioneve.."
-                            data-en="Based on article 67 paragraph 1 subparagraph 2 of the Law on Execution of Sanctions.."
-                        >Врз основа на член 67 став 1 алинеја 2 од Законот за извршување на санкции..</p>
-                        <a href="#"
-                            class="bg-[#0f172a] hover:bg-gray-800 text-white text-xs font-medium px-5 py-2.5 rounded self-start transition shadow-md"
-                            data-mk="Види повеќе"
-                            data-sq="Shiko më shumë"
-                            data-en="See more"
-                        >Види повеќе</a>
-                    </div>
-                    <div class="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-6 flex flex-col h-full shadow-sm hover:bg-white/30 transition-all duration-300">
-                        <a href="#"
-                            class="text-white font-bold text-sm uppercase underline decoration-2 underline-offset-4 mb-4 hover:text-blue-100 transition leading-snug"
-                            data-mk="Рок за поднесување пријави по Јавниот оглас за вработување на неопределено време бр.1/2025"
-                            data-sq="Afati për dorëzimin e aplikacioneve sipas Konkursit Publik për punësim të përhershëm nr.1/2025"
-                            data-en="Deadline for submitting applications for the Public Notice for permanent employment no.1/2025"
-                        >Рок за поднесување пријави по Јавниот оглас за вработување на неопределено време бр.1/2025</a>
-                        <p
-                            class="text-white/90 text-xs leading-relaxed mb-6 flex-grow text-justify"
-                            data-mk="Пријавите заедно со документите по Јавниот оглас за вработување на неопределено време на 2025 година..."
-                            data-sq="Aplikimet së bashku me dokumentet sipas Konkursit Publik për punësim të përhershëm të vitit 2025..."
-                            data-en="Applications together with documents for the Public Notice for permanent employment of 2025..."
-                        >Пријавите заедно со документите по Јавниот оглас за вработување на неопределено време на 2025 година...</p>
-                        <a href="#"
-                            class="bg-[#0f172a] hover:bg-gray-800 text-white text-xs font-medium px-5 py-2.5 rounded self-start transition shadow-md"
-                            data-mk="Види повеќе"
-                            data-sq="Shiko më shumë"
-                            data-en="See more"
-                        >Види повеќе</a>
-                    </div>
-                </div>
-            </div>
+<section class="py-16 bg-gradient-to-br from-[#c8dcf0] via-[#85a8d0] to-[#517bb2]">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        {{-- ГЛАВЕН НАСЛОВ И КОПЧЕ НАЈГОРЕ --}}
+        <div class="flex justify-between items-center mb-12">
+            <h2
+                class="text-2xl md:text-3xl font-bold text-[#0f172a]"
+                data-mk="Новости и соопштенија"
+                data-sq="Lajme dhe njoftime"
+                data-en="News and announcements"
+            >Новости и соопштенија</h2>
+            <a href="{{ url('/Novosti') }}"
+                class="bg-[#1d4ed8] text-white px-4 md:px-6 py-2.5 rounded-md text-xs md:text-sm font-bold transition-all duration-300 transform hover:scale-105 shadow-md tracking-wide uppercase"
+                data-mk="Прочитај повеќе"
+                data-sq="Lexo më shumë"
+                data-en="Read more"
+            >Прочитај повеќе</a>
         </div>
-    </section>
+        
+        {{-- НОВИ СООПШТЕНИЈА --}}
+        <div class="mb-14">
+            <h3
+                class="text-[#0f172a] text-xl font-bold mb-8 border-b border-[#0f172a]/10 pb-2 uppercase tracking-wide"
+                data-mk="Нови соопштенија"
+                data-sq="Njoftime të reja"
+                data-en="New announcements"
+            >Нови соопштенија</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                {{-- Картичка 1: Административен службеник --}}
+                <div class="relative bg-slate-900 rounded-[24px] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 h-[380px] group border border-white/10 flex flex-col justify-end">
+                    <div class="absolute inset-0 w-full h-full z-0">
+                        <img src="https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&q=80&w=900" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-80">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/90 to-transparent z-10 pointer-events-none"></div>
+                    <div class="relative z-20 p-6 flex flex-col justify-end w-full">
+                        <div class="space-y-2 mb-5">
+                            <h4 class="text-white font-black text-sm uppercase line-clamp-2 leading-snug tracking-tight"
+                                data-mk="ИНТЕРЕН ОГЛАС за пополнување на работно место со унапредување на административен службеник"
+                                data-sq="SHPALLJE E BRENDSHME për plotësimin e vendit të punës med avancimin e nëpunësit administrativ"
+                                data-en="INTERNAL NOTICE for filling a position by promotion of an administrative employee"
+                            >ИНТЕРЕН ОГЛАС за пополнување на работно место со унапредување на административен службеник</h4>
+                            <p class="text-white text-[11px] leading-relaxed line-clamp-2 text-justify"
+                                data-mk="Врз основа на член 30 став 1 алинеја 2 став 3 и став 5, член 48 и член 49 од Законот за административни службеници.."
+                                data-sq="Në bazë të nenit 30 paragrafi 1 pika 2 paragrafi 3 dhe paragrafi 5, neni 48 dhen neni 49 të Ligjit për nëpunësit administrativë.."
+                                data-en="Based on article 30 paragraph 1 subparagraph 2 paragraph 3 and paragraph 5, article 48 and article 49 of the Law on Administrative Employees.."
+                            >Врз основа на член 30 став 1 алинеја 2 став 3 и став 5, член 48 и член 49 од Законот за административни службеници..</p>
+                        </div>
+<a href="#" class="relative z-50 bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>                    </div>
+                </div>
 
-    <!-- RACNI IZRABOTKI -->
-    <section class="py-16 bg-gradient-to-b from-blue-50/50 to-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-6 mb-10">
-                <h2
-                    class="text-2xl md:text-3xl font-bold text-[#0f172a]"
-                    data-mk="Рачни изработки"
-                    data-sq="Punë dore"
-                    data-en="Handmade crafts"
-                >Рачни изработки</h2>
-                <a href="{{ url('/Handmade') }}"
-                    class="bg-[#315b96] hover:bg-blue-800 text-white px-5 py-4 rounded-md text-xl md:text-2xl font-bold transition shadow-sm flex items-center justify-center w-full md:flex-1 md:ml-10"
-                    data-mk="Прочитај повеќе"
-                    data-sq="Lexo më shumë"
-                    data-en="Read more"
-                >Прочитај повеќе</a>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
-                    <img src="{{ asset('images/torba1.jpg') }}" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
-                        <h3 class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4">Lorem Ipsum</h3>
-                        <p class="text-gray-200 text-xs leading-relaxed text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                {{-- Картичка 2: Одлука за избор --}}
+                <div class="relative bg-slate-900 rounded-[24px] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 h-[380px] group border border-white/10 flex flex-col justify-end">
+                    <div class="absolute inset-0 w-full h-full z-0">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-80">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/90 to-transparent z-10 pointer-events-none"></div>
+                    <div class="relative z-20 p-6 flex flex-col justify-end w-full">
+                        <div class="space-y-2 mb-5">
+                            <h4 class="text-white font-black text-sm uppercase line-clamp-2 leading-snug tracking-tight"
+                                data-mk="Одлука за избор на кандидати за унапредување на административни службеници"
+                                data-sq="Vendim për zgjedhjen e kandidatëve për avancimin e nëpunësve administrativë"
+                                data-en="Decision on selection of candidates for promotion of administrative employees"
+                            >Одлука за избор на кандидати за унапредување на административни службеници</h4>
+                            <p class="text-white text-[11px] leading-relaxed line-clamp-2 text-justify"
+                                data-mk="Врз основа на чл. 52 ст.1 од Законот за Административни службеници.."
+                                data-sq="Në bazë të nenit 52 par.1 të Ligjit за Nëpunësit Administrativë.."
+                                data-en="Based on art. 52 par.1 of the Law on Administrative Employees.."
+                            >Врз основа на чл. 52 ст.1 од Законот за Административни службеници..</p>
+                        </div>
+                        <a href="#" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
                     </div>
                 </div>
-                <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
-                    <img src="{{ asset('images/pernica.jpg') }}" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
-                        <h3 class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4">Lorem Ipsum</h3>
-                        <p class="text-gray-200 text-xs leading-relaxed text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+                {{-- Картичка 3: Предлог одлука --}}
+                <div class="relative bg-slate-900 rounded-[24px] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 h-[380px] group border border-white/10 flex flex-col justify-end">
+                    <div class="absolute inset-0 w-full h-full z-0">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=900" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-80">
                     </div>
-                </div>
-                <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
-                    <img src="{{ asset('images/roba.jpg') }}" alt="" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
-                        <h3 class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4">Lorem Ipsum</h3>
-                        <p class="text-gray-200 text-xs leading-relaxed text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/90 to-transparent z-10 pointer-events-none"></div>
+                    <div class="relative z-20 p-6 flex flex-col justify-end w-full">
+                        <div class="space-y-2 mb-5">
+                            <h4 class="text-white font-black text-sm uppercase line-clamp-2 leading-snug tracking-tight"
+                                data-mk="Предлог на одлука за избор на кандидати за унапредување на административни службеници"
+                                data-sq="Propozim vendimi për zgjedhjen e kandidatëve për avancimin e nëpunësve administrativë"
+                                data-en="Draft decision on selection of candidates for promotion of administrative employees"
+                            >Предлог на одлука за избор на кандидати за унапредување на административни службеници</h4>
+                            <p class="text-white text-[11px] leading-relaxed line-clamp-2 text-justify"
+                                data-mk="Врз основа на чл.52 ст.1 од Законот за Административни службеници.."
+                                data-sq="Në bazë të nenit 52 par.1 të Ligjit për Nëpunësit Administrativë.."
+                                data-en="Based on art.52 par.1 of the Law on Administrative Employees.."
+                            >Врз основа на чл.52 ст.1 од Законот за Административни службеници..</p>
+                        </div>
+                        <a href="#" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        {{-- ПОСТАРИ СООПШТЕНИЈА --}}
+        <div>
+            <h3
+                class="text-[#0f172a] text-xl font-bold mb-8 border-b border-[#0f172a]/10 pb-2 uppercase tracking-wide"
+                data-mk="Постари соопштенија"
+                data-sq="Njoftime të mëparshme"
+                data-en="Older announcements"
+            >Постари соопштенија</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                {{-- Картичка 4: Постари огласи --}}
+                <div class="relative bg-slate-900 rounded-[24px] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 h-[380px] group border border-white/10 flex flex-col justify-end">
+                    <div class="absolute inset-0 w-full h-full z-0">
+                        <img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-80">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/90 to-transparent z-10 pointer-events-none"></div>
+                    <div class="relative z-20 p-6 flex flex-col justify-end w-full">
+                        <div class="space-y-2 mb-5">
+                            <h4 class="text-white font-black text-sm uppercase line-clamp-2 leading-snug tracking-tight"
+                                data-mk="ИНТЕРЕН ОГЛАС за пополнување на работни места со унапредување на административни службеници"
+                                data-sq="SHPALLJE E BRENDSHME për plotësimin e vendeve të punës me avancimin e nëpunësve administrativë"
+                                data-en="INTERNAL NOTICE for filling positions by promotion of administrative employees"
+                            >ИНТЕРЕН ОГЛАС за пополнување на работни места со унапредување на административни службеници</h4>
+                            <p class="text-white text-[11px] leading-relaxed line-clamp-2 text-justify"
+                                data-mk="Врз основа на член 30 став 1 алинеја 2 став 3 и став 5, член 48 и член 49 од Законот за административни службеници.."
+                                data-sq="Në bazë të nenit 30 paragrafi 1 pika 2 paragrafi 3 dhe paragrafi 5, neni 48 dhen neni 49 të Ligjit për nëpunësit administrativë.."
+                                data-en="Based on article 30 paragraph 1 subparagraph 2 paragraph 3 and paragraph 5, article 48 and article 49 of the Law on Administrative Employees.."
+                            >Врз основа на член 30 став 1 алинеја 2 став 3 и став 5, член 48 i член 49 од Законот за административни службеници..</p>
+                        </div>
+                        <a href="#" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
+                    </div>
+                </div>
+
+                {{-- Картичка 5: Затворска полиција --}}
+                <div class="relative bg-slate-900 rounded-[24px] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 h-[380px] group border border-white/10 flex flex-col justify-end">
+                    <div class="absolute inset-0 w-full h-full z-0">
+                        <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-80">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/90 to-transparent z-10 pointer-events-none"></div>
+                    <div class="relative z-20 p-6 flex flex-col justify-end w-full">
+                        <div class="space-y-2 mb-5">
+                            <h4 class="text-white font-black text-sm uppercase line-clamp-2 leading-snug tracking-tight"
+                                data-mk="ИНТЕРЕН ОГЛАС за пополнување на работни места со унапредување на припадници на затворска полиција"
+                                data-sq="SHPALLJE E BRENDSHME për plotësimin e vendeve të punës me avancimin e anëtarëve të policisë burgu"
+                                data-en="INTERNAL NOTICE for filling positions by promotion of prison police members"
+                            >ИНТЕРЕН ОГЛАС за пополнување на работни места со унапредување на припадници на затворска полиција</h4>
+                            <p class="text-white  text-[11px] leading-relaxed line-clamp-2 text-justify"
+                                data-mk="Врз основа на член 67 став 1 алинеја 2 од Законот за извршување на санкции.."
+                                data-sq="Në bazë të nenit 67 paragrafi 1 pika 2 të Ligjit për ekzekutimin e sanksioneve.."
+                                data-en="Based on article 67 paragraph 1 subparagraph 2 of the Law on Execution of Sanctions.."
+                            >Врз основа на член 67 став 1 алинеја 2 од Законот за извршување на санкции..</p>
+                        </div>
+                        <a href="#" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
+                    </div>
+                </div>
+
+                {{-- Картичка 6: Јавен оглас --}}
+                <div class="relative bg-slate-900 rounded-[24px] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 h-[380px] group border border-white/10 flex flex-col justify-end">
+                    <div class="absolute inset-0 w-full h-full z-0">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-80">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/90 to-transparent z-10 pointer-events-none"></div>
+                    <div class="relative z-20 p-6 flex flex-col justify-end w-full">
+                        <div class="space-y-2 mb-5">
+                            <h4 class="text-white font-black text-sm uppercase line-clamp-2 leading-snug tracking-tight"
+                                data-mk="Рок за поднесување пријави по Јавниот оглас за вработување на неопределено време бр.1/2025"
+                                data-sq="Afati për dorëzimin e aplikacioneve sipas Konkursit Publik për punësim të përhershëm nr.1/2025"
+                                data-en="Deadline for submitting applications for the Public Notice for permanent employment no.1/2025"
+                            >Рок за поднесување пријави по Јавниот оглас за вработување на неопределено време бр.1/2025</h4>
+                            <p class="text-white text-[11px] leading-relaxed line-clamp-2 text-justify"
+                                data-mk="Пријавите заедно со документите по Јавниот оглас за вработување на неопределено време на 2025 година..."
+                                data-sq="Aplikimet së bashku me dokumentet sipas Konkursit Publik për punësim të përhershëm të vitit 2025..."
+                                data-en="Applications together with documents for the Public Notice for permanent employment of 2025..."
+                            >Пријавите заедно со документите по Јавниот оглас за вработување на неопределено време на 2025 година...</p>
+                        </div>
+                        <a href="#" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+</section>
+    <!-- RACNI IZRABOTKI -->
+<section class="py-16 bg-gradient-to-b from-blue-50/50 to-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-6 mb-10">
+            <h2
+                class="text-2xl md:text-3xl font-bold text-[#0f172a]"
+                data-mk="Рачни изработки"
+                data-sq="Punë dore"
+                data-en="Handmade crafts"
+            >Рачни изработки</h2>
+            <a href="{{ url('/Handmade') }}"
+                class="bg-[#315b96] hover:bg-blue-800 text-white px-5 py-4 rounded-md text-xl md:text-2xl font-bold transition shadow-sm flex items-center justify-center w-full md:flex-1 md:ml-10"
+                data-mk="Прочитај повеќе"
+                data-sq="Lexo më shumë"
+                data-en="Read more"
+            >Прочитај повеќе</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            {{-- ТОРБИ --}}
+            <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
+                <img src="{{ asset('images/torba1.jpg') }}" alt="Рачно изработени торби" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
+                    <h3
+                        class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4"
+                        data-mk="Рачно изработени торби"
+                        data-sq="Çanta të punuara me dorë"
+                        data-en="Handmade bags"
+                    >Рачно изработени торби</h3>
+                    <p
+                        class="text-gray-200 text-xs leading-relaxed text-justify"
+                        data-mk="Секоја торба е уникатно дело изработено со трпение и вештина. Комбинацијата на бои и материјали ја прави секоја торба посебна."
+                        data-sq="Çdo çantë është një vepër unike e punuar me durim dhe aftësi. Kombinimi i ngjyrave dhe materialeve e bën çdo çantë të veçantë."
+                        data-en="Each bag is a unique piece crafted with patience and skill. The combination of colours and materials makes every bag special."
+                    >Секоја торба е уникатно дело изработено со трпение и вештина. Комбинацијата на бои и материјали ја прави секоја торба посебна.</p>
+                </div>
+            </div>
+
+            {{-- ПЕРНИЦИ --}}
+            <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
+                <img src="{{ asset('images/pernica.jpg') }}" alt="Везени перници" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
+                    <h3
+                        class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4"
+                        data-mk="Везени перници"
+                        data-sq="Jastëkë të qëndisur"
+                        data-en="Embroidered pillows"
+                    >Везени перници</h3>
+                    <p
+                        class="text-gray-200 text-xs leading-relaxed text-justify"
+                        data-mk="Рачно везени перници со традиционални македонски мотиви. Секој бод е израз на креативност и посветеност кон уметноста."
+                        data-sq="Jastëkë të qëndisur me dorë me motive tradicionale maqedonase. Çdo qepje është shprehje e kreativitetit dhe përkushtimit ndaj artit."
+                        data-en="Hand-embroidered pillows with traditional Macedonian motifs. Every stitch is an expression of creativity and dedication to craft."
+                    >Рачно везени перници со традиционални македонски мотиви. Секој бод е израз на креативност и посветеност кон уметноста.</p>
+                </div>
+            </div>
+
+            {{-- ОБЛЕКА --}}
+            <div class="relative h-[360px] md:h-[420px] rounded-3xl overflow-hidden group cursor-pointer shadow-md">
+                <img src="{{ asset('images/roba.jpg') }}" alt="Рачно шиена облека" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute bottom-0 left-0 w-full h-[45%] bg-black/40 backdrop-blur-md p-7 border-t border-white/10 flex flex-col justify-center">
+                    <h3
+                        class="text-white text-lg font-bold mb-3 underline decoration-2 underline-offset-4"
+                        data-mk="Рачно шиена облека"
+                        data-sq="Rroba të qepura me dorë"
+                        data-en="Hand-sewn clothing"
+                    >Рачно шиена облека</h3>
+                    <p
+                        class="text-gray-200 text-xs leading-relaxed text-justify"
+                        data-mk="Облека изработена со прецизност и внимание на деталите. Секој производ е резултат на часови посветена работа и развивање на вештини."
+                        data-sq="Rroba të punuara me precizitet dhe vëmendje ndaj detajeve. Çdo produkt është rezultat i orëve të punës së përkushtuar dhe zhvillimit të aftësive."
+                        data-en="Clothing crafted with precision and attention to detail. Each piece is the result of hours of dedicated work and skill development."
+                    >Облека изработена со прецизност и внимание на деталите. Секој производ е резултат на часови посветена работа и развивање на вештини.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     <!-- GALERIJA -->
     <section class="py-16 bg-white">
