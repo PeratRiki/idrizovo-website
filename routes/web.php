@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\VisitRequestController;
 use App\Http\Controllers\Admin\Admin\HandmadeController;
 use App\Http\Controllers\Admin\Admin\NovostiController;
 use App\Http\Controllers\Admin\Admin\AktivnostiController;
+use App\Http\Controllers\ContactController;
 use App\Models\HandmadeItem;
 use App\Models\HandmadeQuote;
 use App\Models\Novost;
@@ -23,6 +24,7 @@ use App\Models\Aktivnost;
 Route::get('/', function () { return view('views.Homepage'); })->name('homepage.index');
 Route::get('/AboutUs', function () { return view('views.AboutUs'); })->name('about.index');
 Route::get('/Contact', function () { return view('views.Contact'); })->name('contact.index');
+Route::post('/Contact', [ContactController::class, 'store'])->name('contact.send');
 Route::get('/Article', function () { return view('views.Article'); })->name('article.index');
 Route::get('/Activities', function () {
     $aktivnosti = Aktivnost::active()->orderBy('sort_order')->get();

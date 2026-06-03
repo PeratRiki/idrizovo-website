@@ -444,7 +444,15 @@
                  data-priority="{{ $msg->priority }}"
                  data-name="{{ strtolower($msg->name) }}"
                  data-subject="{{ strtolower($msg->subject ?? '') }}"
-                 onclick="openDetail({{ $msg->id }}, '{{ addslashes($msg->name) }}', '{{ addslashes($msg->email) }}', '{{ addslashes($msg->subject ?? 'Без наслов') }}', '{{ addslashes($msg->message) }}', '{{ $msg->created_at->format('d.m.Y H:i') }}', '{{ addslashes($msg->reply ?? '') }}', '{{ $msg->replied_at ? $msg->replied_at->format('d.m.Y H:i') : '' }}', '{{ $msg->priority }}', '{{ $color }}')">
+                 data-user-name="{{ e($msg->name) }}"
+                 data-user-email="{{ e($msg->email) }}"
+                 data-user-subject="{{ e($msg->subject ?? 'Без наслов') }}"
+                 data-user-message="{{ e($msg->message) }}"
+                 data-user-date="{{ $msg->created_at->format('d.m.Y H:i') }}"
+                 data-user-reply="{{ e($msg->reply ?? '') }}"
+                 data-user-replied-at="{{ $msg->replied_at ? $msg->replied_at->format('d.m.Y H:i') : '' }}"
+                 data-color="{{ $color }}"
+                 onclick="openDetail(this)">
                 <div class="email-avatar" style="background:{{ $color }}">
                     {{ strtoupper(substr($msg->name, 0, 1)) }}
                 </div>
@@ -562,7 +570,15 @@
 let markReadUrl = null;
 let currentMessageId = null;
 
-function openDetail(id, name, email, subject, message, date, reply, repliedAt, priority, color) {
+function openDetail(element) {
+    const id = element.dataset.id;
+    const name = element.dataset.userName;
+    const email = element.dataset.userEmail;
+    const subject = element.dataset.userSubject;
+    const message = element.dataset.userMessage;
+    const date = element.dataset.userDate;
+    const color = element.dataset.color;
+
     currentMessageId = id;
     document.getElementById('detailSubject').textContent = subject;
     document.getElementById('detailName').textContent = name;
@@ -704,6 +720,13 @@ function showToast(message) {
     setTimeout(() => toast.style.display = 'none', 3000);
 }
 
+function attachMessageItemHandlers() {
+    document.querySelectorAll('.email-item').forEach(item => {
+        item.style.cursor = 'pointer';
+        item.addEventListener('click', () => openDetail(item));
+    });
+}
+
 function openNewMail() {
     document.getElementById('newMailModal').classList.add('open');
 }
@@ -736,6 +759,10 @@ function searchMessages(query) {
         item.classList.toggle('hidden', !name.includes(q) && !subject.includes(q));
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    attachMessageItemHandlers();
+});
 </script>
 </body>
 </html>

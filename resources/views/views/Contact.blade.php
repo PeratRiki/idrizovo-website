@@ -56,18 +56,19 @@
         <div class="bg-white rounded-2xl p-8 md:p-10 shadow-2xl w-full md:w-1/2">
             <h2 class="text-xl font-bold text-center text-gray-900 mb-8" data-mk="Испрати порака" data-sq="Dërgo mesazh"
                 data-en="Send a message">Испрати порака</h2>
-            <div class="space-y-4">
-                <input type="text" id="input-name" placeholder="Име и презиме" data-placeholder-mk="Име и презиме"
+            <form method="POST" action="{{ route('contact.send') }}" class="space-y-4">
+                @csrf
+                <input type="text" name="name" id="input-name" placeholder="Име и презиме" data-placeholder-mk="Име и презиме"
                     data-placeholder-sq="Emri dhe mbiemri" data-placeholder-en="Full name"
                     class="w-full border border-gray-400 rounded-lg px-4 py-2 text-sm placeholder-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                <input type="text" id="input-prison" placeholder="Затворенички број:"
+                <input type="text" name="prisoner_number" id="input-prison" placeholder="Затворенички број:"
                     data-placeholder-mk="Затворенички број:" data-placeholder-sq="Numri i të burgosurit:"
                     data-placeholder-en="Prisoner number:"
                     class="w-full border border-gray-400 rounded-lg px-4 py-2 text-sm placeholder-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                <input type="email" id="input-email" placeholder="Е-пошта:" data-placeholder-mk="Е-пошта:"
+                <input type="email" name="email" id="input-email" placeholder="Е-пошта:" data-placeholder-mk="Е-пошта:"
                     data-placeholder-sq="Email:" data-placeholder-en="Email:"
                     class="w-full border border-gray-400 rounded-lg px-4 py-2 text-sm placeholder-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                <textarea id="input-message" rows="10" placeholder="Остави порака.."
+                <textarea name="message" id="input-message" rows="10" placeholder="Остави порака.."
                     data-placeholder-mk="Остави порака.." data-placeholder-sq="Lër një mesazh.."
                     data-placeholder-en="Leave a message.."
                     class="w-full border border-gray-400 rounded-xl px-4 py-4 text-sm placeholder-gray-900 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"></textarea>
@@ -76,7 +77,7 @@
                         class="bg-[#0E1B2F] text-white font-semibold rounded-lg px-12 py-3 hover:bg-gray-800 transition-colors duration-200"
                         data-mk="Испрати" data-sq="Dërgo" data-en="Send">Испрати</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
