@@ -19,8 +19,13 @@ class VisitRequestController extends Controller
             abort(403);
         }
 
-        $visitRequests = VisitRequest::latest()->get();
-        return view('admin.visit-request', compact('visitRequests'));
+        $visitRequests = VisitRequest::latest()->paginate(50);
+        $total = VisitRequest::count();
+        $pending_count = VisitRequest::where('status', 'pending')->count();
+        $approved_count = VisitRequest::where('status', 'approved')->count();
+        $rejected_count = VisitRequest::where('status', 'rejected')->count();
+
+        return view('admin.visit-request', compact('visitRequests', 'total', 'pending_count', 'approved_count', 'rejected_count'));
     }
 
     public function store(Request $request)

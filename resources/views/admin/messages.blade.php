@@ -21,7 +21,7 @@
         </div>
         <div style="background:#fff; border:1px solid #d1dff0; border-radius:50px; padding:8px 18px;">
             <span style="font-size:0.75rem; font-weight:700; color:#1a2e4a;">
-                Вкупно: {{ $messages->count() }} | Непрочитани: {{ $messages->where('is_read', false)->count() }}
+                Вкупно: {{ $total ?? $messages->total() }} | Непрочитани: {{ $unread ?? $messages->where('is_read', false)->count() }}
             </span>
         </div>
     </div>
@@ -80,6 +80,17 @@
                 </tbody>
             </table>
         </div>
+        @if($messages->hasPages())
+            <div style="padding:16px 24px; display:flex; justify-content:flex-end; gap:10px; background:#fff; border-top:1px solid #f0f4fa;">
+                @if(!$messages->onFirstPage())
+                    <a href="{{ $messages->previousPageUrl() }}" style="color:#1d6fa5; font-weight:700; text-decoration:none;">← Претходна</a>
+                @endif
+                <span style="color:#5a7299; font-size:0.85rem; line-height:32px;">Страница {{ $messages->currentPage() }} од {{ $messages->lastPage() }}</span>
+                @if($messages->hasMorePages())
+                    <a href="{{ $messages->nextPageUrl() }}" style="color:#1d6fa5; font-weight:700; text-decoration:none;">Следна →</a>
+                @endif
+            </div>
+        @endif
     </div>
 
 </div>

@@ -19,13 +19,20 @@ class MessagesController extends Controller
             abort(403);
         }
 
-        $messages = ContactMessage::with('threads')->latest()->get();
+        $messages = ContactMessage::select(['id', 'name', 'email', 'subject', 'message', 'priority', 'is_read', 'reply', 'created_at'])
+            ->latest()
+            ->paginate(50);
+
+        $total   = ContactMessage::count();
+        $unread  = ContactMessage::where('is_read', false)->count();
+        $replied = ContactMessage::whereNotNull('reply')->count();
+        $urgent  = ContactMessage::where('priority', 'urgent')->count();
 
         if (in_array($role, ['email_reader', 'vospituvac'])) {
-            return view('admin.email-reader', compact('messages'));
+            return view('admin.email-reader', compact('messages', 'total', 'unread', 'replied', 'urgent'));
         }
 
-        return view('admin.messages', compact('messages'));
+        return view('admin.messages', compact('messages', 'total', 'unread', 'replied', 'urgent'));
     }
 
     public function store(Request $request)

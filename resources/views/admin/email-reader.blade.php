@@ -321,11 +321,12 @@
         </div>
     </div>
 
+    {{-- Counts are computed in controller to avoid loading all messages on every page request. --}}
     @php
-        $total   = $messages->count();
-        $unread  = $messages->where('is_read', false)->count();
-        $replied = $messages->whereNotNull('reply')->count();
-        $urgent  = $messages->where('priority', 'urgent')->count();
+        $total   = $total ?? 0;
+        $unread  = $unread ?? 0;
+        $replied = $replied ?? 0;
+        $urgent  = $urgent ?? 0;
     @endphp
 
     <div class="sidebar-section">Главно</div>
@@ -483,6 +484,17 @@
             <div style="padding:60px; text-align:center; color:#3d5a7a; font-style:italic;">Нема пораки.</div>
             @endforelse
         </div>
+        @if($messages->hasPages())
+            <div style="padding:16px 20px; display:flex; justify-content:center; align-items:center; gap:12px; background:#f8fafc; border-top:1px solid #e2e8f0;">
+                @if(!$messages->onFirstPage())
+                    <a href="{{ $messages->previousPageUrl() }}" style="color:#1d6fa5; text-decoration:none; font-weight:700;">← Претходна</a>
+                @endif
+                <span style="color:#64748b; font-size:0.88rem;">Страница {{ $messages->currentPage() }} од {{ $messages->lastPage() }}</span>
+                @if($messages->hasMorePages())
+                    <a href="{{ $messages->nextPageUrl() }}" style="color:#1d6fa5; text-decoration:none; font-weight:700;">Следна →</a>
+                @endif
+            </div>
+        @endif
     </div>
 </div>
 

@@ -55,7 +55,7 @@
         </div>
         <div class="vr-badge" style="background:#fff; border:1px solid #d1dff0; border-radius:50px; padding:8px 18px; white-space:nowrap; flex-shrink:0;">
             <span style="font-size:0.75rem; font-weight:700; color:#1a2e4a;">
-                Вкупно: {{ isset($visitRequests) ? $visitRequests->count() : 0 }}
+                Вкупно: {{ $total ?? $visitRequests->total() }}
             </span>
         </div>
     </div>
@@ -63,9 +63,9 @@
     {{-- Stats --}}
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px;">
         @php
-            $pending_count  = isset($visitRequests) ? $visitRequests->where('status','pending')->count() : 0;
-            $approved_count = isset($visitRequests) ? $visitRequests->where('status','approved')->count() : 0;
-            $rejected_count = isset($visitRequests) ? $visitRequests->where('status','rejected')->count() : 0;
+            $pending_count  = $pending_count ?? 0;
+            $approved_count = $approved_count ?? 0;
+            $rejected_count = $rejected_count ?? 0;
         @endphp
         <div style="background:#fff; border:1px solid #d1dff0; border-radius:14px; padding:16px; text-align:center;">
             <p style="font-size:0.65rem; font-weight:700; color:#5a7299; text-transform:uppercase;">На чекање</p>
@@ -144,6 +144,17 @@
                 </tbody>
             </table>
         </div>
+        @if($visitRequests->hasPages())
+            <div style="padding:16px 20px; display:flex; justify-content:center; align-items:center; gap:12px; background:#f8fafc; border-top:1px solid #e2e8f0;">
+                @if(!$visitRequests->onFirstPage())
+                    <a href="{{ $visitRequests->previousPageUrl() }}" style="color:#1d6fa5; text-decoration:none; font-weight:700;">← Претходна</a>
+                @endif
+                <span style="color:#64748b; font-size:0.88rem;">Страница {{ $visitRequests->currentPage() }} од {{ $visitRequests->lastPage() }}</span>
+                @if($visitRequests->hasMorePages())
+                    <a href="{{ $visitRequests->nextPageUrl() }}" style="color:#1d6fa5; text-decoration:none; font-weight:700;">Следна →</a>
+                @endif
+            </div>
+        @endif
     </div>
 </div>
 
