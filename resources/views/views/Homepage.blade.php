@@ -114,7 +114,7 @@
                     data-sq="E-gazetë"
                     data-en="E-newspaper"
                 >Е-весник</h2>
-                <a href="#"
+                <a href="{{ asset('storage/vesnik/iskra.pdf') }}" download
                     class="bg-[#315b96] hover:bg-blue-800 text-white px-4 md:px-6 py-2.5 rounded-md text-xs md:text-sm font-medium transition shadow-sm flex items-center gap-2"
                     data-mk="Превземи Е-весник"
                     data-sq="Shkarko E-gazetën"
