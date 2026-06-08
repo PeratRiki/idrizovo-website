@@ -28,12 +28,12 @@
                     </div>
                     <!-- DESKTOP LANG -->
                     <div class="hidden md:block">
-                        <button id="lang-btn" type="button" class="hover:text-gray-200 transition cursor-pointer flex items-center gap-1.5 px-3 py-1.5 rounded hover:bg-sky-700">
+                        <button id="lang-btn" type="button" onclick="toggleLangDropdown(); event.stopPropagation();" class="hover:text-gray-200 transition cursor-pointer flex items-center gap-1.5 px-3 py-1.5 rounded hover:bg-sky-700">
                             <i class="fa-solid fa-globe text-lg text-sm"></i>
                             <span id="lang-label" class="text-xs font-bold tracking-wide">МК</span>
                             <i class="fa-solid fa-chevron-down text-[10px]"></i>
                         </button>
-                        <div id="lang-dropdown" class="cursor-pointer hidden absolute right-0 top-full mt-2 bg-white rounded-xl shadow-2xl overflow-hidden z-20 w-48 border border-gray-100">
+                        <div id="lang-dropdown" onclick="event.stopPropagation();" class="cursor-pointer hidden absolute right-0 top-full mt-2 bg-white rounded-xl shadow-2xl overflow-hidden z-20 w-48 border border-gray-100">
                             <button onclick="setLang('en')" class="cursor-pointer w-full text-left px-5 py-3 text-gray-800 text-sm font-medium hover:bg-sky-50 flex items-center gap-3 transition">
                                 <img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" alt="UK Flag"> English
                             </button>
@@ -59,18 +59,18 @@
                 <img src="{{ asset('images/logo.png') }}" />
             </div>
             <ul class="hidden md:flex items-center space-x-6 font-medium">
-                <li class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-full hover:before:w-full before:bg-white before:transition-all before:duration-500 font-bold">
+                <li class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:bg-white before:transition-all before:duration-500 hover:before:w-full {{ request()->routeIs('homepage.index') ? 'before:w-full font-bold' : 'before:w-0' }}">
                     <a href="{{ url('/') }}" data-mk="Почетна" data-sq="Kreu" data-en="Home">Почетна</a>
                 </li>
-                <li>
+                <li class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:bg-white before:transition-all before:duration-500 hover:before:w-full {{ request()->routeIs('about.index') ? 'before:w-full font-bold' : 'before:w-0' }}">
                     <a href="{{ url('/AboutUs') }}"
-                       class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500"
+                       class="inline-block"
                        data-mk="За нас" data-sq="Rreth nesh" data-en="About us">За нас</a>
                 </li>
-                <li class="relative flex items-center cursor-pointer">
+                <li class="relative flex items-center cursor-pointer {{ request()->routeIs('activities.index') || request()->routeIs('novosti.index') ? 'font-bold' : '' }}">
                     <button id="novosti-btn" onclick="toggleNovosti(event)"
-                        class="flex items-center gap-x-1 px-2 py-1 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500 focus:outline-none whitespace-nowrap">
-                        <span data-mk="Новости и соопштенија" data-sq="Lajme dhe njoftime" data-en="News and announcements">Новости и соопштенија</span>
+                        class="flex items-center gap-x-1 px-2 py-1 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:bg-white before:transition-all before:duration-500 {{ request()->routeIs('activities.index') || request()->routeIs('novosti.index') ? 'before:w-full' : 'before:w-0' }} hover:before:w-full focus:outline-none whitespace-nowrap">
+                        <span data-mk="Новости и соопштенија" data-sq="Lajme dhe njoftime" data-en="News and announcements">Новости и соопштeniја</span>
                         <svg class="w-4 h-4 transition-transform duration-200 flex-shrink-0" id="novosti-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
@@ -84,26 +84,20 @@
                            data-mk="Соопштенија" data-sq="Njoftime" data-en="Announcements">Соопштенија</a>
                     </div>
                 </li>
-                <li>
+                <li class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:bg-white before:transition-all before:duration-500 hover:before:w-full {{ request()->routeIs('handmade.index') ? 'before:w-full font-bold' : 'before:w-0' }}">
                     <a href="{{ url('/Handmade') }}"
-                       class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500"
+                       class="inline-block"
                        data-mk="Изработки" data-sq="Punime" data-en="Crafts">Изработки</a>
                 </li>
-                <li>
+                <li class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:bg-white before:transition-all before:duration-500 hover:before:w-full {{ request()->routeIs('contact.index') ? 'before:w-full font-bold' : 'before:w-0' }}">
                     <a href="{{ url('/Contact') }}"
-                       class="inline-block px-2 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-0 hover:before:w-full before:bg-white before:transition-all before:duration-500"
+                       class="inline-block"
                        data-mk="Контакт" data-sq="Kontakt" data-en="Contact">Контакт</a>
                 </li>
             </ul>
         </div>
 
         <div class="flex items-center space-x-2 md:space-x-4">
-            <button class="p-2 hidden md:block">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-            </button>
-
             <a href="{{ route('appointments.index') }}"
                class="bg-sky-950 text-white px-4 md:px-6 py-2 rounded-md font-bold hover:bg-black transition text-sm md:text-base hidden md:block"
                data-mk="Закажи посета" data-sq="Cakto vizitë" data-en="Book a visit">Закажи посета</a>

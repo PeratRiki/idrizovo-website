@@ -74,15 +74,15 @@
 
             <div class="flex flex-col gap-4 md:gap-4 w-full md:w-auto">
                 <div class="flex flex-col gap-4 md:hidden w-[320px] max-w-full">
-                    <a href="#" class="bg-[#3862a8] hover:bg-[#2b5292] text-white font-bold py-3 px-8 rounded-2xl text-center text-sm uppercase tracking-wider transition-all" data-mk="Историја" data-sq="Historia" data-en="History">Историја</a>
-                    <a href="#" class="bg-[#3862a8] hover:bg-[#2b5292] text-white font-bold py-3 px-8 rounded-2xl text-center text-sm uppercase tracking-wider transition-all" data-mk="Визија" data-sq="Vizioni" data-en="Vision">Визија</a>
-                    <a href="#" class="bg-[#3862a8] hover:bg-[#2b5292] text-white font-bold py-3 px-8 rounded-2xl text-center text-sm uppercase tracking-wider transition-all" data-mk="Мисија" data-sq="Misioni" data-en="Mission">Мисија</a>
+                    <a href="javascript:void(0)" class="bg-[#3862a8] hover:bg-[#2b5292] text-white font-bold py-3 px-8 rounded-2xl text-center text-sm uppercase tracking-wider transition-all" data-mk="Историја" data-sq="Historia" data-en="History">Историја</a>
+                    <a href="javascript:void(0)" class="bg-[#3862a8] hover:bg-[#2b5292] text-white font-bold py-3 px-8 rounded-2xl text-center text-sm uppercase tracking-wider transition-all" data-mk="Визија" data-sq="Vizioni" data-en="Vision">Визија</a>
+                    <a href="javascript:void(0)" class="bg-[#3862a8] hover:bg-[#2b5292] text-white font-bold py-3 px-8 rounded-2xl text-center text-sm uppercase tracking-wider transition-all" data-mk="Мисија" data-sq="Misioni" data-en="Mission">Мисија</a>
                 </div>
 
                 <div class="hidden md:flex flex-row gap-4 justify-around">
-                    <a href="#" class="bg-[#3862a8] hover:bg-[#2b5292] text-white font-bold py-3.5 px-14 rounded-lg text-center text-[12px] uppercase tracking-widest transition-all" data-mk="Историја" data-sq="Historia" data-en="History">Историја</a>
-                    <a href="#" class="bg-[#3862a8] hover:bg-[#2b5292] text-white font-bold py-3.5 px-14 rounded-lg text-center text-[12px] uppercase tracking-widest transition-all" data-mk="Визија" data-sq="Vizioni" data-en="Vision">Визија</a>
-                    <a href="#" class="bg-[#3862a8] hover:bg-[#2b5292] text-white font-bold py-3.5 px-14 rounded-lg text-center text-[12px] uppercase tracking-widest transition-all" data-mk="Мисија" data-sq="Misioni" data-en="Mission">Мисија</a>
+                    <a href="javascript:void(0)" class="bg-[#3862a8] hover:bg-[#2b5292] text-white font-bold py-3.5 px-14 rounded-lg text-center text-[12px] uppercase tracking-widest transition-all" data-mk="Историја" data-sq="Historia" data-en="History">Историја</a>
+                    <a href="javascript:void(0)" class="bg-[#3862a8] hover:bg-[#2b5292] text-white font-bold py-3.5 px-14 rounded-lg text-center text-[12px] uppercase tracking-widest transition-all" data-mk="Визија" data-sq="Vizioni" data-en="Vision">Визија</a>
+                    <a href="javascript:void(0)" class="bg-[#3862a8] hover:bg-[#2b5292] text-white font-bold py-3.5 px-14 rounded-lg text-center text-[12px] uppercase tracking-widest transition-all" data-mk="Мисија" data-sq="Misioni" data-en="Mission">Мисија</a>
                 </div>
             </div>
         </div>

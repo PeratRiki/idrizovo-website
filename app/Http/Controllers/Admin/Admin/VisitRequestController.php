@@ -93,18 +93,38 @@ class VisitRequestController extends Controller
             'visit_count'         => $data['visit_count'],
             'notification_method' => $data['notification_method'],
             'visitor_type'        => $data['visitor_type'] ?? null,
-            'confirmation_code'   => $this->generateConfirmationCode(),
         ]);
 
         return response()->json([
+            'id'     => $visit->id,
             'status' => $status,
-            'code'   => $visit->confirmation_code,
         ], 201);
+    }
+
+    public function show(VisitRequest $visit)
+    {
+        return response()->json([
+            'id'                  => $visit->id,
+            'status'              => $visit->status,
+            'confirmation_code'   => $visit->confirmation_code,
+            'notification_method' => $visit->notification_method,
+            'visitor_email'       => $visit->visitor_email,
+            'phone'               => $visit->phone,
+            'requested_date'      => optional($visit->requested_date)->toDateString(),
+            'requested_time'      => $visit->requested_time,
+            'visit_count'         => $visit->visit_count,
+            'prisoner_name'       => $visit->prisoner_name,
+            'visitor_name'        => $visit->visitor_name,
+        ], 200);
     }
 
     public function approve(VisitRequest $visit)
     {
-        $visit->update(['status' => 'approved']);
+        $updateData = ['status' => 'approved'];
+        if (empty($visit->confirmation_code)) {
+            $updateData['confirmation_code'] = $this->generateConfirmationCode();
+        }
+        $visit->update($updateData);
         return back()->with('success', 'Барањето е одобрено!');
     }
 
@@ -123,10 +143,17 @@ class VisitRequestController extends Controller
     public function updateStatus(Request $request, VisitRequest $visit)
     {
         $oldStatus = $visit->status;
-        $visit->update([
+
+        $updateData = [
             'status' => $request->status,
             'reason' => $request->reason,
-        ]);
+        ];
+
+        if ($request->status === 'approved' && empty($visit->confirmation_code)) {
+            $updateData['confirmation_code'] = $this->generateConfirmationCode();
+        }
+
+        $visit->update($updateData);
 
         if (in_array($oldStatus, self::CAPACITY_STATUSES, true)
             && !in_array($request->status, self::CAPACITY_STATUSES, true)) {

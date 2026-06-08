@@ -277,7 +277,7 @@
                                 data-en="Based on article 30 paragraph 1 subparagraph 2 paragraph 3 and paragraph 5, article 48 and article 49 of the Law on Administrative Employees.."
                             >Врз основа на член 30 став 1 алинеја 2 став 3 и став 5, член 48 и член 49 од Законот за административни службеници..</p>
                         </div>
-<a href="#" class="relative z-50 bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>                    </div>
+<a href="javascript:void(0)" class="relative z-50 bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>                    </div>
                 </div>
 
                 {{-- Картичка 2: Одлука за избор --}}
@@ -299,7 +299,7 @@
                                 data-en="Based on art. 52 par.1 of the Law on Administrative Employees.."
                             >Врз основа на чл. 52 ст.1 од Законот за Административни службеници..</p>
                         </div>
-                        <a href="#" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
+                        <a href="javascript:void(0)" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
                     </div>
                 </div>
 
@@ -322,7 +322,7 @@
                                 data-en="Based on art.52 par.1 of the Law on Administrative Employees.."
                             >Врз основа на чл.52 ст.1 од Законот за Административни службеници..</p>
                         </div>
-                        <a href="#" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
+                        <a href="javascript:void(0)" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
                     </div>
                 </div>
             </div>
@@ -357,7 +357,7 @@
                                 data-en="Based on article 30 paragraph 1 subparagraph 2 paragraph 3 and paragraph 5, article 48 and article 49 of the Law on Administrative Employees.."
                             >Врз основа на член 30 став 1 алинеја 2 став 3 и став 5, член 48 i член 49 од Законот за административни службеници..</p>
                         </div>
-                        <a href="#" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
+                        <a href="javascript:void(0)" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
                     </div>
                 </div>
 
@@ -380,7 +380,7 @@
                                 data-en="Based on article 67 paragraph 1 subparagraph 2 of the Law on Execution of Sanctions.."
                             >Врз основа на член 67 став 1 алинеја 2 од Законот за извршување на санкции..</p>
                         </div>
-                        <a href="#" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
+                        <a href="javascript:void(0)" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
                     </div>
                 </div>
 
@@ -403,7 +403,7 @@
                                 data-en="Applications together with documents for the Public Notice for permanent employment of 2025..."
                             >Пријавите заедно со документите по Јавниот оглас за вработување на неопределено време на 2025 година...</p>
                         </div>
-                        <a href="#" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
+                        <a href="javascript:void(0)" class="bg-[#1d4ed8] text-white text-xs font-bold px-5 py-2.5 rounded-lg self-start transition-all duration-300 transform hover:scale-105 shadow-md uppercase tracking-wider block" data-mk="Види повеќе" data-sq="Shiko më shumë" data-en="See more">Види повеќе</a>
                     </div>
                 </div>
 
@@ -573,19 +573,19 @@
                             data-en="Regulations"
                         >Регулатива</h3>
                         <ul class="space-y-3 text-xs md:text-sm font-semibold uppercase tracking-wide">
-                            <li><a href="#"
+                            <li><a href="javascript:void(0)"
                                 class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition"
                                 data-mk="Закони"
                                 data-sq="Ligje"
                                 data-en="Laws"
                             >Закони</a></li>
-                            <li><a href="#"
+                            <li><a href="javascript:void(0)"
                                 class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition"
                                 data-mk="Правилници"
                                 data-sq="Rregullore"
                                 data-en="Rulebooks"
                             >Правилници</a></li>
-                            <li><a href="#"
+                            <li><a href="javascript:void(0)"
                                 class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition"
                                 data-mk="Упатство и протоколи"
                                 data-sq="Udhëzime dhe protokolle"
@@ -606,19 +606,19 @@
                             data-en="Resources"
                         >Ресурси</h3>
                         <ul class="space-y-3 text-xs md:text-sm font-semibold uppercase tracking-wide">
-                            <li><a href="#"
+                            <li><a href="javascript:void(0)"
                                 class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition"
                                 data-mk="Јавни набавки"
                                 data-sq="Prokurime publike"
                                 data-en="Public procurement"
                             >Јавни набавки</a></li>
-                            <li><a href="#"
+                            <li><a href="javascript:void(0)"
                                 class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition"
                                 data-mk="Буџет"
                                 data-sq="Buxheti"
                                 data-en="Budget"
                             >Буџет</a></li>
-                            <li><a href="#"
+                            <li><a href="javascript:void(0)"
                                 class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition"
                                 data-mk="Извештаи"
                                 data-sq="Raporte"
@@ -639,13 +639,13 @@
                             data-en="Public relations"
                         >Односи со јавноста</h3>
                         <ul class="space-y-3 text-xs md:text-sm font-semibold uppercase tracking-wide">
-                            <li><a href="#"
+                            <li><a href="javascript:void(0)"
                                 class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition"
                                 data-mk="Информации од јавен карактер"
                                 data-sq="Informacione me karakter publik"
                                 data-en="Public information"
                             >Информации од јавен карактер</a></li>
-                            <li><a href="#"
+                            <li><a href="javascript:void(0)"
                                 class="underline decoration-1 underline-offset-4 hover:text-blue-100 transition"
                                 data-mk="Огласи"
                                 data-sq="Shpalljet"
@@ -670,7 +670,7 @@
                 >Пријави корупција</span>
                 <span class="font-bold text-sm md:text-base tracking-wide">02 25 80 312</span>
             </a>
-            <a href="#" class="bg-[#0f172a] hover:bg-slate-800 text-white rounded-xl px-6 md:px-8 py-6 flex items-center w-full md:w-[450px] shadow-md transition-all duration-300 transform hover:-translate-y-1">
+            <a href="javascript:void(0)" class="bg-[#0f172a] hover:bg-slate-800 text-white rounded-xl px-6 md:px-8 py-6 flex items-center w-full md:w-[450px] shadow-md transition-all duration-300 transform hover:-translate-y-1">
                 <span
                     class="font-bold text-sm md:text-base leading-snug"
                     data-mk="Годишен план за спречување на корупција"

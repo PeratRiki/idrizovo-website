@@ -12,8 +12,6 @@
   }
   * { box-sizing: border-box; }
 
-  h1,h2,h3 { font-family: 'Source Serif 4', serif; }
-
   .card {
     background: #fff;
     border: 1.5px solid var(--border);
@@ -22,7 +20,6 @@
   }
 
   .section-title {
-    font-family: 'Source Serif 4', serif;
     font-size: 1.05rem;
     font-weight: 700;
     color: var(--blue-deep);
@@ -202,7 +199,6 @@
     text-align: center;
   }
   .code-val {
-    font-family: 'Source Serif 4', serif;
     font-size: 2.2rem;
     font-weight: 700;
     letter-spacing: .18em;
@@ -231,7 +227,7 @@
         </div>
         <h1
           class="text-xl font-bold leading-tight"
-          style="color:#1a3a6b;font-family:'Source Serif 4',serif"
+          style="color:#1a3a6b;"
           data-mk="Закажување посета во затвор"
           data-sq="Rezervim vizite në burg"
           data-en="Schedule a Prison Visit">
@@ -670,7 +666,7 @@
         </div>
         <h3
           class="text-lg font-bold"
-          style="color:#1a3a6b;font-family:'Source Serif 4',serif"
+          style="color:#1a3a6b;"
           data-mk="Потврди откажување"
           data-sq="Konfirmo anulimin"
           data-en="Confirm Cancellation">
@@ -801,11 +797,14 @@ const T = {
     summaryPrisoner:  'Затвореник бр.:',
     codeLabelSms:     'Кодот ќе ви биде испратен преку SMS',
     codeLabelEmail:   'Кодот ќе ви биде испратен на Email',
-    codeLabelPage:    'Вашиот код за потврда (зачувајте го!)',
+    codeLabelPage:    'Вашиот код ќе ви биде испратен по одобрување од администраторот.',
     codeNoteSms:      'На број: {0} — по одобрување од администраторот.',
     codeNoteEmail:    'На: {0} — по одобрување од администраторот.',
-    codeNotePage:     'Кодот е потребен за откажување на посетата.',
+    codeNotePage:     'Кодот ќе ви биде доставен по одобрување од администраторот.',
+    pendingMessage:   'Вашето барање е примено и чека на одобрение од администратор.',
     waitingMessage:   'Датумот е полн, вашето барање е ставено на листа на чекање.',
+    rejectedLabel:    'Барањето е одбиено',
+    rejectedMessage:  'Вашето барање е одбиено од администратор. Код нема.',
     alertSms:         'За SMS потврда треба да внесете мобилен број.',
     alertEmail:       'За email потврда треба да внесете email адреса.',
     alertCancel48:    'Откажувањето не е возможно — помалку од 48 часа до посетата.',
@@ -830,11 +829,14 @@ const T = {
     summaryPrisoner:  'Nr. i të burgosurit:',
     codeLabelSms:     'Kodi do t\'ju dërgohet me SMS',
     codeLabelEmail:   'Kodi do t\'ju dërgohet me Email',
-    codeLabelPage:    'Kodi juaj i konfirmimit (ruajeni!)',
+    codeLabelPage:    'Kodi juaj do t\'ju dërgohet pas miratimit nga administratori.',
     codeNoteSms:      'Në numrin: {0} — pas miratimit nga administratori.',
     codeNoteEmail:    'Në: {0} — pas miratimit nga administratori.',
-    codeNotePage:     'Kodi nevojitet për anulimin e vizitës.',
+    codeNotePage:     'Kodi do t\'ju dërgohet pas miratimit nga administratori.',
+    pendingMessage:   'Kërkesa juaj është pranuar dhe po pret miratimin e administratorit.',
     waitingMessage:   'Data është e plotë, kërkesa juaj u vendos në listën e pritjes.',
+    rejectedLabel:    'Kërkesa është refuzuar',
+    rejectedMessage:  'Kërkesa juaj u refuzua nga administratori. Nuk ka kod.',
     alertSms:         'Për konfirmim me SMS duhet të vendosni numrin e celularit.',
     alertEmail:       'Për konfirmim me email duhet të vendosni adresën email.',
     alertCancel48:    'Anulimi nuk është i mundur — më pak se 48 orë deri në vizitë.',
@@ -859,11 +861,14 @@ const T = {
     summaryPrisoner:  'Prisoner No.:',
     codeLabelSms:     'The code will be sent to you via SMS',
     codeLabelEmail:   'The code will be sent to you via Email',
-    codeLabelPage:    'Your confirmation code (save it!)',
+    codeLabelPage:    'Your confirmation code will be provided after approval by the administrator.',
     codeNoteSms:      'To number: {0} — after approval by the administrator.',
     codeNoteEmail:    'To: {0} — after approval by the administrator.',
-    codeNotePage:     'The code is required for cancelling the visit.',
+    codeNotePage:     'The code will be provided after approval by the administrator.',
+    pendingMessage:   'Your request has been received and is waiting for administrator approval.',
     waitingMessage:   'The date is full, your request has been placed on the waiting list.',
+    rejectedLabel:    'Request Rejected',
+    rejectedMessage:  'Your request was rejected by the administrator. No code is available.',
     alertSms:         'For SMS confirmation you must enter a mobile number.',
     alertEmail:       'For email confirmation you must enter an email address.',
     alertCancel48:    'Cancellation is not possible — less than 48 hours until the visit.',
@@ -900,6 +905,106 @@ window.setLang = function(lang) {
   });
 };
 
+function saveBookingState() {
+  try {
+    localStorage.setItem('visitBooking', JSON.stringify({
+      bookingData,
+      bookingCode,
+      status: bookingData.status || 'pending',
+    }));
+  } catch (e) {
+    // ignore storage issues
+  }
+}
+
+function clearBookingState() {
+  try {
+    localStorage.removeItem('visitBooking');
+  } catch (e) {
+    // ignore storage issues
+  }
+}
+
+function shouldRestoreBookingState() {
+  const navEntries = performance.getEntriesByType ? performance.getEntriesByType('navigation') : [];
+  let navType = 'navigate';
+  if (navEntries && navEntries.length) {
+    navType = navEntries[0].type;
+  } else if (performance.navigation && typeof performance.navigation.type !== 'undefined') {
+    navType = performance.navigation.type === 1 ? 'reload' : performance.navigation.type === 2 ? 'back_forward' : 'navigate';
+  }
+  return navType === 'reload' || navType === 'back_forward';
+}
+
+async function restoreBookingState() {
+  if (!shouldRestoreBookingState()) {
+    clearBookingState();
+    return;
+  }
+
+  let stored = null;
+  try {
+    stored = JSON.parse(localStorage.getItem('visitBooking') || 'null');
+  } catch (e) {
+    return;
+  }
+  if (!stored || !stored.bookingData) return;
+
+  bookingData = stored.bookingData;
+  bookingCode = stored.bookingCode || '';
+  let status = stored.status || 'pending';
+  let notifyValue = bookingData.notify || 'none';
+
+  if (bookingData.id) {
+    try {
+      const res = await fetch('/visits/' + bookingData.id);
+      if (res.ok) {
+        const data = await res.json();
+        status = data.status || status;
+        bookingCode = data.confirmation_code || bookingCode;
+        bookingData = { ...bookingData, ...data };
+        notifyValue = data.notification_method || notifyValue;
+      }
+    } catch (e) {
+      // ignore refresh failures
+    }
+  }
+
+  document.getElementById('mainForm').style.display = 'none';
+  document.getElementById('successScreen').style.display = 'block';
+
+  const lbl  = document.getElementById('codeLabel');
+  const note = document.getElementById('codeNote');
+  if (status === 'rejected') {
+    lbl.textContent = t('rejectedLabel');
+    note.textContent = t('rejectedMessage');
+    document.getElementById('displayCode').textContent = '——';
+  } else if (notifyValue === 'sms') {
+    lbl.textContent  = t('codeLabelSms');
+    note.textContent = (status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNoteSms').replace('{0}', bookingData.phone || '');
+  } else if (notifyValue === 'email') {
+    lbl.textContent  = t('codeLabelEmail');
+    note.textContent = (status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNoteEmail').replace('{0}', bookingData.visitor_email || '');
+  } else {
+    lbl.textContent  = t('codeLabelPage');
+    note.textContent = (status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNotePage');
+  }
+  document.getElementById('displayCode').textContent = bookingCode || '——';
+
+  if (bookingData.requested_date) {
+    const tipLabel = bookingData.visitor_type === 'semejstvo' ? t('tipSemejstvo') : t('tipPrijatel');
+    const dayName = t('days')[new Date(bookingData.requested_date).getDay()];
+    document.getElementById('summaryBox').innerHTML = `
+      <div class="flex justify-between"><span class="text-gray-500">${t('summaryVisitor')}</span><strong>${bookingData.visitor_name}</strong></div>
+      <div class="flex justify-between"><span class="text-gray-500">${t('summaryVisitorType')}</span><strong>${tipLabel}</strong></div>
+      <div class="flex justify-between"><span class="text-gray-500">${t('summaryDate')}</span><strong>${dayName}, ${bookingData.requested_date}</strong></div>
+      <div class="flex justify-between"><span class="text-gray-500">${t('summaryTime')}</span><strong>${bookingData.cas}h</strong></div>
+      <div class="flex justify-between"><span class="text-gray-500">${t('summaryPersons')}</span><strong>${bookingData.visit_count}</strong></div>
+      <div class="flex justify-between"><span class="text-gray-500">${t('summaryPrisoner')}</span><strong>${bookingData.prisoner_name}</strong></div>
+    `;
+  }
+}
+
 (function init(){
   const timeGrid = document.getElementById('timeGrid');
   TIMES.forEach(t => {
@@ -917,6 +1022,7 @@ window.setLang = function(lang) {
   document.getElementById('datum').addEventListener('change', function(){
     fetchAvailability(this.value);
   });
+  restoreBookingState();
 })();
 
 function selectTime(time, btn){
@@ -1090,7 +1196,8 @@ async function submitForm(){
   }
 
   bookingCode = data.code;
-  bookingData = { ...payload, cas, notify: notify.value };
+  bookingData = { ...payload, cas, notify: notify.value, id: data.id, status: data.status };
+  saveBookingState();
 
   document.getElementById('mainForm').style.display = 'none';
   document.getElementById('successScreen').style.display = 'block';
@@ -1099,15 +1206,16 @@ async function submitForm(){
   const note = document.getElementById('codeNote');
   if(notify.value==='sms'){
     lbl.textContent  = t('codeLabelSms');
-    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : '') + t('codeNoteSms').replace('{0}', mobilen);
+    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNoteSms').replace('{0}', mobilen);
   } else if(notify.value==='email'){
     lbl.textContent  = t('codeLabelEmail');
-    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : '') + t('codeNoteEmail').replace('{0}', email);
+    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNoteEmail').replace('{0}', email);
   } else {
     lbl.textContent  = t('codeLabelPage');
-    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : '') + t('codeNotePage');
+    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNotePage');
   }
-  document.getElementById('displayCode').textContent = bookingCode;
+  bookingCode = data.code || '';
+  document.getElementById('displayCode').textContent = bookingCode || '——';
 
   // ДОДАДЕНО: tipLabel за summary
   const tipLabel = tip.value === 'semejstvo' ? t('tipSemejstvo') : t('tipPrijatel');
@@ -1168,6 +1276,7 @@ function confirmCancel(){
   if(!ok) return;
 
   closeCancelOverlay();
+  clearBookingState();
   document.getElementById('successScreen').style.display = 'none';
   document.getElementById('cancelledScreen').style.display = 'block';
 }

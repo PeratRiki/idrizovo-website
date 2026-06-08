@@ -76,7 +76,7 @@
             Шаховски натпревар што поттикнува фокус, стратешко размислување и позитивна интеракција меѓу учесниците.
           </p>
           <a
-            href="#"
+            href="javascript:void(0)"
             class="text-sm font-semibold text-white underline decoration-blue-400 underline-offset-4"
             data-mk="Прочитај повеќе"
             data-sq="Lexo më shumë"
@@ -105,7 +105,7 @@
             Активности за заварување каде што учесниците учат безбедно...
           </p>
           <a
-            href="#"
+            href="javascript:void(0)"
             class="text-xs font-semibold text-white underline decoration-blue-400"
             data-mk="Прочитај повеќе"
             data-sq="Lexo më shumë"
@@ -134,7 +134,7 @@
             Рачно изработени резби создадени со грижа...
           </p>
           <a
-            href="#"
+            href="javascript:void(0)"
             class="text-xs font-semibold text-white underline decoration-blue-400"
             data-mk="Прочитај повеќе"
             data-sq="Lexo më shumë"
@@ -163,7 +163,7 @@
             Занает на работа со дрво за создавање...
           </p>
           <a
-            href="#"
+            href="javascript:void(0)"
             class="text-xs font-semibold text-white underline decoration-blue-400"
             data-mk="Прочитај повеќе"
             data-sq="Lexo më shumë"
@@ -192,7 +192,7 @@
             Учење и извршување електрични задачи...
           </p>
           <a
-            href="#"
+            href="javascript:void(0)"
             class="text-xs font-semibold text-white underline decoration-blue-400"
             data-mk="Прочитај повеќе"
             data-sq="Lexo më shumë"
@@ -237,7 +237,7 @@
               Везот ги подобрува креативноста...
             </p>
             <a
-              href="#"
+              href="javascript:void(0)"
               class="text-xs font-semibold text-white underline"
               data-mk="Прочитај повеќе"
               data-sq="Lexo më shumë"
@@ -266,7 +266,7 @@
               Активности за цртање...
             </p>
             <a
-              href="#"
+              href="javascript:void(0)"
               class="text-xs font-semibold text-white underline"
               data-mk="Прочитај повеќе"
               data-sq="Lexo më shumë"
@@ -295,7 +295,7 @@
               Активности за шиење...
             </p>
             <a
-              href="#"
+              href="javascript:void(0)"
               class="text-xs font-semibold text-white underline"
               data-mk="Прочитај повеќе"
               data-sq="Lexo më shumë"
@@ -324,7 +324,7 @@
               Создавање уметнички дела...
             </p>
             <a
-              href="#"
+              href="javascript:void(0)"
               class="text-xs font-semibold text-white underline"
               data-mk="Прочитај повеќе"
               data-sq="Lexo më shumë"
@@ -355,7 +355,7 @@
             Физички вежби за градење сила, кондиција и целокупна благосостојба.
           </p>
           <a
-            href="#"
+            href="javascript:void(0)"
             class="text-sm font-semibold text-white underline decoration-blue-400 underline-offset-8"
             data-mk="Прочитај повеќе"
             data-sq="Lexo më shumë"

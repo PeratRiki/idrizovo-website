@@ -57,7 +57,7 @@ window.toggleLangDropdown = function () {
     }
 };
 
-document.addEventListener('DOMContentLoaded', function () {
+function initLanguageDropdown() {
     // Hamburger
     const hamburgerBtn = document.getElementById('hamburger-btn');
     if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMobileMenu);
@@ -68,6 +68,14 @@ document.addEventListener('DOMContentLoaded', function () {
         e.stopPropagation();
         toggleLangDropdown();
     });
+
+    // Prevent clicks inside the lang dropdown from closing it
+    const langDropdown = document.getElementById('lang-dropdown');
+    if (langDropdown) {
+        langDropdown.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    }
 
     // Close dropdowns on outside click
     document.addEventListener('click', function (e) {
@@ -101,4 +109,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const labels = { mk: 'МК', sq: 'ALB', en: 'EN' };
     if (langLabel) langLabel.textContent = labels[saved];
     if (saved !== 'mk') window.setLang(saved);
-});
+}
+
+document.addEventListener('DOMContentLoaded', initLanguageDropdown);
+if (document.readyState !== 'loading') {
+    initLanguageDropdown();
+}

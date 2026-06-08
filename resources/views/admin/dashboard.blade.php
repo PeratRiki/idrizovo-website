@@ -81,7 +81,7 @@
         <div style="background:#fff; border:1px solid #d1dff0; border-radius:20px; overflow:hidden;">
             <div class="dash-card-pad" style="padding:20px 24px; border-bottom:1px solid #e8f0fb; display:flex; justify-content:space-between; align-items:center;">
                 <h2 style="font-size:1rem; font-weight:700; color:#1a2e4a;">📅 Барања за посета</h2>
-                <a href="#" style="font-size:0.8rem; color:#1d6fa5; font-weight:600; text-decoration:none; white-space:nowrap;">Сите →</a>
+                <a href="javascript:void(0)" style="font-size:0.8rem; color:#1d6fa5; font-weight:600; text-decoration:none; white-space:nowrap;">Сите →</a>
             </div>
             <div style="overflow-x:auto;">
                 <table class="dash-table" style="width:100%; border-collapse:collapse; font-size:0.85rem; min-width:400px;">

@@ -5,11 +5,6 @@
 
 <body class="bg-gradient-to-b from-[#e6effa] via-[#7ea4db] to-[#4f78b8] text-white font-sans min-h-screen">
 
-<!-- HERO IMAGE -->
-<section class="w-full h-[300px] bg-white overflow-hidden">
-  <img src="./images/news-hero.png" alt="Новости" class="w-full h-full object-cover object-center">
-</section>
-
 <!-- ARTICLE -->
 <main class="w-[85%] max-w-[900px] mx-auto py-20">
 
@@ -80,7 +75,7 @@
 
     <a
       href="{{ url('/Novosti') }}"
-      class="inline-block bg-[#071a32] px-5 py-2 rounded font-bold hover:bg-[#17457d]"
+      class="inline-block bg-[#071a32] text-white px-5 py-2 rounded font-bold hover:bg-[#17457d] hover:text-white transition"
       data-mk="← Назад кон новости"
       data-sq="← Kthehu te lajmet"
       data-en="← Back to news">
