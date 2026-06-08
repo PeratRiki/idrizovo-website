@@ -5,7 +5,7 @@
 <body>
   <!-- HERO -->
   <section class="relative h-[500px] md:h-[700px] w-full overflow-hidden font-sans">
-    <img src="{{ asset('images/sport2.jpg') }}" alt="Активности" class="absolute inset-0 h-full w-full object-cover" />
+   <img src="{{ asset('images/kosarka.png') }}" alt="Активности" class="absolute inset-0 h-full w-full object-cover" />
     <div class="absolute inset-0 bg-black/20"></div>
     <div class="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-center px-6 md:px-16">
       <div
@@ -59,7 +59,7 @@
 
       <!-- Шах -->
       <div class="group relative overflow-hidden rounded-3xl bg-slate-200 md:col-span-2 md:row-span-2 h-[400px] md:h-[600px]">
-        <img src="{{ asset('images/sport.jpg') }}" alt="Шах" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        <img src="{{ asset('images/20260303-dali-lugjeto-shto-igraat-shah-se-popametni-od-drugite-m.jpg') }}" alt="Шах" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 md:p-8 flex flex-col justify-end">
           <h3
             class="mb-2 text-xl md:text-2xl font-bold text-white"
@@ -76,7 +76,7 @@
             Шаховски натпревар што поттикнува фокус, стратешко размислување и позитивна интеракција меѓу учесниците.
           </p>
           <a
-            href="javascript:void(0)"
+            href="#"
             class="text-sm font-semibold text-white underline decoration-blue-400 underline-offset-4"
             data-mk="Прочитај повеќе"
             data-sq="Lexo më shumë"
@@ -105,7 +105,7 @@
             Активности за заварување каде што учесниците учат безбедно...
           </p>
           <a
-            href="javascript:void(0)"
+            href="#"
             class="text-xs font-semibold text-white underline decoration-blue-400"
             data-mk="Прочитај повеќе"
             data-sq="Lexo më shumë"
@@ -134,7 +134,7 @@
             Рачно изработени резби создадени со грижа...
           </p>
           <a
-            href="javascript:void(0)"
+            href="#"
             class="text-xs font-semibold text-white underline decoration-blue-400"
             data-mk="Прочитај повеќе"
             data-sq="Lexo më shumë"
@@ -163,7 +163,7 @@
             Занает на работа со дрво за создавање...
           </p>
           <a
-            href="javascript:void(0)"
+            href="#"
             class="text-xs font-semibold text-white underline decoration-blue-400"
             data-mk="Прочитај повеќе"
             data-sq="Lexo më shumë"
@@ -192,7 +192,7 @@
             Учење и извршување електрични задачи...
           </p>
           <a
-            href="javascript:void(0)"
+            href="#"
             class="text-xs font-semibold text-white underline decoration-blue-400"
             data-mk="Прочитај повеќе"
             data-sq="Lexo më shumë"
@@ -237,7 +237,7 @@
               Везот ги подобрува креативноста...
             </p>
             <a
-              href="javascript:void(0)"
+              href="#"
               class="text-xs font-semibold text-white underline"
               data-mk="Прочитај повеќе"
               data-sq="Lexo më shumë"
@@ -266,7 +266,7 @@
               Активности за цртање...
             </p>
             <a
-              href="javascript:void(0)"
+              href="#"
               class="text-xs font-semibold text-white underline"
               data-mk="Прочитај повеќе"
               data-sq="Lexo më shumë"
@@ -295,7 +295,7 @@
               Активности за шиење...
             </p>
             <a
-              href="javascript:void(0)"
+              href="#"
               class="text-xs font-semibold text-white underline"
               data-mk="Прочитај повеќе"
               data-sq="Lexo më shumë"
@@ -324,7 +324,7 @@
               Создавање уметнички дела...
             </p>
             <a
-              href="javascript:void(0)"
+              href="#"
               class="text-xs font-semibold text-white underline"
               data-mk="Прочитај повеќе"
               data-sq="Lexo më shumë"
@@ -355,7 +355,7 @@
             Физички вежби за градење сила, кондиција и целокупна благосостојба.
           </p>
           <a
-            href="javascript:void(0)"
+            href="#"
             class="text-sm font-semibold text-white underline decoration-blue-400 underline-offset-8"
             data-mk="Прочитај повеќе"
             data-sq="Lexo më shumë"

@@ -130,14 +130,14 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12 lg:gap-24 max-w-5xl mx-auto">
                 <div class="text-center group">
                     <div class="relative rounded-2xl md:rounded-[2.5rem] overflow-hidden bg-gradient-to-b from-[#6b96d3] to-[#2b5292] aspect-[4/3] mb-4 md:mb-6">
-                        <img src="{{ asset('images/Messenger_creation_6F31227D-9604-426B-8046-C10830AC0462.jpeg') }}" alt="Директор" class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-auto object-cover">
+                        <img src="{{ asset('images/direktor.png') }}" alt="Директор" class="w-full h-full object-cover object-center">
                     </div>
                     <h3 class="text-lg md:text-xl font-bold text-[#101e3d]">М-р. Зоран Јовановски</h3>
                     <p class="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-gray-400 font-black mt-2" data-mk="Директор" data-sq="Drejtori" data-en="Director">Директор</p>
                 </div>
                 <div class="text-center group">
                     <div class="relative rounded-2xl md:rounded-[2.5rem] overflow-hidden bg-gradient-to-b from-[#6b96d3] to-[#2b5292] aspect-[4/3] mb-4 md:mb-6">
-                        <img src="" alt="Заменик Директор" class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-auto object-contain">
+                        <img src="{{ asset('images/zamenik.jpeg') }}" alt="Заменик Директор" class="w-full h-full object-cover object-top">
                     </div>
                     <h3 class="text-lg md:text-xl font-bold text-[#101e3d]">Наим Љамалари</h3>
                     <p class="text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-gray-400 font-black mt-2" data-mk="Заменик директор" data-sq="Zëvendësdrejtori" data-en="Deputy Director">Заменик директор</p>
