@@ -70,7 +70,7 @@
                 <li class="relative flex items-center cursor-pointer {{ request()->routeIs('activities.index') || request()->routeIs('novosti.index') ? 'font-bold' : '' }}">
                     <button id="novosti-btn" onclick="toggleNovosti(event)"
                         class="flex items-center gap-x-1 px-2 py-1 relative before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:bg-white before:transition-all before:duration-500 {{ request()->routeIs('activities.index') || request()->routeIs('novosti.index') ? 'before:w-full' : 'before:w-0' }} hover:before:w-full focus:outline-none whitespace-nowrap">
-                        <span data-mk="Новости и соопштенија" data-sq="Lajme dhe njoftime" data-en="News and announcements">Новости и соопштeniја</span>
+                        <span data-mk="Новости и соопштенија" data-sq="Lajme dhe njoftime" data-en="News and announcements">Новости и соопштeнија</span>
                         <svg class="w-4 h-4 transition-transform duration-200 flex-shrink-0" id="novosti-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
