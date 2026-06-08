@@ -41,13 +41,11 @@
                 <h2 class="font-semibold text-gray-900 text-base mb-6" data-mk="Работно време" data-sq="Orari i punës"
                     data-en="Working hours">Работно време</h2>
                 <div class="space-y-3 text-sm text-gray-800">
-                    <p data-mk="Понеделник - Петок: 08:00 - 16:00" data-sq="E hënë - E premte: 08:00 - 16:00"
-                        data-en="Monday - Friday: 08:00 - 16:00">Понеделник - Петок: 08:00 - 16:00</p>
-                    <p data-mk="Сабота: 08:00 - 13:00" data-sq="E shtunë: 08:00 - 13:00"
-                        data-en="Saturday: 08:00 - 13:00">Сабота: 08:00 - 13:00</p>
-                    <p data-mk="Недела: Затворено" data-sq="E diel: Mbyllur" data-en="Sunday: Closed">Недела: Затворено</p>
-                    <p data-mk="Државни празници: Затворено" data-sq="Festat shtetërore: Mbyllur"
-                        data-en="Public holidays: Closed">Државни празници: Затворено</p>
+                    <p data-mk="Понеделник - Недела: 08:00 - 16:00"
+   data-sq="E hënë - E diel: 08:00 - 16:00"
+   data-en="Monday - Sunday: 08:00 - 16:00">
+   Понеделник - Недела: 08:00 - 16:00
+</p>
                 </div>
             </div>
         </div>
