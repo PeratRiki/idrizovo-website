@@ -198,6 +198,16 @@
     padding: 1.2rem;
     text-align: center;
   }
+  .code-box.rejected {
+    background: #fef2f2;
+    border-color: #fca5a5;
+  }
+  .code-box.rejected .code-val {
+    color: #991b1b;
+  }
+  .code-box.rejected .text-xs {
+    color: #991b1b;
+  }
   .code-val {
     font-size: 2.2rem;
     font-weight: 700;
@@ -975,21 +985,28 @@ async function restoreBookingState() {
 
   const lbl  = document.getElementById('codeLabel');
   const note = document.getElementById('codeNote');
+  const codeBox = document.querySelector('.code-box');
   if (status === 'rejected') {
     lbl.textContent = t('rejectedLabel');
+    lbl.style.color = '#991b1b';
     note.textContent = t('rejectedMessage');
     document.getElementById('displayCode').textContent = '——';
-  } else if (notifyValue === 'sms') {
-    lbl.textContent  = t('codeLabelSms');
-    note.textContent = (status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNoteSms').replace('{0}', bookingData.phone || '');
-  } else if (notifyValue === 'email') {
-    lbl.textContent  = t('codeLabelEmail');
-    note.textContent = (status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNoteEmail').replace('{0}', bookingData.visitor_email || '');
+    codeBox && codeBox.classList.add('rejected');
   } else {
-    lbl.textContent  = t('codeLabelPage');
-    note.textContent = (status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNotePage');
+    lbl.style.color = '';
+    codeBox && codeBox.classList.remove('rejected');
+    if (notifyValue === 'sms') {
+      lbl.textContent  = t('codeLabelSms');
+      note.textContent = (status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNoteSms').replace('{0}', bookingData.phone || '');
+    } else if (notifyValue === 'email') {
+      lbl.textContent  = t('codeLabelEmail');
+      note.textContent = (status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNoteEmail').replace('{0}', bookingData.visitor_email || '');
+    } else {
+      lbl.textContent  = t('codeLabelPage');
+      note.textContent = (status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNotePage');
+    }
+    document.getElementById('displayCode').textContent = bookingCode || '——';
   }
-  document.getElementById('displayCode').textContent = bookingCode || '——';
 
   if (bookingData.requested_date) {
     const tipLabel = bookingData.visitor_type === 'semejstvo' ? t('tipSemejstvo') : t('tipPrijatel');
@@ -1204,18 +1221,29 @@ async function submitForm(){
 
   const lbl  = document.getElementById('codeLabel');
   const note = document.getElementById('codeNote');
-  if(notify.value==='sms'){
-    lbl.textContent  = t('codeLabelSms');
-    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNoteSms').replace('{0}', mobilen);
-  } else if(notify.value==='email'){
-    lbl.textContent  = t('codeLabelEmail');
-    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNoteEmail').replace('{0}', email);
+  const codeBox = document.querySelector('.code-box');
+  if (data.status === 'rejected') {
+    lbl.textContent = t('rejectedLabel');
+    lbl.style.color = '#991b1b';
+    note.textContent = t('rejectedMessage');
+    document.getElementById('displayCode').textContent = '——';
+    codeBox && codeBox.classList.add('rejected');
   } else {
-    lbl.textContent  = t('codeLabelPage');
-    note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNotePage');
+    lbl.style.color = '';
+    codeBox && codeBox.classList.remove('rejected');
+    if(notify.value==='sms'){
+      lbl.textContent  = t('codeLabelSms');
+      note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNoteSms').replace('{0}', mobilen);
+    } else if(notify.value==='email'){
+      lbl.textContent  = t('codeLabelEmail');
+      note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNoteEmail').replace('{0}', email);
+    } else {
+      lbl.textContent  = t('codeLabelPage');
+      note.textContent = (data.status === 'waiting' ? t('waitingMessage') + ' ' : t('pendingMessage') + ' ') + t('codeNotePage');
+    }
+    bookingCode = data.code || '';
+    document.getElementById('displayCode').textContent = bookingCode || '——';
   }
-  bookingCode = data.code || '';
-  document.getElementById('displayCode').textContent = bookingCode || '——';
 
   // ДОДАДЕНО: tipLabel за summary
   const tipLabel = tip.value === 'semejstvo' ? t('tipSemejstvo') : t('tipPrijatel');
